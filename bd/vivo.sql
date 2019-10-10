@@ -5,13 +5,13 @@
  Source Server Type    : MySQL
  Source Server Version : 100137
  Source Host           : localhost:3306
- Source Schema         : viviendas
+ Source Schema         : vivo
 
  Target Server Type    : MySQL
  Target Server Version : 100137
  File Encoding         : 65001
 
- Date: 10/10/2019 16:15:06
+ Date: 10/10/2019 16:35:07
 */
 
 SET NAMES utf8mb4;
@@ -49,7 +49,7 @@ CREATE TABLE `beneficiario`  (
 -- ----------------------------
 DROP TABLE IF EXISTS `condominio`;
 CREATE TABLE `condominio`  (
-  `condominio_id` int(255) NOT NULL,
+  `condominio_id` int(255) NOT NULL AUTO_INCREMENT,
   `descripcion` varchar(255) CHARACTER SET utf8 COLLATE utf8_spanish_ci NOT NULL,
   `valor` decimal(65, 2) NOT NULL,
   `usu_creacion` int(11) NOT NULL COMMENT 'Usuario que creo el registro dentro la tabla:persona',
@@ -59,7 +59,7 @@ CREATE TABLE `condominio`  (
   `fec_modificacion` datetime(0) NULL DEFAULT NULL COMMENT 'Fecha que se modifico el registro dentro la tabla:persona',
   `fec_eliminacion` datetime(0) NULL DEFAULT NULL COMMENT 'fecha que se elimino el registro dentro la tabla:persona',
   PRIMARY KEY (`condominio_id`) USING BTREE
-) ENGINE = InnoDB CHARACTER SET = utf8 COLLATE = utf8_spanish_ci ROW_FORMAT = Compact;
+) ENGINE = InnoDB AUTO_INCREMENT = 1 CHARACTER SET = utf8 COLLATE = utf8_spanish_ci ROW_FORMAT = Compact;
 
 -- ----------------------------
 -- Table structure for credito
