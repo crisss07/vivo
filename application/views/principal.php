@@ -35,12 +35,13 @@
 										</div>
 									</div>
 
+
 									<!--begin::Form-->
 									<form class="m-form m-form--fit m-form--label-align-right">
 										<div class="m-portlet__body">
 											<div class="form-group m-form__group">
 												<label for="exampleSelect1">¿A cu&aacute;l proyecto desea postular?</label>
-												<select class="form-control m-input" id="exampleSelect1">
+												<select class="form-control m-input m-input--air m-input--pill" id="exampleSelect1">
 													<option>ELIJA UNA OPCION</option>
 													<option>WIPHALA(La Paz - El Alto - Villa Mercedario)</option>
 													<option>PAPA FRANCISCO (Santa Cruz)</option>
@@ -50,26 +51,26 @@
 											<div class="form-group m-form__group row">
 												<div class="col-lg-4">
 													<label class="">N&uacute;mero de Carnet Identidad:</label>
-													<input type="text" class="form-control m-input" required>
+													<input type="text" class="form-control m-input m-input--air m-input--pill" required>
 													<span class="m-form__help">Por favor ingrese su C.I.</span>
 												</div>
 											</div>
 											<div class="form-group m-form__group row">
 												<div class="col-lg-4">
 													<label class="">Nombres:</label>
-													<input type="text" class="form-control m-input">
+													<input type="text" class="form-control m-input m-input--air m-input--pill">
 												</div>
 												<div class="col-lg-4">
 													<label class="">Apellido Paterno:</label>
 													<div class="m-input-icon m-input-icon--right">
-														<input type="text" class="form-control m-input">
+														<input type="text" class="form-control m-input m-input--air m-input--pill">
 														<span class="m-input-icon__icon m-input-icon__icon--right"></span>
 													</div>
 												</div>
 												<div class="col-lg-4">
 													<label class="">Apellido Materno:</label>
 													<div class="m-input-icon m-input-icon--right">
-														<input type="text" class="form-control m-input">
+														<input type="text" class="form-control m-input m-input--air m-input--pill">
 														<span class="m-input-icon__icon m-input-icon__icon--right"></span>
 													</div>
 												</div>
@@ -77,13 +78,13 @@
 											<div class="form-group m-form__group row">
 												<div class="col-lg-4">
 													<label class="">Domicilio:</label>
-													<input type="text" class="form-control m-input" required>
+													<input type="text" class="form-control m-input m-input--air m-input--pill" required>
 													<span class="m-form__help">Por favor ingrese su domicilio</span>
 												</div>
 												<div class="col-lg-4">
 													<label class="">N&uacute;mero de Celular:</label>
 													<div class="m-input-icon m-input-icon--right">
-														<input type="text" class="form-control m-input" required>
+														<input type="text" class="form-control m-input m-input--air m-input--pill" required>
 														<span class="m-input-icon__icon m-input-icon__icon--right"></span>
 													</div>
 													<span class="m-form__help">Por favor ingrese su # de Celular</span>
@@ -91,7 +92,7 @@
 												<div class="col-lg-4">
 													<label class="">Email:</label>
 													<div class="m-input-icon m-input-icon--right">
-														<input type="text" class="form-control m-input" required>
+														<input type="text" class="form-control m-input m-input--air m-input--pill" required>
 														<span class="m-input-icon__icon m-input-icon__icon--right"></span>
 													</div>
 													<span class="m-form__help">Por favor ingrese su Correo Electr&oacute;nico</span>
