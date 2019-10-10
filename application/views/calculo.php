@@ -79,11 +79,18 @@
 													<input class="form-control m-input" type="text" value="" id="example-password-input">
 												</div>
 											</div>
-											<div class="form-group m-form__group row">
-												<label for="example-number-input" class="col-7 col-form-label">8. ¿Es casado o conviviente?</label>
-												<div class="col-5">
-													<input class="form-control m-input" type="text" value="" id="example-number-input">
-												</div>
+											
+											
+											<div class="form-group m-form__group">
+												<label for="exampleSelect1" class="col-7 col-form-inline">8. ¿Es casado o conviviente?</label>
+												
+												<select class=" col-1 form-control m-input" id="exampleSelect1">
+													<option>1</option>
+													<option>2</option>
+													<option>3</option>
+													<option>4</option>
+													<option>5</option>
+												</select>											
 											</div>
 											
 										</div>
