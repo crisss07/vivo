@@ -11,7 +11,7 @@
  Target Server Version : 100137
  File Encoding         : 65001
 
- Date: 10/10/2019 16:35:07
+ Date: 11/10/2019 15:11:17
 */
 
 SET NAMES utf8mb4;
@@ -32,6 +32,7 @@ CREATE TABLE `beneficiario`  (
   `direccion` varchar(200) CHARACTER SET utf8 COLLATE utf8_spanish_ci NOT NULL COMMENT 'Direccion del domicilio de la persona',
   `email` varchar(50) CHARACTER SET utf8 COLLATE utf8_spanish_ci NOT NULL COMMENT 'Correo electronico de la persona',
   `telefono_celular` varchar(30) CHARACTER SET utf8 COLLATE utf8_spanish_ci NOT NULL COMMENT 'Telefono celular de la persona',
+  `departamento` varchar(255) CHARACTER SET utf8 COLLATE utf8_spanish_ci NOT NULL,
   `activo` int(11) NOT NULL DEFAULT 1 COMMENT 'Estado del registro dentro la tabla:persona',
   `usu_creacion` int(11) NOT NULL COMMENT 'Usuario que creo el registro dentro la tabla:persona',
   `usu_modificacion` int(11) NULL DEFAULT NULL COMMENT 'Usuario que modifico el registro dentro la tabla:persona',
@@ -42,7 +43,12 @@ CREATE TABLE `beneficiario`  (
   PRIMARY KEY (`persona_id`) USING BTREE,
   INDEX `condominio_id`(`condominio_id`) USING BTREE,
   CONSTRAINT `beneficiario_ibfk_1` FOREIGN KEY (`condominio_id`) REFERENCES `condominio` (`condominio_id`) ON DELETE RESTRICT ON UPDATE RESTRICT
-) ENGINE = InnoDB AUTO_INCREMENT = 2 CHARACTER SET = utf8 COLLATE = utf8_spanish_ci COMMENT = 'Tabla:persona que guarda los datos de las personas involucradas con el sistema' ROW_FORMAT = Compact;
+) ENGINE = InnoDB AUTO_INCREMENT = 3 CHARACTER SET = utf8 COLLATE = utf8_spanish_ci COMMENT = 'Tabla:persona que guarda los datos de las personas involucradas con el sistema' ROW_FORMAT = Compact;
+
+-- ----------------------------
+-- Records of beneficiario
+-- ----------------------------
+INSERT INTO `beneficiario` VALUES (2, 7, 'CRISTIAN RODRIGO', 'CHAMBY', 'SALINAS', '9112739', '0000-00-00', 'abc', 'rodri07crisss@gmail.com', '78784079', 'LA PAZ', 1, 0, NULL, NULL, '2019-10-11 10:33:00', NULL, NULL);
 
 -- ----------------------------
 -- Table structure for condominio
@@ -59,7 +65,20 @@ CREATE TABLE `condominio`  (
   `fec_modificacion` datetime(0) NULL DEFAULT NULL COMMENT 'Fecha que se modifico el registro dentro la tabla:persona',
   `fec_eliminacion` datetime(0) NULL DEFAULT NULL COMMENT 'fecha que se elimino el registro dentro la tabla:persona',
   PRIMARY KEY (`condominio_id`) USING BTREE
-) ENGINE = InnoDB AUTO_INCREMENT = 1 CHARACTER SET = utf8 COLLATE = utf8_spanish_ci ROW_FORMAT = Compact;
+) ENGINE = InnoDB AUTO_INCREMENT = 10 CHARACTER SET = utf8 COLLATE = utf8_spanish_ci ROW_FORMAT = Compact;
+
+-- ----------------------------
+-- Records of condominio
+-- ----------------------------
+INSERT INTO `condominio` VALUES (1, 'WIPHALA\r\n', 243600.00, 0, NULL, NULL, '2019-10-11 09:56:54', NULL, NULL);
+INSERT INTO `condominio` VALUES (2, 'BARTOLINA', 268772.00, 0, NULL, NULL, '2019-10-11 09:57:15', NULL, NULL);
+INSERT INTO `condominio` VALUES (3, 'SANTA ANA', 313876.00, 0, NULL, NULL, '2019-10-11 09:57:28', NULL, NULL);
+INSERT INTO `condominio` VALUES (4, 'P. FRANCISCO', 198932.00, 0, NULL, NULL, '2019-10-11 09:57:44', NULL, NULL);
+INSERT INTO `condominio` VALUES (5, 'PIRWA', 186719.50, 0, NULL, NULL, '2019-10-11 09:57:57', NULL, NULL);
+INSERT INTO `condominio` VALUES (6, 'PATUJU', 202016.00, 0, NULL, NULL, '2019-10-11 09:58:06', NULL, NULL);
+INSERT INTO `condominio` VALUES (7, 'A. COTOCA', 203249.55, 0, NULL, NULL, '2019-10-11 09:58:21', NULL, NULL);
+INSERT INTO `condominio` VALUES (8, 'PACHA', 255500.00, 0, NULL, NULL, '2019-10-11 09:58:32', NULL, NULL);
+INSERT INTO `condominio` VALUES (9, 'TAMBORADA', 208800.00, 0, NULL, NULL, '2019-10-11 09:58:41', NULL, NULL);
 
 -- ----------------------------
 -- Table structure for credito
@@ -70,12 +89,15 @@ CREATE TABLE `credito`  (
   `persona_id` int(11) NOT NULL,
   `ingreso_mensual` decimal(65, 2) NOT NULL,
   `ingreso_conyugue` decimal(65, 2) NULL DEFAULT NULL,
-  `pago_banco` decimal(65, 2) NULL DEFAULT NULL COMMENT 'el pago de otro prestamo en otra entidad financiera',
-  `alquiler` decimal(65, 2) NULL DEFAULT NULL,
-  `miembros` int(255) NULL DEFAULT NULL,
-  `aporte` decimal(65, 2) NULL DEFAULT NULL,
-  `casado` int(255) NOT NULL,
-  `prestamo` decimal(65, 2) NULL DEFAULT NULL,
+  `deuda` tinyint(1) NOT NULL COMMENT '1:V 0:F en caso de tener una deuda con otro banco',
+  `deuda_banco` decimal(65, 2) NULL DEFAULT NULL COMMENT 'el pago a la entidad financiera',
+  `alquiler` tinyint(1) NOT NULL COMMENT '1:V 0:F',
+  `pago_alquiler` decimal(65, 2) NULL DEFAULT NULL COMMENT 'pago del alquiler',
+  `miembros` int(65) NULL DEFAULT NULL,
+  `aporte` tinyint(1) NULL DEFAULT NULL COMMENT '1:V 0:F en caso de que el beneficiario tenga aporte',
+  `aporte_beneficiario` decimal(65, 2) NULL DEFAULT NULL,
+  `casado` tinyint(1) NOT NULL,
+  `prestamo` decimal(65, 2) NULL DEFAULT NULL COMMENT 'prestamo disponible',
   `cuota_mensual` decimal(65, 2) NULL DEFAULT NULL,
   `usu_creacion` int(11) NOT NULL COMMENT 'Usuario que creo el registro dentro la tabla:persona',
   `usu_modificacion` int(11) NULL DEFAULT NULL COMMENT 'Usuario que modifico el registro dentro la tabla:persona',
@@ -86,7 +108,7 @@ CREATE TABLE `credito`  (
   PRIMARY KEY (`credito_id`) USING BTREE,
   INDEX `persona_id`(`persona_id`) USING BTREE,
   CONSTRAINT `credito_ibfk_1` FOREIGN KEY (`persona_id`) REFERENCES `beneficiario` (`persona_id`) ON DELETE RESTRICT ON UPDATE RESTRICT
-) ENGINE = InnoDB AUTO_INCREMENT = 2 CHARACTER SET = utf8 COLLATE = utf8_spanish_ci ROW_FORMAT = Compact;
+) ENGINE = InnoDB AUTO_INCREMENT = 1 CHARACTER SET = utf8 COLLATE = utf8_spanish_ci ROW_FORMAT = Compact;
 
 -- ----------------------------
 -- Table structure for familiar

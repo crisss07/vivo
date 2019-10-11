@@ -58,19 +58,19 @@
 																<div class="form-group m-form__group row">
 																	<label for="example-text-input" class="col-9 col-form-label">1. ¿A cuánto alcanza tus ingresos liquidos mensuales? (Bs.)</label>
 																	<div class="col-3">
-																		<input class="form-control m-input" type="number" value="" id="example-text-input">
+																		<input class="form-control m-input m-input--air m-input--pill" type="number" value="" id="example-text-input">
 																	</div>
 																</div>
 																<div class="form-group m-form__group row">
 																	<label for="example-search-input" class="col-9 col-form-label">2. ¿A cuanto asciende tus ingresos adicionales o de tu conyuge (si corresponde)? (Bs.)</label>
 																	<div class="col-3">
-																		<input class="form-control m-input" type="number" value="How do I shoot web" id="example-search-input">
+																		<input class="form-control m-input m-input--air m-input--pill" type="number" value="How do I shoot web" id="example-search-input">
 																	</div>
 																</div>
 																<div class="form-group m-form__group row">
 																	<label class="col-xl-9 col-lg-9 col-form-label">3. ¿Tienes préstamos en otras entidades financieras?</label>
 																	<div class="col-xl-3 col-lg-3">
-																		<select name="country" class="form-control m-input" onchange="showDivPagoEF('hidden_pago_ef', this)">
+																		<select name="country" class="form-control m-input m-input--air m-input--pill" onchange="showDivPagoEF('hidden_pago_ef', this)">
 																			<option value=""></option>
 																			<option value="1">SI</option>
 																			<option value="2">NO</option>
@@ -80,13 +80,13 @@
 																<div class="form-group m-form__group row" 	id="hidden_pago_ef">
 																	<label for="example-email-input" class="col-9 col-form-label">3.1 ¿Cuánto pagas mensualmente por tus prestamos en otras entidades financieras?</label>
 																	<div class="col-3">
-																		<input class="form-control m-input" type="number" value="" id="example-email-input">
+																		<input class="form-control m-input m-input--air m-input--pill" type="number" value="" id="example-email-input">
 																	</div>
 																</div>
 																<div class="form-group m-form__group row">
 																	<label class="col-xl-9 col-lg-9 col-form-label" >4. ¿Vives en casa Alquilada?</label>
 																	<div class="col-xl-3 col-lg-3">
-																		<select name="country" class="form-control m-input" onchange="showDivPago('hidden_pago_m', this)">
+																		<select name="country" class="form-control m-input m-input--air m-input--pill" onchange="showDivPago('hidden_pago_m', this)">
 																			<option value=""></option>
 																			<option value="1">SI</option>
 																			<option value="2">NO</option>
@@ -96,19 +96,19 @@
 																<div class="form-group m-form__group row" id="hidden_pago_m">
 																	<label for="example-url-input" class="col-9 col-form-label">4.1 ¿Cuánto pagas mensualmente de alquiler?</label>
 																	<div class="col-3">
-																		<input class="form-control m-input" type="number" value="" id="example-url-input">
+																		<input class="form-control m-input m-input--air m-input--pill" type="number" value="" id="example-url-input">
 																	</div>
 																</div>
 																<div class="form-group m-form__group row">
 																	<label for="example-tel-input" class="col-9 col-form-label">5. ¿Por cuántos miembros esta compuesto la unidad familiar?</label>
 																	<div class="col-3">
-																		<input class="form-control m-input" type="number" value="" id="example-tel-input">
+																		<input class="form-control m-input m-input--air m-input--pill" type="number" value="" id="example-tel-input">
 																	</div>
 																</div>
 																<div class="form-group m-form__group row">
 																	<label class="col-xl-9 col-lg-9 col-form-label">6. ¿Usted cuenta con aporte propio?</label>
 																	<div class="col-xl-3 col-lg-3">
-																		<select name="country" class="form-control m-input" onchange="showDiv('hidden_div', this)">
+																		<select name="country" class="form-control m-input m-input--air m-input--pill" onchange="showDiv('hidden_div', this)">
 																			<option value=""></option>
 																			<option value="1">SI</option>
 																			<option value="2">NO</option>
@@ -120,13 +120,13 @@
 																<div class="form-group m-form__group row" id="hidden_div">
 																	<label for="example-password-input" class="col-9 col-form-label">6.1. ¿A cuanto alcanza su aporte propio? (AHORRO EN EFECTIVO Y/O ANTICRETICO) ($us)</label>
 																	<div class="col-3">
-																		<input class="form-control m-input" type="text" value="" id="example-password-input">
+																		<input class="form-control m-input m-input--air m-input--pill" type="text" value="" id="example-password-input">
 																	</div>
 																</div>
 																<div class="form-group m-form__group row">
 																	<label class="col-xl-9 col-lg-9 col-form-label">7. ¿Es casado o conviviente?</label>
 																	<div class="col-xl-3 col-lg-3">
-																		<select name="country" class="form-control m-input">
+																		<select name="country" class="form-control m-input m-input--air m-input--pill">
 																			<option value=""></option>
 																			<option value="AF">SI</option>
 																			<option value="AX">NO</option>
