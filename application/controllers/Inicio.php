@@ -20,8 +20,10 @@ class Inicio extends CI_Controller {
 	 */
 	public function index()
 	{
+		$condominios = $this->db->get('condominio')->result();
+		$data['condominios']=$condominios;
 		$this->load->view('admin/header');
-		$this->load->view('principal');
+		$this->load->view('principal', $data);
 		
 		// $this->load->view('admin/menu');
 		$this->load->view('admin/footer');

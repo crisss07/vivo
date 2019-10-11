@@ -36,18 +36,25 @@
 										</div>
 									</div>
 
+									
+
 
 									<!--begin::Form-->
-									<form class="m-form m-form--fit m-form--label-align-right">
+									<?php echo form_open('Persona/insertar', array('method'=>'POST')); ?>
+									<!-- <form class="m-form m-form--fit m-form--label-align-right" action="/"> -->
 										<div class="m-portlet__body">
 											<div class="form-group m-form__group">
 												<label for="exampleSelect1">¿A cu&aacute;l proyecto desea postular?</label>
-												<select class="form-control m-input m-input--air m-input--pill" id="exampleSelect1">
-													<option>ELIJA UNA OPCION</option>
-													<option>WIPHALA(La Paz - El Alto - Villa Mercedario)</option>
-													<option>PAPA FRANCISCO (Santa Cruz)</option>
-													
+												<select class="form-control m-input m-input--air m-input--pill" id="exampleSelect1" name="condominio_id">
+													<option value="">ELIJA UNA OPCION</option>
+													<?php foreach ($condominios as $con) {	?>
+													<option value="<?php echo $con->condominio_id ?>"><?php echo $con->descripcion ?></option>
+													<?php } ?>
 												</select>
+											</div>
+
+											<div>
+												<input type="text" hidden name="fec_nacimiento" id="fecha">
 											</div>
 											<div class="form-group m-form__group row">
 												<div class="col-lg-4">
@@ -77,34 +84,38 @@
 												</div>
 											</div>
 											<div class="form-group m-form__group row">
-												<div class="col-lg-4">
+												<div class="col-lg-12">
 													<label class="">Domicilio:</label>
-													<input type="text" class="form-control m-input m-input--air m-input--pill" required>
+													<input type="text" class="form-control m-input m-input--air m-input--pill" name="direccion" required>
 													<span class="m-form__help">Por favor ingrese su domicilio</span>
 												</div>
-												<div class="col-lg-4">
+											</div>
+											<div class="form-group m-form__group row">
+												<div class="col-lg-6">
 													<label class="">N&uacute;mero de Celular:</label>
 													<div class="m-input-icon m-input-icon--right">
-														<input type="text" class="form-control m-input m-input--air m-input--pill" required>
+														<input type="number" class="form-control m-input m-input--air m-input--pill" name="telefono_celular">
 														<span class="m-input-icon__icon m-input-icon__icon--right"></span>
 													</div>
 													<span class="m-form__help">Por favor ingrese su # de Celular</span>
 												</div>
-												<div class="col-lg-4">
+												<div class="col-lg-6">
 													<label class="">Email:</label>
 													<div class="m-input-icon m-input-icon--right">
-														<input type="text" class="form-control m-input m-input--air m-input--pill" required>
+														<input type="email" class="form-control m-input m-input--air m-input--pill" name="email" required>
 														<span class="m-input-icon__icon m-input-icon__icon--right"></span>
 													</div>
 													<span class="m-form__help">Por favor ingrese su Correo Electr&oacute;nico</span>
 												</div>
 											</div>
 										</div>
-										<div class="m-portlet__foot m-portlet__foot--fit">
+										<div class="m-portlet__foot m-portlet__foot--fit" >
+											<center>
 											<div class="m-form__actions">
 												<button type="submit" class="btn btn-primary">Guardar</button>
 												<button type="reset" class="btn btn-secondary">Cancelar</button>
 											</div>
+											</center>
 										</div>
 									</form>
 
@@ -160,11 +171,9 @@
                         $("#ci").val(data.ci);
                     $("#msg_sucess_catastral").html('Esta registrado en el SEGIP la persona con Cedula de Identidad Numero: '+data.ci);
                     $('#nombres').val(data.nombres);
-                    $("#nombres").prop("disabled", true);
                     $('#paterno').val(data.paterno);
-                    $("#paterno").prop("disabled", true);
                     $('#materno').val(data.materno);
-                    $("#materno").prop("disabled", true);
+                    $('#fecha').val(data.fec_nacimiento);
                     }else{
                     $("#msg_sucess_catastral").hide();
                      $("#msg_error_catastral").show();
