@@ -65,26 +65,20 @@ License: You must have a valid license purchased only from themeforest(the above
 		<div class="m-grid m-grid--hor m-grid--root m-page">
 
 			<!-- BEGIN: Header -->
-			<header id="m_header" class="m-grid__item    m-header " m-minimize-offset="200" m-minimize-mobile-offset="200">
+			<!-- <header id="m_header" class="m-grid__item    m-header " m-minimize-offset="200" m-minimize-mobile-offset="200">
 				<div class="m-container m-container--fluid m-container--full-height">
 					<div class="m-stack m-stack--ver m-stack--desktop">
 
-						<!-- BEGIN: Brand -->
 						
-						<!-- END: Brand -->
 						<div class="m-stack__item m-stack__item--fluid m-header-head" id="m_header_nav">
 
-							<!-- BEGIN: Horizontal Menu -->
-							
-							<!-- END: Horizontal Menu -->
-
-							<!-- BEGIN: Topbar -->
 							
 
-							<!-- END: Topbar -->
+							
+
 						</div>
 					</div>
 				</div>
-			</header>
+			</header> -->
 
 			<!-- END: Header -->
