@@ -1,5 +1,5 @@
 <!-- begin::Body -->
-			<div class="m-grid__item m-grid__item--fluid m-grid m-grid--ver-desktop m-grid--desktop m-body" style="background-image: url(<?php echo base_url(); ?>/public/assets/imagenes/formulario1.jpg);
+			<div class="m-grid__item m-grid__item--fluid m-grid m-grid--ver-desktop m-grid--desktop m-body" style="background-image: url(../vivo/public/assets/imagenes/formulario1.jpg);
 		  overflow: hidden;">
 
 				<!-- BEGIN: Left Aside -->
@@ -265,7 +265,7 @@
                 // alert(data.message);
 	            if (data.estado == 'registrado') {
 	            	alert(data.mensaje);
-	            	$("#verificar").html('Esta registrado en el SEGIP la persona con Cedula de Identidad Numero: '+data.ci);
+	            	$("#verificar").html();
 	            }
 	            else
 	            {
