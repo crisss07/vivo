@@ -1,5 +1,5 @@
 <!-- begin::Body -->
-			<div class="m-grid__item m-grid__item--fluid m-grid m-grid--ver-desktop m-grid--desktop m-body" style="background-image: url(../vivo/public/assets/imagenes/formulario1.jpg);
+			<div class="m-grid__item m-grid__item--fluid m-grid m-grid--ver-desktop m-grid--desktop m-body" style="background-image: url(<?php echo base_url(); ?>/public/assets/imagenes/formulario1.jpg);
 		  overflow: hidden;">
 
 				<!-- BEGIN: Left Aside -->
