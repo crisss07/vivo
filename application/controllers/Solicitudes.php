@@ -30,13 +30,14 @@ class Solicitudes extends CI_Controller {
        
 	}
 
-	public function inicia()
+	public function inicia($idCredito = null)
 	{
 		// echo 'Holas desde php';
-		$condominios = $this->db->get('condominio')->result();
-		$data['condominios']=$condominios;
+		$datos_credito = $this->get_where('credito', array('id'=>$idCredito))->row_array();
+		// $condominios = $this->db->get('condominio')->result();
+		// $data['condominios']=$condominios;
 		$this->load->view('admin/header');
-		$this->load->view('principal', $data);
+		$this->load->view('solicitudes/principal', $data);
 
 	}
 
