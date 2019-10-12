@@ -19,209 +19,225 @@
 					<!-- END: Subheader -->
 					<div class="m-content">
 						<div class="row">
-							<div class="col-md-5">
 
-								<!--begin::Portlet-->
-								<div class="m-portlet m-portlet--tab">
-									<div class="m-portlet__head">
-										<div class="m-portlet__head-caption">
-											<div class="m-portlet__head-title">
-												<span class="m-portlet__head-icon m--hide">
-													<i class="la la-gear"></i>
-												</span>
-												<h3 class="m-portlet__head-text">
-													AEV - REGISTRO DE POSTULANTES
-												</h3>
+								<div class="col-md-5">
+
+									<!--begin::Portlet-->
+									<div class="m-portlet m-portlet--tab">
+										<div class="m-portlet__head">
+											<div class="m-portlet__head-caption">
+												<div class="m-portlet__head-title">
+													<span class="m-portlet__head-icon m--hide">
+														<i class="la la-gear"></i>
+													</span>
+													<h3 class="m-portlet__head-text">
+														AEV - REGISTRO DE POSTULANTES
+													</h3>
+												</div>
 											</div>
 										</div>
+
+										
+
+
+										<!--begin::Form-->
+										<?php echo form_open('Persona/insertar', array('method'=>'POST', 'class' => 'm-form m-form--fit m-form--label-align-right')); ?>
+										<!-- <form class="m-form m-form--fit m-form--label-align-right" action="/"> -->
+											<div class="m-portlet__body">
+												<div class="form-group m-form__group">
+													<label for="exampleSelect1">¿A cu&aacute;l proyecto desea postular?</label>
+													<select class="form-control m-input m-input--air m-input--pill" id="exampleSelect1" name="condominio_id">
+														<option value="">ELIJA UNA OPCION</option>
+														<?php foreach ($condominios as $con) {	?>
+														<option value="<?php echo $con->id ?>"><?php echo $con->descripcion ?></option>
+														<?php } ?>
+													</select>
+												</div>
+
+												<div>
+													<input type="text" hidden name="fec_nacimiento" id="fecha">
+												</div>
+												<div class="form-group m-form__group row">
+													<div class="col-lg-4">
+														<label class="">N&uacute;mero de Carnet Identidad:</label>
+														<input type="text" class="form-control m-input m-input--air m-input--pill" name="ci" id="ci1" required>
+														<span class="m-form__help">Por favor ingrese su C.I.</span>
+													</div>
+												</div>
+												<div class="form-group m-form__group row">
+													<div class="col-lg-4">
+														<label class="">Nombres:</label>
+														<input type="text" class="form-control m-input m-input--air m-input--pill" readonly name="nombres" id="nombres">
+													</div>
+													<div class="col-lg-4">
+														<label class="">Apellido Paterno:</label>
+														<div class="m-input-icon m-input-icon--right">
+															<input type="text" class="form-control m-input m-input--air m-input--pill" readonly name="paterno" id="paterno">
+															<span class="m-input-icon__icon m-input-icon__icon--right"></span>
+														</div>
+													</div>
+													<div class="col-lg-4">
+														<label class="">Apellido Materno:</label>
+														<div class="m-input-icon m-input-icon--right">
+															<input type="text" class="form-control m-input m-input--air m-input--pill" readonly name="materno" id="materno">
+															<span class="m-input-icon__icon m-input-icon__icon--right"></span>
+														</div>
+													</div>
+												</div>
+												<div class="form-group m-form__group row">
+													<div class="col-lg-8">
+														<label class="">Domicilio:</label>
+														<input type="text" class="form-control m-input m-input--air m-input--pill" name="direccion" required>
+														<span class="m-form__help">Por favor ingrese su domicilio</span>
+													</div>
+													<div class="col-lg-4">
+														<label for="exampleSelect1">Departamento</label>
+															<select class="form-control m-input m-input--air m-input--pill" id="departamento" name="departamento">
+																<option value="La Paz">La Paz</option>
+																<option value="Cochabamba">Cochabamba</option>
+																<option value="Santa Cruz">Santa Cruz</option>
+																<option value="Beni">Beni, Trinidad</option>
+																<option value="Pando">Pando, Cobija</option>
+																<option value="Potosi">Potosi</option>
+																<option value="Oruro">Oruro</option>
+																<option value="Tarija">Tarija</option>
+																<option value="Sucre">Sucre, Chuquisaca</option>
+															</select>
+													</div>
+
+												</div>
+												<div class="form-group m-form__group row">
+													<div class="col-lg-5">
+														<label class="">N&uacute;mero de Celular:</label>
+														<div class="m-input-icon m-input-icon--right">
+															<input type="number" class="form-control m-input m-input--air m-input--pill" name="telefono_celular" required="">
+															<span class="m-input-icon__icon m-input-icon__icon--right"></span>
+														</div>
+														<span class="m-form__help">Por favor ingrese su # de Celular</span>
+													</div>
+													<div class="col-lg-7">
+														<label class="">Email:</label>
+														<div class="m-input-icon m-input-icon--right">
+															<input type="email" class="form-control m-input m-input--air m-input--pill" name="email" required>
+															<span class="m-input-icon__icon m-input-icon__icon--right"></span>
+														</div>
+														<span class="m-form__help">Por favor ingrese su Correo Electr&oacute;nico</span>
+													</div>
+												</div>
+											</div>
+											<div class="m-portlet__foot m-portlet__foot--fit" >
+												<center>
+												<div class="m-form__actions">
+													<!-- <button type="submit" class="btn m-btn--pill  btn-accent" id="siguiente">Siguiente</button>
+													<button type="button" onclick="agregarform()" class="btn m-btn--pill    btn-success">Agregar Conyugue</button> -->
+												</div>
+												</center>
+											</div>
+										<!-- </form> -->
+
+										<!--end::Form-->
 									</div>
 
-									
+									<!--end::Portlet-->
+								</div>
 
+								<!-- COMIENZO DE LA PRUEBA -->
+								
+								<!-- FIN DE LA PRUEBA -->
+
+								<div class="col-md-5">
+									<!--begin::Portlet-->
+									<div class="m-portlet m-portlet--tab">
+										<div class="m-portlet__head">
+											<div class="m-portlet__head-caption">
+												<div class="m-portlet__head-title">
+													<span class="m-portlet__head-icon m--hide">
+														<i class="la la-gear"></i>
+													</span>
+													<h3 class="m-portlet__head-text">
+														DATOS DE CONYUGUE
+													</h3>
+												</div>
+											</div>
+										</div>
 
 									<!--begin::Form-->
-									<?php echo form_open('Persona/insertar', array('method'=>'POST', 'class' => 'm-form m-form--fit m-form--label-align-right')); ?>
-									<!-- <form class="m-form m-form--fit m-form--label-align-right" action="/"> -->
-										<div class="m-portlet__body">
-											<div class="form-group m-form__group">
-												<label for="exampleSelect1">¿A cu&aacute;l proyecto desea postular?</label>
-												<select class="form-control m-input m-input--air m-input--pill" id="exampleSelect1" name="condominio_id">
-													<option value="">ELIJA UNA OPCION</option>
-													<?php foreach ($condominios as $con) {	?>
-													<option value="<?php echo $con->condominio_id ?>"><?php echo $con->descripcion ?></option>
-													<?php } ?>
-												</select>
-											</div>
+										<!-- <?php echo form_open('Persona/insertar', array('method'=>'POST', 'class' => 'm-form m-form--fit m-form--label-align-right')); ?> -->
+										<!-- <form class="m-form m-form--fit m-form--label-align-right"> -->
+											<div class="m-portlet__body ">
 
-											<div>
-												<input type="text" hidden name="fec_nacimiento" id="fecha">
-											</div>
-											<div class="form-group m-form__group row">
-												<div class="col-lg-4">
-													<label class="">N&uacute;mero de Carnet Identidad:</label>
-													<input type="text" class="form-control m-input m-input--air m-input--pill" name="ci" id="ci1" required>
-													<span class="m-form__help">Por favor ingrese su C.I.</span>
+												<div>
+													<input type="text" hidden name="fec_nacimiento_c" id="fecha_c">
 												</div>
-											</div>
-											<div class="form-group m-form__group row">
-												<div class="col-lg-4">
-													<label class="">Nombres:</label>
-													<input type="text" class="form-control m-input m-input--air m-input--pill" readonly name="nombres" id="nombres">
-												</div>
-												<div class="col-lg-4">
-													<label class="">Apellido Paterno:</label>
-													<div class="m-input-icon m-input-icon--right">
-														<input type="text" class="form-control m-input m-input--air m-input--pill" readonly name="paterno" id="paterno">
-														<span class="m-input-icon__icon m-input-icon__icon--right"></span>
+												<div class="form-group m-form__group row">
+													<div class="col-lg-4">
+														<label class="">N&uacute;mero de Carnet Identidad:</label>
+														<input type="text" class="form-control m-input m-input--air m-input--pill" name="ci_c" id="ci2" required>
+														<span class="m-form__help">Por favor ingrese su C.I.</span>
 													</div>
 												</div>
-												<div class="col-lg-4">
-													<label class="">Apellido Materno:</label>
-													<div class="m-input-icon m-input-icon--right">
-														<input type="text" class="form-control m-input m-input--air m-input--pill" readonly name="materno" id="materno">
-														<span class="m-input-icon__icon m-input-icon__icon--right"></span>
+												<div class="form-group m-form__group row">
+													<div class="col-lg-4">
+														<label class="">Nombres:</label>
+														<input type="text" class="form-control m-input m-input--air m-input--pill" readonly name="nombres_c" id="nombres_c">
+													</div>
+													<div class="col-lg-4">
+														<label class="">Apellido Paterno:</label>
+														<div class="m-input-icon m-input-icon--right">
+															<input type="text" class="form-control m-input m-input--air m-input--pill" readonly name="paterno_c" id="paterno_c">
+															<span class="m-input-icon__icon m-input-icon__icon--right"></span>
+														</div>
+													</div>
+													<div class="col-lg-4">
+														<label class="">Apellido Materno:</label>
+														<div class="m-input-icon m-input-icon--right">
+															<input type="text" class="form-control m-input m-input--air m-input--pill" readonly name="materno_c" id="materno_c">
+															<span class="m-input-icon__icon m-input-icon__icon--right"></span>
+														</div>
+													</div>
+												</div>
+												<!-- <div class="form-group m-form__group row">
+													<div class="col-lg-12">
+														<label class="">Domicilio:</label>
+														<input type="text" class="form-control m-input m-input--air m-input--pill" name="direccion_c" required>
+														<span class="m-form__help">Por favor ingrese su domicilio</span>
+													</div>
+												</div> -->
+												<div class="form-group m-form__group row">
+													<div class="col-lg-5">
+														<label class="">N&uacute;mero de Celular:</label>
+														<div class="m-input-icon m-input-icon--right">
+															<input type="number" class="form-control m-input m-input--air m-input--pill" name="telefono_celular_c" required>
+															<span class="m-input-icon__icon m-input-icon__icon--right"></span>
+														</div>
+														<span class="m-form__help">Por favor ingrese su # de Celular</span>
+													</div>
+													<div class="col-lg-7">
+														<label class="">Email:</label>
+														<div class="m-input-icon m-input-icon--right">
+															<input type="email" class="form-control m-input m-input--air m-input--pill" name="email_c" required>
+															<span class="m-input-icon__icon m-input-icon__icon--right"></span>
+														</div>
+														<span class="m-form__help">Por favor ingrese su Correo Electr&oacute;nico</span>
 													</div>
 												</div>
 											</div>
-											<div class="form-group m-form__group row">
-												<div class="col-lg-12">
-													<label class="">Domicilio:</label>
-													<input type="text" class="form-control m-input m-input--air m-input--pill" name="direccion" required>
-													<span class="m-form__help">Por favor ingrese su domicilio</span>
+											<div class="m-portlet__foot m-portlet__foot--fit" >
+												<center>
+												<div class="m-form__actions">
+													<button type="submit" id="verificar" class="btn m-btn--pill btn-accent">Siguiente</button>
+													<!-- <button type="button" class="btn m-btn--pill    btn-success">Agregar Conyugue</button> -->
 												</div>
+												</center>
 											</div>
-											<div class="form-group m-form__group row">
-												<div class="col-lg-6">
-													<label class="">N&uacute;mero de Celular:</label>
-													<div class="m-input-icon m-input-icon--right">
-														<input type="number" class="form-control m-input m-input--air m-input--pill" name="telefono_celular">
-														<span class="m-input-icon__icon m-input-icon__icon--right"></span>
-													</div>
-													<span class="m-form__help">Por favor ingrese su # de Celular</span>
-												</div>
-												<div class="col-lg-6">
-													<label class="">Email:</label>
-													<div class="m-input-icon m-input-icon--right">
-														<input type="email" class="form-control m-input m-input--air m-input--pill" name="email" required>
-														<span class="m-input-icon__icon m-input-icon__icon--right"></span>
-													</div>
-													<span class="m-form__help">Por favor ingrese su Correo Electr&oacute;nico</span>
-												</div>
-											</div>
-										</div>
-										<div class="m-portlet__foot m-portlet__foot--fit" >
-											<center>
-											<div class="m-form__actions">
-												<button type="submit" class="btn m-btn--pill    btn-accent">Siguiente</button>
-												<button type="button" onclick="agregarform()" class="btn m-btn--pill    btn-success">Agregar Conyugue</button>
-											</div>
-											</center>
-										</div>
-									</form>
+										</form>
 
-									<!--end::Form-->
-								</div>
-
-								<!--end::Portlet-->
-							</div>
-
-							<!-- COMIENZO DE LA PRUEBA -->
-							
-							<!-- FIN DE LA PRUEBA -->
-
-							<div class="col-md-5 item" id="bloque_1" style="display: none;">
-								<!--begin::Portlet-->
-								<div class="m-portlet m-portlet--tab">
-									<div class="m-portlet__head">
-										<div class="m-portlet__head-caption">
-											<div class="m-portlet__head-title">
-												<span class="m-portlet__head-icon m--hide">
-													<i class="la la-gear"></i>
-												</span>
-												<h3 class="m-portlet__head-text">
-													Datos del Conyugue
-												</h3>
-											</div>
-										</div>
+										<!--end::Form-->
 									</div>
 
-								<!--begin::Form-->
-									<?php echo form_open('Persona/insertar', array('method'=>'POST', 'class' => 'm-form m-form--fit m-form--label-align-right')); ?>
-									<!-- <form class="m-form m-form--fit m-form--label-align-right" action="/"> -->
-										<div class="m-portlet__body">
-
-											<div>
-												<input type="text" hidden name="fec_nacimiento_c" id="fecha_c">
-											</div>
-											<div class="form-group m-form__group row">
-												<div class="col-lg-4">
-													<label class="">N&uacute;mero de Carnet Identidad:</label>
-													<input type="text" class="form-control m-input m-input--air m-input--pill" name="ci_c" id="ci2" required>
-													<span class="m-form__help">Por favor ingrese su C.I.</span>
-												</div>
-											</div>
-											<div class="form-group m-form__group row">
-												<div class="col-lg-4">
-													<label class="">Nombres:</label>
-													<input type="text" class="form-control m-input m-input--air m-input--pill" readonly name="nombres_c" id="nombres_c">
-												</div>
-												<div class="col-lg-4">
-													<label class="">Apellido Paterno:</label>
-													<div class="m-input-icon m-input-icon--right">
-														<input type="text" class="form-control m-input m-input--air m-input--pill" readonly name="paterno_c" id="paterno_c">
-														<span class="m-input-icon__icon m-input-icon__icon--right"></span>
-													</div>
-												</div>
-												<div class="col-lg-4">
-													<label class="">Apellido Materno:</label>
-													<div class="m-input-icon m-input-icon--right">
-														<input type="text" class="form-control m-input m-input--air m-input--pill" readonly name="materno_c" id="materno_c">
-														<span class="m-input-icon__icon m-input-icon__icon--right"></span>
-													</div>
-												</div>
-											</div>
-											<div class="form-group m-form__group row">
-												<div class="col-lg-12">
-													<label class="">Domicilio:</label>
-													<input type="text" class="form-control m-input m-input--air m-input--pill" name="direccion_c" required>
-													<span class="m-form__help">Por favor ingrese su domicilio</span>
-												</div>
-											</div>
-											<div class="form-group m-form__group row">
-												<div class="col-lg-6">
-													<label class="">N&uacute;mero de Celular:</label>
-													<div class="m-input-icon m-input-icon--right">
-														<input type="number" class="form-control m-input m-input--air m-input--pill" name="telefono_celular_c">
-														<span class="m-input-icon__icon m-input-icon__icon--right"></span>
-													</div>
-													<span class="m-form__help">Por favor ingrese su # de Celular</span>
-												</div>
-												<div class="col-lg-6">
-													<label class="">Email:</label>
-													<div class="m-input-icon m-input-icon--right">
-														<input type="email" class="form-control m-input m-input--air m-input--pill" name="email_c" required>
-														<span class="m-input-icon__icon m-input-icon__icon--right"></span>
-													</div>
-													<span class="m-form__help">Por favor ingrese su Correo Electr&oacute;nico</span>
-												</div>
-											</div>
-										</div>
-										<div class="m-portlet__foot m-portlet__foot--fit" >
-											<center>
-											<div class="m-form__actions">
-												<button type="submit" class="btn m-btn--pill    btn-accent">Siguiente</button>
-												<button type="button" class="btn m-btn--pill    btn-success">Agregar Conyugue</button>
-											</div>
-											</center>
-										</div>
-									</form>
-
-									<!--end::Form-->
+									<!--end::Portlet-->
 								</div>
-
-								<!--end::Portlet-->
-							</div>
-						
+							
 							
 						</div>
 					</div>
@@ -247,30 +263,39 @@
                 // csrfName = data.csrfName;
                 // csrfHash = data.csrfHash;
                 // alert(data.message);
-              if (data.estado == 'segip') {
-                        $("#msg_error_catastral").hide();
-                    $("#msg_sucess_catastral").show();
-                    $("#msg_alerta_catastral").show();
-                        $("#ci").val(data.ci);
-                    $("#msg_sucess_catastral").html('Esta registrado en el SEGIP la persona con Cedula de Identidad Numero: '+data.ci);
-                    $('#nombres').val(data.nombres);
-                    $('#paterno').val(data.paterno);
-                    $('#materno').val(data.materno);
-                    $('#fecha').val(data.fec_nacimiento);
-                    }else{
-                    $("#msg_sucess_catastral").hide();
-                     $("#msg_error_catastral").show();
-                     $("#msg_alerta_catastral").hide();
-                    $("#msg_error_catastral").html('La persona no existe ni en la base de datos ni en el segip: '+data.ci);
-                    $('#nombres').val('');
-                    $('#paterno').val('');
-                    $('#materno').val('');
-                    $("#nombres").prop("disabled", false);
+	            if (data.estado == 'registrado') {
+	            	alert(data.mensaje);
+	            	$("#verificar").html('Esta registrado en el SEGIP la persona con Cedula de Identidad Numero: '+data.ci);
+	            }
+	            else
+	            {
+	            		if (data.estado == 'segip') {
+		                        $("#msg_error_catastral").hide();
+		                    $("#msg_sucess_catastral").show();
+		                    $("#msg_alerta_catastral").show();
+		                        $("#ci").val(data.ci);
+		                    $("#msg_sucess_catastral").html('Esta registrado en el SEGIP la persona con Cedula de Identidad Numero: '+data.ci);
+		                    $('#nombres').val(data.nombres);
+		                    $('#paterno').val(data.paterno);
+		                    $('#materno').val(data.materno);
+		                    $('#fecha').val(data.fec_nacimiento);
+		                    }else{
+		                    $("#msg_sucess_catastral").hide();
+		                     $("#msg_error_catastral").show();
+		                     $("#msg_alerta_catastral").hide();
+		                    $("#msg_error_catastral").html('La persona no existe ni en la base de datos ni en el segip: '+data.ci);
+		                    $('#nombres').val('');
+		                    $('#paterno').val('');
+		                    $('#materno').val('');
+		                    $("#nombres").prop("disabled", false);
 
-                    $("#paterno").prop("disabled", false);
+		                    $("#paterno").prop("disabled", false);
 
-                    $("#materno").prop("disabled", false);
-                }
+		                    $("#materno").prop("disabled", false);
+		                }
+           		}  
+	              
+
             },
             error:function(jqXHR, textStatus, errorThrown) {
                 // alert("error");
