@@ -18,6 +18,13 @@ class Solicitudes extends CI_Controller {
 	 * map to /index.php/welcome/<method_name>
 	 * @see http://codeigniter.com/user_guide/general/urls.html
 	 */
+
+	public function __construct()
+    {
+        parent::__construct();
+        $this->load->helper('vayes_helper');
+    }
+
 	public function index()
 	{
 		$condominios = $this->db->get('condominio')->result();
@@ -33,7 +40,9 @@ class Solicitudes extends CI_Controller {
 	public function inicia($idCredito = null)
 	{
 		// echo 'Holas desde php';
-		$datos_credito = $this->get_where('credito', array('id'=>$idCredito))->row_array();
+		$datos_credito = $this->db->get_where('credito', array('id'=>$idCredito))->row_array();
+		// vdebug($datos_credito, false, false, true);
+		$data['datos_credito']=$datos_credito;
 		// $condominios = $this->db->get('condominio')->result();
 		// $data['condominios']=$condominios;
 		$this->load->view('admin/header');

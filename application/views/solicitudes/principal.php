@@ -22,7 +22,7 @@
 							<div class="col-md-5">
 
 								<!--begin::Portlet-->
-								<div class="m-portlet m-portlet--tab">
+								<div class="m-portlet m-portlet--brand m-portlet--head-solid-bg m-portlet--bordered">
 									<div class="m-portlet__head">
 										<div class="m-portlet__head-caption">
 											<div class="m-portlet__head-title">
@@ -35,80 +35,56 @@
 											</div>
 										</div>
 									</div>
-
-									
-
+									<?php //echo vdebug($datos_credito, false, false, true); ?>
 
 									<!--begin::Form-->
 									<?php echo form_open('Persona/insertar', array('method'=>'POST', 'class' => 'm-form m-form--fit m-form--label-align-right')); ?>
 									<!-- <form class="m-form m-form--fit m-form--label-align-right" action="/"> -->
-										<div class="m-portlet__body">
-											<div class="form-group m-form__group">
-												<label for="exampleSelect1">¿A cu&aacute;l proyecto desea postular?</label>
-												<select class="form-control m-input m-input--air m-input--pill" id="exampleSelect1" name="condominio_id">
-													<option value="">ELIJA UNA OPCION</option>
-													<?php foreach ($condominios as $con) {	?>
-													<option value="<?php echo $con->condominio_id ?>"><?php echo $con->descripcion ?></option>
-													<?php } ?>
-												</select>
-											</div>
 
-											<div>
-												<input type="text" hidden name="fec_nacimiento" id="fecha">
-											</div>
-											<div class="form-group m-form__group row">
-												<div class="col-lg-4">
-													<label class="">N&uacute;mero de Carnet Identidad:</label>
-													<input type="text" class="form-control m-input m-input--air m-input--pill" name="ci" id="ci1" required>
-													<span class="m-form__help">Por favor ingrese su C.I.</span>
-												</div>
-											</div>
-											<div class="form-group m-form__group row">
-												<div class="col-lg-4">
-													<label class="">Nombres:</label>
-													<input type="text" class="form-control m-input m-input--air m-input--pill" readonly name="nombres" id="nombres">
-												</div>
-												<div class="col-lg-4">
-													<label class="">Apellido Paterno:</label>
-													<div class="m-input-icon m-input-icon--right">
-														<input type="text" class="form-control m-input m-input--air m-input--pill" readonly name="paterno" id="paterno">
-														<span class="m-input-icon__icon m-input-icon__icon--right"></span>
+												<!--begin::Preview-->
+												<div class="m-demo">
+													<div class="m-demo__preview">
+														<div class="m-list-timeline">
+															<div class="m-list-timeline__items">
+																<div class="m-list-timeline__item">
+																	<span class="m-list-timeline__badge m-list-timeline__badge--success"></span>
+																	<span class="m-list-timeline__text">Ingresos liquidos mensuales</span>
+																	<span class="m-list-timeline__time"><?php echo $datos_credito['ingreso_mensual']; ?></span>
+																</div>
+																<div class="m-list-timeline__item">
+																	<span class="m-list-timeline__badge m-list-timeline__badge--danger"></span>
+																	<span class="m-list-timeline__text">Ingresos liquidos mensuales conyugue</span>
+																	<span class="m-list-timeline__time"><?php echo $datos_credito['ingreso_conyugue']; ?></span>
+																</div>
+																<div class="m-list-timeline__item">
+																	<span class="m-list-timeline__badge m-list-timeline__badge--warning"></span>
+																	<span class="m-list-timeline__text">Condominio</span>
+																	<span class="m-list-timeline__time"><?php echo $datos_credito['ingreso_mensual']; ?></span>
+																</div>
+																<div class="m-list-timeline__item">
+																	<span class="m-list-timeline__badge m-list-timeline__badge--primary"></span>
+																	<span class="m-list-timeline__text">Tasa de interes</span>
+																	<span class="m-list-timeline__time">5.5%</span>
+																</div>
+																<div class="m-list-timeline__item">
+																	<span class="m-list-timeline__badge m-list-timeline__badge--brand"></span>
+																	<span class="m-list-timeline__text">Plazo</span>
+																	<span class="m-list-timeline__time">25 a&nacute;os</span>
+																</div>
+																<div class="m-list-timeline__item">
+																	<span class="m-list-timeline__badge m-list-timeline__badge--success"></span>
+																	<span class="m-list-timeline__text">Garantia</span>
+																	<span class="m-list-timeline__time">El mismo Inmueble</span>
+																</div>
+															</div>
+														</div>
 													</div>
 												</div>
-												<div class="col-lg-4">
-													<label class="">Apellido Materno:</label>
-													<div class="m-input-icon m-input-icon--right">
-														<input type="text" class="form-control m-input m-input--air m-input--pill" readonly name="materno" id="materno">
-														<span class="m-input-icon__icon m-input-icon__icon--right"></span>
-													</div>
-												</div>
-											</div>
-											<div class="form-group m-form__group row">
-												<div class="col-lg-12">
-													<label class="">Domicilio:</label>
-													<input type="text" class="form-control m-input m-input--air m-input--pill" name="direccion" required>
-													<span class="m-form__help">Por favor ingrese su domicilio</span>
-												</div>
-											</div>
-											<div class="form-group m-form__group row">
-												<div class="col-lg-6">
-													<label class="">N&uacute;mero de Celular:</label>
-													<div class="m-input-icon m-input-icon--right">
-														<input type="number" class="form-control m-input m-input--air m-input--pill" name="telefono_celular">
-														<span class="m-input-icon__icon m-input-icon__icon--right"></span>
-													</div>
-													<span class="m-form__help">Por favor ingrese su # de Celular</span>
-												</div>
-												<div class="col-lg-6">
-													<label class="">Email:</label>
-													<div class="m-input-icon m-input-icon--right">
-														<input type="email" class="form-control m-input m-input--air m-input--pill" name="email" required>
-														<span class="m-input-icon__icon m-input-icon__icon--right"></span>
-													</div>
-													<span class="m-form__help">Por favor ingrese su Correo Electr&oacute;nico</span>
-												</div>
-											</div>
-										</div>
+
+												<!--end::Preview-->
+
+											
+										
 										<div class="m-portlet__foot m-portlet__foot--fit" >
 											<center>
 											<div class="m-form__actions">
