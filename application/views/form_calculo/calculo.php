@@ -10,7 +10,8 @@
 									}
 								</style>
 								<!-- begin::Body -->
-								<div class="m-grid__item m-grid__item--fluid m-grid m-grid--ver-desktop m-grid--desktop m-body" >
+								<div class="m-grid__item m-grid__item--fluid m-grid m-grid--ver-desktop m-grid--desktop m-body" style="background-image: url(<?php echo base_url(); ?>/public/assets/imagenes/formulario2.jpg);
+								overflow: hidden;">
 
 									<!-- BEGIN: Left Aside -->
 
@@ -56,22 +57,15 @@
 
 																	</div>
 
-																	<div class="col-1">
-																																				
-																			<div class="m-section__content m-demo-dropdowns">
-																				<div class="m-dropdown m-dropdown--inline m-dropdown--large m-dropdown--arrow m-dropdown--align-left" m-dropdown-toggle="hover">
-																					<a href="#" class="m-dropdown__toggle btn btn-danger dropdown-toggle">
-																						?
-																					</a>
+																	<div class="col-1">								
+																			<div class="m-section__content m-demo-dropdowns" >
+																				<div class="m-dropdown m-dropdown--inline m-dropdown--large m-dropdown--arrow m-dropdown--align-left" m-dropdown-toggle="hover" >
+																					<button type="button" class="btn m-btn m-btn--gradient-from-danger m-btn--gradient-to-warning">?</button>
+
+
+																					
 																					<div class="m-dropdown__wrapper">
-																						<span class="m-dropdown__arrow m-dropdown__arrow--left"></span>
-																						<div class="m-dropdown__inner">
-																							<div class="m-dropdown__body">
-																								<div class="m-dropdown__content">
-																									<img src="<?php echo base_url(); ?>/public/assets/ayuda/iconos-info-mujer-01.png" alt="" width="100%">							
-																								</div>
-																							</div>
-																						</div>
+																						<img src="<?php echo base_url(); ?>/public/assets/ayuda/ayuda01.png" alt="" width="100%">	
 																					</div>
 																				</div>
 																			</div>																	
@@ -83,6 +77,17 @@
 																	<div class="col-3">
 																		<input class="form-control m-input m-input--air m-input--pill" type="number" value="How do I shoot web" id="example-search-input" name="ingreso_conyugue" required="">
 																	</div>
+																	<div class="col-1">								
+																			<div class="m-section__content m-demo-dropdowns" >
+																				<div class="m-dropdown m-dropdown--inline m-dropdown--large m-dropdown--arrow m-dropdown--align-left" m-dropdown-toggle="hover" >
+																					<button type="button" class="btn m-btn m-btn--gradient-from-danger m-btn--gradient-to-warning">?</button>
+																					<div class="m-dropdown__wrapper">
+																						<img src="<?php echo base_url(); ?>/public/assets/ayuda/ayuda02.png" alt="" width="100%">	
+																					</div>
+																				</div>
+																			</div>																	
+																		
+																	</div>
 																</div>
 																<div class="form-group m-form__group row">
 																	<label class="col-xl-8 col-lg-8 col-form-label">3. ¿Tienes préstamos en otras entidades financieras?</label>
@@ -93,6 +98,7 @@
 																			<option value="0">NO</option>
 																		</select>
 																	</div>
+
 																</div>
 																<div class="form-group m-form__group row" 	id="hidden_pago_ef">
 																	<label for="example-email-input" class="col-8 col-form-label">3.1 ¿Cuánto pagas mensualmente por tus prestamos en otras entidades financieras?</label>
@@ -121,6 +127,17 @@
 																	<div class="col-3">
 																		<input class="form-control m-input m-input--air m-input--pill" type="number" value="" id="example-tel-input" name="miembros" required="">
 																	</div>
+																	<div class="col-1">								
+																			<div class="m-section__content m-demo-dropdowns" >
+																				<div class="m-dropdown m-dropdown--inline m-dropdown--large m-dropdown--arrow m-dropdown--align-left" m-dropdown-toggle="hover" >
+																					<button type="button" class="btn m-btn m-btn--gradient-from-danger m-btn--gradient-to-warning">?</button>
+																					<div class="m-dropdown__wrapper">
+																						<img src="<?php echo base_url(); ?>/public/assets/ayuda/iconos-info-mujer-01.png" alt="" width="100%">	
+																					</div>
+																				</div>
+																			</div>																	
+																		
+																	</div>
 																</div>
 																<div class="form-group m-form__group row">
 																	<label class="col-xl-8 col-lg-8 col-form-label">6. ¿Usted cuenta con aporte propio?</label>
@@ -131,6 +148,7 @@
 																			<option value="0">NO</option>
 																		</select>
 																	</div>
+
 																</div>
 
 

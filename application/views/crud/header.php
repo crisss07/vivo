@@ -33,7 +33,7 @@ License: You must have a valid license purchased only from themeforest(the above
           });
         </script>
        
-        <link href="<?php echo base_url(); ?>public/css/colors/blue.css" id="theme" rel="stylesheet">
+        
 
 		<!--end::Web font -->
 
@@ -46,6 +46,8 @@ License: You must have a valid license purchased only from themeforest(the above
 		<!--RTL version:<link href="assets/demo/default/base/style.bundle.rtl.css" rel="stylesheet" type="text/css" />-->
 
 		<!--end::Global Theme Styles -->
+
+		<link href="<?php echo base_url(); ?>public/assets/vendors/custom/datatables/datatables.bundle.css" rel="stylesheet" type="text/css" />
 
 		<!--begin::Page Vendors Styles -->
 		<link href="<?php echo base_url(); ?>public/assets/vendors/custom/fullcalendar/fullcalendar.bundle.css" rel="stylesheet" type="text/css" />
