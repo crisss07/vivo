@@ -24,11 +24,11 @@ class Calculo extends CI_Controller {
 	}
 	public function nuevo($id=null)
 	{
-		$this->load->view('admin/header');
+		$this->load->view('form_calculo/header');
 		$data['beneficiario_id'] = $id;
-		$this->load->view('calculo', $data);
+		$this->load->view('form_calculo/calculo', $data);
 		
-		$this->load->view('admin/footer');
+		$this->load->view('form_calculo/footer');
 	}
 	public function create()
 	{
