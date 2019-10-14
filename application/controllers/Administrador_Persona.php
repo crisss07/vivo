@@ -36,7 +36,7 @@ class Administrador_Persona extends CI_Controller {
 	{
 		$persona = $this->db->get('beneficiario')->result();
 		$data['persona']=$persona;
-		$this->load->view('crud/header');	
+		$this->load->view('crud/headerp');	
 		$this->load->view('crud/adminitrar_personas',$data);		
 		$this->load->view('crud/footer');
 	}
