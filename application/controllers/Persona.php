@@ -156,8 +156,7 @@ class Persona extends CI_Controller {
 					);
 				$this->db->insert('familiar', $array1);
 
-
-				redirect('inicio');
+				redirect('Calculo/nuevo/'.$beneficiario_id);
 			}
 
 	}
