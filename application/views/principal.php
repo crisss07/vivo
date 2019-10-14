@@ -54,7 +54,7 @@
 													<select class="form-control m-input m-input--air m-input--pill" id="exampleSelect1" name="condominio_id">
 														<option value="">ELIJA UNA OPCION</option>
 														<?php foreach ($condominios as $con) {	?>
-														<option value="<?php echo $con->id ?>"><?php echo $con->descripcion ?></option>
+														<option value="<?php echo $con->id ?>"><?php echo $con->descripcion ?> - <?php echo $con->ciudad ?></option>
 														<?php } ?>
 													</select>
 												</div>
