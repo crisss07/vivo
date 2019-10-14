@@ -132,7 +132,7 @@
 																				<div class="m-dropdown m-dropdown--inline m-dropdown--large m-dropdown--arrow m-dropdown--align-left" m-dropdown-toggle="hover" >
 																					<button type="button" class="btn m-btn m-btn--gradient-from-danger m-btn--gradient-to-warning">?</button>
 																					<div class="m-dropdown__wrapper">
-																						<img src="<?php echo base_url(); ?>/public/assets/ayuda/iconos-info-mujer-01.png" alt="" width="100%">	
+																						<img src="<?php echo base_url(); ?>/public/assets/ayuda/ayuda03.png" alt="" width="100%">	
 																					</div>
 																				</div>
 																			</div>																	
