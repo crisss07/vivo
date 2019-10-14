@@ -154,7 +154,9 @@ class Persona extends CI_Controller {
 					'email' =>$email_c
 					
 					);
-				$this->db->insert('familiar', $array1);
+				if ($ci_c) {
+					$this->db->insert('familiar', $array1);
+				}
 
 				redirect('Calculo/nuevo/'.$beneficiario_id);
 			}
