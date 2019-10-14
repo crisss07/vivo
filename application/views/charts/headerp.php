@@ -123,7 +123,7 @@ License: You must have a valid license purchased only from themeforest(the above
 											<li class="m-menu__item " aria-haspopup="true"><a href="Administrador" class="m-menu__link "><i class="m-menu__link-icon flaticon-file"></i><span class="m-menu__link-text">Condominios</span></a>
 											</li>
 											<li class="m-menu__item " m-menu-link-redirect="1" aria-haspopup="true"><a href="Administrador_Persona" class="m-menu__link "><i class="m-menu__link-icon flaticon-diagram"></i><span class="m-menu__link-title"> <span class="m-menu__link-wrap">
-												<span class="m-menu__link-text">Listado de Solicitantes</span>  </span></span></a>
+												<span class="m-menu__link-text">Listado de Solictantes</span>  </span></span></a>
 											</li>
 										</ul>
 									</div>
