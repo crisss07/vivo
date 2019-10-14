@@ -42,44 +42,44 @@
 									<!-- <form class="m-form m-form--fit m-form--label-align-right" action="/"> -->
 
 												<!--begin::Preview-->
-												<div class="m-demo">
-													<div class="m-demo__preview">
-														<div class="m-list-timeline">
-															<div class="m-list-timeline__items">
-																<div class="m-list-timeline__item">
-																	<span class="m-list-timeline__badge m-list-timeline__badge--success"></span>
-																	<span class="m-list-timeline__text">Ingresos liquidos mensuales</span>
-																	<span class="m-list-timeline__time"><?php echo $datos_credito['ingreso_mensual']; ?></span>
-																</div>
-																<div class="m-list-timeline__item">
-																	<span class="m-list-timeline__badge m-list-timeline__badge--danger"></span>
-																	<span class="m-list-timeline__text">Ingresos liquidos mensuales conyugue</span>
-																	<span class="m-list-timeline__time"><?php echo $datos_credito['ingreso_conyugue']; ?></span>
-																</div>
-																<div class="m-list-timeline__item">
-																	<span class="m-list-timeline__badge m-list-timeline__badge--warning"></span>
-																	<span class="m-list-timeline__text">Condominio</span>
-																	<span class="m-list-timeline__time"><?php echo $datos_credito['ingreso_mensual']; ?></span>
-																</div>
-																<div class="m-list-timeline__item">
-																	<span class="m-list-timeline__badge m-list-timeline__badge--primary"></span>
-																	<span class="m-list-timeline__text">Tasa de interes</span>
-																	<span class="m-list-timeline__time">5.5%</span>
-																</div>
-																<div class="m-list-timeline__item">
-																	<span class="m-list-timeline__badge m-list-timeline__badge--brand"></span>
-																	<span class="m-list-timeline__text">Plazo</span>
-																	<span class="m-list-timeline__time">25 a&nacute;os</span>
-																</div>
-																<div class="m-list-timeline__item">
-																	<span class="m-list-timeline__badge m-list-timeline__badge--success"></span>
-																	<span class="m-list-timeline__text">Garantia</span>
-																	<span class="m-list-timeline__time">El mismo Inmueble</span>
-																</div>
-															</div>
-														</div>
+									<div class="m-demo">
+										<div class="m-demo__preview">
+											<div class="m-list-timeline">
+												<div class="m-list-timeline__items">
+													<div class="m-list-timeline__item">
+														<span class="m-list-timeline__badge m-list-timeline__badge--success"></span>
+														<span class="m-list-timeline__text">Ingresos liquidos mensuales</span>
+														<span class="m-list-timeline__time"><?php echo $datos_credito['ingreso_mensual']; ?></span>
+													</div>
+													<div class="m-list-timeline__item">
+														<span class="m-list-timeline__badge m-list-timeline__badge--danger"></span>
+														<span class="m-list-timeline__text">Ingresos liquidos mensuales conyugue</span>
+														<span class="m-list-timeline__time"><?php echo $datos_credito['ingreso_conyugue']; ?></span>
+													</div>
+													<div class="m-list-timeline__item">
+														<span class="m-list-timeline__badge m-list-timeline__badge--warning"></span>
+														<span class="m-list-timeline__text">Condominio</span>
+														<span class="m-list-timeline__time"><?php echo $datos_credito['ingreso_mensual']; ?></span>
+													</div>
+													<div class="m-list-timeline__item">
+														<span class="m-list-timeline__badge m-list-timeline__badge--primary"></span>
+														<span class="m-list-timeline__text">Tasa de interes</span>
+														<span class="m-list-timeline__time">5.5%</span>
+													</div>
+													<div class="m-list-timeline__item">
+														<span class="m-list-timeline__badge m-list-timeline__badge--brand"></span>
+														<span class="m-list-timeline__text">Plazo</span>
+														<span class="m-list-timeline__time">25 a&nacute;os</span>
+													</div>
+													<div class="m-list-timeline__item">
+														<span class="m-list-timeline__badge m-list-timeline__badge--success"></span>
+														<span class="m-list-timeline__text">Garantia</span>
+														<span class="m-list-timeline__time">El mismo Inmueble</span>
 													</div>
 												</div>
+											</div>
+										</div>
+									</div>
 
 												<!--end::Preview-->
 
@@ -185,8 +185,8 @@
 										<div class="m-portlet__foot m-portlet__foot--fit" >
 											<center>
 											<div class="m-form__actions">
-												<button type="submit" class="btn m-btn--pill    btn-accent">Siguiente</button>
-												<button type="button" class="btn m-btn--pill    btn-success">Agregar Conyugue</button>
+												<button type="submit" class="btn m-btn--pill btn-accent">Siguiente</button>
+												<button type="button" class="btn m-btn--pill btn-success">Agregar Conyugue</button>
 											</div>
 											</center>
 										</div>

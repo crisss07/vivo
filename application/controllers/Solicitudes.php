@@ -74,6 +74,8 @@ class Solicitudes extends CI_Controller {
 		// $data['condominios']=$condominios;
 		$this->load->view('admin/header');
 		$this->load->view('solicitudes/inicia', $data);
+		$this->load->view('admin/footer');
+
 
 	}
 

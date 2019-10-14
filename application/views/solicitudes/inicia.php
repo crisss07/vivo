@@ -36,156 +36,99 @@
 									</div>
 
 									<div class="m-portlet__body">
+										<table class="table table-striped m-table">
+											<tbody>
+												<tr>
+													<th scope="row">Ingresos liquidos mensuales</th>
+													<td><?php echo $datos_credito['ingreso_mensual']; ?></td>
+												</tr>
+												<tr>
+													<th scope="row">Ingresos liquidos mensuales conyugue</th>
+													<td><?php echo $datos_credito['ingreso_conyugue']; ?></td>
+												</tr>
+												<tr>
+													<th scope="row">Ingresos liquidos mensuales conyugue</th>
+													<td><?php echo $datos_credito['ingreso_conyugue']; ?></td>
+												</tr>
+												<tr>
+													<th scope="row">Cuota Mensual</th>
+													<td><?php echo $cuota['cuota_total']; ?></td>
+												</tr>
+												<tr>
+													<th scope="row">Tasa de interes</th>
+													<td>5.5%</td>
+												</tr>
+												<tr>
+													<th scope="row">Plazo</th>
+													<td>25 a&nacute;os</td>
+												</tr>
+											</tbody>
+										</table>
 
-										<!--begin::Section-->
-										<div class="m-accordion m-accordion--default m-accordion--toggle-arrow" id="m_accordion_5" role="tablist">
-
-											<!--begin::Item-->
-											<div class="m-accordion__item m-accordion__item--danger">
-												<div class="m-accordion__item-head collapsed" srole="tab" id="m_accordion_5_item_1_head" data-toggle="collapse" href="#m_accordion_5_item_1_body" aria-expanded="false">
-													<span class="m-accordion__item-icon"><i class="fa flaticon-user-ok"></i></span>
-													<span class="m-accordion__item-title">It has been the industry since 2013</span>
-													<span class="m-accordion__item-mode"></span>
-												</div>
-												<div class="m-accordion__item-body collapse" id="m_accordion_5_item_1_body" role="tabpanel" aria-labelledby="m_accordion_5_item_1_head" data-parent="#m_accordion_5" style="">
-													<div class="m-accordion__item-content">
-														<p>
-															Lorem Ipsum has been the industry's standard dummy text ever since the 1500s, when an unknown printer took a galley of type and scrambled it to make a type specimen book. It has survived not only five centuries, but also the leap into
-															electronic typesetting, remaining essentially unchanged. It was popularised in the 1960s with the release of Letraset sheets containing
-														</p>
-													</div>
-												</div>
-											</div>
-
-											<!--end::Item-->
-
-											<!--begin::Item-->
-											<div class="m-accordion__item m-accordion__item--info">
-												<div class="m-accordion__item-head collapsed" role="tab" id="m_accordion_5_item_2_head" data-toggle="collapse" href="#m_accordion_5_item_2_body" aria-expanded="false">
-													<span class="m-accordion__item-icon"><i class="fa  flaticon-placeholder"></i></span>
-													<span class="m-accordion__item-title">Lorem Ipsum has been the industry</span>
-													<span class="m-accordion__item-mode"></span>
-												</div>
-												<div class="m-accordion__item-body collapse" id="m_accordion_5_item_2_body" role="tabpanel" aria-labelledby="m_accordion_5_item_2_head" data-parent="#m_accordion_5" style="">
-													<div class="m-accordion__item-content">
-														<p>
-															Lorem Ipsum has been the industry's standard dummy text ever since the 1500s, when an unknown printer took a galley of type and scrambled it to make a type specimen book. It has survived not only five centuries, but also the leap into
-															electronic typesetting, remaining essentially unchanged. It was popularised in the 1960s with the release of Letraset sheets containing Lorem Ipsum has been the industry's standard dummy text ever since the 1500s, when an unknown
-															printer took a galley of type and scrambled it to make a type specimen book. It has survived not only five centuries, but also the leap into electronic typesetting, remaining essentially unchanged. It was popularised in the 1960s with
-															the release of Letraset sheets containing
-														</p>
-													</div>
-												</div>
-											</div>
-
-											<!--end::Item-->
-
-											<!--begin::Item-->
-											<div class="m-accordion__item m-accordion__item--brand">
-												<div class="m-accordion__item-head collapsed" role="tab" id="m_accordion_5_item_3_head" data-toggle="collapse" href="#m_accordion_5_item_3_body" aria-expanded="    false">
-													<span class="m-accordion__item-icon"><i class="fa  flaticon-alert-2"></i></span>
-													<span class="m-accordion__item-title"> Lorem Ipsum has been the industry</span>
-													<span class="m-accordion__item-mode"></span>
-												</div>
-												<div class="m-accordion__item-body collapse" id="m_accordion_5_item_3_body" role="tabpanel" aria-labelledby="m_accordion_5_item_3_head" data-parent="#m_accordion_5">
-													<div class="m-accordion__item-content">
-														<p>
-															Lorem Ipsum has been the industry's standard dummy text ever since the 1500s, when an unknown printer took a galley of type and scrambled it to make a type specimen book. It has survived not only five centuries, but also the leap into
-															electronic typesetting, remaining essentially unchanged. It was popularised in the 1960s with the release of Letraset sheets containing
-														</p>
-													</div>
-												</div>
-											</div>
-
-											<!--end::Item-->
-										</div>
-
-										<!--end::Section-->
 									</div>
+
 									<?php // echo vdebug($cuota, false, false, true); ?>
 
 									<!--begin::Form-->
-									<?php echo form_open('Persona/insertar', array('method'=>'POST', 'class' => 'm-form m-form--fit m-form--label-align-right')); ?>
 									<!-- <form class="m-form m-form--fit m-form--label-align-right" action="/"> -->
 
 												<!--begin::Preview-->
 												<div class="m-demo">
-													<div class="m-demo__preview">
-														<div class="m-list-timeline">
-															<div class="m-list-timeline__items">
-																<div class="m-list-timeline__item">
-																	<span class="m-list-timeline__badge m-list-timeline__badge--success"></span>
-																	<span class="m-list-timeline__text">Ingresos liquidos mensuales</span>
-																	<span class="m-list-timeline__time"><?php echo $datos_credito['ingreso_mensual']; ?></span>
-																</div>
-																<div class="m-list-timeline__item">
-																	<span class="m-list-timeline__badge m-list-timeline__badge--danger"></span>
-																	<span class="m-list-timeline__text">Ingresos liquidos mensuales conyugue</span>
-																	<span class="m-list-timeline__time"><?php echo $datos_credito['ingreso_conyugue']; ?></span>
-																</div>
-																<div class="m-list-timeline__item">
-																	<span class="m-list-timeline__badge m-list-timeline__badge--warning"></span>
-																	<span class="m-list-timeline__text">Condominio</span>
-																	<span class="m-list-timeline__time"><?php echo $datos_credito['ingreso_mensual']; ?></span>
-																</div>
-																<div class="m-list-timeline__item">
-																	<span class="m-list-timeline__badge m-list-timeline__badge--primary"></span>
-																	<span class="m-list-timeline__text">Tasa de interes</span>
-																	<span class="m-list-timeline__time">5.5%</span>
-																</div>
-																<div class="m-list-timeline__item">
-																	<span class="m-list-timeline__badge m-list-timeline__badge--brand"></span>
-																	<span class="m-list-timeline__text">Plazo</span>
-																	<span class="m-list-timeline__time">25 a&nacute;os</span>
-																</div>
-																<div class="m-list-timeline__item">
-																	<span class="m-list-timeline__badge m-list-timeline__badge--success"></span>
-																	<span class="m-list-timeline__text">Garantia</span>
-																	<span class="m-list-timeline__time">El mismo Inmueble</span>
-																</div>
-															</div>
-														</div>
-													</div>
-													<table class="table m-table m-table--head-bg-brand">
+
+													<div class="m-portlet__body">
+														Listado Condominios
+													<table class="table m-table m-table--head-bg-warning">
 													<thead>
 														<tr>
 															<th>#</th>
 															<th>Descripcion</th>
+															<th>Ciudad</th>
 															<th>Valor Inmueble</th>
 															<th>Cuota Mensual</th>
+															<th>Sueldo ideal</th>
 															<th></th>
 														</tr>
 													</thead>
 													<tbody>
+													<?php $ingreso_total_solicitante = $datos_credito['ingreso_mensual']+$datos_credito['ingreso_conyugue'] ?>
 													<?php foreach ($condominios as $c): ?>
 														<tr>
 															<th scope="row"><?php echo $c['id'] ?></th>
 															<td><?php echo $c['descripcion'] ?></td>
+															<td><?php echo $c['ciudad'] ?></td>
 															<td><?php echo $c['valor'] ?></td>
-															<td>216 $us</td>
+															<td><?php echo $c['cuota_mensual'] ?></td>
+															<td><?php echo $c['sueldo_prom'] ?></td>
 															<td>
-																<a href="#" class="btn btn-success m-btn m-btn--icon btn-sm m-btn--icon-only">
-																	<i class="fa fa-check"></i>
-																</a>															
+																<?php if ($c['sueldo_prom'] <= $ingreso_total_solicitante): ?>
+																	<a href="#" class="btn btn-success m-btn m-btn--icon btn-sm m-btn--icon-only">
+																		<i class="fa fa-check"></i>
+																	</a>
+																<?php else: ?>
+																	<a href="#" class="btn btn-danger m-btn m-btn--icon btn-sm m-btn--icon-only" onclick="muestra_papab(<?php echo $c['id'] ?>, '<?php echo $c['descripcion'] ?>')">
+																		<i class="fa fa-ban"></i>
+																	</a>
+																<?php endif; ?>
 															</td>
 														</tr>
 													<?php endforeach; ?>
 														
 													</tbody>
 												</table>
+											</div>
 												</div>
 
 												<!--end::Preview-->
 										
-										<div class="m-portlet__foot m-portlet__foot--fit" >
+										<!-- <div class="m-portlet__foot m-portlet__foot--fit" >
 											<center>
 											<div class="m-form__actions">
 												<button type="submit" class="btn m-btn--pill    btn-accent">Siguiente</button>
 												<button type="button" onclick="agregarform()" class="btn m-btn--pill    btn-success">Agregar Conyugue</button>
 											</div>
 											</center>
-										</div>
-									</form>
+										</div> -->
+									<!-- </form> -->
 
 									<!--end::Form-->
 								</div>
@@ -198,6 +141,7 @@
 							<!-- FIN DE LA PRUEBA -->
 
 							<div class="col-md-5 item" id="bloque_1" style="display: none;">
+								<a href="#" class="btn btn-block btn-success" id='titulo_vivienda'></a>
 								<!--begin::Portlet-->
 								<div class="m-portlet m-portlet--tab">
 									<div class="m-portlet__head">
@@ -213,70 +157,113 @@
 										</div>
 									</div>
 
-									
+									<div class="m-portlet__body">
 
-									<div class="m-portlet">
+										<div class="form-group m-form__group row">
+											<div class="col-lg-4">
+												<label class="">Carnet Identidad:</label>
+												<input type="text" class="form-control m-input m-input--air m-input--pill" name="ci_c" id="ci2" required>
+											</div>
+											<div class="col-lg-8">
+												<label class="">Nombre</label>
+												<input type="text" class="form-control m-input m-input--air m-input--pill" value="Juan Carlos Perez Zuaso" name="ci_c" id="ci2" readonly>
+											</div>
+										</div>
 
-										<ul class="nav nav-pills nav-fill" role="tablist">
-											<li class="nav-item">
-												<a class="nav-link active" data-toggle="tab" href="#m_tabs_5_1">Independientes</a>
-											</li>
-											<li class="nav-item">
-												<a class="nav-link" data-toggle="tab" href="#m_tabs_5_2">Dependientes</a>
-											</li>
-										</ul>
-										<div class="tab-content">
-											<?php //echo form_open('Persona/insertar', array('method'=>'POST', 'class' => 'm-form m-form--fit m-form--label-align-right')); ?>
-											<form class="m-form m-form--fit m-form--label-align-right m-form--group-seperator-dashed" action="/">
-												<div class="m-portlet__body">
+										<!--begin::Section-->
+										<div class="m-accordion m-accordion--default m-accordion--toggle-arrow" id="m_accordion_5" role="tablist">
 
+											<!--begin::Item-->
+											<div class="m-accordion__item m-accordion__item--danger">
+												<div class="m-accordion__item-head collapsed" srole="tab" id="m_accordion_5_item_1_head" data-toggle="collapse" href="#m_accordion_5_item_1_body" aria-expanded="false">
+													<span class="m-accordion__item-icon"><i class="fa flaticon-user-ok"></i></span>
+													<span class="m-accordion__item-title"> Formulario Independientes</span>
+													<span class="m-accordion__item-mode"></span>
+												</div>
+												<div class="m-accordion__item-body collapse" id="m_accordion_5_item_1_body" role="tabpanel" aria-labelledby="m_accordion_5_item_1_head" data-parent="#m_accordion_5" style="">
+													<div class="m-accordion__item-content">
+
+													
 													<div class="form-group m-form__group row">
 														<div class="col-lg-4">
-															<label class="">N&uacute;mero de Carnet Identidad:</label>
-															<input type="text" class="form-control m-input m-input--air m-input--pill"
-																name="ci_c" id="ci2" required>
-														</div>
-													</div>
-													<div class="form-group m-form__group row">
-														<div class="col-lg-6">
 															<label class="">Tipo:</label>
-															<select class="form-control m-input" id="exampleSelect1">
-																<option>Comercio</option>
-																<option>Servicios</option>
-																<option>Productivo</option>
+															<select class="form-control m-input" id="cb_ipb">
+																<option value="Comercio">Comercio</option>
+																<option value="Servicio">Servicio</option>
+																<option value="Productivo">Productivo</option>
 															</select>
 														</div>
-														<div class="col-lg-6">
-															<label class="">Monto:</label>
+														<div class="col-lg-4">
+															<label class="">Ingreso Bruto:</label>
 															<div class="m-input-icon m-input-icon--right">
-																<input type="text" class="form-control m-input m-input--air m-input--pill"
-																	name="paterno_c" id="paterno_c">
+																<input type="text" class="form-control m-input m-input--air m-input--pill" name="paterno_c" id="txt_impb">
+																<span class="m-input-icon__icon m-input-icon__icon--right"></span>
+															</div>
+														</div>
+
+														<div class="col-lg-4">
+															<label class="">Gastos:</label>
+															<div class="m-input-icon m-input-icon--right">
+																<input type="text" class="form-control m-input m-input--air m-input--pill" name="paterno_c" id="txt_igpb">
 																<span class="m-input-icon__icon m-input-icon__icon--right"></span>
 															</div>
 														</div>
 
 													</div>
 
-												</div>
 												<div class="m-portlet__foot m-portlet__foot--fit">
 													<center>
 														<div class="m-form__actions">
-															<button type="submit" class="btn m-btn--pill    btn-accent">Solicitar</button>
-															<button type="button" class="btn m-btn--pill    btn-success">Pedir Ayuda</button>
+															<button type="submit" class="btn m-btn--pill btn-accent" onclick=calcula_cuota();>Calcular</button>
+															<button type="button" class="btn m-btn--pill btn-success">Pedir Ayuda</button>
 														</div>
 													</center>
 												</div>
-											</form>
+														
+													</div>
+												</div>
+											</div>
 
-										</div>
-										<div class="tab-pane" id="m_tabs_5_2" role="tabpanel">
+											<!--end::Item-->
 
+											<!--begin::Item-->
+											<div class="m-accordion__item m-accordion__item--brand">
+												<div class="m-accordion__item-head collapsed" role="tab" id="m_accordion_5_item_3_head" data-toggle="collapse" href="#m_accordion_5_item_3_body" aria-expanded="false">
+													<span class="m-accordion__item-icon"><i class="fa  flaticon-user-ok"></i></span>
+													<span class="m-accordion__item-title"> Formulario Dependientes</span>
+													<span class="m-accordion__item-mode"></span>
+												</div>
+												<div class="m-accordion__item-body collapse" id="m_accordion_5_item_3_body" role="tabpanel" aria-labelledby="m_accordion_5_item_3_head" data-parent="#m_accordion_5">
+													<div class="m-accordion__item-content">
+														<div class="form-group m-form__group row">
+
+															<div class="col-lg-12">
+																<label class="">Monto:</label>
+																<div class="m-input-icon m-input-icon--right">
+																	<input type="text" class="form-control m-input m-input--air m-input--pill" name="paterno_c" id="txt_dmbp">
+																	<span class="m-input-icon__icon m-input-icon__icon--right"></span>
+																</div>
+															</div>
+														</div>
+														<div class="m-portlet__foot m-portlet__foot--fit">
+															<center>
+																<div class="m-form__actions">
+																	<button type="submit" class="btn m-btn--pill btn-accent">Calcular</button>
+																	<button type="button" class="btn m-btn--pill btn-success">Pedir Ayuda</button>
+																</div>
+															</center>
+														</div>
+													</div>
+												</div>
+											</div>
+
+											<!--end::Item-->
 										</div>
+
+										<!--end::Section-->
 									</div>
 
-
 									<!--begin::Form-->
-
 
 									<!--end::Form-->
 								</div>
@@ -401,9 +388,68 @@
               $('.item').hide('slow');
               $("#bloque_1").show('slow');
         }
+	function muestra_papab(idCondominio, nombre) 
+	{
+		console.log(idCondominio);
+		$("#bloque_1").show('slow');
+		$('#titulo_vivienda').html("<h4>CONDOMINIO: "+nombre+"</<h4>");
+	}
+
+	function calcula_cuota(monto)
+	{
+		// $cuota_mensual = $monto_prestamo * (($porcentaje * Math.pow((1 + $porcentaje), $cuotas)) / (Math.pow((1 + $porcentaje), $cuotas) - 1));
+		var cuota_mensual = 0;
+		cuota_mensual = 208800 * ((0.0045 * Math.pow((1 + 0.0045), 300)) / (Math.pow((1 + 0.0045), 300) - 1));
+		cuota_redondeado = Math.round(parseFloat(cuota_mensual)*100) / 100;
+		porcentaje_ajuste = cuota_redondeado * 0.01;
+		monto_ajustado = cuota_mensual + porcentaje_ajuste;
+		monto_ajustado_redondeado = Math.round(monto_ajustado*100)/100;
+		console.log(monto_ajustado_redondeado);
+		calcula_independientes();
+		// $monto_redondeado = round($monto_ajustado, 2);
+
+		// $seguro_incendio = $monto_prestamo * 0.00015;
+		// $cuota_total = $monto_redondeado + $seguro_incendio;
+
+		// $sueldo_ideal = round($cuota_total / 0.4, 2);
+
+		// $resultados['cuota'] = $monto_redondeado;
+		// $resultados['seguro'] = $seguro_incendio;
+		// $resultados['cuota_total'] = $cuota_total;
+		// $resultados['sueldo_ideal'] = $sueldo_ideal;
+
+		// vdebug($sueldo_ideal, true, false, true);
+		// return $resultados;
+	}
 
     function muestra()
     {
     	alert('Si entro');
     }
+
+    function calcula_independientes()
+    {
+    	var tipo_ipb = $('#cb_ipb').val();
+    	var monto_impb = $('#txt_impb').val();
+    	var gasto_igpb = $('#txt_igpb').val();
+    	switch (tipo_ipb) {
+    		case 'Comercio':
+    			porcentaje = 0.25;
+    			break;
+
+			case 'Servicio':
+    			porcentaje = 0.75;
+    			break;
+
+			case 'Productivo':
+    			porcentaje = 0.45;
+    			break;
+    	}
+
+    	porcentaje_monto = monto_impb*porcentaje;
+    	monto_adicionable = porcentaje_monto - gasto_igpb; 
+    	console.log(porcentaje_monto);
+    	console.log("monto "+monto_adicionable);
+    }
+
 </script>
