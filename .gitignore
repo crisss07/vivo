@@ -29,3 +29,5 @@ user_guide_src/cilexer/pycilexer.egg-info/*
 
 #database file
 application/cache/config/database.php
+
+.phpintel/
