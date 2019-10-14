@@ -34,8 +34,14 @@ class Calculo extends CI_Controller {
 	{
 		$datos = $this->input->post();
 		$id=$this->input->post('beneficiario_id');
+		
+		
 		if(isset($datos))
 		{
+			$this->db->select('condominio_id');
+			$condominio_id=$this->db->get_where('beneficiario', array('id' => $id));
+			$condominio_id=$condominio_id->row();
+			$condominio_id=$condominio_id->condominio_id;
 			$data = array(
 
             //'codcatas' => $this->input->post('cod_catastral'), //input
@@ -50,6 +56,7 @@ class Calculo extends CI_Controller {
             'aporte' => $this->input->post('aporte'),
             'aporte_beneficiario' => $this->input->post('aporte_beneficiario'),
             'casado' => $this->input->post('casado'),
+            'condominio_id' => $condominio_id,
             'prestamo' => 0,
             'cuota_mensual' => 0,
             //'activo' => '1',
@@ -59,6 +66,7 @@ class Calculo extends CI_Controller {
 			$credito_id=$this->db->get_where('credito', array('beneficiario_id' => $id));
 			$credito_id=$credito_id->row();
 			$credito_id=$credito_id->id;
+			
 
 		
 
