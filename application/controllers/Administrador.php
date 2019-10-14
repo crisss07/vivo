@@ -16,9 +16,9 @@ class Administrador extends CI_Controller {
 	}
 	public function index()
 	{			
-		if($this->session->userdata())
+		if($this->session->userdata('Login'))
 		{	
-			$this->load->view('crud/headerp');	
+			$this->load->view('crud/header');	
 			$data['datos'] = $this->Administrador_model->getData();	
 			//$this->load->view('crud/menu');
 			$this->load->view('crud/Administracion',$data);		
