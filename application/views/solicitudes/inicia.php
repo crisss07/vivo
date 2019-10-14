@@ -23,31 +23,43 @@
 						</div>
 
 						<div class="m-portlet__body">
-							<table class="table table-striped m-table">
+							<table class="table table-striped m-table" >
 								<tbody>
 									<tr>
 										<th scope="row">Ingresos liquidos mensuales</th>
-										<td><?php echo $datos_credito['ingreso_mensual']; ?></td>
+										<td align="right"><?php echo $datos_credito['ingreso_mensual']; ?></td>
 									</tr>
 									<tr>
 										<th scope="row">Ingresos liquidos mensuales conyugue</th>
-										<td><?php echo $datos_credito['ingreso_conyugue']; ?></td>
+										<td align="right"><?php echo $datos_credito['ingreso_conyugue']; ?></td>
 									</tr>
-									<tr style="display: none;" id="ayuda_pb">
-										<th scope="row">Ingresos liquidos mensuales papa</th>
-										<td id="monto_pb"></td>
+									<tr>
+										<th scope="row">Ingresos padre beneficiario</th>
+										<td align="right">0</td>
+									</tr>
+									<tr>
+										<th scope="row">Ingresos madre beneficiario</th>
+										<td align="right">0</td>
+									</tr>
+									<tr>
+										<th scope="row">Ingresos padre conyugue</th>
+										<td align="right">0</td>
+									</tr>
+									<tr>
+										<th scope="row">Ingresos madre conyugue</th>
+										<td align="right">0</td>
 									</tr>
 									<tr>
 										<th scope="row">Cuota Mensual</th>
-										<td><?php echo $cuota['cuota_total']; ?></td>
+										<td align="right"><?php echo $cuota['cuota_total']; ?></td>
 									</tr>
 									<tr>
 										<th scope="row">Tasa de interes</th>
-										<td>5.5%</td>
+										<td align="right">5.5%</td>
 									</tr>
 									<tr>
 										<th scope="row">Plazo</th>
-										<td>25 a&nacute;os</td>
+										<td align="right">25 a&nacute;os</td>
 									</tr>
 								</tbody>
 							</table>
