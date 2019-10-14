@@ -18,7 +18,7 @@ class Administrador extends CI_Controller {
 	{			
 		if($this->session->userdata())
 		{	
-			$this->load->view('crud/header');	
+			$this->load->view('crud/headerp');	
 			$data['datos'] = $this->Administrador_model->getData();	
 			//$this->load->view('crud/menu');
 			$this->load->view('crud/Administracion',$data);		

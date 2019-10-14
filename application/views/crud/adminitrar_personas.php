@@ -42,12 +42,9 @@
 															</div>
 														</div>
 													</div>
-
 													<!-- <div class="m-portlet__body">
 														<button type="button" class="btn btn-success" data-toggle="modal" data-target="#m_modal_1">adicionar</button>
 													</div>  -->
-
-
 													<div class="m-portlet__body">
 
 														<!--begin: Datatable -->
@@ -76,51 +73,30 @@
 																	?>
 																	<tr>
 																		<td><?php echo $i++; ?></td>
-																		<td><?php echo $row->nombres; ?> <?php echo $row->paterno; ?> <?php echo $row->materno; ?></td>    
+																		<td><?php echo $row->nombres; ?> <?php echo $row->paterno; ?> <?php echo $row->materno; ?></td>
+																		<?php if ($fa) { ?>
 																		<td><?php echo $fa->nombres; ?> <?php echo $fa->paterno; ?> <?php echo $fa->materno; ?></td> 
+																		<?php } else {?>    
+																		<td>No corresponde</td>
+																		<?php } ?>
 																		<td><?php echo $con->descripcion; ?> - <?php echo $con->ciudad; ?></td> 
-
-
 																		<td>
-
 																			<a href="<?php echo base_url('Administrador_Persona/delete/'.$row->id); ?>" type="button" class="btn btn-danger ">
 																				<span class="fas fa-trash-alt" aria-hidden="true">
 																				</span>
 																			</a>                                                
-
-
 																		</td>                                                
 																	</tr>
 																<?php } ?>
 															</tbody>
 														</table>							
 													</div>
-
-
-
-													
 												</div>
-
-												<!--end::Portlet-->
-
-												<!--begin::Portlet-->
-
-
-												<!--end::Portlet-->
-
-												<!--begin::Portlet-->
-
-
-												<!--end::Portlet-->
 											</div>
 											<div class="col-md-6">
-
 											</div>
 										</div>
 									</div>
-
-
-
 								</div>
 							</div>
 

@@ -160,7 +160,7 @@
 														<i class="la la-gear"></i>
 													</span>
 													<h3 class="m-portlet__head-text">
-														DATOS DE CONYUGUE
+														DATOS DE CONYUGUE (Si Corresponde)
 													</h3>
 												</div>
 											</div>
@@ -177,7 +177,7 @@
 												<div class="form-group m-form__group row">
 													<div class="col-lg-4">
 														<label class="">N&uacute;mero de Carnet Identidad:</label>
-														<input type="text" class="form-control m-input m-input--air m-input--pill" name="ci_c" id="ci2" required>
+														<input type="text" class="form-control m-input m-input--air m-input--pill" name="ci_c" id="ci2">
 														<span class="m-form__help">Por favor ingrese su C.I.</span>
 													</div>
 												</div>
@@ -212,7 +212,7 @@
 													<div class="col-lg-5">
 														<label class="">N&uacute;mero de Celular:</label>
 														<div class="m-input-icon m-input-icon--right">
-															<input type="number" class="form-control m-input m-input--air m-input--pill" name="telefono_celular_c" required>
+															<input type="number" class="form-control m-input m-input--air m-input--pill" name="telefono_celular_c">
 															<span class="m-input-icon__icon m-input-icon__icon--right"></span>
 														</div>
 														<span class="m-form__help">Por favor ingrese su # de Celular</span>
@@ -220,7 +220,7 @@
 													<div class="col-lg-7">
 														<label class="">Email:</label>
 														<div class="m-input-icon m-input-icon--right">
-															<input type="email" class="form-control m-input m-input--air m-input--pill" name="email_c" required>
+															<input type="email" class="form-control m-input m-input--air m-input--pill" name="email_c">
 															<span class="m-input-icon__icon m-input-icon__icon--right"></span>
 														</div>
 														<span class="m-form__help">Por favor ingrese su Correo Electr&oacute;nico</span>
