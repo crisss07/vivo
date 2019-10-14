@@ -14,7 +14,6 @@
 				<div class="m-grid__item m-grid__item--fluid m-wrapper">
 
 					<!-- BEGIN: Subheader -->
-					
 
 					<!-- END: Subheader -->
 					<div class="m-content">
@@ -35,7 +34,7 @@
 											</div>
 										</div>
 									</div>
-									<?php //echo vdebug($datos_credito, false, false, true); ?>
+									<?php echo vdebug($cuota, false, false, true); ?>
 
 									<!--begin::Form-->
 									<?php echo form_open('Persona/insertar', array('method'=>'POST', 'class' => 'm-form m-form--fit m-form--label-align-right')); ?>
@@ -90,10 +89,11 @@
 														</tr>
 													</thead>
 													<tbody>
+													<?php foreach ($condominios as $c): ?>
 														<tr>
-															<th scope="row">1</th>
-															<td>Condominio Wiphala</td>
-															<td>45000</td>
+															<th scope="row"><?php echo $c['id'] ?></th>
+															<td><?php echo $c['descripcion'] ?></td>
+															<td><?php echo $c['valor'] ?></td>
 															<td>216 $us</td>
 															<td>
 																<a href="#" class="btn btn-success m-btn m-btn--icon btn-sm m-btn--icon-only">
@@ -101,37 +101,13 @@
 																</a>															
 															</td>
 														</tr>
-														<tr>
-															<th scope="row">2</th>
-															<td>Condominio Mercenario</td>
-															<td>35000</td>
-															<td>216 $us</td>
-															<td>
-																<a href="#" class="btn btn-danger m-btn m-btn--icon btn-sm m-btn--icon-only">
-																	<i class="fa fa-ban"></i>
-																</a>															
-															</td>
-														</tr>
-														<tr>
-															<th scope="row">3</th>
-															<td>Condominio Papa Francisco</td>
-															<td>25000</td>
-															<td>216 $us</td>
-															<td>
-																<a href="#" class="btn btn-success m-btn m-btn--icon btn-sm m-btn--icon-only">
-																	<i class="fa fa-check"></i>
-																</a>															
-															</td>
-														</tr>
+													<?php endforeach; ?>
 														
 													</tbody>
 												</table>
 												</div>
 
-
 												<!--end::Preview-->
-
-											
 										
 										<div class="m-portlet__foot m-portlet__foot--fit" >
 											<center>
