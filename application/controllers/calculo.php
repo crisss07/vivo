@@ -33,6 +33,7 @@ class Calculo extends CI_Controller {
 	public function create()
 	{
 		$datos = $this->input->post();
+		$id=$this->input->post('beneficiario_id');
 		if(isset($datos))
 		{
 			$data = array(
@@ -54,7 +55,14 @@ class Calculo extends CI_Controller {
             //'activo' => '1',
         );
 			$this->db->insert('credito', $data);
-			redirect(base_url() . 'Calculo/nuevo/' . $this->input->post('beneficiario_id'));
+			$this->db->select('id');
+			$credito_id=$this->db->get_where('credito', array('beneficiario_id' => $id));
+			$credito_id=$credito_id->row();
+			$credito_id=$credito_id->id;
+
+		
+
+			redirect(base_url() . 'Solicitudes/inicia/'.$credito_id);
 
 		}
 		else {

@@ -98,12 +98,11 @@
 																			<option value="0">NO</option>
 																		</select>
 																	</div>
-
 																</div>
 																<div class="form-group m-form__group row" 	id="hidden_pago_ef">
 																	<label for="example-email-input" class="col-8 col-form-label">3.1 ¿Cuánto pagas mensualmente por tus prestamos en otras entidades financieras?</label>
 																	<div class="col-3">
-																		<input class="form-control m-input m-input--air m-input--pill" type="number" value="" id="example-email-input" name="deuda_banco" required="">
+																		<input class="form-control m-input m-input--air m-input--pill" type="number" value="" id="example-email-input" name="deuda_banco" >
 																	</div>
 																</div>
 																<div class="form-group m-form__group row">
@@ -119,7 +118,7 @@
 																<div class="form-group m-form__group row" id="hidden_pago_m">
 																	<label for="example-url-input" class="col-8 col-form-label">4.1 ¿Cuánto pagas mensualmente de alquiler?</label>
 																	<div class="col-3">
-																		<input class="form-control m-input m-input--air m-input--pill" type="number" value="" id="example-url-input" name="pago_alquiler" required="">
+																		<input class="form-control m-input m-input--air m-input--pill" type="number" value="" id="example-url-input" name="pago_alquiler" >
 																	</div>
 																</div>
 																<div class="form-group m-form__group row">
@@ -155,7 +154,7 @@
 																<div class="form-group m-form__group row" id="hidden_div">
 																	<label for="example-password-input" class="col-8 col-form-label">6.1. ¿A cuanto alcanza su aporte propio? (AHORRO EN EFECTIVO Y/O ANTICRETICO) ($us)</label>
 																	<div class="col-3">
-																		<input class="form-control m-input m-input--air m-input--pill" type="text" value="" id="example-password-input" name="aporte_beneficiario" required="">
+																		<input class="form-control m-input m-input--air m-input--pill" type="text" value="" id="example-password-input" name="aporte_beneficiario" >
 																	</div>
 																</div>
 																<div class="form-group m-form__group row">
