@@ -46,9 +46,9 @@
 													<th scope="row">Ingresos liquidos mensuales conyugue</th>
 													<td><?php echo $datos_credito['ingreso_conyugue']; ?></td>
 												</tr>
-												<tr>
-													<th scope="row">Ingresos liquidos mensuales conyugue</th>
-													<td><?php echo $datos_credito['ingreso_conyugue']; ?></td>
+												<tr style="display: none;" id="ayuda_pb">
+													<th scope="row">Ingresos liquidos mensuales papa</th>
+													<td id="monto_pb"></td>
 												</tr>
 												<tr>
 													<th scope="row">Cuota Mensual</th>
@@ -215,7 +215,7 @@
 													<center>
 														<div class="m-form__actions">
 															<button type="submit" class="btn m-btn--pill btn-accent" onclick=calcula_cuota();>Calcular</button>
-															<button type="button" class="btn m-btn--pill btn-success">Pedir Ayuda</button>
+															<button type="button" class="btn m-btn--pill btn-success" onclick="muestra2();">Pedir Ayuda</button>
 														</div>
 													</center>
 												</div>
@@ -249,7 +249,7 @@
 															<center>
 																<div class="m-form__actions">
 																	<button type="submit" class="btn m-btn--pill btn-accent">Calcular</button>
-																	<button type="button" class="btn m-btn--pill btn-success">Pedir Ayuda</button>
+																	<button type="button" class="btn m-btn--pill btn-success" onclick="muestra2();">Pedir Ayuda</button>
 																</div>
 															</center>
 														</div>
@@ -268,10 +268,142 @@
 									<!--end::Form-->
 								</div>
 
+								<div style="display: none;" id="bloque_2">
+								<a href="#" class="btn btn-block btn-success" id='titulo_vivienda'></a>
+								<!--begin::Portlet-->
+								<div class="m-portlet m-portlet--tab">
+									<div class="m-portlet__head">
+										<div class="m-portlet__head-caption">
+											<div class="m-portlet__head-title">
+												<span class="m-portlet__head-icon m--hide">
+													<i class="la la-gear"></i>
+												</span>
+												<h3 class="m-portlet__head-text">
+													Registro Ingresos del mama
+												</h3>
+											</div>
+										</div>
+									</div>
+
+									<div class="m-portlet__body">
+
+										<div class="form-group m-form__group row">
+											<div class="col-lg-4">
+												<label class="">Carnet Identidad:</label>
+												<input type="text" class="form-control m-input m-input--air m-input--pill" name="ci_c" id="ci2" required>
+											</div>
+											<div class="col-lg-8">
+												<label class="">Nombre</label>
+												<input type="text" class="form-control m-input m-input--air m-input--pill" value="Juan Carlos Perez Zuaso" name="ci_c" id="ci2" readonly>
+											</div>
+										</div>
+
+										<!--begin::Section-->
+										<div class="m-accordion m-accordion--default m-accordion--toggle-arrow" id="m_accordion_5" role="tablist">
+
+											<!--begin::Item-->
+											<div class="m-accordion__item m-accordion__item--danger">
+												<div class="m-accordion__item-head collapsed" srole="tab" id="m_accordion_5_item_1_head" data-toggle="collapse" href="#m_accordion_5_item_1_body" aria-expanded="false">
+													<span class="m-accordion__item-icon"><i class="fa flaticon-user-ok"></i></span>
+													<span class="m-accordion__item-title"> Formulario Independientes</span>
+													<span class="m-accordion__item-mode"></span>
+												</div>
+												<div class="m-accordion__item-body collapse" id="m_accordion_5_item_1_body" role="tabpanel" aria-labelledby="m_accordion_5_item_1_head" data-parent="#m_accordion_5" style="">
+													<div class="m-accordion__item-content">
+
+													
+													<div class="form-group m-form__group row">
+														<div class="col-lg-4">
+															<label class="">Tipo:</label>
+															<select class="form-control m-input" id="cb_ipb">
+																<option value="Comercio">Comercio</option>
+																<option value="Servicio">Servicio</option>
+																<option value="Productivo">Productivo</option>
+															</select>
+														</div>
+														<div class="col-lg-4">
+															<label class="">Ingreso Bruto:</label>
+															<div class="m-input-icon m-input-icon--right">
+																<input type="text" class="form-control m-input m-input--air m-input--pill" name="paterno_c" id="txt_impb">
+																<span class="m-input-icon__icon m-input-icon__icon--right"></span>
+															</div>
+														</div>
+
+														<div class="col-lg-4">
+															<label class="">Gastos:</label>
+															<div class="m-input-icon m-input-icon--right">
+																<input type="text" class="form-control m-input m-input--air m-input--pill" name="paterno_c" id="txt_igpb">
+																<span class="m-input-icon__icon m-input-icon__icon--right"></span>
+															</div>
+														</div>
+
+													</div>
+
+												<div class="m-portlet__foot m-portlet__foot--fit">
+													<center>
+														<div class="m-form__actions">
+															<button type="submit" class="btn m-btn--pill btn-accent" onclick=calcula_cuota();>Calcular</button>
+															<button type="button" class="btn m-btn--pill btn-success" onclick="muestra2()">Pedir Ayuda</button>
+														</div>
+													</center>
+												</div>
+														
+													</div>
+												</div>
+											</div>
+
+											<!--end::Item-->
+
+											<!--begin::Item-->
+											<div class="m-accordion__item m-accordion__item--brand">
+												<div class="m-accordion__item-head collapsed" role="tab" id="m_accordion_5_item_3_head" data-toggle="collapse" href="#m_accordion_5_item_3_body" aria-expanded="false">
+													<span class="m-accordion__item-icon"><i class="fa  flaticon-user-ok"></i></span>
+													<span class="m-accordion__item-title"> Formulario Dependientes</span>
+													<span class="m-accordion__item-mode"></span>
+												</div>
+												<div class="m-accordion__item-body collapse" id="m_accordion_5_item_3_body" role="tabpanel" aria-labelledby="m_accordion_5_item_3_head" data-parent="#m_accordion_5">
+													<div class="m-accordion__item-content">
+														<div class="form-group m-form__group row">
+
+															<div class="col-lg-12">
+																<label class="">Monto:</label>
+																<div class="m-input-icon m-input-icon--right">
+																	<input type="text" class="form-control m-input m-input--air m-input--pill" name="paterno_c" id="txt_dmbp">
+																	<span class="m-input-icon__icon m-input-icon__icon--right"></span>
+																</div>
+															</div>
+														</div>
+														<div class="m-portlet__foot m-portlet__foot--fit">
+															<center>
+																<div class="m-form__actions">
+																	<button type="submit" class="btn m-btn--pill btn-accent">Calcular</button>
+																	<button type="button" class="btn m-btn--pill btn-success" onclick="muestra2();">Pedir Ayuda</button>
+																</div>
+															</center>
+														</div>
+													</div>
+												</div>
+											</div>
+
+											<!--end::Item-->
+										</div>
+
+										<!--end::Section-->
+									</div>
+
+									<!--begin::Form-->
+
+									<!--end::Form-->
+								</div>
+
+							</div>
+
+								<!--end::Portlet-->
+							
+
 								<!--end::Portlet-->
 							</div>
-						
-							
+
 						</div>
 					</div>
 				</div>
@@ -390,26 +522,34 @@
         }
 	function muestra_papab(idCondominio, nombre) 
 	{
-		console.log(idCondominio);
+		// console.log(idCondominio);
 		$("#bloque_1").show('slow');
 		$('#titulo_vivienda').html("<h4>CONDOMINIO: "+nombre+"</<h4>");
+	}
+
+	function muestra2()
+	{
+		$("#bloque_2").show('slow');
+		// alert('entro');
 	}
 
 	function calcula_cuota(monto)
 	{
 		// $cuota_mensual = $monto_prestamo * (($porcentaje * Math.pow((1 + $porcentaje), $cuotas)) / (Math.pow((1 + $porcentaje), $cuotas) - 1));
+		// monto_prestamo = 
 		var cuota_mensual = 0;
 		cuota_mensual = 208800 * ((0.0045 * Math.pow((1 + 0.0045), 300)) / (Math.pow((1 + 0.0045), 300) - 1));
 		cuota_redondeado = Math.round(parseFloat(cuota_mensual)*100) / 100;
 		porcentaje_ajuste = cuota_redondeado * 0.01;
 		monto_ajustado = cuota_mensual + porcentaje_ajuste;
-		monto_ajustado_redondeado = Math.round(monto_ajustado*100)/100;
-		console.log(monto_ajustado_redondeado);
-		calcula_independientes();
+		cuota_ajustado_redondeado = Math.round(monto_ajustado*100)/100;
+
+		// console.log(monto_ajustado_redondeado);
+		// calcula_independientes();
 		// $monto_redondeado = round($monto_ajustado, 2);
 
-		// $seguro_incendio = $monto_prestamo * 0.00015;
-		// $cuota_total = $monto_redondeado + $seguro_incendio;
+		seguro_incendio = monto * 0.00015;
+		cuota_total = cuota_ajustado_redondeado + seguro_incendio;
 
 		// $sueldo_ideal = round($cuota_total / 0.4, 2);
 
@@ -432,6 +572,7 @@
     	var tipo_ipb = $('#cb_ipb').val();
     	var monto_impb = $('#txt_impb').val();
     	var gasto_igpb = $('#txt_igpb').val();
+
     	switch (tipo_ipb) {
     		case 'Comercio':
     			porcentaje = 0.25;
@@ -448,8 +589,9 @@
 
     	porcentaje_monto = monto_impb*porcentaje;
     	monto_adicionable = porcentaje_monto - gasto_igpb; 
-    	console.log(porcentaje_monto);
-    	console.log("monto "+monto_adicionable);
+    	$('#ayuda_pb').show('slow');
+    	// console.log(porcentaje_monto);
+    	// console.log("monto "+monto_adicionable);
+    	$("#monto_pb").html(monto_adicionable);
     }
-
 </script>
