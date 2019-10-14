@@ -52,13 +52,17 @@
 													<div class="m-portlet__body">
 
 														<!--begin: Datatable -->
-														<table class="table table-striped- table-bordered table-hover table-checkable" id="m_table_1">
+														<table class="table table-striped- table-bordered table-hover table-checkable" id="tabladatos">
 															<thead>
 																<tr>
 																	<th>Nro</th>
 																	<th>Descripcion</th>
 																	<th>Ciudad</th>
 																	<th>Precio</th>
+																	<th>Dep. Disponibles</th>
+																	<th>Superficie</th>
+																	<th>cuota mensual</th>
+																	<th>sueldo ideal</th>
 																	<th>Acciones</th>											
 																</tr>
 															</thead>
@@ -66,12 +70,17 @@
 																<?php $i=1;?>
 																<?php foreach ($datos as $row) { $data = $row->id."||".
 																$row->descripcion."||".$row->ciudad."||".
+																$row->disponible."||".$row->superficie."||".
 																	$row->valor;  ?>
 																	<tr>
 																		<td><?php echo $i++; ?></td>
 																		<td><?php echo $row->descripcion; ?></td>    
 																		<td><?php echo $row->ciudad; ?></td>  
-																		<td><?php echo $row->valor; ?></td> 
+																		<td><?php echo $row->valor; ?></td>
+																		<td><?php echo $row->disponible; ?></td>
+																		<td><?php echo $row->superficie; ?></td>
+																		<td><?php echo $row->cuota_mensual; ?></td>
+																		<td><?php echo $row->sueldo_prom; ?></td>
 
 
 																		<td>
@@ -145,7 +154,7 @@
 													<div class="form-group m-form__group">
 														<label for="exampleSelect1">Ciudad</label>
 														
-														<select name="ciudad" class="form-control m-input m-input--air m-input--pill" onchange="showDivPagoEF('hidden_pago_ef', this)" required="">
+														<select name="ciudad" class="form-control m-input m-input--air m-input--pill"  required="">
 															<option value=""></option>
 															<option value="LA PAZ">LA PAZ</option>
 															<option value="COCHABAMBA">COCHABAMBA</option>
@@ -155,9 +164,21 @@
 
 													</div>
 													<div class="form-group m-form__group">
-														<label for="example-text-input">Precio</label>
+														<label for="example-text-input">Precio de venta en <span><code>Bs.</code> (usar ","coma para decimales)</span> </label>
 
-														<input class="form-control m-input m-input--air m-input--pill" type="number" value="" id="example-text-input" name="valor" required="">
+														<input class="form-control m-input m-input--air m-input--pill" type="number" value="" id="example-text-input" name="valor" step="0.01" required="">
+														
+													</div>
+													<div class="form-group m-form__group">
+														<label for="example-text-input">Dep. Disponibles</label>
+
+														<input class="form-control m-input m-input--air m-input--pill" type="number" value="" id="example-text-input" name="disponible" required="">
+														
+													</div>
+													<div class="form-group m-form__group">
+														<label for="example-text-input">Superficie <span><code>m²</code> (usar ","coma para decimales)</span> </label>
+
+														<input class="form-control m-input m-input--air m-input--pill" type="number" value="" id="example-text-input" name="superficie" step="0.01" required="">
 														
 													</div>
 
@@ -213,7 +234,7 @@
 													<div class="form-group m-form__group">
 														<label for="exampleSelect1">Ciudad</label>
 														
-														<select name="ciudad_e" id="ciudad_e"class="form-control m-input m-input--air m-input--pill" onchange="showDivPagoEF('hidden_pago_ef', this)" required="">
+														<select name="ciudad_e" id="ciudad_e"class="form-control m-input m-input--air m-input--pill"  required="">
 															
 															<option value="LA PAZ">LA PAZ</option>
 															<option value="COCHABAMBA">COCHABAMBA</option>
@@ -223,9 +244,21 @@
 
 													</div>
 													<div class="form-group m-form__group">
-														<label for="example-text-input">Precio</label>
+														<label for="example-text-input">Precio de venta en <span><code>Bs.</code> (usar ","coma para decimales)</span> </label>
 
-														<input class="form-control m-input m-input--air m-input--pill" type="number" value="" id="valor_e" name="valor_e" required="">
+														<input class="form-control m-input m-input--air m-input--pill" type="number" value="" id="valor_e" name="valor_e" required="" step="0.01">
+														
+													</div>
+													<div class="form-group m-form__group">
+														<label for="example-text-input">Dep. Disponibles</label>
+
+														<input class="form-control m-input m-input--air m-input--pill" type="number" value="" id="disponible_e" name="disponible_e" required="">
+														
+													</div>
+													<div class="form-group m-form__group">
+														<label for="example-text-input">Superficie <span><code>m²</code> (usar ","coma para decimales)</span></label>
+
+														<input class="form-control m-input m-input--air m-input--pill" type="number" value="" id="superficie_e" name="superficie_e" required="" step="0.01">
 														
 													</div>
 

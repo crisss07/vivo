@@ -12,6 +12,11 @@
 
 				<!-- END: Left Aside -->
 				<div class="m-grid__item m-grid__item--fluid m-wrapper">
+					<div class="m-portlet__foot m-portlet__foot--fit" style=" float: right; margin-right: 30px;">
+						<div class="m-form__actions">
+							<a href="<?= base_url('Administrador'); ?>" type="button" class="btn m-btn--pill btn-success">Administrar</a>
+						</div>
+					</div>
 
 					<!-- BEGIN: Subheader -->
 					
@@ -49,7 +54,7 @@
 													<select class="form-control m-input m-input--air m-input--pill" id="exampleSelect1" name="condominio_id">
 														<option value="">ELIJA UNA OPCION</option>
 														<?php foreach ($condominios as $con) {	?>
-														<option value="<?php echo $con->id ?>"><?php echo $con->descripcion ?></option>
+														<option value="<?php echo $con->id ?>"><?php echo $con->descripcion ?> - <?php echo $con->ciudad ?></option>
 														<?php } ?>
 													</select>
 												</div>
@@ -255,7 +260,7 @@
         var csrfHash = '<?php echo $this->security->get_csrf_hash(); ?>';
 
         $.ajax({
-            url: '<?php echo base_url(); ?>persona/ajax_verifica/',
+            url: '<?php echo base_url(); ?>Persona/ajax_verifica/',
             type: 'GET',
             dataType: 'json',
             data: {csrfName: csrfHash, param1: ci},
@@ -325,7 +330,7 @@
         var csrfHash = '<?php echo $this->security->get_csrf_hash(); ?>';
 
         $.ajax({
-            url: '<?php echo base_url(); ?>persona/ajax_verifica/',
+            url: '<?php echo base_url(); ?>Persona/ajax_verifica/',
             type: 'GET',
             dataType: 'json',
             data: {csrfName: csrfHash, param1: ci},
