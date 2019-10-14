@@ -1,414 +1,655 @@
 <!-- begin::Body -->
-			<div class="m-grid__item m-grid__item--fluid m-grid m-grid--ver-desktop m-grid--desktop m-body" style="background-image: url(<?php echo base_url(); ?>/public/assets/imagenes/formulario1.jpg);
-		  overflow: hidden;">
+<div class="m-grid__item m-grid__item--fluid m-grid m-grid--ver-desktop m-grid--desktop m-body" style="background-image: url(<?php echo base_url(); ?>/public/assets/imagenes/formulario1.jpg); overflow: hidden;">
 
-				<!-- BEGIN: Left Aside -->
-				
+	<div class="m-grid__item m-grid__item--fluid m-wrapper">
 
-					<!-- BEGIN: Aside Menu -->
-					
+		<div class="m-content">
+			<div class="row">
+				<div class="col-md-4">
 
-					<!-- END: Aside Menu -->
-
-				<!-- END: Left Aside -->
-				<div class="m-grid__item m-grid__item--fluid m-wrapper">
-
-					<!-- BEGIN: Subheader -->
-
-					<!-- END: Subheader -->
-					<div class="m-content">
-						<div class="row">
-							<div class="col-md-5">
-
-								<!--begin::Portlet-->
-								<div class="m-portlet m-portlet--brand m-portlet--head-solid-bg m-portlet--bordered">
-									<div class="m-portlet__head">
-										<div class="m-portlet__head-caption">
-											<div class="m-portlet__head-title">
-												<span class="m-portlet__head-icon m--hide">
-													<i class="la la-gear"></i>
-												</span>
-												<h3 class="m-portlet__head-text">
-													CALCULO DE CUOTA
-												</h3>
-											</div>
-										</div>
-									</div>
-
-									<div class="m-portlet__body">
-										<table class="table table-striped m-table">
-											<tbody>
-												<tr>
-													<th scope="row">Ingresos liquidos mensuales</th>
-													<td><?php echo $datos_credito['ingreso_mensual']; ?></td>
-												</tr>
-												<tr>
-													<th scope="row">Ingresos liquidos mensuales conyugue</th>
-													<td><?php echo $datos_credito['ingreso_conyugue']; ?></td>
-												</tr>
-												<tr style="display: none;" id="ayuda_pb">
-													<th scope="row">Ingresos liquidos mensuales papa</th>
-													<td id="monto_pb"></td>
-												</tr>
-												<tr>
-													<th scope="row">Cuota Mensual</th>
-													<td><?php echo $cuota['cuota_total']; ?></td>
-												</tr>
-												<tr>
-													<th scope="row">Tasa de interes</th>
-													<td>5.5%</td>
-												</tr>
-												<tr>
-													<th scope="row">Plazo</th>
-													<td>25 a&nacute;os</td>
-												</tr>
-											</tbody>
-										</table>
-
-									</div>
-
-									<?php // echo vdebug($cuota, false, false, true); ?>
-
-									<!--begin::Form-->
-									<!-- <form class="m-form m-form--fit m-form--label-align-right" action="/"> -->
-
-												<!--begin::Preview-->
-												<div class="m-demo">
-
-													<div class="m-portlet__body">
-														Listado Condominios
-													<table class="table m-table m-table--head-bg-warning">
-													<thead>
-														<tr>
-															<th>#</th>
-															<th>Descripcion</th>
-															<th>Ciudad</th>
-															<th>Valor Inmueble</th>
-															<th>Cuota Mensual</th>
-															<th>Sueldo ideal</th>
-															<th></th>
-														</tr>
-													</thead>
-													<tbody>
-													<?php $ingreso_total_solicitante = $datos_credito['ingreso_mensual']+$datos_credito['ingreso_conyugue'] ?>
-													<?php foreach ($condominios as $c): ?>
-														<tr>
-															<th scope="row"><?php echo $c['id'] ?></th>
-															<td><?php echo $c['descripcion'] ?></td>
-															<td><?php echo $c['ciudad'] ?></td>
-															<td><?php echo $c['valor'] ?></td>
-															<td><?php echo $c['cuota_mensual'] ?></td>
-															<td><?php echo $c['sueldo_prom'] ?></td>
-															<td>
-																<?php if ($c['sueldo_prom'] <= $ingreso_total_solicitante): ?>
-																	<a href="#" class="btn btn-success m-btn m-btn--icon btn-sm m-btn--icon-only">
-																		<i class="fa fa-check"></i>
-																	</a>
-																<?php else: ?>
-																	<a href="#" class="btn btn-danger m-btn m-btn--icon btn-sm m-btn--icon-only" onclick="muestra_papab(<?php echo $c['id'] ?>, '<?php echo $c['descripcion'] ?>')">
-																		<i class="fa fa-ban"></i>
-																	</a>
-																<?php endif; ?>
-															</td>
-														</tr>
-													<?php endforeach; ?>
-														
-													</tbody>
-												</table>
-											</div>
-												</div>
-
-												<!--end::Preview-->
-										
-										<!-- <div class="m-portlet__foot m-portlet__foot--fit" >
-											<center>
-											<div class="m-form__actions">
-												<button type="submit" class="btn m-btn--pill    btn-accent">Siguiente</button>
-												<button type="button" onclick="agregarform()" class="btn m-btn--pill    btn-success">Agregar Conyugue</button>
-											</div>
-											</center>
-										</div> -->
-									<!-- </form> -->
-
-									<!--end::Form-->
+					<!--begin::Portlet-->
+					<div class="m-portlet m-portlet--brand m-portlet--head-solid-bg m-portlet--bordered">
+						<div class="m-portlet__head">
+							<div class="m-portlet__head-caption">
+								<div class="m-portlet__head-title">
+									<span class="m-portlet__head-icon m--hide">
+										<i class="la la-gear"></i>
+									</span>
+									<h3 class="m-portlet__head-text">
+										CALCULO DE CUOTA
+									</h3>
 								</div>
-
-								<!--end::Portlet-->
 							</div>
+						</div>
 
-							<!-- COMIENZO DE LA PRUEBA -->
-							
-							<!-- FIN DE LA PRUEBA -->
-
-							<div class="col-md-5 item" id="bloque_1" style="display: none;">
-								<a href="#" class="btn btn-block btn-success" id='titulo_vivienda'></a>
-								<!--begin::Portlet-->
-								<div class="m-portlet m-portlet--tab">
-									<div class="m-portlet__head">
-										<div class="m-portlet__head-caption">
-											<div class="m-portlet__head-title">
-												<span class="m-portlet__head-icon m--hide">
-													<i class="la la-gear"></i>
-												</span>
-												<h3 class="m-portlet__head-text">
-													Registro Ingresos del papa
-												</h3>
-											</div>
-										</div>
-									</div>
-
-									<div class="m-portlet__body">
-
-										<div class="form-group m-form__group row">
-											<div class="col-lg-4">
-												<label class="">Carnet Identidad:</label>
-												<input type="text" class="form-control m-input m-input--air m-input--pill" name="ci_c" id="ci2" required>
-											</div>
-											<div class="col-lg-8">
-												<label class="">Nombre</label>
-												<input type="text" class="form-control m-input m-input--air m-input--pill" value="Juan Carlos Perez Zuaso" name="ci_c" id="ci2" readonly>
-											</div>
-										</div>
-
-										<!--begin::Section-->
-										<div class="m-accordion m-accordion--default m-accordion--toggle-arrow" id="m_accordion_5" role="tablist">
-
-											<!--begin::Item-->
-											<div class="m-accordion__item m-accordion__item--danger">
-												<div class="m-accordion__item-head collapsed" srole="tab" id="m_accordion_5_item_1_head" data-toggle="collapse" href="#m_accordion_5_item_1_body" aria-expanded="false">
-													<span class="m-accordion__item-icon"><i class="fa flaticon-user-ok"></i></span>
-													<span class="m-accordion__item-title"> Formulario Independientes</span>
-													<span class="m-accordion__item-mode"></span>
-												</div>
-												<div class="m-accordion__item-body collapse" id="m_accordion_5_item_1_body" role="tabpanel" aria-labelledby="m_accordion_5_item_1_head" data-parent="#m_accordion_5" style="">
-													<div class="m-accordion__item-content">
-
-													
-													<div class="form-group m-form__group row">
-														<div class="col-lg-4">
-															<label class="">Tipo:</label>
-															<select class="form-control m-input" id="cb_ipb">
-																<option value="Comercio">Comercio</option>
-																<option value="Servicio">Servicio</option>
-																<option value="Productivo">Productivo</option>
-															</select>
-														</div>
-														<div class="col-lg-4">
-															<label class="">Ingreso Bruto:</label>
-															<div class="m-input-icon m-input-icon--right">
-																<input type="text" class="form-control m-input m-input--air m-input--pill" name="paterno_c" id="txt_impb">
-																<span class="m-input-icon__icon m-input-icon__icon--right"></span>
-															</div>
-														</div>
-
-														<div class="col-lg-4">
-															<label class="">Gastos:</label>
-															<div class="m-input-icon m-input-icon--right">
-																<input type="text" class="form-control m-input m-input--air m-input--pill" name="paterno_c" id="txt_igpb">
-																<span class="m-input-icon__icon m-input-icon__icon--right"></span>
-															</div>
-														</div>
-
-													</div>
-
-												<div class="m-portlet__foot m-portlet__foot--fit">
-													<center>
-														<div class="m-form__actions">
-															<button type="submit" class="btn m-btn--pill btn-accent" onclick=calcula_cuota();>Calcular</button>
-															<button type="button" class="btn m-btn--pill btn-success" onclick="muestra2();">Pedir Ayuda</button>
-														</div>
-													</center>
-												</div>
-														
-													</div>
-												</div>
-											</div>
-
-											<!--end::Item-->
-
-											<!--begin::Item-->
-											<div class="m-accordion__item m-accordion__item--brand">
-												<div class="m-accordion__item-head collapsed" role="tab" id="m_accordion_5_item_3_head" data-toggle="collapse" href="#m_accordion_5_item_3_body" aria-expanded="false">
-													<span class="m-accordion__item-icon"><i class="fa  flaticon-user-ok"></i></span>
-													<span class="m-accordion__item-title"> Formulario Dependientes</span>
-													<span class="m-accordion__item-mode"></span>
-												</div>
-												<div class="m-accordion__item-body collapse" id="m_accordion_5_item_3_body" role="tabpanel" aria-labelledby="m_accordion_5_item_3_head" data-parent="#m_accordion_5">
-													<div class="m-accordion__item-content">
-														<div class="form-group m-form__group row">
-
-															<div class="col-lg-12">
-																<label class="">Monto:</label>
-																<div class="m-input-icon m-input-icon--right">
-																	<input type="text" class="form-control m-input m-input--air m-input--pill" name="paterno_c" id="txt_dmbp">
-																	<span class="m-input-icon__icon m-input-icon__icon--right"></span>
-																</div>
-															</div>
-														</div>
-														<div class="m-portlet__foot m-portlet__foot--fit">
-															<center>
-																<div class="m-form__actions">
-																	<button type="submit" class="btn m-btn--pill btn-accent">Calcular</button>
-																	<button type="button" class="btn m-btn--pill btn-success" onclick="muestra2();">Pedir Ayuda</button>
-																</div>
-															</center>
-														</div>
-													</div>
-												</div>
-											</div>
-
-											<!--end::Item-->
-										</div>
-
-										<!--end::Section-->
-									</div>
-
-									<!--begin::Form-->
-
-									<!--end::Form-->
-								</div>
-
-								<div style="display: none;" id="bloque_2">
-								<a href="#" class="btn btn-block btn-success" id='titulo_vivienda'></a>
-								<!--begin::Portlet-->
-								<div class="m-portlet m-portlet--tab">
-									<div class="m-portlet__head">
-										<div class="m-portlet__head-caption">
-											<div class="m-portlet__head-title">
-												<span class="m-portlet__head-icon m--hide">
-													<i class="la la-gear"></i>
-												</span>
-												<h3 class="m-portlet__head-text">
-													Registro Ingresos del mama
-												</h3>
-											</div>
-										</div>
-									</div>
-
-									<div class="m-portlet__body">
-
-										<div class="form-group m-form__group row">
-											<div class="col-lg-4">
-												<label class="">Carnet Identidad:</label>
-												<input type="text" class="form-control m-input m-input--air m-input--pill" name="ci_c" id="ci2" required>
-											</div>
-											<div class="col-lg-8">
-												<label class="">Nombre</label>
-												<input type="text" class="form-control m-input m-input--air m-input--pill" value="Juan Carlos Perez Zuaso" name="ci_c" id="ci2" readonly>
-											</div>
-										</div>
-
-										<!--begin::Section-->
-										<div class="m-accordion m-accordion--default m-accordion--toggle-arrow" id="m_accordion_5" role="tablist">
-
-											<!--begin::Item-->
-											<div class="m-accordion__item m-accordion__item--danger">
-												<div class="m-accordion__item-head collapsed" srole="tab" id="m_accordion_5_item_1_head" data-toggle="collapse" href="#m_accordion_5_item_1_body" aria-expanded="false">
-													<span class="m-accordion__item-icon"><i class="fa flaticon-user-ok"></i></span>
-													<span class="m-accordion__item-title"> Formulario Independientes</span>
-													<span class="m-accordion__item-mode"></span>
-												</div>
-												<div class="m-accordion__item-body collapse" id="m_accordion_5_item_1_body" role="tabpanel" aria-labelledby="m_accordion_5_item_1_head" data-parent="#m_accordion_5" style="">
-													<div class="m-accordion__item-content">
-
-													
-													<div class="form-group m-form__group row">
-														<div class="col-lg-4">
-															<label class="">Tipo:</label>
-															<select class="form-control m-input" id="cb_ipb">
-																<option value="Comercio">Comercio</option>
-																<option value="Servicio">Servicio</option>
-																<option value="Productivo">Productivo</option>
-															</select>
-														</div>
-														<div class="col-lg-4">
-															<label class="">Ingreso Bruto:</label>
-															<div class="m-input-icon m-input-icon--right">
-																<input type="text" class="form-control m-input m-input--air m-input--pill" name="paterno_c" id="txt_impb">
-																<span class="m-input-icon__icon m-input-icon__icon--right"></span>
-															</div>
-														</div>
-
-														<div class="col-lg-4">
-															<label class="">Gastos:</label>
-															<div class="m-input-icon m-input-icon--right">
-																<input type="text" class="form-control m-input m-input--air m-input--pill" name="paterno_c" id="txt_igpb">
-																<span class="m-input-icon__icon m-input-icon__icon--right"></span>
-															</div>
-														</div>
-
-													</div>
-
-												<div class="m-portlet__foot m-portlet__foot--fit">
-													<center>
-														<div class="m-form__actions">
-															<button type="submit" class="btn m-btn--pill btn-accent" onclick=calcula_cuota();>Calcular</button>
-															<button type="button" class="btn m-btn--pill btn-success" onclick="muestra2()">Pedir Ayuda</button>
-														</div>
-													</center>
-												</div>
-														
-													</div>
-												</div>
-											</div>
-
-											<!--end::Item-->
-
-											<!--begin::Item-->
-											<div class="m-accordion__item m-accordion__item--brand">
-												<div class="m-accordion__item-head collapsed" role="tab" id="m_accordion_5_item_3_head" data-toggle="collapse" href="#m_accordion_5_item_3_body" aria-expanded="false">
-													<span class="m-accordion__item-icon"><i class="fa  flaticon-user-ok"></i></span>
-													<span class="m-accordion__item-title"> Formulario Dependientes</span>
-													<span class="m-accordion__item-mode"></span>
-												</div>
-												<div class="m-accordion__item-body collapse" id="m_accordion_5_item_3_body" role="tabpanel" aria-labelledby="m_accordion_5_item_3_head" data-parent="#m_accordion_5">
-													<div class="m-accordion__item-content">
-														<div class="form-group m-form__group row">
-
-															<div class="col-lg-12">
-																<label class="">Monto:</label>
-																<div class="m-input-icon m-input-icon--right">
-																	<input type="text" class="form-control m-input m-input--air m-input--pill" name="paterno_c" id="txt_dmbp">
-																	<span class="m-input-icon__icon m-input-icon__icon--right"></span>
-																</div>
-															</div>
-														</div>
-														<div class="m-portlet__foot m-portlet__foot--fit">
-															<center>
-																<div class="m-form__actions">
-																	<button type="submit" class="btn m-btn--pill btn-accent">Calcular</button>
-																	<button type="button" class="btn m-btn--pill btn-success" onclick="muestra2();">Pedir Ayuda</button>
-																</div>
-															</center>
-														</div>
-													</div>
-												</div>
-											</div>
-
-											<!--end::Item-->
-										</div>
-
-										<!--end::Section-->
-									</div>
-
-									<!--begin::Form-->
-
-									<!--end::Form-->
-								</div>
-
-							</div>
-
-								<!--end::Portlet-->
-							
-
-								<!--end::Portlet-->
-							</div>
+						<div class="m-portlet__body">
+							<table class="table table-striped m-table">
+								<tbody>
+									<tr>
+										<th scope="row">Ingresos liquidos mensuales</th>
+										<td><?php echo $datos_credito['ingreso_mensual']; ?></td>
+									</tr>
+									<tr>
+										<th scope="row">Ingresos liquidos mensuales conyugue</th>
+										<td><?php echo $datos_credito['ingreso_conyugue']; ?></td>
+									</tr>
+									<tr style="display: none;" id="ayuda_pb">
+										<th scope="row">Ingresos liquidos mensuales papa</th>
+										<td id="monto_pb"></td>
+									</tr>
+									<tr>
+										<th scope="row">Cuota Mensual</th>
+										<td><?php echo $cuota['cuota_total']; ?></td>
+									</tr>
+									<tr>
+										<th scope="row">Tasa de interes</th>
+										<td>5.5%</td>
+									</tr>
+									<tr>
+										<th scope="row">Plazo</th>
+										<td>25 a&nacute;os</td>
+									</tr>
+								</tbody>
+							</table>
 
 						</div>
+
+						<?php // echo vdebug($cuota, false, false, true); ?>
+
+						<!--begin::Form-->
+						<!-- <form class="m-form m-form--fit m-form--label-align-right" action="/"> -->
+
+									<!--begin::Preview-->
+									<div class="m-demo">
+
+										<div class="m-portlet__body">
+											Listado Condominios
+										<table class="table m-table m-table--head-bg-warning">
+										<thead>
+											<tr>
+												<th>#</th>
+												<th>Descripcion</th>
+												<th>Ciudad</th>
+												<th>Valor Inmueble</th>
+												<th>Cuota Mensual</th>
+												<th>Sueldo ideal</th>
+												<th></th>
+											</tr>
+										</thead>
+										<tbody>
+										<?php $ingreso_total_solicitante = $datos_credito['ingreso_mensual']+$datos_credito['ingreso_conyugue'] ?>
+										<?php foreach ($condominios as $c): ?>
+											<tr>
+												<th scope="row"><?php echo $c['id'] ?></th>
+												<td><?php echo $c['descripcion'] ?></td>
+												<td><?php echo $c['ciudad'] ?></td>
+												<td><?php echo $c['valor'] ?></td>
+												<td><?php echo $c['cuota_mensual'] ?></td>
+												<td><?php echo $c['sueldo_prom'] ?></td>
+												<td>
+													<?php if ($c['sueldo_prom'] <= $ingreso_total_solicitante): ?>
+														<a href="#" class="btn btn-success m-btn m-btn--icon btn-sm m-btn--icon-only">
+															<i class="fa fa-check"></i>
+														</a>
+													<?php else: ?>
+														<a href="#" class="btn btn-danger m-btn m-btn--icon btn-sm m-btn--icon-only" onclick="muestra_papab(<?php echo $c['id'] ?>, '<?php echo $c['descripcion'] ?>')">
+															<i class="fa fa-ban"></i>
+														</a>
+													<?php endif; ?>
+												</td>
+											</tr>
+										<?php endforeach; ?>
+											
+										</tbody>
+									</table>
+								</div>
+									</div>
+
+									<!--end::Preview-->
+							
+							<!-- <div class="m-portlet__foot m-portlet__foot--fit" >
+								<center>
+								<div class="m-form__actions">
+									<button type="submit" class="btn m-btn--pill    btn-accent">Siguiente</button>
+									<button type="button" onclick="agregarform()" class="btn m-btn--pill    btn-success">Agregar Conyugue</button>
+								</div>
+								</center>
+							</div> -->
+						<!-- </form> -->
+
+						<!--end::Form-->
 					</div>
+
+					<!--end::Portlet-->
+				</div>
+
+				<div class="col-md-4 item" id="bloque_1" style="display: block;">
+					<a href="#" class="btn btn-block btn-success" id='titulo_vivienda'></a>
+					<!--begin::Portlet-->
+					<div class="m-portlet m-portlet--tab">
+						<div class="m-portlet__head">
+							<div class="m-portlet__head-caption">
+								<div class="m-portlet__head-title">
+									<span class="m-portlet__head-icon m--hide">
+										<i class="la la-gear"></i>
+									</span>
+									<h3 class="m-portlet__head-text">
+										Registro Ingresos del papa
+									</h3>
+								</div>
+							</div>
+						</div>
+
+						<div class="m-portlet__body">
+
+							<div class="form-group m-form__group row">
+								<div class="col-lg-4">
+									<label class="">Carnet Identidad:</label>
+									<input type="text" class="form-control m-input m-input--air m-input--pill" name="ci_c" id="ci2" required>
+								</div>
+								<div class="col-lg-8">
+									<label class="">Nombre</label>
+									<input type="text" class="form-control m-input m-input--air m-input--pill" value="Juan Carlos Perez Zuaso" name="ci_c" id="ci2" readonly>
+								</div>
+							</div>
+
+							<!--begin::Section-->
+							<div class="m-accordion m-accordion--default m-accordion--toggle-arrow" id="m_accordion_5" role="tablist">
+
+								<!--begin::Item-->
+								<div class="m-accordion__item m-accordion__item--danger">
+									<div class="m-accordion__item-head collapsed" srole="tab" id="m_accordion_5_item_1_head" data-toggle="collapse" href="#m_accordion_5_item_1_body" aria-expanded="false">
+										<span class="m-accordion__item-icon"><i class="fa flaticon-user-ok"></i></span>
+										<span class="m-accordion__item-title"> Formulario Independientes</span>
+										<span class="m-accordion__item-mode"></span>
+									</div>
+									<div class="m-accordion__item-body collapse" id="m_accordion_5_item_1_body" role="tabpanel" aria-labelledby="m_accordion_5_item_1_head" data-parent="#m_accordion_5" style="">
+										<div class="m-accordion__item-content">
+
+										
+										<div class="form-group m-form__group row">
+											<div class="col-lg-4">
+												<label class="">Tipo:</label>
+												<select class="form-control m-input" id="cb_ipb">
+													<option value="Comercio">Comercio</option>
+													<option value="Servicio">Servicio</option>
+													<option value="Productivo">Productivo</option>
+												</select>
+											</div>
+											<div class="col-lg-4">
+												<label class="">Ingreso Bruto:</label>
+												<div class="m-input-icon m-input-icon--right">
+													<input type="text" class="form-control m-input m-input--air m-input--pill" name="paterno_c" id="txt_impb">
+													<span class="m-input-icon__icon m-input-icon__icon--right"></span>
+												</div>
+											</div>
+
+											<div class="col-lg-4">
+												<label class="">Gastos:</label>
+												<div class="m-input-icon m-input-icon--right">
+													<input type="text" class="form-control m-input m-input--air m-input--pill" name="paterno_c" id="txt_igpb">
+													<span class="m-input-icon__icon m-input-icon__icon--right"></span>
+												</div>
+											</div>
+
+										</div>
+
+									<div class="m-portlet__foot m-portlet__foot--fit">
+										<center>
+											<div class="m-form__actions">
+												<button type="submit" class="btn m-btn--pill btn-accent" onclick=calcula_cuota();>Calcular</button>
+												<button type="button" class="btn m-btn--pill btn-success" onclick="muestra2();">Pedir Ayuda</button>
+											</div>
+										</center>
+									</div>
+											
+										</div>
+									</div>
+								</div>
+
+								<!--end::Item-->
+
+								<!--begin::Item-->
+								<div class="m-accordion__item m-accordion__item--brand">
+									<div class="m-accordion__item-head collapsed" role="tab" id="m_accordion_5_item_3_head" data-toggle="collapse" href="#m_accordion_5_item_3_body" aria-expanded="false">
+										<span class="m-accordion__item-icon"><i class="fa  flaticon-user-ok"></i></span>
+										<span class="m-accordion__item-title"> Formulario Dependientes</span>
+										<span class="m-accordion__item-mode"></span>
+									</div>
+									<div class="m-accordion__item-body collapse" id="m_accordion_5_item_3_body" role="tabpanel" aria-labelledby="m_accordion_5_item_3_head" data-parent="#m_accordion_5">
+										<div class="m-accordion__item-content">
+											<div class="form-group m-form__group row">
+
+												<div class="col-lg-12">
+													<label class="">Monto:</label>
+													<div class="m-input-icon m-input-icon--right">
+														<input type="text" class="form-control m-input m-input--air m-input--pill" name="paterno_c" id="txt_dmbp">
+														<span class="m-input-icon__icon m-input-icon__icon--right"></span>
+													</div>
+												</div>
+											</div>
+											<div class="m-portlet__foot m-portlet__foot--fit">
+												<center>
+													<div class="m-form__actions">
+														<button type="submit" class="btn m-btn--pill btn-accent">Calcular</button>
+														<button type="button" class="btn m-btn--pill btn-success" onclick="muestra2();">Pedir Ayuda</button>
+													</div>
+												</center>
+											</div>
+										</div>
+									</div>
+								</div>
+
+								<!--end::Item-->
+							</div>
+
+							<!--end::Section-->
+						</div>
+
+						<!--begin::Form-->
+
+						<!--end::Form-->
+					</div>
+
+					<div style="display: block;" id="bloque_2">
+					<a href="#" class="btn btn-block btn-success" id='titulo_vivienda'></a>
+					<!--begin::Portlet-->
+					<div class="m-portlet m-portlet--tab">
+						<div class="m-portlet__head">
+							<div class="m-portlet__head-caption">
+								<div class="m-portlet__head-title">
+									<span class="m-portlet__head-icon m--hide">
+										<i class="la la-gear"></i>
+									</span>
+									<h3 class="m-portlet__head-text">
+										Registro Ingresos del mama
+									</h3>
+								</div>
+							</div>
+						</div>
+
+						<div class="m-portlet__body">
+
+							<div class="form-group m-form__group row">
+								<div class="col-lg-4">
+									<label class="">Carnet Identidad:</label>
+									<input type="text" class="form-control m-input m-input--air m-input--pill" name="ci_c" id="ci2" required>
+								</div>
+								<div class="col-lg-8">
+									<label class="">Nombre</label>
+									<input type="text" class="form-control m-input m-input--air m-input--pill" value="Juan Carlos Perez Zuaso" name="ci_c" id="ci2" readonly>
+								</div>
+							</div>
+
+							<!--begin::Section-->
+							<div class="m-accordion m-accordion--default m-accordion--toggle-arrow" id="m_accordion_5" role="tablist">
+
+								<!--begin::Item-->
+								<div class="m-accordion__item m-accordion__item--danger">
+									<div class="m-accordion__item-head collapsed" srole="tab" id="m_accordion_5_item_1_head" data-toggle="collapse" href="#m_accordion_5_item_1_body" aria-expanded="false">
+										<span class="m-accordion__item-icon"><i class="fa flaticon-user-ok"></i></span>
+										<span class="m-accordion__item-title"> Formulario Independientes</span>
+										<span class="m-accordion__item-mode"></span>
+									</div>
+									<div class="m-accordion__item-body collapse" id="m_accordion_5_item_1_body" role="tabpanel" aria-labelledby="m_accordion_5_item_1_head" data-parent="#m_accordion_5" style="">
+										<div class="m-accordion__item-content">
+
+										
+										<div class="form-group m-form__group row">
+											<div class="col-lg-4">
+												<label class="">Tipo:</label>
+												<select class="form-control m-input" id="cb_ipb">
+													<option value="Comercio">Comercio</option>
+													<option value="Servicio">Servicio</option>
+													<option value="Productivo">Productivo</option>
+												</select>
+											</div>
+											<div class="col-lg-4">
+												<label class="">Ingreso Bruto:</label>
+												<div class="m-input-icon m-input-icon--right">
+													<input type="text" class="form-control m-input m-input--air m-input--pill" name="paterno_c" id="txt_impb">
+													<span class="m-input-icon__icon m-input-icon__icon--right"></span>
+												</div>
+											</div>
+
+											<div class="col-lg-4">
+												<label class="">Gastos:</label>
+												<div class="m-input-icon m-input-icon--right">
+													<input type="text" class="form-control m-input m-input--air m-input--pill" name="paterno_c" id="txt_igpb">
+													<span class="m-input-icon__icon m-input-icon__icon--right"></span>
+												</div>
+											</div>
+
+										</div>
+
+									<div class="m-portlet__foot m-portlet__foot--fit">
+										<center>
+											<div class="m-form__actions">
+												<button type="submit" class="btn m-btn--pill btn-accent" onclick=calcula_cuota();>Calcular</button>
+												<button type="button" class="btn m-btn--pill btn-success" onclick="muestra2()">Pedir Ayuda</button>
+											</div>
+										</center>
+									</div>
+											
+										</div>
+									</div>
+								</div>
+
+								<!--end::Item-->
+
+								<!--begin::Item-->
+								<div class="m-accordion__item m-accordion__item--brand">
+									<div class="m-accordion__item-head collapsed" role="tab" id="m_accordion_5_item_3_head" data-toggle="collapse" href="#m_accordion_5_item_3_body" aria-expanded="false">
+										<span class="m-accordion__item-icon"><i class="fa  flaticon-user-ok"></i></span>
+										<span class="m-accordion__item-title"> Formulario Dependientes</span>
+										<span class="m-accordion__item-mode"></span>
+									</div>
+									<div class="m-accordion__item-body collapse" id="m_accordion_5_item_3_body" role="tabpanel" aria-labelledby="m_accordion_5_item_3_head" data-parent="#m_accordion_5">
+										<div class="m-accordion__item-content">
+											<div class="form-group m-form__group row">
+
+												<div class="col-lg-12">
+													<label class="">Monto:</label>
+													<div class="m-input-icon m-input-icon--right">
+														<input type="text" class="form-control m-input m-input--air m-input--pill" name="paterno_c" id="txt_dmbp">
+														<span class="m-input-icon__icon m-input-icon__icon--right"></span>
+													</div>
+												</div>
+											</div>
+											<div class="m-portlet__foot m-portlet__foot--fit">
+												<center>
+													<div class="m-form__actions">
+														<button type="submit" class="btn m-btn--pill btn-accent">Calcular</button>
+														<button type="button" class="btn m-btn--pill btn-success" onclick="muestra2();">Pedir Ayuda</button>
+													</div>
+												</center>
+											</div>
+										</div>
+									</div>
+								</div>
+
+								<!--end::Item-->
+							</div>
+
+							<!--end::Section-->
+						</div>
+
+						<!--begin::Form-->
+
+						<!--end::Form-->
+					</div>
+
+					</div>
+
+				
+		
+				</div>
+
+				<div class="col-md-4 item" id="bloque_1" style="display: block;">
+					<a href="#" class="btn btn-block btn-success" id='titulo_vivienda'></a>
+					<!--begin::Portlet-->
+					<div class="m-portlet m-portlet--tab">
+						<div class="m-portlet__head">
+							<div class="m-portlet__head-caption">
+								<div class="m-portlet__head-title">
+									<span class="m-portlet__head-icon m--hide">
+										<i class="la la-gear"></i>
+									</span>
+									<h3 class="m-portlet__head-text">
+										Registro Ingresos del papa
+									</h3>
+								</div>
+							</div>
+						</div>
+
+						<div class="m-portlet__body">
+
+							<div class="form-group m-form__group row">
+								<div class="col-lg-4">
+									<label class="">Carnet Identidad:</label>
+									<input type="text" class="form-control m-input m-input--air m-input--pill" name="ci_c" id="ci2" required>
+								</div>
+								<div class="col-lg-8">
+									<label class="">Nombre</label>
+									<input type="text" class="form-control m-input m-input--air m-input--pill" value="Juan Carlos Perez Zuaso" name="ci_c" id="ci2" readonly>
+								</div>
+							</div>
+
+							<!--begin::Section-->
+							<div class="m-accordion m-accordion--default m-accordion--toggle-arrow" id="m_accordion_5" role="tablist">
+
+								<!--begin::Item-->
+								<div class="m-accordion__item m-accordion__item--danger">
+									<div class="m-accordion__item-head collapsed" srole="tab" id="m_accordion_5_item_1_head" data-toggle="collapse" href="#m_accordion_5_item_1_body" aria-expanded="false">
+										<span class="m-accordion__item-icon"><i class="fa flaticon-user-ok"></i></span>
+										<span class="m-accordion__item-title"> Formulario Independientes</span>
+										<span class="m-accordion__item-mode"></span>
+									</div>
+									<div class="m-accordion__item-body collapse" id="m_accordion_5_item_1_body" role="tabpanel" aria-labelledby="m_accordion_5_item_1_head" data-parent="#m_accordion_5" style="">
+										<div class="m-accordion__item-content">
+
+										
+										<div class="form-group m-form__group row">
+											<div class="col-lg-4">
+												<label class="">Tipo:</label>
+												<select class="form-control m-input" id="cb_ipb">
+													<option value="Comercio">Comercio</option>
+													<option value="Servicio">Servicio</option>
+													<option value="Productivo">Productivo</option>
+												</select>
+											</div>
+											<div class="col-lg-4">
+												<label class="">Ingreso Bruto:</label>
+												<div class="m-input-icon m-input-icon--right">
+													<input type="text" class="form-control m-input m-input--air m-input--pill" name="paterno_c" id="txt_impb">
+													<span class="m-input-icon__icon m-input-icon__icon--right"></span>
+												</div>
+											</div>
+
+											<div class="col-lg-4">
+												<label class="">Gastos:</label>
+												<div class="m-input-icon m-input-icon--right">
+													<input type="text" class="form-control m-input m-input--air m-input--pill" name="paterno_c" id="txt_igpb">
+													<span class="m-input-icon__icon m-input-icon__icon--right"></span>
+												</div>
+											</div>
+
+										</div>
+
+									<div class="m-portlet__foot m-portlet__foot--fit">
+										<center>
+											<div class="m-form__actions">
+												<button type="submit" class="btn m-btn--pill btn-accent" onclick=calcula_cuota();>Calcular</button>
+												<button type="button" class="btn m-btn--pill btn-success" onclick="muestra2();">Pedir Ayuda</button>
+											</div>
+										</center>
+									</div>
+											
+										</div>
+									</div>
+								</div>
+
+								<!--end::Item-->
+
+								<!--begin::Item-->
+								<div class="m-accordion__item m-accordion__item--brand">
+									<div class="m-accordion__item-head collapsed" role="tab" id="m_accordion_5_item_3_head" data-toggle="collapse" href="#m_accordion_5_item_3_body" aria-expanded="false">
+										<span class="m-accordion__item-icon"><i class="fa  flaticon-user-ok"></i></span>
+										<span class="m-accordion__item-title"> Formulario Dependientes</span>
+										<span class="m-accordion__item-mode"></span>
+									</div>
+									<div class="m-accordion__item-body collapse" id="m_accordion_5_item_3_body" role="tabpanel" aria-labelledby="m_accordion_5_item_3_head" data-parent="#m_accordion_5">
+										<div class="m-accordion__item-content">
+											<div class="form-group m-form__group row">
+
+												<div class="col-lg-12">
+													<label class="">Monto:</label>
+													<div class="m-input-icon m-input-icon--right">
+														<input type="text" class="form-control m-input m-input--air m-input--pill" name="paterno_c" id="txt_dmbp">
+														<span class="m-input-icon__icon m-input-icon__icon--right"></span>
+													</div>
+												</div>
+											</div>
+											<div class="m-portlet__foot m-portlet__foot--fit">
+												<center>
+													<div class="m-form__actions">
+														<button type="submit" class="btn m-btn--pill btn-accent">Calcular</button>
+														<button type="button" class="btn m-btn--pill btn-success" onclick="muestra2();">Pedir Ayuda</button>
+													</div>
+												</center>
+											</div>
+										</div>
+									</div>
+								</div>
+
+								<!--end::Item-->
+							</div>
+
+							<!--end::Section-->
+						</div>
+
+						<!--begin::Form-->
+
+						<!--end::Form-->
+					</div>
+
+					<div style="display: block;" id="bloque_2">
+					<a href="#" class="btn btn-block btn-success" id='titulo_vivienda'></a>
+					<!--begin::Portlet-->
+					<div class="m-portlet m-portlet--tab">
+						<div class="m-portlet__head">
+							<div class="m-portlet__head-caption">
+								<div class="m-portlet__head-title">
+									<span class="m-portlet__head-icon m--hide">
+										<i class="la la-gear"></i>
+									</span>
+									<h3 class="m-portlet__head-text">
+										Registro Ingresos del mama
+									</h3>
+								</div>
+							</div>
+						</div>
+
+						<div class="m-portlet__body">
+
+							<div class="form-group m-form__group row">
+								<div class="col-lg-4">
+									<label class="">Carnet Identidad:</label>
+									<input type="text" class="form-control m-input m-input--air m-input--pill" name="ci_c" id="ci2" required>
+								</div>
+								<div class="col-lg-8">
+									<label class="">Nombre</label>
+									<input type="text" class="form-control m-input m-input--air m-input--pill" value="Juan Carlos Perez Zuaso" name="ci_c" id="ci2" readonly>
+								</div>
+							</div>
+
+							<!--begin::Section-->
+							<div class="m-accordion m-accordion--default m-accordion--toggle-arrow" id="m_accordion_5" role="tablist">
+
+								<!--begin::Item-->
+								<div class="m-accordion__item m-accordion__item--danger">
+									<div class="m-accordion__item-head collapsed" srole="tab" id="m_accordion_5_item_1_head" data-toggle="collapse" href="#m_accordion_5_item_1_body" aria-expanded="false">
+										<span class="m-accordion__item-icon"><i class="fa flaticon-user-ok"></i></span>
+										<span class="m-accordion__item-title"> Formulario Independientes</span>
+										<span class="m-accordion__item-mode"></span>
+									</div>
+									<div class="m-accordion__item-body collapse" id="m_accordion_5_item_1_body" role="tabpanel" aria-labelledby="m_accordion_5_item_1_head" data-parent="#m_accordion_5" style="">
+										<div class="m-accordion__item-content">
+
+										
+										<div class="form-group m-form__group row">
+											<div class="col-lg-4">
+												<label class="">Tipo:</label>
+												<select class="form-control m-input" id="cb_ipb">
+													<option value="Comercio">Comercio</option>
+													<option value="Servicio">Servicio</option>
+													<option value="Productivo">Productivo</option>
+												</select>
+											</div>
+											<div class="col-lg-4">
+												<label class="">Ingreso Bruto:</label>
+												<div class="m-input-icon m-input-icon--right">
+													<input type="text" class="form-control m-input m-input--air m-input--pill" name="paterno_c" id="txt_impb">
+													<span class="m-input-icon__icon m-input-icon__icon--right"></span>
+												</div>
+											</div>
+
+											<div class="col-lg-4">
+												<label class="">Gastos:</label>
+												<div class="m-input-icon m-input-icon--right">
+													<input type="text" class="form-control m-input m-input--air m-input--pill" name="paterno_c" id="txt_igpb">
+													<span class="m-input-icon__icon m-input-icon__icon--right"></span>
+												</div>
+											</div>
+
+										</div>
+
+									<div class="m-portlet__foot m-portlet__foot--fit">
+										<center>
+											<div class="m-form__actions">
+												<button type="submit" class="btn m-btn--pill btn-accent" onclick=calcula_cuota();>Calcular</button>
+												<button type="button" class="btn m-btn--pill btn-success" onclick="muestra2()">Pedir Ayuda</button>
+											</div>
+										</center>
+									</div>
+											
+										</div>
+									</div>
+								</div>
+
+								<!--end::Item-->
+
+								<!--begin::Item-->
+								<div class="m-accordion__item m-accordion__item--brand">
+									<div class="m-accordion__item-head collapsed" role="tab" id="m_accordion_5_item_3_head" data-toggle="collapse" href="#m_accordion_5_item_3_body" aria-expanded="false">
+										<span class="m-accordion__item-icon"><i class="fa  flaticon-user-ok"></i></span>
+										<span class="m-accordion__item-title"> Formulario Dependientes</span>
+										<span class="m-accordion__item-mode"></span>
+									</div>
+									<div class="m-accordion__item-body collapse" id="m_accordion_5_item_3_body" role="tabpanel" aria-labelledby="m_accordion_5_item_3_head" data-parent="#m_accordion_5">
+										<div class="m-accordion__item-content">
+											<div class="form-group m-form__group row">
+
+												<div class="col-lg-12">
+													<label class="">Monto:</label>
+													<div class="m-input-icon m-input-icon--right">
+														<input type="text" class="form-control m-input m-input--air m-input--pill" name="paterno_c" id="txt_dmbp">
+														<span class="m-input-icon__icon m-input-icon__icon--right"></span>
+													</div>
+												</div>
+											</div>
+											<div class="m-portlet__foot m-portlet__foot--fit">
+												<center>
+													<div class="m-form__actions">
+														<button type="submit" class="btn m-btn--pill btn-accent">Calcular</button>
+														<button type="button" class="btn m-btn--pill btn-success" onclick="muestra2();">Pedir Ayuda</button>
+													</div>
+												</center>
+											</div>
+										</div>
+									</div>
+								</div>
+
+								<!--end::Item-->
+							</div>
+
+							<!--end::Section-->
+						</div>
+
+						<!--begin::Form-->
+
+						<!--end::Form-->
+					</div>
+
+					</div>
+
+				
+		
 				</div>
 			</div>
-
+		</div>
+	</div>
+</div>
 			<!-- end:: Body -->
 <script type="text/javascript">
 
