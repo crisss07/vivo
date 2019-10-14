@@ -129,10 +129,10 @@
     $('#m_table_1').DataTable( {
         "language": {
             "lengthMenu": "_MENU_ registros por página",
-            "zeroRecords": "Nothing found - sorry",
+            "zeroRecords": "Nada encontrado - lo siento",
             "search": "Buscar",
             "info": "Mostrando la página  _PAGE_ de _PAGES_",
-            "infoEmpty": "No records available",
+            "infoEmpty": "No hay registros disponibles.",
             "infoFiltered": "(filtrado de _MAX_ registros totales)"
         }
     } );
