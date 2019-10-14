@@ -47,6 +47,7 @@ License: You must have a valid license purchased only from themeforest(the above
 	<!--end::Global Theme Styles -->
 
 	<!--begin::Page Vendors Styles -->
+	<script src="https://cdn.jsdelivr.net/npm/chart.js@2.8.0"></script>
 
 
 	<!--RTL version:<link href="assets/vendors/custom/fullcalendar/fullcalendar.bundle.rtl.css" rel="stylesheet" type="text/css" />-->
