@@ -28,7 +28,7 @@ class Solicitudes extends CI_Controller {
 	function calcula_cuota_mes($monto_prestamo = null, $porcentaje = null, $cuotas = null)
 	{
 		// $montos_cuota = $this->calcula_cuota_mes(208800, 0.0045, 300);
-		// $valor = 208800*((0,0045*(1+0,0045)^300)/((1+0,0045)^300-1))
+		// $valor = 208800*((0,0045*(1+0,0045)^300)/((1+0,0045)^300-1));
 		$cuota_mensual = $monto_prestamo * (($porcentaje * pow((1 + $porcentaje), $cuotas)) / (pow((1 + $porcentaje), $cuotas) - 1));
 		$porcentaje_ajuste = $cuota_mensual*0.01;
 		$monto_ajustado = $cuota_mensual + $porcentaje_ajuste;

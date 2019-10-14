@@ -34,7 +34,75 @@
 											</div>
 										</div>
 									</div>
-									<?php echo vdebug($cuota, false, false, true); ?>
+
+									<div class="m-portlet__body">
+
+										<!--begin::Section-->
+										<div class="m-accordion m-accordion--default m-accordion--toggle-arrow" id="m_accordion_5" role="tablist">
+
+											<!--begin::Item-->
+											<div class="m-accordion__item m-accordion__item--danger">
+												<div class="m-accordion__item-head collapsed" srole="tab" id="m_accordion_5_item_1_head" data-toggle="collapse" href="#m_accordion_5_item_1_body" aria-expanded="false">
+													<span class="m-accordion__item-icon"><i class="fa flaticon-user-ok"></i></span>
+													<span class="m-accordion__item-title">It has been the industry since 2013</span>
+													<span class="m-accordion__item-mode"></span>
+												</div>
+												<div class="m-accordion__item-body collapse" id="m_accordion_5_item_1_body" role="tabpanel" aria-labelledby="m_accordion_5_item_1_head" data-parent="#m_accordion_5" style="">
+													<div class="m-accordion__item-content">
+														<p>
+															Lorem Ipsum has been the industry's standard dummy text ever since the 1500s, when an unknown printer took a galley of type and scrambled it to make a type specimen book. It has survived not only five centuries, but also the leap into
+															electronic typesetting, remaining essentially unchanged. It was popularised in the 1960s with the release of Letraset sheets containing
+														</p>
+													</div>
+												</div>
+											</div>
+
+											<!--end::Item-->
+
+											<!--begin::Item-->
+											<div class="m-accordion__item m-accordion__item--info">
+												<div class="m-accordion__item-head collapsed" role="tab" id="m_accordion_5_item_2_head" data-toggle="collapse" href="#m_accordion_5_item_2_body" aria-expanded="false">
+													<span class="m-accordion__item-icon"><i class="fa  flaticon-placeholder"></i></span>
+													<span class="m-accordion__item-title">Lorem Ipsum has been the industry</span>
+													<span class="m-accordion__item-mode"></span>
+												</div>
+												<div class="m-accordion__item-body collapse" id="m_accordion_5_item_2_body" role="tabpanel" aria-labelledby="m_accordion_5_item_2_head" data-parent="#m_accordion_5" style="">
+													<div class="m-accordion__item-content">
+														<p>
+															Lorem Ipsum has been the industry's standard dummy text ever since the 1500s, when an unknown printer took a galley of type and scrambled it to make a type specimen book. It has survived not only five centuries, but also the leap into
+															electronic typesetting, remaining essentially unchanged. It was popularised in the 1960s with the release of Letraset sheets containing Lorem Ipsum has been the industry's standard dummy text ever since the 1500s, when an unknown
+															printer took a galley of type and scrambled it to make a type specimen book. It has survived not only five centuries, but also the leap into electronic typesetting, remaining essentially unchanged. It was popularised in the 1960s with
+															the release of Letraset sheets containing
+														</p>
+													</div>
+												</div>
+											</div>
+
+											<!--end::Item-->
+
+											<!--begin::Item-->
+											<div class="m-accordion__item m-accordion__item--brand">
+												<div class="m-accordion__item-head collapsed" role="tab" id="m_accordion_5_item_3_head" data-toggle="collapse" href="#m_accordion_5_item_3_body" aria-expanded="    false">
+													<span class="m-accordion__item-icon"><i class="fa  flaticon-alert-2"></i></span>
+													<span class="m-accordion__item-title"> Lorem Ipsum has been the industry</span>
+													<span class="m-accordion__item-mode"></span>
+												</div>
+												<div class="m-accordion__item-body collapse" id="m_accordion_5_item_3_body" role="tabpanel" aria-labelledby="m_accordion_5_item_3_head" data-parent="#m_accordion_5">
+													<div class="m-accordion__item-content">
+														<p>
+															Lorem Ipsum has been the industry's standard dummy text ever since the 1500s, when an unknown printer took a galley of type and scrambled it to make a type specimen book. It has survived not only five centuries, but also the leap into
+															electronic typesetting, remaining essentially unchanged. It was popularised in the 1960s with the release of Letraset sheets containing
+														</p>
+													</div>
+												</div>
+											</div>
+
+											<!--end::Item-->
+										</div>
+
+										<!--end::Section-->
+									</div>
+									<?php // echo vdebug($cuota, false, false, true); ?>
 
 									<!--begin::Form-->
 									<?php echo form_open('Persona/insertar', array('method'=>'POST', 'class' => 'm-form m-form--fit m-form--label-align-right')); ?>
@@ -139,14 +207,16 @@
 													<i class="la la-gear"></i>
 												</span>
 												<h3 class="m-portlet__head-text">
-													Datos del Papa
+													Registro Ingresos del papa
 												</h3>
 											</div>
 										</div>
 									</div>
 
+									
+
 									<div class="m-portlet">
-                  
+
 										<ul class="nav nav-pills nav-fill" role="tablist">
 											<li class="nav-item">
 												<a class="nav-link active" data-toggle="tab" href="#m_tabs_5_1">Independientes</a>
@@ -156,55 +226,57 @@
 											</li>
 										</ul>
 										<div class="tab-content">
-													<?php //echo form_open('Persona/insertar', array('method'=>'POST', 'class' => 'm-form m-form--fit m-form--label-align-right')); ?>
-													<form class="m-form m-form--fit m-form--label-align-right m-form--group-seperator-dashed" action="/">
-														<div class="m-portlet__body">
+											<?php //echo form_open('Persona/insertar', array('method'=>'POST', 'class' => 'm-form m-form--fit m-form--label-align-right')); ?>
+											<form class="m-form m-form--fit m-form--label-align-right m-form--group-seperator-dashed" action="/">
+												<div class="m-portlet__body">
 
-															<div class="form-group m-form__group row">
-																<div class="col-lg-4">
-																	<label class="">N&uacute;mero de Carnet Identidad:</label>
-																	<input type="text" class="form-control m-input m-input--air m-input--pill" name="ci_c" id="ci2" required>
-																</div>
-															</div>
-															<div class="form-group m-form__group row">
-																<div class="col-lg-6">
-																	<label class="">Tipo:</label>
-																	<select class="form-control m-input" id="exampleSelect1">
-																		<option>Comercio</option>
-																		<option>Servicios</option>
-																		<option>Productivo</option>
-																	</select>
-																</div>
-																<div class="col-lg-6">
-																	<label class="">Monto:</label>
-																	<div class="m-input-icon m-input-icon--right">
-																		<input type="text" class="form-control m-input m-input--air m-input--pill" name="paterno_c" id="paterno_c">
-																		<span class="m-input-icon__icon m-input-icon__icon--right"></span>
-																	</div>
-																</div>
-																
-															</div>
-															
+													<div class="form-group m-form__group row">
+														<div class="col-lg-4">
+															<label class="">N&uacute;mero de Carnet Identidad:</label>
+															<input type="text" class="form-control m-input m-input--air m-input--pill"
+																name="ci_c" id="ci2" required>
 														</div>
-														<div class="m-portlet__foot m-portlet__foot--fit" >
-															<center>
-															<div class="m-form__actions">
-																<button type="submit" class="btn m-btn--pill    btn-accent">Solicitar</button>
-																<button type="button" class="btn m-btn--pill    btn-success">Pedir Ayuda</button>
-															</div>
-															</center>
+													</div>
+													<div class="form-group m-form__group row">
+														<div class="col-lg-6">
+															<label class="">Tipo:</label>
+															<select class="form-control m-input" id="exampleSelect1">
+																<option>Comercio</option>
+																<option>Servicios</option>
+																<option>Productivo</option>
+															</select>
 														</div>
-													</form>
+														<div class="col-lg-6">
+															<label class="">Monto:</label>
+															<div class="m-input-icon m-input-icon--right">
+																<input type="text" class="form-control m-input m-input--air m-input--pill"
+																	name="paterno_c" id="paterno_c">
+																<span class="m-input-icon__icon m-input-icon__icon--right"></span>
+															</div>
+														</div>
 
-											</div>
-											<div class="tab-pane" id="m_tabs_5_2" role="tabpanel">
-													
-											</div>
-								</div>
+													</div>
+
+												</div>
+												<div class="m-portlet__foot m-portlet__foot--fit">
+													<center>
+														<div class="m-form__actions">
+															<button type="submit" class="btn m-btn--pill    btn-accent">Solicitar</button>
+															<button type="button" class="btn m-btn--pill    btn-success">Pedir Ayuda</button>
+														</div>
+													</center>
+												</div>
+											</form>
+
+										</div>
+										<div class="tab-pane" id="m_tabs_5_2" role="tabpanel">
+
+										</div>
+									</div>
 
 
-								<!--begin::Form-->
-									
+									<!--begin::Form-->
+
 
 									<!--end::Form-->
 								</div>
