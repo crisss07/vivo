@@ -245,6 +245,8 @@
 			</div>
 
 			<!-- end:: Body -->
+
+
 <script type="text/javascript">
 
     $("#ci1").focusout(function(){
@@ -259,16 +261,25 @@
             data: {csrfName: csrfHash, param1: ci},
             // data: {param1: cod_catastral},
             success:function(data, textStatus, jqXHR) {
+            	//alert(data);
                 //alert("Se envio bien");
                 // csrfName = data.csrfName;
                 // csrfHash = data.csrfHash;
                 // alert(data.message);
 	            if (data.estado == 'registrado') {
-	            	alert(data.mensaje);
-	            	$("#verificar").html();
+	            	alerta();
+	            	$("#verificar").prop('type', 'button');
 	            }
 	            else
 	            {
+
+	            	if (data.estado == 'noEdad') {
+	            		alerta_edad();
+	            		$("#verificar").prop('type', 'button');
+	            	}
+	            	else
+	            	{
+	            		$("#verificar").prop('type', 'submit');
 	            		if (data.estado == 'segip') {
 		                        $("#msg_error_catastral").hide();
 		                    $("#msg_sucess_catastral").show();
@@ -293,12 +304,12 @@
 
 		                    $("#materno").prop("disabled", false);
 		                }
+	            	}
            		}  
-	              
 
             },
             error:function(jqXHR, textStatus, errorThrown) {
-                // alert("error");
+                alerta_ci();
             }
         });
     });
@@ -324,30 +335,46 @@
                 // csrfName = data.csrfName;
                 // csrfHash = data.csrfHash;
                 // alert(data.message);
-              if (data.estado == 'segip') {
-                        $("#msg_error_catastral").hide();
-                    $("#msg_sucess_catastral").show();
-                    $("#msg_alerta_catastral").show();
-                        $("#ci").val(data.ci);
-                    $("#msg_sucess_catastral").html('Esta registrado en el SEGIP la persona con Cedula de Identidad Numero: '+data.ci);
-                    $('#nombres_c').val(data.nombres);
-                    $('#paterno_c').val(data.paterno);
-                    $('#materno_c').val(data.materno);
-                    $('#fecha_c').val(data.fec_nacimiento);
-                    }else{
-                    $("#msg_sucess_catastral").hide();
-                     $("#msg_error_catastral").show();
-                     $("#msg_alerta_catastral").hide();
-                    $("#msg_error_catastral").html('La persona no existe ni en la base de datos ni en el segip: '+data.ci);
-                    $('#nombres_c').val('');
-                    $('#paterno_c').val('');
-                    $('#materno_c').val('');
-                    $("#nombres_c").prop("disabled", false);
 
-                    $("#paterno_c").prop("disabled", false);
+                if (data.estado == 'registrado') {
+	            	alerta();
+	            	$("#verificar").prop('type', 'button');
+	            }
+	            else
+	            {
+	            	if (data.estado == 'noEdad') {
+	            		alerta_edad();
+	            		$("#verificar").prop('type', 'button');
+	            	}
+	            	else
+	            	{
+	            		$("#verificar").prop('type', 'submit');
+   			            if (data.estado == 'segip') {
+			                    $("#msg_error_catastral").hide();
+			                    $("#msg_sucess_catastral").show();
+			                    $("#msg_alerta_catastral").show();
+			                    $("#ci").val(data.ci);
+			                    $("#msg_sucess_catastral").html('Esta registrado en el SEGIP la persona con Cedula de Identidad Numero: '+data.ci);
+			                    $('#nombres_c').val(data.nombres);
+			                    $('#paterno_c').val(data.paterno);
+			                    $('#materno_c').val(data.materno);
+			                    $('#fecha_c').val(data.fec_nacimiento);
+			                    }else{
+			                    $("#msg_sucess_catastral").hide();
+			                    $("#msg_error_catastral").show();
+			                    $("#msg_alerta_catastral").hide();
+			                    $("#msg_error_catastral").html('La persona no existe ni en la base de datos ni en el segip: '+data.ci);
+			                    $('#nombres_c').val('');
+			                    $('#paterno_c').val('');
+			                    $('#materno_c').val('');
+			                    $("#nombres_c").prop("disabled", false);
 
-                    $("#materno_c").prop("disabled", false);
-                }
+			                    $("#paterno_c").prop("disabled", false);
+
+			                    $("#materno_c").prop("disabled", false);
+			                }
+			        }
+	            }
             },
             error:function(jqXHR, textStatus, errorThrown) {
                 // alert("error");
@@ -364,4 +391,34 @@
               $('.item').hide('slow');
               $("#bloque_1").show('slow');
         }
+</script>
+<script>
+function alerta_edad(){
+Swal.fire({
+  type: 'error',
+  title: 'Oops...',
+  text: 'El beneficio es solo para personas que tengan la edad entre 18 años y 29 años!'
+})
+//location.reload();
+}
+</script>
+<script>
+function alerta(){
+Swal.fire({
+  type: 'error',
+  title: 'Oops...',
+  text: 'Usted ya esta registrado!. '+'Solo puede registrarse una vez.'
+})
+//location.reload();
+}
+</script>
+<script>
+function alerta_ci(){
+Swal.fire({
+  type: 'error',
+  title: 'Oops...',
+  text: 'No es un Carnet Valido!'
+})
+//location.reload();
+}
 </script>
