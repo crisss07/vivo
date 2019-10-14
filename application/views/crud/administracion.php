@@ -49,44 +49,49 @@
 													</div> 
 
 
-														<div class="m-portlet__body">
+													<div class="m-portlet__body">
 
-								<!--begin: Datatable -->
-								<table class="table table-striped- table-bordered table-hover table-checkable" id="m_table_1">
-									<thead>
-										<tr>
-											<th>Nro</th>
-											<th>Descripcion</th>
-											<th>Ciudad</th>
-											<th>Precio</th>
-											<th>Acciones</th>											
-										</tr>
-									</thead>
-									<tbody>
-                                            <?php $i=1;?>
-                                            <?php foreach ($datos as $row) {
-                                               $datos = $row->id."||".
-                                               $row->descripcion."||".
-                                               $row->ciudad."||".
-                                               $row->valor;
-                                                ?>
-                                               <tr>
-                                                <td><?php echo $i++; ?></td>
-                                                <td><?php echo $row->descripcion; ?></td>    
-                                                <td><?php echo $row->ciudad; ?></td>  
-                                                <td><?php echo $row->valor; ?></td> 
-                                                
-                                                                 
-                                                <td>
-                                                    <a href=""><button type="button" class="btn btn-warning"><span class="fas fas fa-edit" aria-hidden="true"></span></button></a>                                                  
-                                                                                                        
-                                                                                                  
-                                                </td>                                                
-                                            </tr>
-                                            <?php } ?>
-                                    </tbody>
-								</table>							
-						</div>
+														<!--begin: Datatable -->
+														<table class="table table-striped- table-bordered table-hover table-checkable" id="m_table_1">
+															<thead>
+																<tr>
+																	<th>Nro</th>
+																	<th>Descripcion</th>
+																	<th>Ciudad</th>
+																	<th>Precio</th>
+																	<th>Acciones</th>											
+																</tr>
+															</thead>
+															<tbody>
+																<?php $i=1;?>
+																<?php foreach ($datos as $row) { $data = $row->id."||".
+																$row->descripcion."||".$row->ciudad."||".
+																	$row->valor;  ?>
+																	<tr>
+																		<td><?php echo $i++; ?></td>
+																		<td><?php echo $row->descripcion; ?></td>    
+																		<td><?php echo $row->ciudad; ?></td>  
+																		<td><?php echo $row->valor; ?></td> 
+
+
+																		<td>
+																			<button type="button" class="btn btn-warning footable-edit" data-toggle="modal" data-target="#modalEdicion" onclick="agregarform('<?php echo $data ?>')">
+																				<span class="fas fa-pencil-alt" aria-hidden="true">
+																				</span>
+																			</button>
+
+																			<a href="<?php echo base_url('Administrador/delete/'.$row->id); ?>" type="button" class="btn btn-danger ">
+																				<span class="fas fa-trash-alt" aria-hidden="true">
+																				</span>
+																			</a>                                                
+
+
+																		</td>                                                
+																	</tr>
+																<?php } ?>
+															</tbody>
+														</table>							
+													</div>
 
 
 
@@ -132,27 +137,27 @@
 
 													<div class="form-group m-form__group">
 														<label for="example-text-input" >Descripcion</label>
-															<input class="form-control m-input m-input--air m-input--pill" type="text" value="" id="example-text-input" name="descripcion" required="">
+														<input class="form-control m-input m-input--air m-input--pill" type="text" value="" id="example-text-input" name="descripcion" required="">
 													</div>
 
-											
+
 
 													<div class="form-group m-form__group">
 														<label for="exampleSelect1">Ciudad</label>
 														
-															<select name="ciudad" class="form-control m-input m-input--air m-input--pill" onchange="showDivPagoEF('hidden_pago_ef', this)" required="">
-																<option value=""></option>
-																<option value="LA PAZ">LA PAZ</option>
-																<option value="COCHABAMBA">COCHABAMBA</option>
-																<option value="SANTA CRUZ">SANTA CRUZ</option>
-															</select>
+														<select name="ciudad" class="form-control m-input m-input--air m-input--pill" onchange="showDivPagoEF('hidden_pago_ef', this)" required="">
+															<option value=""></option>
+															<option value="LA PAZ">LA PAZ</option>
+															<option value="COCHABAMBA">COCHABAMBA</option>
+															<option value="SANTA CRUZ">SANTA CRUZ</option>
+														</select>
 														
 
 													</div>
 													<div class="form-group m-form__group">
 														<label for="example-text-input">Precio</label>
-													
-															<input class="form-control m-input m-input--air m-input--pill" type="number" value="" id="example-text-input" name="valor" required="">
+
+														<input class="form-control m-input m-input--air m-input--pill" type="number" value="" id="example-text-input" name="valor" required="">
 														
 													</div>
 
@@ -169,7 +174,7 @@
 
 											</div>
 											<div class="modal-footer">
-												<button type="button" class="btn btn-danger" data-dismiss="modal">Close</button>
+												<button type="button" class="btn btn-danger" data-dismiss="modal">Cerrar</button>
 												<button type="submit" class="btn btn-success">Guardar</button>
 											</div>
 
@@ -177,3 +182,70 @@
 									</div>
 								</div>
 							</div>
+
+							<!--modal edicicion-->
+
+							<div class="modal fade" id="modalEdicion" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+								<div class="modal-dialog" role="document">
+									<div class="modal-content">
+										<div class="modal-header">
+											<h5 class="modal-title" id="exampleModalLabel">EDITAR</h5>
+											<button type="button" class="close" data-dismiss="modal" aria-label="Close">
+												<span aria-hidden="true">&times;</span>
+											</button>
+										</div>
+										<div class="modal-body">
+											<!--begin::Form-->
+											<?php echo form_open('Administrador/update', array('method'=>'POST', 'class' => 'm-form m-form--fit m-form--label-align-right')); ?>
+											<!--<form class="m-form m-form--fit m-form--label-align-right">-->
+												<input class="form-control m-input m-input--air m-input--pill" type="hidden" id="id_e" name="id_e" >
+
+												<div class="m-portlet__body">
+													
+
+													<div class="form-group m-form__group">
+														<label for="example-text-input" >Descripcion</label>
+														<input class="form-control m-input m-input--air m-input--pill" type="text"  id="descripcion_e" name="descripcion_e" required="">
+													</div>
+
+
+
+													<div class="form-group m-form__group">
+														<label for="exampleSelect1">Ciudad</label>
+														
+														<select name="ciudad_e" id="ciudad_e"class="form-control m-input m-input--air m-input--pill" onchange="showDivPagoEF('hidden_pago_ef', this)" required="">
+															
+															<option value="LA PAZ">LA PAZ</option>
+															<option value="COCHABAMBA">COCHABAMBA</option>
+															<option value="SANTA CRUZ">SANTA CRUZ</option>
+														</select>
+														
+
+													</div>
+													<div class="form-group m-form__group">
+														<label for="example-text-input">Precio</label>
+
+														<input class="form-control m-input m-input--air m-input--pill" type="number" value="" id="valor_e" name="valor_e" required="">
+														
+													</div>
+
+												</div>
+												<div class="m-portlet__foot m-portlet__foot--fit">
+													<div class="m-form__actions">
+														<div class="row">
+
+														</div>
+													</div>
+												</div>
+											</div>
+											<div class="modal-footer">
+												<button type="button" class="btn btn-danger" data-dismiss="modal">Cerrar</button>
+												<button type="submit" class="btn btn-success">Guardar</button>
+											</div>
+
+										</form>
+									</div>
+								</div>
+							</div>
+
+		

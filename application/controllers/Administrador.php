@@ -64,4 +64,32 @@ class Administrador extends CI_Controller {
             redirect(base_url());
         }
 	}
+	public function update()
+	{
+		$datos = $this->input->post();
+		if(isset($datos))
+		{
+			$id = $this->input->post('id_e'); //input
+			$data = array(            
+            'descripcion' => $this->input->post('descripcion_e'), //input
+            'ciudad' => $this->input->post('ciudad_e'), //crear
+            'valor' => $this->input->post('valor_e'),
+        );
+
+			 $this->db->where('id', $id);
+        	$this->db->update('condominio', $data);
+		
+			redirect(base_url() . 'Administrador');
+
+		}
+		else {
+            redirect(base_url());
+        }
+	}
+
+	public function delete($id=null)
+	{
+		$this->db->delete('condominio', array('id' => $id));
+		redirect(base_url() . 'Administrador');
+	}
 }

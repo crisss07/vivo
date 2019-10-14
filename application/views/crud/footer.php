@@ -19,22 +19,29 @@
 		<script src="<?php echo base_url(); ?>public/assets/vendors/base/vendors.bundle.js" type="text/javascript"></script>
 		<script src="<?php echo base_url(); ?>public/assets/demo/default/base/scripts.bundle.js" type="text/javascript"></script>
 
+
+
 		<script src="<?php echo base_url(); ?>public/assets/vendors/custom/datatables/datatables.bundle.js" type="text/javascript"></script>
+							<script>
+        function agregarform(data)
+        {
+             d=data.split('||');
+             $('#id_e').val(d[0]);
+              $('#descripcion_e').val(d[1]);
+              $('#ciudad_e').val(d[2]);
+              $('#valor_e').val(d[3]);
+        }
+
+    </script>
 
 		<!--end::Page Vendors -->
 
 		<!--begin::Page Scripts -->
-		<script src="<?php echo base_url(); ?>public/assets/demo/default/custom/crud/datatables/basic/basic.js" type="text/javascript"></script>
-
+		
 		<!--end::Global Theme Bundle -->
 
 		<!--begin::Page Vendors -->
-		<script src="<?php echo base_url(); ?>public/assets/vendors/custom/fullcalendar/fullcalendar.bundle.js" type="text/javascript"></script>
-
-		<!--end::Page Vendors -->
-
-		<!--begin::Page Scripts -->
-		<script src="<?php echo base_url(); ?>public/assets/app/js/dashboard.js" type="text/javascript"></script>
+		
 
 		<!--end::Page Scripts -->
 	</body>
