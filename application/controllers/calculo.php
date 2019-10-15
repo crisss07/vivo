@@ -34,20 +34,27 @@ class Calculo extends CI_Controller {
 	{
 		$datos = $this->input->post();
 		$id=$this->input->post('beneficiario_id');
-		$res=$this->db->get_where('credito', array('beneficiario_id' => $id));
+		$this->db->where('beneficiario_id', $id);
+		$res=$this->db->get('credito');
+
 
 
 		
 		
-		if(!$res)
+		if($res->num_rows() > 0)
 		{
+			$this->db->select('id');
+			$credito_id=$this->db->get_where('credito', array('beneficiario_id' => $id));
+			$credito_id=$credito_id->row();
+			$credito_id=$credito_id->id;			
+			redirect(base_url() . 'Solicitudes/inicia/'.$credito_id);
+		}
+		else {
 			$this->db->select('condominio_id');
 			$condominio_id=$this->db->get_where('beneficiario', array('id' => $id));
 			$condominio_id=$condominio_id->row();
 			$condominio_id=$condominio_id->condominio_id;
-			$data = array(
-
-            //'codcatas' => $this->input->post('cod_catastral'), //input
+			$data = array(            
             'beneficiario_id' => $this->input->post('beneficiario_id'), //input
             'ingreso_mensual' => $this->input->post('ingreso_mensual'), //crear
             'ingreso_conyugue' => $this->input->post('ingreso_conyugue'),
@@ -63,21 +70,13 @@ class Calculo extends CI_Controller {
             'prestamo' => 0,
             'cuota_mensual' => 0,
             //'activo' => '1',
-        );
+        	);
 			$this->db->insert('credito', $data);
 			$this->db->select('id');
 			$credito_id=$this->db->get_where('credito', array('beneficiario_id' => $id));
 			$credito_id=$credito_id->row();
-			$credito_id=$credito_id->id;
-			
-
-		
-
+			$credito_id=$credito_id->id;			
 			redirect(base_url() . 'Solicitudes/inicia/'.$credito_id);
-
 		}
-		else {
-            redirect(base_url());
-        }
 	}
 }

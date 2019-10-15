@@ -16,8 +16,10 @@ class Administrador extends CI_Controller {
 
 	}
 	public function index()
-	{   
-		if($this->session->userdata())
+	{   $this->load->library('session'); 
+		//var_dump(CI_VERSION);
+    	//	exit;
+		if($this->session->userdata('is_logged'))
 		{	
 			$this->load->view('crud/headerp');	
 			$data['datos'] = $this->Administrador_model->getData();	

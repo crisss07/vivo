@@ -7,6 +7,7 @@ class Login extends CI_Controller {
 	{
 		parent::__construct();	
 		$this->load->library('session');
+
 		$this->load->helper('url');
 		$this->load->model("usuario_model");
 		
@@ -21,39 +22,35 @@ class Login extends CI_Controller {
 		}
 		else{
 			$this->load->view('login/header');		
-		$this->load->view('login/login');		
-		$this->load->view('login/footer');	
+			$this->load->view('login/login');		
+			$this->load->view('login/footer');	
 		}
-				
+
 	}
 
 	public function login()
 	{	
-		$this->load->library('session');
+		
 		$usuario = $this->input->post("usuario");
 		$contrasena = $this->input->post("contrasenia");
 
 		$contrasenia = md5($contrasena);
-		//var_dump($contrasenia);
+		//var_dump($contrasenia,$usuario);
 		//exit;
 		
 		$res = $this->usuario_model->login($usuario, $contrasenia);
-		if (!$res) {
+		
+		if (!$res) {			
 			redirect(base_url().'Login');
 		}
-		else{		
-				$data = array(
-				'persona_perfil_id' => $res->persona_perfil_id,
-				'rol_id' => $res->rol_id,
-				'usuario' => $res->usuario,
-				'login' => TRUE
-			);
-			$this->session->set_userdata($data);
-
-
-			//var_dump($res);
-			//exit;
-			redirect(base_url().'Administrador');
+		else{	
+			$this->load->library('session');
+	
+	     $this->session->set_userdata('is_logged',TRUE);
+	     //var_dump($this->session);
+	     //exit;
+        			
+		redirect(base_url()."Administrador");
 		}		
 	}
 
