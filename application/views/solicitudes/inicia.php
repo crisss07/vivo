@@ -1,5 +1,5 @@
 <!-- begin::Body -->
-<div class="m-grid__item m-grid__item--fluid m-grid m-grid--ver-desktop m-grid--desktop m-body" style="background-image: url(<?php echo base_url(); ?>/public/assets/imagenes/formulario1.jpg); overflow: hidden;">
+<div class="m-grid__item m-grid__item--fluid m-grid m-grid--ver-desktop m-grid--desktop m-body" style="background-image: url(<?php echo base_url(); ?>/public/assets/imagenes/formulario6.jpg); overflow: hidden;">
 
 	<div class="m-grid__item m-grid__item--fluid m-wrapper">
 
@@ -43,15 +43,15 @@
 									</tr>
 									<tr>
 										<th scope="row">Ingresos madre beneficiario</th>
-										<td align="right">0</td>
+										<td align="right" id="diimb">0</td>
 									</tr>
 									<tr>
 										<th scope="row">Ingresos padre conyugue</th>
-										<td align="right">0</td>
+										<td align="right" id="diipb2">0</td>
 									</tr>
 									<tr>
 										<th scope="row">Ingresos madre conyugue</th>
-										<td align="right">0</td>
+										<td align="right" id="diipb3">0</td>
 									</tr>
 									<tr>
 										<th scope="row">Total</th>
@@ -139,7 +139,7 @@
 					<!--end::Portlet-->
 				</div>
 
-				<div class="col-md-4 item" id="bloque_1" style="display: block;">
+				<div class="col-md-4 item" id="bloque_1" style="display: none;">
 					<a href="#" class="btn btn-block btn-success" id='titulo_vivienda'></a>
 					<!--begin::Portlet-->
 					<div class="m-portlet m-portlet--tab">
@@ -356,7 +356,7 @@
 										<div class="form-group m-form__group row">
 											<div class="col-lg-4">
 												<label class="">Tipo:</label>
-												<select class="form-control m-input" id="cb_ipb">
+												<select class="form-control m-input" id="cb_i2">
 													<option value="Comercio">Comercio</option>
 													<option value="Servicio">Servicio</option>
 													<option value="Productivo">Productivo</option>
@@ -365,7 +365,7 @@
 											<div class="col-lg-4">
 												<label class="">Ingreso Bruto:</label>
 												<div class="m-input-icon m-input-icon--right">
-													<input type="text" class="form-control m-input m-input--air m-input--pill" name="paterno_c" id="txt_impb">
+													<input type="text" class="form-control m-input m-input--air m-input--pill" name="paterno_c" id="txt_ib2">
 													<span class="m-input-icon__icon m-input-icon__icon--right"></span>
 												</div>
 											</div>
@@ -373,7 +373,7 @@
 											<div class="col-lg-4">
 												<label class="">Gastos:</label>
 												<div class="m-input-icon m-input-icon--right">
-													<input type="text" class="form-control m-input m-input--air m-input--pill" name="paterno_c" id="txt_igpb">
+													<input type="text" class="form-control m-input m-input--air m-input--pill" name="paterno_c" id="txt_gb2">
 													<span class="m-input-icon__icon m-input-icon__icon--right"></span>
 												</div>
 											</div>
@@ -383,7 +383,7 @@
 									<div class="m-portlet__foot m-portlet__foot--fit">
 										<center>
 											<div class="m-form__actions">
-												<button type="submit" class="btn m-btn--pill btn-accent" onclick=calcula_cuota();>Calcular</button>
+												<button type="submit" class="btn m-btn--pill btn-accent" onclick=padre_beneficiario_independiente2();>Calcular</button>
 												<button type="button" class="btn m-btn--pill btn-success" onclick="muestra2()">Pedir Ayuda</button>
 											</div>
 										</center>
@@ -409,7 +409,7 @@
 												<div class="col-lg-12">
 													<label class="">Monto:</label>
 													<div class="m-input-icon m-input-icon--right">
-														<input type="text" class="form-control m-input m-input--air m-input--pill" name="paterno_c" id="txt_dmbp">
+														<input type="text" class="form-control m-input m-input--air m-input--pill" name="paterno_c" id="txt_md2">
 														<span class="m-input-icon__icon m-input-icon__icon--right"></span>
 													</div>
 												</div>
@@ -417,7 +417,7 @@
 											<div class="m-portlet__foot m-portlet__foot--fit">
 												<center>
 													<div class="m-form__actions">
-														<button type="submit" class="btn m-btn--pill btn-accent" onclick="calcula_dependientes();">Calcular</button>
+														<button type="submit" class="btn m-btn--pill btn-accent" onclick="padre_beneficiario_dependiente2();">Calcular</button>
 														<button type="button" class="btn m-btn--pill btn-success" onclick="muestra2();">Pedir Ayuda</button>
 													</div>
 												</center>
@@ -443,7 +443,7 @@
 		
 				</div>
 
-				<div class="col-md-4 item" id="bloque_1" style="display: block;">
+				<div class="col-md-4 item" id="bloque_2" style="display: none;">
 					<a href="#" class="btn btn-block btn-success" id='titulo_vivienda'></a>
 					<!--begin::Portlet-->
 					<div class="m-portlet m-portlet--tab">
@@ -517,7 +517,7 @@
 										<div class="form-group m-form__group row">
 											<div class="col-lg-4">
 												<label class="">Tipo:</label>
-												<select class="form-control m-input" id="cb_ipb">
+												<select class="form-control m-input" id="cb_ipb3">
 													<option value="Comercio">Comercio</option>
 													<option value="Servicio">Servicio</option>
 													<option value="Productivo">Productivo</option>
@@ -526,7 +526,7 @@
 											<div class="col-lg-4">
 												<label class="">Ingreso Bruto:</label>
 												<div class="m-input-icon m-input-icon--right">
-													<input type="text" class="form-control m-input m-input--air m-input--pill" name="paterno_c" id="txt_impb">
+													<input type="text" class="form-control m-input m-input--air m-input--pill" name="paterno_c" id="txt_ib3">
 													<span class="m-input-icon__icon m-input-icon__icon--right"></span>
 												</div>
 											</div>
@@ -534,7 +534,7 @@
 											<div class="col-lg-4">
 												<label class="">Gastos:</label>
 												<div class="m-input-icon m-input-icon--right">
-													<input type="text" class="form-control m-input m-input--air m-input--pill" name="paterno_c" id="txt_igpb">
+													<input type="text" class="form-control m-input m-input--air m-input--pill" name="paterno_c" id="txt_igb3">
 													<span class="m-input-icon__icon m-input-icon__icon--right"></span>
 												</div>
 											</div>
@@ -544,7 +544,7 @@
 									<div class="m-portlet__foot m-portlet__foot--fit">
 										<center>
 											<div class="m-form__actions">
-												<button type="submit" class="btn m-btn--pill btn-accent" onclick=calcula_cuota();>Calcular</button>
+												<button type="submit" class="btn m-btn--pill btn-accent" onclick=padre_beneficiario_independiente3();>Calcular</button>
 												<button type="button" class="btn m-btn--pill btn-success" onclick="muestra2();">Pedir Ayuda</button>
 											</div>
 										</center>
@@ -570,7 +570,7 @@
 												<div class="col-lg-12">
 													<label class="">Monto:</label>
 													<div class="m-input-icon m-input-icon--right">
-														<input type="text" class="form-control m-input m-input--air m-input--pill" name="paterno_c" id="txt_dmbp">
+														<input type="text" class="form-control m-input m-input--air m-input--pill" name="paterno_c" id="txt_dmbp3">
 														<span class="m-input-icon__icon m-input-icon__icon--right"></span>
 													</div>
 												</div>
@@ -578,7 +578,7 @@
 											<div class="m-portlet__foot m-portlet__foot--fit">
 												<center>
 													<div class="m-form__actions">
-														<button type="submit" class="btn m-btn--pill btn-accent">Calcular</button>
+														<button type="submit" class="btn m-btn--pill btn-accent" onclick="padre_beneficiario_dependiente3();">Calcular</button>
 														<button type="button" class="btn m-btn--pill btn-success" onclick="muestra2();">Pedir Ayuda</button>
 													</div>
 												</center>
@@ -671,7 +671,7 @@
 										<div class="form-group m-form__group row">
 											<div class="col-lg-4">
 												<label class="">Tipo:</label>
-												<select class="form-control m-input" id="cb_ipb">
+												<select class="form-control m-input" id="cb_ipb4">
 													<option value="Comercio">Comercio</option>
 													<option value="Servicio">Servicio</option>
 													<option value="Productivo">Productivo</option>
@@ -680,7 +680,7 @@
 											<div class="col-lg-4">
 												<label class="">Ingreso Bruto:</label>
 												<div class="m-input-icon m-input-icon--right">
-													<input type="text" class="form-control m-input m-input--air m-input--pill" name="paterno_c" id="txt_impb">
+													<input type="text" class="form-control m-input m-input--air m-input--pill" name="paterno_c" id="txt_impb4">
 													<span class="m-input-icon__icon m-input-icon__icon--right"></span>
 												</div>
 											</div>
@@ -688,7 +688,7 @@
 											<div class="col-lg-4">
 												<label class="">Gastos:</label>
 												<div class="m-input-icon m-input-icon--right">
-													<input type="text" class="form-control m-input m-input--air m-input--pill" name="paterno_c" id="txt_igpb">
+													<input type="text" class="form-control m-input m-input--air m-input--pill" name="paterno_c" id="txt_igpb4">
 													<span class="m-input-icon__icon m-input-icon__icon--right"></span>
 												</div>
 											</div>
@@ -698,7 +698,7 @@
 									<div class="m-portlet__foot m-portlet__foot--fit">
 										<center>
 											<div class="m-form__actions">
-												<button type="submit" class="btn m-btn--pill btn-accent" onclick=calcula_cuota();>Calcular</button>
+												<button type="submit" class="btn m-btn--pill btn-accent" onclick=padre_beneficiario_independiente4();>Calcular</button>
 												<button type="button" class="btn m-btn--pill btn-success" onclick="muestra2()">Pedir Ayuda</button>
 											</div>
 										</center>
@@ -724,7 +724,7 @@
 												<div class="col-lg-12">
 													<label class="">Monto:</label>
 													<div class="m-input-icon m-input-icon--right">
-														<input type="text" class="form-control m-input m-input--air m-input--pill" name="paterno_c" id="txt_dmbp">
+														<input type="text" class="form-control m-input m-input--air m-input--pill" name="paterno_c" id="txt_dmbp4">
 														<span class="m-input-icon__icon m-input-icon__icon--right"></span>
 													</div>
 												</div>
@@ -732,7 +732,7 @@
 											<div class="m-portlet__foot m-portlet__foot--fit">
 												<center>
 													<div class="m-form__actions">
-														<button type="submit" class="btn m-btn--pill btn-accent">Calcular</button>
+														<button type="submit" class="btn m-btn--pill btn-accent" onclick="padre_beneficiario_dependiente4();">Calcular</button>
 														<button type="button" class="btn m-btn--pill btn-success" onclick="muestra2();">Pedir Ayuda</button>
 													</div>
 												</center>
@@ -859,14 +859,14 @@
     	var monto_impb = $('#txt_impb').val();
     	var gasto_igpb = $('#txt_igpb').val();
     	monto = calcula_independientes(tipo_ipb, monto_impb, gasto_igpb);
-    	console.log(monto);
+    	// console.log(monto);
     	ingresos_padre_beneficiario = monto;
     	var subtotal = ingresos_beneficiario + ingresos_conyugue + ingresos_padre_beneficiario + ingresos_madre_beneficiario + ingresos_padre_conyugue + ingresos_madre_conyugue;
 		$("#diipb").html(monto);
 		$("#total_ingresos").html(subtotal);
-		
+
 		if(subtotal > parseFloat(sueldo_ideal)){
-    		alert('si');
+    		alerta_alcanzo();
     	}else{
     		alert('no');
     	}
@@ -883,12 +883,134 @@
     	$("#total_ingresos").html(subtotal);
 
     	if(subtotal > parseFloat(sueldo_ideal)){
+    		alerta_alcanzo();
+    	}else{
+    		alert('no');
+    	}
+    	// console.log(sueldo_ideal);
+    }
+
+    function padre_beneficiario_independiente2()
+    {
+    	var tipo_ipb2 = $('#cb_i2').val();
+    	var monto_impb2 = $('#txt_ib2').val();
+    	var gasto_igpb2 = $('#txt_gb2').val();
+    	monto2 = calcula_independientes(tipo_ipb2, monto_impb2, gasto_igpb2);
+    	console.log(monto2);
+    	ingresos_madre_beneficiario = monto2;
+    	var subtotal = ingresos_beneficiario + ingresos_conyugue + ingresos_padre_beneficiario + ingresos_madre_beneficiario + ingresos_padre_conyugue + ingresos_madre_conyugue;
+		$("#diimb").html(monto2);
+		$("#total_ingresos").html(subtotal);
+
+		if(subtotal > parseFloat(sueldo_ideal)){
+    		alert('si');
+    	}else{
+    		alert('no');
+    	}
+    }
+
+    function padre_beneficiario_dependiente2()
+    {
+    	var monto_bmbp = $('#txt_md2').val();
+    	var monto_numerico = parseFloat(monto_bmbp);
+    	var monto_descontado = monto_numerico*0.4;
+    	var ingresos_padre_beneficiario = monto_descontado;
+    	var subtotal = ingresos_beneficiario + ingresos_conyugue + ingresos_padre_beneficiario + ingresos_madre_beneficiario + ingresos_padre_conyugue + ingresos_madre_conyugue;
+    	$("#diimb").html(monto_bmbp);
+    	$("#total_ingresos").html(subtotal);
+
+    	if(subtotal > parseFloat(sueldo_ideal)){
     		alert('si');
     	}else{
     		alert('no');
     	}
     	// console.log(sueldo_ideal);
     }
+
+    function padre_beneficiario_independiente3()
+    {
+    	var tipo_ipb3 = $('#cb_ipb3').val();
+    	var monto_impb3 = $('#txt_ib3').val();
+    	var gasto_igpb3 = $('#txt_igb3').val();
+    	monto3 = calcula_independientes(tipo_ipb3, monto_impb3, gasto_igpb3);
+    	// console.log(monto3);
+    	ingresos_padre_conyugue = monto3;
+    	var subtotal = ingresos_beneficiario + ingresos_conyugue + ingresos_padre_beneficiario + ingresos_madre_beneficiario + ingresos_padre_conyugue + ingresos_madre_conyugue;
+		$("#diipb2").html(monto3);
+		$("#total_ingresos").html(subtotal);
+
+		if(subtotal > parseFloat(sueldo_ideal)){
+    		alert('si');
+    	}else{
+    		alert('no');
+    	}
+    }
+
+    function padre_beneficiario_dependiente3()
+    {
+    	var monto_bmbp = $('#txt_dmbp3').val();
+    	var monto_numerico = parseFloat(monto_bmbp);
+    	var monto_descontado = monto_numerico*0.4;
+    	var ingresos_padre_conyugue = monto_descontado;
+    	var subtotal = ingresos_beneficiario + ingresos_conyugue + ingresos_padre_beneficiario + ingresos_madre_beneficiario + ingresos_padre_conyugue + ingresos_madre_conyugue;
+    	$("#diipb2").html(monto_bmbp);
+    	$("#total_ingresos").html(subtotal);
+
+    	if(subtotal > parseFloat(sueldo_ideal)){
+    		alert('si');
+    	}else{
+    		alert('no');
+    	}
+    	// console.log(sueldo_ideal);
+    }
+
+    function padre_beneficiario_independiente4()
+    {
+    	var tipo_ipb3 = $('#cb_ipb4').val();
+    	var monto_impb3 = $('#txt_impb4').val();
+    	var gasto_igpb3 = $('#txt_igpb4').val();
+    	monto4 = calcula_independientes(tipo_ipb3, monto_impb3, gasto_igpb3);
+    	// console.log(monto3);
+    	ingresos_madre_conyugue = monto4;
+    	var subtotal = ingresos_beneficiario + ingresos_conyugue + ingresos_padre_beneficiario + ingresos_madre_beneficiario + ingresos_padre_conyugue + ingresos_madre_conyugue;
+		$("#diipb3").html(monto4);
+		$("#total_ingresos").html(subtotal);
+
+		if(subtotal > parseFloat(sueldo_ideal)){
+    		alert('si');
+    	}else{
+    		alert('no');
+    	}
+    }
+
+    function padre_beneficiario_dependiente4()
+    {
+    	var monto_bmbp = $('#txt_dmbp4').val();
+    	var monto_numerico = parseFloat(monto_bmbp);
+    	var monto_descontado = monto_numerico*0.4;
+    	var ingresos_madre_conyugue = monto_descontado;
+    	var subtotal = ingresos_beneficiario + ingresos_conyugue + ingresos_padre_beneficiario + ingresos_madre_beneficiario + ingresos_padre_conyugue + ingresos_madre_conyugue;
+    	$("#diipb3").html(monto_bmbp);
+    	$("#total_ingresos").html(subtotal);
+
+    	if(subtotal > parseFloat(sueldo_ideal)){
+    		alert('si');
+    	}else{
+    		alert('no');
+    	}
+    	// console.log(sueldo_ideal);
+    }
+
+
+    function alerta_alcanzo(){
+    	Swal.fire({
+    		type: 'success',
+    		title: 'Lo Lograste',
+    		text: 'Te alcanza para tu vivienda!'
+    	})
+	//location.reload();
+	}
+
 
 </script>
 
