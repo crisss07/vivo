@@ -34,9 +34,12 @@ class Calculo extends CI_Controller {
 	{
 		$datos = $this->input->post();
 		$id=$this->input->post('beneficiario_id');
+		$res=$this->db->get_where('credito', array('beneficiario_id' => $id));
+
+
 		
 		
-		if(isset($datos))
+		if(!$res)
 		{
 			$this->db->select('condominio_id');
 			$condominio_id=$this->db->get_where('beneficiario', array('id' => $id));

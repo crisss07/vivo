@@ -5,15 +5,11 @@ class Login extends CI_Controller {
 
 	public function __construct()
 	{
-		parent::__construct();
-		 // load Session Library
+		parent::__construct();	
 		$this->load->library('session');
-        // load url helper
 		$this->load->helper('url');
-			$this->load->helper('url_helper');
-		$this->load->helper('vayes_helper');
 		$this->load->model("usuario_model");
-		//$this->load->model("logacceso_model");
+		
 	}
 
 	public function index()
@@ -25,6 +21,7 @@ class Login extends CI_Controller {
 
 	public function login()
 	{	
+		$this->load->library('session');
 		$usuario = $this->input->post("usuario");
 		$contrasena = $this->input->post("contrasenia");
 
@@ -38,9 +35,13 @@ class Login extends CI_Controller {
 		}
 		else{		
 			$data = array(	
-				'Login' => TRUE
+				 'username'  => 'johndoe',
+        		 'email'     => 'johndoe@some-site.com',
+				 'login' => TRUE
 			);
 			$this->session->set_userdata($data);
+			//var_dump($res);
+			//exit;
 			redirect(base_url().'Administrador');
 		}		
 	}

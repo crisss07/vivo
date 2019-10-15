@@ -7,16 +7,17 @@ class Administrador extends CI_Controller {
 	public function __construct()
 	{
 		parent::__construct();
-		$this->load->model("Administrador_model");
+
 		$this->load->library('session');
 		$this->load->helper('url_helper');
 		$this->load->helper('vayes_helper');
+		$this->load->model("Administrador_model");
 
 
 	}
 	public function index()
 	{			
-		if($this->session->userdata())
+		if($this->session->userdata("login"))
 		{	
 			$this->load->view('crud/headerp');	
 			$data['datos'] = $this->Administrador_model->getData();	
@@ -25,6 +26,8 @@ class Administrador extends CI_Controller {
 			$this->load->view('crud/footer');			
 		}
 		else{
+			var_dump('paso por adm');
+			exit;
 			redirect(base_url() . 'Login');		
 		}
 

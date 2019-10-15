@@ -69,40 +69,17 @@ License: You must have a valid license purchased only from themeforest(the above
 				<div class="m-stack m-stack--ver m-stack--desktop">
 
 					<!-- BEGIN: Brand -->
-					<div class="m-stack__item m-brand  m-brand--skin-dark ">
+					<div class="m-stack__item m-brand  m-brand--skin-blue ">
 						<div class="m-stack m-stack--ver m-stack--general">
 							<div class="m-stack__item m-stack__item--middle m-brand__logo">
-								<a href="index.html" class="m-brand__logo-wrapper">
-									<img alt="" src="<?php echo base_url(); ?>public/assets/demo/default/media/img/logo/logo_default_dark.png" />
-								</a>
+								
+									<img alt="" src="<?php echo base_url(); ?>public/assets/logos/logo.png" width="80%"/>
+							
 							</div>
 							<div class="m-stack__item m-stack__item--middle m-brand__tools">
 
 								<!-- BEGIN: Left Aside Minimize Toggle -->
-								<a href="javascript:;" id="m_aside_left_minimize_toggle" class="m-brand__icon m-brand__toggler m-brand__toggler--left m--visible-desktop-inline-block  ">
-									<span></span>
-								</a>
-
-								<!-- END -->
-
-								<!-- BEGIN: Responsive Aside Left Menu Toggler -->
-								<a href="javascript:;" id="m_aside_left_offcanvas_toggle" class="m-brand__icon m-brand__toggler m-brand__toggler--left m--visible-tablet-and-mobile-inline-block">
-									<span></span>
-								</a>
-
-								<!-- END -->
-
-								<!-- BEGIN: Responsive Header Menu Toggler -->
-								<a id="m_aside_header_menu_mobile_toggle" href="javascript:;" class="m-brand__icon m-brand__toggler m--visible-tablet-and-mobile-inline-block">
-									<span></span>
-								</a>
-
-								<!-- END -->
-
-								<!-- BEGIN: Topbar Toggler -->
-								<a id="m_aside_header_topbar_mobile_toggle" href="javascript:;" class="m-brand__icon m--visible-tablet-and-mobile-inline-block">
-									<i class="flaticon-more"></i>
-								</a>
+								
 
 								<!-- BEGIN: Topbar Toggler -->
 							</div>
@@ -194,7 +171,7 @@ License: You must have a valid license purchased only from themeforest(the above
 						<li class="m-nav__separator m-nav__separator--fit">
 						</li>
 						<li class="m-nav__item">
-							<a href="snippets/pages/user/login-1.html" class="btn m-btn--pill    btn-secondary m-btn m-btn--custom m-btn--label-brand m-btn--bolder">Logout</a>
+							<a href="Login/logout" class="btn m-btn--pill    btn-secondary m-btn m-btn--custom m-btn--label-brand m-btn--bolder">Cerrar Sesion</a>
 						</li>
 					</ul>
 				</div>

@@ -59,8 +59,8 @@
 											</div>
 										</div>
 									</div>
-									<div class="m-portlet__body" > 
-										<canvas id="canvas"></canvas>
+									<div class="m-portlet__body" width="723" height="361" style="display: block; width: 723px; height: 361px;"> 
+										<canvas id="canvas" class="canvas" width="723" height="361" style="display: block; width: 723px; height: 361px;"></canvas>
 									</div>
 								</div>
 
@@ -68,56 +68,8 @@
 							</div>
 						</div>
 						
-						<div class="row">
-							<div class="col-lg-12">
-
-								<!--begin::Portlet-->
-								<div class="m-portlet m-portlet--tab">
-									<div class="m-portlet__head">
-										<div class="m-portlet__head-caption">
-											<div class="m-portlet__head-title">
-												<span class="m-portlet__head-icon m--hide">
-													<i class="la la-gear"></i>
-												</span>
-												<h3 class="m-portlet__head-text">
-													Line Chart
-												</h3>
-											</div>
-										</div>
-									</div>
-									<div class="m-portlet__body">
-										<div id="m_morris_1" style="height:500px;"></div>
-									</div>
-								</div>
-
-								<!--end::Portlet-->
-							</div>
-						</div>
-						<div class="row">
-							<div class="col-lg-12">
-
-								<!--begin::Portlet-->
-								<div class="m-portlet m-portlet--tab">
-									<div class="m-portlet__head">
-										<div class="m-portlet__head-caption">
-											<div class="m-portlet__head-title">
-												<span class="m-portlet__head-icon m--hide">
-													<i class="la la-gear"></i>
-												</span>
-												<h3 class="m-portlet__head-text">
-													Area Chart
-												</h3>
-											</div>
-										</div>
-									</div>
-									<div class="m-portlet__body">
-										<div id="m_morris_2" style="height:500px;"></div>
-									</div>
-								</div>
-
-								<!--end::Portlet-->
-							</div>
-						</div>
+					
+						
 						
 						
 					</div>
