@@ -79,6 +79,59 @@ class Persona extends CI_Controller {
 		
 				
 	}
+
+	public function ajax_veri(){
+		$ci = $this->input->get("param1");
+		// $verifica = $this->db->get_where('beneficiario', array('ci' => $ci))->row();
+			
+		$TOKEN = 'eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpc3MiOiJhNzAzYTlhZjcxZDY0NDMzOWJiNDM3ODEyYjIwODY0MyJ9.KAXS_8G3BznwFBR0dLZHfVQc2LkZI5fiTK6TN-meAZ4';
+		$CURL = curl_init('https://ws.agetic.gob.bo/segip/v2/personas/'.$ci);
+		
+		curl_setopt($CURL, CURLOPT_RETURNTRANSFER, true);
+		
+		curl_setopt($CURL, CURLOPT_HTTPHEADER, array(
+		    'Content-Type: application/json',
+		    'Authorization: Bearer '.$TOKEN
+		));
+		
+		$dataSEGIP = curl_exec($CURL);
+		// Obtener información sobre la solicitud
+		$infoSEGIP = curl_getinfo($CURL);
+		// Cierre el recurso curl para liberar recursos del sistema
+		curl_close($CURL);
+
+		$arraySEGIPN0 = json_decode($dataSEGIP, true);
+		$arraySEGIPN1 = $arraySEGIPN0['ConsultaDatoPersonaEnJsonResult'];
+		$arraySEGIPN2 = $arraySEGIPN1['DatosPersonaEnFormatoJson'];
+		$datos_persona = json_decode($arraySEGIPN2, true);
+		$caso = $arraySEGIPN1['CodigoRespuesta'];
+
+		
+
+		// fecha de nacimiento
+		$minimo = '18';
+		$maximo = '29';
+
+		$fecha = $datos_persona['FechaNacimiento'];
+		$partes_c = explode("/", $fecha); 
+		$dia_c = $partes_c[0];
+		$mes_c = $partes_c[1];
+		$ano_c = $partes_c[2];
+		$fec_nacimiento_c = $ano_c.'-'.$mes_c.'-'.$dia_c;
+
+		if ($fecha) {
+			$respuesta = array('ci'=>$ci, 'nombres' =>$datos_persona['Nombres'], 'paterno' =>$datos_persona['PrimerApellido'], 'materno' =>$datos_persona['SegundoApellido'], 'fec_nacimiento'=>$datos_persona['FechaNacimiento'], 'estado'=>'segip');
+					echo json_encode($respuesta);
+		}
+		else{
+			$respuesta = array('ci'=>$ci, 'fecha'=>$fecha, 'mensaje'=>'Usted ya esta registrado', 'estado'=>'noEdad');
+			echo json_encode($respuesta);
+		}
+
+
+		
+				
+	}
 	
 
 	public function insertar()

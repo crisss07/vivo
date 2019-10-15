@@ -155,13 +155,14 @@
 						<div class="m-portlet__body">
 
 							<div class="form-group m-form__group row">
-								<div class="col-lg-4">
+								<div class="col-lg-3">
 									<label class="">Carnet Identidad:</label>
-									<input type="text" class="form-control m-input m-input--air m-input--pill" name="ci_c" id="ci2" required>
+									<input type="text" class="form-control m-input m-input--air m-input--pill" name="ci_c" id="ci2" required><button type="button" class="btn m-btn--pill btn-success " onclick="carnet_2();">Buscar</button>
 								</div>
-								<div class="col-lg-8">
+								
+								<div class="col-lg-6">
 									<label class="">Nombre</label>
-									<input type="text" class="form-control m-input m-input--air m-input--pill" value="Juan Carlos Perez Zuaso" name="ci_c" id="ci2" readonly>
+									<input type="text" class="form-control m-input m-input--air m-input--pill" name="name_2" id="name_2" readonly>
 								</div>
 							</div>
 
@@ -285,11 +286,12 @@
 							<div class="form-group m-form__group row">
 								<div class="col-lg-4">
 									<label class="">Carnet Identidad:</label>
-									<input type="text" class="form-control m-input m-input--air m-input--pill" name="ci_c" id="ci2" required>
+									<input type="text" class="form-control m-input m-input--air m-input--pill" name="ci_c" id="ci3" required>
+									<button type="button" class="btn m-btn--pill btn-success " onclick="carnet_3();">Buscar</button>
 								</div>
 								<div class="col-lg-8">
 									<label class="">Nombre</label>
-									<input type="text" class="form-control m-input m-input--air m-input--pill" value="Juan Carlos Perez Zuaso" name="ci_c" id="ci2" readonly>
+									<input type="text" class="form-control m-input m-input--air m-input--pill" name="name_3" id="name_3" readonly>
 								</div>
 							</div>
 
@@ -419,11 +421,12 @@
 							<div class="form-group m-form__group row">
 								<div class="col-lg-4">
 									<label class="">Carnet Identidad:</label>
-									<input type="text" class="form-control m-input m-input--air m-input--pill" name="ci_c" id="ci2" required>
+									<input type="text" class="form-control m-input m-input--air m-input--pill" name="ci_c" id="ci4" required>
+									<button type="button" class="btn m-btn--pill btn-success " onclick="carnet_4();">Buscar</button>
 								</div>
 								<div class="col-lg-8">
 									<label class="">Nombre</label>
-									<input type="text" class="form-control m-input m-input--air m-input--pill" value="Juan Carlos Perez Zuaso" name="ci_c" id="ci2" readonly>
+									<input type="text" class="form-control m-input m-input--air m-input--pill" name="name_4" id="name_4" readonly>
 								</div>
 							</div>
 
@@ -547,11 +550,12 @@
 							<div class="form-group m-form__group row">
 								<div class="col-lg-4">
 									<label class="">Carnet Identidad:</label>
-									<input type="text" class="form-control m-input m-input--air m-input--pill" name="ci_c" id="ci2" required>
+									<input type="text" class="form-control m-input m-input--air m-input--pill" name="ci_c" id="ci5" required>
+									<button type="button" class="btn m-btn--pill btn-success " onclick="carnet_5();">Buscar</button>
 								</div>
 								<div class="col-lg-8">
 									<label class="">Nombre</label>
-									<input type="text" class="form-control m-input m-input--air m-input--pill" value="Juan Carlos Perez Zuaso" name="ci_c" id="ci2" readonly>
+									<input type="text" class="form-control m-input m-input--air m-input--pill" name="name_5" id="name_5" readonly>
 								</div>
 							</div>
 
@@ -663,109 +667,6 @@
 	</div>
 </div>
 			<!-- end:: Body -->
-<script type="text/javascript">
-
-    $("#ci1").focusout(function(){
-        var ci = $("#ci1").val();
-        var csrfName = '<?php echo $this->security->get_csrf_token_name(); ?>';
-        var csrfHash = '<?php echo $this->security->get_csrf_hash(); ?>';
-
-        $.ajax({
-            url: '<?php echo base_url(); ?>persona/ajax_verifica/',
-            type: 'GET',
-            dataType: 'json',
-            data: {csrfName: csrfHash, param1: ci},
-            // data: {param1: cod_catastral},
-            success:function(data, textStatus, jqXHR) {
-                //alert("Se envio bien");
-                // csrfName = data.csrfName;
-                // csrfHash = data.csrfHash;
-                // alert(data.message);
-              if (data.estado == 'segip') {
-                        $("#msg_error_catastral").hide();
-                    $("#msg_sucess_catastral").show();
-                    $("#msg_alerta_catastral").show();
-                        $("#ci").val(data.ci);
-                    $("#msg_sucess_catastral").html('Esta registrado en el SEGIP la persona con Cedula de Identidad Numero: '+data.ci);
-                    $('#nombres').val(data.nombres);
-                    $('#paterno').val(data.paterno);
-                    $('#materno').val(data.materno);
-                    $('#fecha').val(data.fec_nacimiento);
-                    }else{
-                    $("#msg_sucess_catastral").hide();
-                     $("#msg_error_catastral").show();
-                     $("#msg_alerta_catastral").hide();
-                    $("#msg_error_catastral").html('La persona no existe ni en la base de datos ni en el segip: '+data.ci);
-                    $('#nombres').val('');
-                    $('#paterno').val('');
-                    $('#materno').val('');
-                    $("#nombres").prop("disabled", false);
-
-                    $("#paterno").prop("disabled", false);
-
-                    $("#materno").prop("disabled", false);
-                }
-            },
-            error:function(jqXHR, textStatus, errorThrown) {
-                // alert("error");
-            }
-        });
-    });
-
-   
-</script>
-
-<script type="text/javascript">
-
-    $("#ci2").focusout(function(){
-        var ci = $("#ci2").val();
-        var csrfName = '<?php echo $this->security->get_csrf_token_name(); ?>';
-        var csrfHash = '<?php echo $this->security->get_csrf_hash(); ?>';
-
-        $.ajax({
-            url: '<?php echo base_url(); ?>persona/ajax_verifica/',
-            type: 'GET',
-            dataType: 'json',
-            data: {csrfName: csrfHash, param1: ci},
-            // data: {param1: cod_catastral},
-            success:function(data, textStatus, jqXHR) {
-                //alert("Se envio bien");
-                // csrfName = data.csrfName;
-                // csrfHash = data.csrfHash;
-                // alert(data.message);
-              if (data.estado == 'segip') {
-                        $("#msg_error_catastral").hide();
-                    $("#msg_sucess_catastral").show();
-                    $("#msg_alerta_catastral").show();
-                        $("#ci").val(data.ci);
-                    $("#msg_sucess_catastral").html('Esta registrado en el SEGIP la persona con Cedula de Identidad Numero: '+data.ci);
-                    $('#nombres_c').val(data.nombres);
-                    $('#paterno_c').val(data.paterno);
-                    $('#materno_c').val(data.materno);
-                    $('#fecha_c').val(data.fec_nacimiento);
-                    }else{
-                    $("#msg_sucess_catastral").hide();
-                     $("#msg_error_catastral").show();
-                     $("#msg_alerta_catastral").hide();
-                    $("#msg_error_catastral").html('La persona no existe ni en la base de datos ni en el segip: '+data.ci);
-                    $('#nombres_c').val('');
-                    $('#paterno_c').val('');
-                    $('#materno_c').val('');
-                    $("#nombres_c").prop("disabled", false);
-
-                    $("#paterno_c").prop("disabled", false);
-
-                    $("#materno_c").prop("disabled", false);
-                }
-            },
-            error:function(jqXHR, textStatus, errorThrown) {
-                // alert("error");
-            }
-        });
-    });
-
-   
-</script>
 
 <script type="text/javascript">
     function agregarform()
@@ -848,4 +749,235 @@
     	// console.log("monto "+monto_adicionable);
     	$("#monto_pb").html(monto_adicionable);
     }
+</script>
+
+<script type="text/javascript">
+	function carnet_2()
+	{
+	        var ci = $("#ci2").val();
+	        var csrfName = '<?php echo $this->security->get_csrf_token_name(); ?>';
+	        var csrfHash = '<?php echo $this->security->get_csrf_hash(); ?>';
+
+	        $.ajax({
+	            url: '<?php echo base_url(); ?>Persona/ajax_veri/',
+	            type: 'GET',
+	            dataType: 'json',
+	            data: {csrfName: csrfHash, param1: ci},
+	            // data: {param1: cod_catastral},
+	            success:function(data, textStatus, jqXHR) {
+	            	//alert(data);
+	                //alert("Se envio bien");
+	                // csrfName = data.csrfName;
+	                // csrfHash = data.csrfHash;
+	                // alert(data.message);
+		            
+            		if (data.estado == 'segip') {
+	                        $("#msg_error_catastral").hide();
+	                    $("#msg_sucess_catastral").show();
+	                    $("#msg_alerta_catastral").show();
+	                        $("#ci").val(data.ci);
+	                    $("#msg_sucess_catastral").html('Esta registrado en el SEGIP la persona con Cedula de Identidad Numero: '+data.ci);
+	                    var concatenados = data.nombres.concat(' ', data.paterno, ' ', data.materno);
+	                    $('#name_2').val(concatenados);
+	                    // $('#paterno').val(data.paterno);
+	                    // $('#materno').val(data.materno);
+	                    // $('#fecha').val(data.fec_nacimiento);
+	                    }else{
+	                    $("#msg_sucess_catastral").hide();
+	                    $("#msg_error_catastral").show();
+	                    $("#msg_alerta_catastral").hide();
+	                    $("#msg_error_catastral").html('La persona no existe ni en la base de datos ni en el segip: '+data.ci);
+	                    $('#nombres').val('');
+	                    $('#paterno').val('');
+	                    $('#materno').val('');
+	                    $("#nombres").prop("disabled", false);
+
+	                    $("#paterno").prop("disabled", false);
+
+	                    $("#materno").prop("disabled", false);
+	                }
+	           		
+
+	            },
+	            error:function(jqXHR, textStatus, errorThrown) {
+	                alerta_ci();
+	            }
+	        });
+	}
+</script>
+
+<script type="text/javascript">
+	function carnet_3()
+	{
+	        var ci = $("#ci3").val();
+	        var csrfName = '<?php echo $this->security->get_csrf_token_name(); ?>';
+	        var csrfHash = '<?php echo $this->security->get_csrf_hash(); ?>';
+
+	        $.ajax({
+	            url: '<?php echo base_url(); ?>Persona/ajax_veri/',
+	            type: 'GET',
+	            dataType: 'json',
+	            data: {csrfName: csrfHash, param1: ci},
+	            // data: {param1: cod_catastral},
+	            success:function(data, textStatus, jqXHR) {
+	            	//alert(data);
+	                //alert("Se envio bien");
+	                // csrfName = data.csrfName;
+	                // csrfHash = data.csrfHash;
+	                // alert(data.message);
+		            
+            		if (data.estado == 'segip') {
+	                        $("#msg_error_catastral").hide();
+	                    $("#msg_sucess_catastral").show();
+	                    $("#msg_alerta_catastral").show();
+	                        $("#ci").val(data.ci);
+	                    $("#msg_sucess_catastral").html('Esta registrado en el SEGIP la persona con Cedula de Identidad Numero: '+data.ci);
+	                    var concatenados = data.nombres.concat(' ', data.paterno, ' ', data.materno);
+	                    $('#name_3').val(concatenados);
+	                    // $('#paterno').val(data.paterno);
+	                    // $('#materno').val(data.materno);
+	                    // $('#fecha').val(data.fec_nacimiento);
+	                    }else{
+	                    $("#msg_sucess_catastral").hide();
+	                    $("#msg_error_catastral").show();
+	                    $("#msg_alerta_catastral").hide();
+	                    $("#msg_error_catastral").html('La persona no existe ni en la base de datos ni en el segip: '+data.ci);
+	                    $('#nombres').val('');
+	                    $('#paterno').val('');
+	                    $('#materno').val('');
+	                    $("#nombres").prop("disabled", false);
+
+	                    $("#paterno").prop("disabled", false);
+
+	                    $("#materno").prop("disabled", false);
+	                }
+	           		
+
+	            },
+	            error:function(jqXHR, textStatus, errorThrown) {
+	                alerta_ci();
+	            }
+	        });
+	}
+</script>
+
+<script type="text/javascript">
+	function carnet_4()
+	{
+	        var ci = $("#ci4").val();
+	        var csrfName = '<?php echo $this->security->get_csrf_token_name(); ?>';
+	        var csrfHash = '<?php echo $this->security->get_csrf_hash(); ?>';
+
+	        $.ajax({
+	            url: '<?php echo base_url(); ?>Persona/ajax_veri/',
+	            type: 'GET',
+	            dataType: 'json',
+	            data: {csrfName: csrfHash, param1: ci},
+	            // data: {param1: cod_catastral},
+	            success:function(data, textStatus, jqXHR) {
+	            	//alert(data);
+	                //alert("Se envio bien");
+	                // csrfName = data.csrfName;
+	                // csrfHash = data.csrfHash;
+	                // alert(data.message);
+		            
+            		if (data.estado == 'segip') {
+	                        $("#msg_error_catastral").hide();
+	                    $("#msg_sucess_catastral").show();
+	                    $("#msg_alerta_catastral").show();
+	                        $("#ci").val(data.ci);
+	                    $("#msg_sucess_catastral").html('Esta registrado en el SEGIP la persona con Cedula de Identidad Numero: '+data.ci);
+	                    var concatenados = data.nombres.concat(' ', data.paterno, ' ', data.materno);
+	                    $('#name_4').val(concatenados);
+	                    // $('#paterno').val(data.paterno);
+	                    // $('#materno').val(data.materno);
+	                    // $('#fecha').val(data.fec_nacimiento);
+	                    }else{
+	                    $("#msg_sucess_catastral").hide();
+	                    $("#msg_error_catastral").show();
+	                    $("#msg_alerta_catastral").hide();
+	                    $("#msg_error_catastral").html('La persona no existe ni en la base de datos ni en el segip: '+data.ci);
+	                    $('#nombres').val('');
+	                    $('#paterno').val('');
+	                    $('#materno').val('');
+	                    $("#nombres").prop("disabled", false);
+
+	                    $("#paterno").prop("disabled", false);
+
+	                    $("#materno").prop("disabled", false);
+	                }
+	           		
+
+	            },
+	            error:function(jqXHR, textStatus, errorThrown) {
+	                alerta_ci();
+	            }
+	        });
+	}
+</script>
+
+<script type="text/javascript">
+	function carnet_5()
+	{
+	        var ci = $("#ci5").val();
+	        var csrfName = '<?php echo $this->security->get_csrf_token_name(); ?>';
+	        var csrfHash = '<?php echo $this->security->get_csrf_hash(); ?>';
+
+	        $.ajax({
+	            url: '<?php echo base_url(); ?>Persona/ajax_veri/',
+	            type: 'GET',
+	            dataType: 'json',
+	            data: {csrfName: csrfHash, param1: ci},
+	            // data: {param1: cod_catastral},
+	            success:function(data, textStatus, jqXHR) {
+	            	//alert(data);
+	                //alert("Se envio bien");
+	                // csrfName = data.csrfName;
+	                // csrfHash = data.csrfHash;
+	                // alert(data.message);
+		            
+            		if (data.estado == 'segip') {
+	                        $("#msg_error_catastral").hide();
+	                    $("#msg_sucess_catastral").show();
+	                    $("#msg_alerta_catastral").show();
+	                        $("#ci").val(data.ci);
+	                    $("#msg_sucess_catastral").html('Esta registrado en el SEGIP la persona con Cedula de Identidad Numero: '+data.ci);
+	                    var concatenados = data.nombres.concat(' ', data.paterno, ' ', data.materno);
+	                    $('#name_5').val(concatenados);
+	                    // $('#paterno').val(data.paterno);
+	                    // $('#materno').val(data.materno);
+	                    // $('#fecha').val(data.fec_nacimiento);
+	                    }else{
+	                    $("#msg_sucess_catastral").hide();
+	                    $("#msg_error_catastral").show();
+	                    $("#msg_alerta_catastral").hide();
+	                    $("#msg_error_catastral").html('La persona no existe ni en la base de datos ni en el segip: '+data.ci);
+	                    $('#nombres').val('');
+	                    $('#paterno').val('');
+	                    $('#materno').val('');
+	                    $("#nombres").prop("disabled", false);
+
+	                    $("#paterno").prop("disabled", false);
+
+	                    $("#materno").prop("disabled", false);
+	                }
+	           		
+
+	            },
+	            error:function(jqXHR, textStatus, errorThrown) {
+	                alerta_ci();
+	            }
+	        });
+	}
+</script>
+
+<script>
+function alerta_ci(){
+Swal.fire({
+  type: 'error',
+  title: 'Oops...',
+  text: 'No es un Carnet Valido!'
+})
+//location.reload();
+}
 </script>
