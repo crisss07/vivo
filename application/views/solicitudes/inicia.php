@@ -50,6 +50,10 @@
 										<td align="right">0</td>
 									</tr>
 									<tr>
+										<th scope="row">Total</th>
+										<td align="right">0</td>
+									</tr>
+									<tr>
 										<th scope="row">Cuota Mensual</th>
 										<td align="right"><?php echo $cuota['cuota_total']; ?></td>
 									</tr>
@@ -206,11 +210,12 @@
 											</div>
 
 										</div>
+									
 
 									<div class="m-portlet__foot m-portlet__foot--fit">
 										<center>
 											<div class="m-form__actions">
-												<button type="submit" class="btn m-btn--pill btn-accent" onclick=calcula_cuota();>Calcular</button>
+												<button type="submit" class="btn m-btn--pill btn-accent" onclick=calcula_independientes();>Calcular</button>
 												<button type="button" class="btn m-btn--pill btn-success" onclick="muestra2();">Pedir Ayuda</button>
 											</div>
 										</center>
@@ -687,10 +692,10 @@
 		// alert('entro');
 	}
 
-	function calcula_cuota(monto)
+	function calcula_cuota()
 	{
 		// $cuota_mensual = $monto_prestamo * (($porcentaje * Math.pow((1 + $porcentaje), $cuotas)) / (Math.pow((1 + $porcentaje), $cuotas) - 1));
-		// monto_prestamo = 
+		monto = <?php echo $condominio['valor']; ?>;
 		var cuota_mensual = 0;
 		cuota_mensual = 208800 * ((0.0045 * Math.pow((1 + 0.0045), 300)) / (Math.pow((1 + 0.0045), 300) - 1));
 		cuota_redondeado = Math.round(parseFloat(cuota_mensual)*100) / 100;
@@ -716,11 +721,6 @@
 		// vdebug($sueldo_ideal, true, false, true);
 		// return $resultados;
 	}
-
-    function muestra()
-    {
-    	alert('Si entro');
-    }
 
     function calcula_independientes()
     {
