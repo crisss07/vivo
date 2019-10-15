@@ -75,63 +75,52 @@
 						<!--begin::Form-->
 						<!-- <form class="m-form m-form--fit m-form--label-align-right" action="/"> -->
 
-									<!--begin::Preview-->
-									<div class="m-demo">
+						<!--begin::Preview-->
+						<div class="m-demo">
 
-										<div class="m-portlet__body">
-											Listado Condominios
-										<table class="table m-table m-table--head-bg-warning">
-										<thead>
-											<tr>
-												<th>#</th>
-												<th>Descripcion</th>
-												<th>Ciudad</th>
-												<th>Valor Inmueble</th>
-												<th>Cuota Mensual</th>
-												<th>Sueldo ideal</th>
-												<th></th>
-											</tr>
-										</thead>
-										<tbody>
+							<div class="m-portlet__body">
+								Listado Condominios
+								<table class="table m-table m-table--head-bg-warning">
+									<thead>
+										<tr>
+											<th>#</th>
+											<th>Descripcion</th>
+											<th>Ciudad</th>
+											<th>Valor Inmueble</th>
+											<th>Cuota Mensual</th>
+											<th>Sueldo ideal</th>
+											<th></th>
+										</tr>
+									</thead>
+									<tbody>
 										<?php $ingreso_total_solicitante = $datos_credito['ingreso_mensual']+$datos_credito['ingreso_conyugue'] ?>
 										<?php //foreach ($condominios as $c): ?>
-											<tr>
-												<th scope="row"><?php echo $condominio['id'] ?></th>
-												<td><?php echo $condominio['descripcion'] ?></td>
-												<td><?php echo $condominio['ciudad'] ?></td>
-												<td><?php echo $condominio['valor'] ?></td>
-												<td><?php echo $condominio['cuota_mensual'] ?></td>
-												<td><?php echo $condominio['sueldo_prom'] ?></td>
-												<td>
-													<?php if ($condominio['sueldo_prom'] <= $ingreso_total_solicitante): ?>
-														<a href="#" class="btn btn-success m-btn m-btn--icon btn-sm m-btn--icon-only">
-															<i class="fa fa-check"></i>
-														</a>
-													<?php else: ?>
-														<a href="#" class="btn btn-danger m-btn m-btn--icon btn-sm m-btn--icon-only" onclick="muestra_papab(<?php echo $condominio['id'] ?>, '<?php echo $condominio['descripcion'] ?>')">
-															<i class="fa fa-ban"></i>
-														</a>
-													<?php endif; ?>
-												</td>
-											</tr>
+										<tr>
+											<th scope="row"><?php echo $condominio['id'] ?></th>
+											<td><?php echo $condominio['descripcion'] ?></td>
+											<td><?php echo $condominio['ciudad'] ?></td>
+											<td><?php echo $condominio['valor'] ?></td>
+											<td><?php echo $condominio['cuota_mensual'] ?></td>
+											<td><?php echo $condominio['sueldo_prom'] ?></td>
+											<td>
+												<?php if ($condominio['sueldo_prom'] <= $ingreso_total_solicitante): ?>
+												<a href="#" class="btn btn-success m-btn m-btn--icon btn-sm m-btn--icon-only">
+													<i class="fa fa-check"></i>
+												</a>
+												<?php else: ?>
+												<a href="#" class="btn btn-danger m-btn m-btn--icon btn-sm m-btn--icon-only"
+													onclick="muestra_papab(<?php echo $condominio['id'] ?>, '<?php echo $condominio['descripcion'] ?>')">
+													<i class="fa fa-ban"></i>
+												</a>
+												<?php endif; ?>
+											</td>
+										</tr>
 										<?php //endforeach; ?>
-											
-										</tbody>
-									</table>
-								</div>
-									</div>
 
-									<!--end::Preview-->
-							
-							<!-- <div class="m-portlet__foot m-portlet__foot--fit" >
-								<center>
-								<div class="m-form__actions">
-									<button type="submit" class="btn m-btn--pill    btn-accent">Siguiente</button>
-									<button type="button" onclick="agregarform()" class="btn m-btn--pill    btn-success">Agregar Conyugue</button>
-								</div>
-								</center>
-							</div> -->
-						<!-- </form> -->
+									</tbody>
+								</table>
+							</div>
+						</div>
 
 						<!--end::Form-->
 					</div>
@@ -139,10 +128,9 @@
 					<!--end::Portlet-->
 				</div>
 
-				<div class="col-md-4 item" id="bloque_1" style="display: none;">
-					<a href="#" class="btn btn-block btn-success" id='titulo_vivienda'></a>
+				<div class="col-md-4 item">
 					<!--begin::Portlet-->
-					<div class="m-portlet m-portlet--tab">
+					<div class="m-portlet m-portlet--tab" id="bloque_1" style="display: none;">
 						<div class="m-portlet__head">
 							<div class="m-portlet__head-caption">
 								<div class="m-portlet__head-title">
@@ -282,8 +270,7 @@
 						<!--end::Form-->
 					</div>
 
-					<div style="display: block;" id="bloque_2">
-					<a href="#" class="btn btn-block btn-success" id='titulo_vivienda'></a>
+					<div style="display: none;" id="bloque_2">
 					<!--begin::Portlet-->
 					<div class="m-portlet m-portlet--tab">
 						<div class="m-portlet__head">
@@ -346,7 +333,7 @@
 								<div class="m-accordion__item m-accordion__item--danger">
 									<div class="m-accordion__item-head collapsed" srole="tab" id="m_accordion_5_item_1_head" data-toggle="collapse" href="#m_accordion_5_item_1_body_2" aria-expanded="false">
 										<span class="m-accordion__item-icon"><i class="fa flaticon-user-ok"></i></span>
-										<span class="m-accordion__item-title"> Formulario Independientes 3</span>
+										<span class="m-accordion__item-title"> Formulario Independientes</span>
 										<span class="m-accordion__item-mode"></span>
 									</div>
 									<div class="m-accordion__item-body collapse" id="m_accordion_5_item_1_body_2" role="tabpanel" aria-labelledby="m_accordion_5_item_1_head" data-parent="#m_accordion_6" style="">
@@ -384,7 +371,7 @@
 										<center>
 											<div class="m-form__actions">
 												<button type="submit" class="btn m-btn--pill btn-accent" onclick=padre_beneficiario_independiente2();>Calcular</button>
-												<button type="button" class="btn m-btn--pill btn-success" onclick="muestra2()">Pedir Ayuda</button>
+												<button type="button" class="btn m-btn--pill btn-success" onclick="muestra3()">Pedir Ayuda</button>
 											</div>
 										</center>
 									</div>
@@ -418,7 +405,7 @@
 												<center>
 													<div class="m-form__actions">
 														<button type="submit" class="btn m-btn--pill btn-accent" onclick="padre_beneficiario_dependiente2();">Calcular</button>
-														<button type="button" class="btn m-btn--pill btn-success" onclick="muestra2();">Pedir Ayuda</button>
+														<button type="button" class="btn m-btn--pill btn-success" onclick="muestra3();">Pedir Ayuda</button>
 													</div>
 												</center>
 											</div>
@@ -443,10 +430,9 @@
 		
 				</div>
 
-				<div class="col-md-4 item" id="bloque_2" style="display: none;">
-					<a href="#" class="btn btn-block btn-success" id='titulo_vivienda'></a>
+				<div class="col-md-4 item">
 					<!--begin::Portlet-->
-					<div class="m-portlet m-portlet--tab">
+					<div class="m-portlet m-portlet--tab" id="bloque_3" style="display: none;">
 						<div class="m-portlet__head">
 							<div class="m-portlet__head-caption">
 								<div class="m-portlet__head-title">
@@ -488,18 +474,6 @@
 								
 							</div>
 
-							<!-- <div class="form-group m-form__group row">
-								<div class="col-lg-4">
-									<label class="">Carnet Identidad:</label>
-									<input type="text" class="form-control m-input m-input--air m-input--pill" name="ci_c" id="ci4" required>
-									<button type="button" class="btn m-btn--pill btn-success " onclick="carnet_4();">Buscar</button>
-								</div>
-								<div class="col-lg-8">
-									<label class="">Nombre</label>
-									<input type="text" class="form-control m-input m-input--air m-input--pill" name="name_4" id="name_4" readonly>
-								</div>
-							</div>
- -->
 							<!--begin::Section-->
 							<div class="m-accordion m-accordion--default m-accordion--toggle-arrow" id="m_accordion_7" role="tablist">
 
@@ -545,7 +519,7 @@
 										<center>
 											<div class="m-form__actions">
 												<button type="submit" class="btn m-btn--pill btn-accent" onclick=padre_beneficiario_independiente3();>Calcular</button>
-												<button type="button" class="btn m-btn--pill btn-success" onclick="muestra2();">Pedir Ayuda</button>
+												<button type="button" class="btn m-btn--pill btn-success" onclick="muestra4();">Pedir Ayuda</button>
 											</div>
 										</center>
 									</div>
@@ -579,7 +553,7 @@
 												<center>
 													<div class="m-form__actions">
 														<button type="submit" class="btn m-btn--pill btn-accent" onclick="padre_beneficiario_dependiente3();">Calcular</button>
-														<button type="button" class="btn m-btn--pill btn-success" onclick="muestra2();">Pedir Ayuda</button>
+														<button type="button" class="btn m-btn--pill btn-success" onclick="muestra4();">Pedir Ayuda</button>
 													</div>
 												</center>
 											</div>
@@ -598,10 +572,9 @@
 						<!--end::Form-->
 					</div>
 
-					<div style="display: block;" id="bloque_2">
-					<a href="#" class="btn btn-block btn-success" id='titulo_vivienda'></a>
+					<div>
 					<!--begin::Portlet-->
-					<div class="m-portlet m-portlet--tab">
+					<div class="m-portlet m-portlet--tab" style="display: none;" id="bloque_4">
 						<div class="m-portlet__head">
 							<div class="m-portlet__head-caption">
 								<div class="m-portlet__head-title">
@@ -642,18 +615,6 @@
 								
 							</div>
 
-							<!-- <div class="form-group m-form__group row">
-								<div class="col-lg-4">
-									<label class="">Carnet Identidad:</label>
-									<input type="text" class="form-control m-input m-input--air m-input--pill" name="ci_c" id="ci5" required>
-									<button type="button" class="btn m-btn--pill btn-success " onclick="carnet_5();">Buscar</button>
-								</div>
-								<div class="col-lg-8">
-									<label class="">Nombre</label>
-									<input type="text" class="form-control m-input m-input--air m-input--pill" name="name_5" id="name_5" readonly>
-								</div>
-							</div>
- -->
 							<!--begin::Section-->
 							<div class="m-accordion m-accordion--default m-accordion--toggle-arrow" id="m_accordion_8" role="tablist">
 
@@ -699,7 +660,7 @@
 										<center>
 											<div class="m-form__actions">
 												<button type="submit" class="btn m-btn--pill btn-accent" onclick=padre_beneficiario_independiente4();>Calcular</button>
-												<button type="button" class="btn m-btn--pill btn-success" onclick="muestra2()">Pedir Ayuda</button>
+												<button type="button" class="btn m-btn--pill btn-success">Pedir Ayuda</button>
 											</div>
 										</center>
 									</div>
@@ -733,7 +694,7 @@
 												<center>
 													<div class="m-form__actions">
 														<button type="submit" class="btn m-btn--pill btn-accent" onclick="padre_beneficiario_dependiente4();">Calcular</button>
-														<button type="button" class="btn m-btn--pill btn-success" onclick="muestra2();">Pedir Ayuda</button>
+														<button type="button" class="btn m-btn--pill btn-success">Pedir Ayuda</button>
 													</div>
 												</center>
 											</div>
@@ -753,8 +714,6 @@
 					</div>
 
 					</div>
-
-				
 		
 				</div>
 			</div>
@@ -793,6 +752,20 @@
 		$("#bloque_2").show('slow');
 		// alert('entro');
 	}
+
+	function muestra3()
+	{
+		$("#bloque_3").show('slow');
+		// alert('entro');
+	}
+
+	function muestra4()
+	{
+		$("#bloque_4").show('slow');
+		// alert('entro');
+	}
+
+	
 
 	function calcula_cuota(monto)
 	{
