@@ -32,6 +32,10 @@
 									<tr>
 										<th scope="row">Ingresos liquidos mensuales conyugue</th>
 										<td align="right"><?php echo $datos_credito['ingreso_conyugue']; ?></td>
+										<?php 
+											$total = 0;
+											$total = $datos_credito['ingreso_mensual'] + $datos_credito['ingreso_conyugue'];
+										?>
 									</tr>
 									<tr>
 										<th scope="row">Ingresos padre beneficiario</th>
@@ -51,11 +55,7 @@
 									</tr>
 									<tr>
 										<th scope="row">Total</th>
-										<td align="right">0</td>
-									</tr>
-									<tr>
-										<th scope="row">Cuota Mensual</th>
-										<td align="right"><?php echo $cuota['cuota_total']; ?></td>
+										<td align="right" id="total_ingresos"><?php echo $total; ?></td>
 									</tr>
 									<tr>
 										<th scope="row">Tasa de interes</th>
@@ -845,11 +845,12 @@
 
     	porcentaje_monto = monto_impb*porcentaje;
     	monto_adicionable = porcentaje_monto - gasto_igpb; 
+    	return monto_adicionable;
     	// $('#ayuda_pb').show('slow');
     	// console.log(monto_adicionable);
 
     	// console.log("monto "+monto_adicionable);
-    	$("#diipb").html(monto_adicionable);
+    	// $("#diipb").html(monto_adicionable);
     }
 
     function padre_beneficiario_independiente()
@@ -857,7 +858,18 @@
     	var tipo_ipb = $('#cb_ipb').val();
     	var monto_impb = $('#txt_impb').val();
     	var gasto_igpb = $('#txt_igpb').val();
-    	calcula_independientes(tipo_ipb, monto_impb, gasto_igpb);
+    	monto = calcula_independientes(tipo_ipb, monto_impb, gasto_igpb);
+    	console.log(monto);
+    	ingresos_padre_beneficiario = monto;
+    	var subtotal = ingresos_beneficiario + ingresos_conyugue + ingresos_padre_beneficiario + ingresos_madre_beneficiario + ingresos_padre_conyugue + ingresos_madre_conyugue;
+		$("#diipb").html(monto);
+		$("#total_ingresos").html(subtotal);
+		
+		if(subtotal > parseFloat(sueldo_ideal)){
+    		alert('si');
+    	}else{
+    		alert('no');
+    	}
     }
 
     function padre_beneficiario_dependiente()
@@ -867,6 +879,9 @@
     	var monto_descontado = monto_numerico*0.4;
     	var ingresos_padre_beneficiario = monto_descontado;
     	var subtotal = ingresos_beneficiario + ingresos_conyugue + ingresos_padre_beneficiario + ingresos_madre_beneficiario + ingresos_padre_conyugue + ingresos_madre_conyugue;
+    	$("#diipb").html(monto_bmbp);
+    	$("#total_ingresos").html(subtotal);
+
     	if(subtotal > parseFloat(sueldo_ideal)){
     		alert('si');
     	}else{
