@@ -16,7 +16,7 @@ class Administrador extends CI_Controller {
 
 	}
 	public function index()
-	{			
+	{   
 		if($this->session->userdata())
 		{	
 			$this->load->view('crud/headerp');	
@@ -49,7 +49,7 @@ class Administrador extends CI_Controller {
 			//exit;
 
 
-			$a=$montos_cuota['cuota'];
+			$a=$montos_cuota['cuota_total'];
 			$b=$montos_cuota['sueldo_ideal'];				
 
 
@@ -83,7 +83,7 @@ class Administrador extends CI_Controller {
 			$montos_cuota = $this->calcula_cuota_mes($precio, 0.0045, 300);
 			//var_dump($montos_cuota);
 			//exit;			
-			$a=$montos_cuota['cuota'];
+			$a=$montos_cuota['cuota_total'];
 			$b=$montos_cuota['sueldo_ideal'];	
 			$id = $this->input->post('id_e'); //input
 			$data = array(            
@@ -128,7 +128,7 @@ class Administrador extends CI_Controller {
 		$monto_redondeado = round($monto_ajustado, 2);
 
 		$seguro_incendio = $monto_prestamo*0.00015;
-		$cuota_total = $monto_redondeado + $seguro_incendio;//insertar
+		$cuota_total = round(($monto_redondeado + $seguro_incendio), 2);
 
 		$sueldo_ideal = round($cuota_total/0.4, 2);
 
