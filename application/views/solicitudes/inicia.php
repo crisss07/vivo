@@ -159,15 +159,29 @@
 						<div class="m-portlet__body">
 
 							<div class="form-group m-form__group row">
-								<div class="col-lg-3">
-									<label class="">Carnet Identidad:</label>
-									<input type="text" class="form-control m-input m-input--air m-input--pill" name="ci_c" id="ci2" required><button type="button" class="btn m-btn--pill btn-success " onclick="carnet_2();">Buscar</button>
+								<label for="example-text-input" class="col-3 col-form-label">Carnet Identidad</label>
+								<div class="col-4">
+									<input type="text" class="form-control m-input m-input--air m-input--pill" name="ci_c" id="ci2" required>
+
+								</div>
+
+								<div class="col-3">								
+										<div class="m-section__content m-demo-dropdowns" >
+											<div class="m-dropdown m-dropdown--inline m-dropdown--large m-dropdown--arrow m-dropdown--align-left" m-dropdown-toggle="hover" >
+												<button type="button" class="btn m-btn--pill btn-success " onclick="carnet_2();">Buscar</button>
+											</div>
+										</div>																	
+									
+								</div>
+							</div>
+
+							<div class="form-group m-form__group row">
+								<label for="example-text-input" class="col-3 col-form-label">Nombre</label>
+								<div class="col-8">
+									<input type="text" class="form-control m-input m-input--air m-input--pill" name="name_2" id="name_2" readonly>
+
 								</div>
 								
-								<div class="col-lg-6">
-									<label class="">Nombre</label>
-									<input type="text" class="form-control m-input m-input--air m-input--pill" name="name_2" id="name_2" readonly>
-								</div>
 							</div>
 
 							<!--begin::Section-->
