@@ -228,7 +228,7 @@
 									<div class="m-portlet__foot m-portlet__foot--fit">
 										<center>
 											<div class="m-form__actions">
-												<button type="submit" class="btn m-btn--pill btn-accent" onclick=calcula_independientes();>Calcular</button>
+												<button type="submit" class="btn m-btn--pill btn-accent" onclick=padre_beneficiario_independiente();>Calcular</button>
 												<button type="button" class="btn m-btn--pill btn-success" onclick="muestra2();">Pedir Ayuda</button>
 											</div>
 										</center>
@@ -262,7 +262,7 @@
 											<div class="m-portlet__foot m-portlet__foot--fit">
 												<center>
 													<div class="m-form__actions">
-														<button type="submit" class="btn m-btn--pill btn-accent"  onclick="calcula_dependientes();">Calcular</button>
+														<button type="submit" class="btn m-btn--pill btn-accent"  onclick="padre_beneficiario_dependiente();">Calcular</button>
 														<button type="button" class="btn m-btn--pill btn-success" onclick="muestra2();">Pedir Ayuda</button>
 													</div>
 												</center>
@@ -765,6 +765,16 @@
 			<!-- end:: Body -->
 
 <script type="text/javascript">
+
+	var ingresos_beneficiario = <?php echo $datos_credito['ingreso_mensual']; ?>;
+	var ingresos_conyugue = <?php echo $datos_credito['ingreso_conyugue']; ?>;
+	var ingresos_padre_beneficiario = 0;
+	var ingresos_madre_beneficiario = 0;
+	var ingresos_padre_conyugue = 0;
+	var ingresos_madre_conyugue = 0;
+	var couta_mes_condominio = <?php echo $cuota['cuota_total']; ?>;
+	var total = 0;
+
     function agregarform()
         {
               $('.item').hide('slow');
@@ -786,23 +796,21 @@
 	function calcula_cuota(monto)
 	{
 		// $cuota_mensual = $monto_prestamo * (($porcentaje * Math.pow((1 + $porcentaje), $cuotas)) / (Math.pow((1 + $porcentaje), $cuotas) - 1));
-		// monto = <?php echo $condominio['valor']; ?>;
+		prestamo = <?php echo $condominio['valor']; ?>;
 		var cuota_mensual = 0;
-		cuota_mensual = monto * ((0.0045 * Math.pow((1 + 0.0045), 300)) / (Math.pow((1 + 0.0045), 300) - 1));
+		cuota_mensual = prestamo * ((0.0045 * Math.pow((1 + 0.0045), 300)) / (Math.pow((1 + 0.0045), 300) - 1));
+		// console.log(prestamo);
 		cuota_redondeado = Math.round(parseFloat(cuota_mensual)*100) / 100;
-		porcentaje_ajuste = cuota_redondeado * 0.01;
+		porcentaje_ajuste = cuota_redondeado * 0.035;
 		monto_ajustado = cuota_mensual + porcentaje_ajuste;
 		cuota_ajustado_redondeado = Math.round(monto_ajustado*100)/100;
 
-		// console.log(monto_ajustado_redondeado);
-		// calcula_independientes();
-		// $monto_redondeado = round($monto_ajustado, 2);
-
 		seguro_incendio = monto * 0.00015;
 		cuota_total = cuota_ajustado_redondeado + seguro_incendio;
-		$("#diipb").html(cuota_total);
 
-		// console.log(cuota_total);
+		console.log(cuota_total);
+		// $("#diipb").html(cuota_total);
+
 
 		// $sueldo_ideal = round($cuota_total / 0.4, 2);
 
@@ -815,11 +823,11 @@
 		// return $resultados;
 	}
 
-    function calcula_independientes()
+    function calcula_independientes(tipo_ipb, monto_impb, gasto_igpb)
     {
-    	var tipo_ipb = $('#cb_ipb').val();
-    	var monto_impb = $('#txt_impb').val();
-    	var gasto_igpb = $('#txt_igpb').val();
+    	// var tipo_ipb = $('#cb_ipb').val();
+    	// var monto_impb = $('#txt_impb').val();
+    	// var gasto_igpb = $('#txt_igpb').val();
 
     	switch (tipo_ipb) {
     		case 'Comercio':
@@ -844,12 +852,29 @@
     	$("#diipb").html(monto_adicionable);
     }
 
-	function calcula_dependientes()
-	{
-		var monto_bmbp = $('#txt_dmbp').val();
-		calcula_cuota(monto_bmbp);
-		// console.log(monto_bmbp);
-	}
+    function padre_beneficiario_independiente()
+    {
+    	var tipo_ipb = $('#cb_ipb').val();
+    	var monto_impb = $('#txt_impb').val();
+    	var gasto_igpb = $('#txt_igpb').val();
+    	calcula_independientes(tipo_ipb, monto_impb, gasto_igpb);
+    }
+
+    function padre_beneficiario_dependiente()
+    {
+    	var monto_bmbp = $('#txt_dmbp').val();
+    	var monto_numerico = parseFloat(monto_bmbp);
+    	var monto_descontado = monto_numerico*0.4;
+    	// console.log(monto_descontado);
+    	var ingresos_padre_beneficiario = monto_descontado;
+    	var subtotal = ingresos_beneficiario + ingresos_conyugue + ingresos_padre_beneficiario + ingresos_madre_beneficiario + ingresos_padre_conyugue + ingresos_madre_conyugue;
+    	// console.log(subtotal);
+    	calcula_cuota(subtotal);
+    	// var demo = calcula_cuota(parseFloat(subtotal));
+    	// console.log(demo);
+    	// console.log(calcula_cuota(subtotal));
+    }
+
 </script>
 
 <script type="text/javascript">

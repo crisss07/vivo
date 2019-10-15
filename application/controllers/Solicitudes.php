@@ -35,7 +35,7 @@ class Solicitudes extends CI_Controller {
 		$monto_redondeado = round($monto_ajustado, 2);
 
 		$seguro_incendio = $monto_prestamo*0.00015;
-		$cuota_total = $monto_redondeado + $seguro_incendio;
+		$cuota_total = round(($monto_redondeado + $seguro_incendio), 2);
 
 		$sueldo_ideal = round($cuota_total/0.4, 2);
 
@@ -62,11 +62,11 @@ class Solicitudes extends CI_Controller {
 	public function inicia($idCredito = null)
 	{
 		// echo 'Holas desde php';
-		$montos_cuota = $this->calcula_cuota_mes(208800, 0.0045, 300);
 		$datos_credito = $this->db->get_where('credito', array('id'=>$idCredito))->row_array();
 		$condominios = $this->db->get('condominio')->result_array();
 		$condominio = $this->db->get_where('condominio', array('id'=>$datos_credito['condominio_id']))->row_array();
-		// vdebug($condominio, true, false, true);
+		$montos_cuota = $this->calcula_cuota_mes($condominio['valor'], 0.0045, 300);
+		// vdebug($montos_cuota, true, false, true);
 		
 		$data['datos_credito']=$datos_credito;
 		$data['condominios']=$condominios;
