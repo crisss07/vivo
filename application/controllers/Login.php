@@ -14,9 +14,17 @@ class Login extends CI_Controller {
 
 	public function index()
 	{	
-		$this->load->view('login/header');		
+		
+		if($this->session->userdata("login"))
+		{	
+			redirect(base_url().'Administrador');
+		}
+		else{
+			$this->load->view('login/header');		
 		$this->load->view('login/login');		
-		$this->load->view('login/footer');		
+		$this->load->view('login/footer');	
+		}
+				
 	}
 
 	public function login()
@@ -34,12 +42,15 @@ class Login extends CI_Controller {
 			redirect(base_url().'Login');
 		}
 		else{		
-			$data = array(	
-				 'username'  => 'johndoe',
-        		 'email'     => 'johndoe@some-site.com',
-				 'login' => TRUE
+				$data = array(
+				'persona_perfil_id' => $res->persona_perfil_id,
+				'rol_id' => $res->rol_id,
+				'usuario' => $res->usuario,
+				'login' => TRUE
 			);
 			$this->session->set_userdata($data);
+
+
 			//var_dump($res);
 			//exit;
 			redirect(base_url().'Administrador');

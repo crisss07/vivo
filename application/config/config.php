@@ -133,9 +133,9 @@ $config['subclass_prefix'] = 'MY_';
 // $config['composer_autoload'] = FALSE;
 // $config['composer_autoload'] = realpath(APPPATH . '../vendor/autoload.php');
 
-$config['composer_autoload'] = TRUE;
+$config['composer_autoload'] = realpath(APPPATH . '../vendor/autoload.php');
 
-$autoload['libraries'] = array('database', 'session');
+
 /*
 |--------------------------------------------------------------------------
 | Allowed URL Characters
