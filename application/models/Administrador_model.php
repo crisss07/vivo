@@ -17,5 +17,11 @@ class Administrador_model extends CI_Model {
         return $query->result();
     }
 
+    function getConteo($dep) {
+    	$this->db->select('Count(*) as x');
+        $query = $this->db->get_where('beneficiario',array('departamento' => $dep));
+        return $query->row();
+    }
+
     
 }

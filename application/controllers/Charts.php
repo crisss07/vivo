@@ -19,8 +19,17 @@ class Charts extends CI_Controller {
 		if($this->session->userdata())
 		{	
 			$this->load->view('charts/headerp');	
-			$data['datos'] = $this->Administrador_model->getData();	
-			//$this->load->view('crud/menu');
+			//$data['datos'] = $this->Administrador_model->getData();	
+		    $departamento= array("La_Paz","Cochabamba","Santa Cruz","Beni","Pando","Potosi","Oruro","Tarija","Sucre");
+
+		    foreach ($departamento as $key) {
+		    	# code...
+		    	$data[$key]=$this->Administrador_model->getConteo($key);
+		    }
+
+			
+			//var_dump($data);
+			//exit;
 			$this->load->view('charts/charts',$data);		
 			$this->load->view('charts/footer');			
 		}
@@ -29,4 +38,5 @@ class Charts extends CI_Controller {
 		}
 
 	}	
+		
 }
