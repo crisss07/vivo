@@ -90,27 +90,27 @@
 										</thead>
 										<tbody>
 										<?php $ingreso_total_solicitante = $datos_credito['ingreso_mensual']+$datos_credito['ingreso_conyugue'] ?>
-										<?php foreach ($condominios as $c): ?>
+										<?php //foreach ($condominios as $c): ?>
 											<tr>
-												<th scope="row"><?php echo $c['id'] ?></th>
-												<td><?php echo $c['descripcion'] ?></td>
-												<td><?php echo $c['ciudad'] ?></td>
-												<td><?php echo $c['valor'] ?></td>
-												<td><?php echo $c['cuota_mensual'] ?></td>
-												<td><?php echo $c['sueldo_prom'] ?></td>
+												<th scope="row"><?php echo $condominio['id'] ?></th>
+												<td><?php echo $condominio['descripcion'] ?></td>
+												<td><?php echo $condominio['ciudad'] ?></td>
+												<td><?php echo $condominio['valor'] ?></td>
+												<td><?php echo $condominio['cuota_mensual'] ?></td>
+												<td><?php echo $condominio['sueldo_prom'] ?></td>
 												<td>
-													<?php if ($c['sueldo_prom'] <= $ingreso_total_solicitante): ?>
+													<?php if ($condominio['sueldo_prom'] <= $ingreso_total_solicitante): ?>
 														<a href="#" class="btn btn-success m-btn m-btn--icon btn-sm m-btn--icon-only">
 															<i class="fa fa-check"></i>
 														</a>
 													<?php else: ?>
-														<a href="#" class="btn btn-danger m-btn m-btn--icon btn-sm m-btn--icon-only" onclick="muestra_papab(<?php echo $c['id'] ?>, '<?php echo $c['descripcion'] ?>')">
+														<a href="#" class="btn btn-danger m-btn m-btn--icon btn-sm m-btn--icon-only" onclick="muestra_papab(<?php echo $condominio['id'] ?>, '<?php echo $condominio['descripcion'] ?>')">
 															<i class="fa fa-ban"></i>
 														</a>
 													<?php endif; ?>
 												</td>
 											</tr>
-										<?php endforeach; ?>
+										<?php //endforeach; ?>
 											
 										</tbody>
 									</table>
@@ -803,6 +803,7 @@
 
 		seguro_incendio = monto * 0.00015;
 		cuota_total = cuota_ajustado_redondeado + seguro_incendio;
+		console.log(seguro_incendio);
 
 		// $sueldo_ideal = round($cuota_total / 0.4, 2);
 

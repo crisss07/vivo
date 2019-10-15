@@ -63,12 +63,14 @@ class Solicitudes extends CI_Controller {
 	{
 		// echo 'Holas desde php';
 		$montos_cuota = $this->calcula_cuota_mes(208800, 0.0045, 300);
-		// vdebug($cuota, true, false, true);
 		$datos_credito = $this->db->get_where('credito', array('id'=>$idCredito))->row_array();
 		$condominios = $this->db->get('condominio')->result_array();
-
+		$condominio = $this->db->get_where('condominio', array('id'=>$datos_credito['condominio_id']))->row_array();
+		// vdebug($condominio, true, false, true);
+		
 		$data['datos_credito']=$datos_credito;
 		$data['condominios']=$condominios;
+		$data['condominio']=$condominio;
 		$data['cuota']=$montos_cuota;
 		// $condominios = $this->db->get('condominio')->result();
 		// $data['condominios']=$condominios;
