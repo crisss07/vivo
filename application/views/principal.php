@@ -63,18 +63,34 @@
 													<input type="text" hidden name="fec_nacimiento" id="fecha">
 												</div>
 												<div class="form-group m-form__group row">
+													<label for="example-text-input" class="col-4 col-form-label">Carnet Identidad:</label>
+													<div class="col-4">
+														<input type="text" class="form-control m-input m-input--air m-input--pill" name="ci" id="ci1" required>
+
+													</div>
+
+													<div class="col-3">								
+															<div class="m-section__content m-demo-dropdowns" >
+																<div class="m-dropdown m-dropdown--inline m-dropdown--large m-dropdown--arrow m-dropdown--align-left" m-dropdown-toggle="hover" >
+																	<button type="button" class="btn m-btn--pill btn-success" onclick="buscar();">Buscar</button>
+																</div>
+															</div>																	
+														
+													</div>
+												</div>
+												<!-- <div class="form-group m-form__group row">
 													<div class="col-lg-4">
 														<label class="">Carnet Identidad:</label>
 														<input type="text" class="form-control m-input m-input--air m-input--pill" name="ci" id="ci1" required>
 														<span class="m-form__help">Por favor ingrese su C.I.</span>
 													</div>
-													<!-- <div class="col-lg-3">
+													<div class="col-lg-3">
 														<label class="" >´</label>
 														<button type="button" onclick="buscar()"> gola</button>
 														<button type="button" onclick="buscar()" class="form-control m-input m-input--air m-input--pill btn-success" style="text-align: center;">Buscar</button>
 														<span class="m-form__help"></span>
-													</div> -->
-												</div>
+													</div>
+												</div> -->
 												<div class="form-group m-form__group row">
 													<div class="col-lg-4">
 														<label class="">Nombres:</label>
@@ -181,12 +197,28 @@
 													<input type="text" hidden name="fec_nacimiento_c" id="fecha_c">
 												</div>
 												<div class="form-group m-form__group row">
+													<label for="example-text-input" class="col-4 col-form-label">Carnet Identidad:</label>
+													<div class="col-4">
+														<input type="text" class="form-control m-input m-input--air m-input--pill" name="ci_c" id="ci2" required>
+
+													</div>
+
+													<div class="col-3">								
+															<div class="m-section__content m-demo-dropdowns" >
+																<div class="m-dropdown m-dropdown--inline m-dropdown--large m-dropdown--arrow m-dropdown--align-left" m-dropdown-toggle="hover" >
+																	<button type="button" class="btn m-btn--pill btn-success" onclick="buscar2();">Buscar</button>
+																</div>
+															</div>																	
+														
+													</div>
+												</div>
+												<!-- <div class="form-group m-form__group row">
 													<div class="col-lg-4">
 														<label class="">Carnet Identidad:</label>
 														<input type="text" class="form-control m-input m-input--air m-input--pill" name="ci_c" id="ci2">
 														<span class="m-form__help">Por favor ingrese su C.I.</span>
 													</div>
-												</div>
+												</div> -->
 												<div class="form-group m-form__group row">
 													<div class="col-lg-4">
 														<label class="">Nombres:</label>
@@ -259,7 +291,8 @@
 
 
 <script type="text/javascript">
-    $("#ci1").focusout(function(){
+function buscar()
+	{
     	var ci = $("#ci1").val();
         var csrfName = '<?php echo $this->security->get_csrf_token_name(); ?>';
         var csrfHash = '<?php echo $this->security->get_csrf_hash(); ?>';
@@ -322,13 +355,14 @@
                 alerta_ci();
             }
         });
-    });
+  }
    
 </script>
 
 <script type="text/javascript">
 
-    $("#ci2").focusout(function(){
+function buscar2()
+{
         var ci = $("#ci2").val();
         var csrfName = '<?php echo $this->security->get_csrf_token_name(); ?>';
         var csrfHash = '<?php echo $this->security->get_csrf_hash(); ?>';
@@ -389,7 +423,7 @@
                 // alert("error");
             }
         });
-    });
+ }
    
 </script>
 
