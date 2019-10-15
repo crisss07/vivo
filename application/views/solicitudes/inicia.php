@@ -761,6 +761,7 @@
 		</div>
 	</div>
 </div>
+<?php //vdebug($condominio, true, false, true); ?>
 			<!-- end:: Body -->
 
 <script type="text/javascript">
@@ -773,6 +774,7 @@
 	var ingresos_madre_conyugue = 0;
 	var couta_mes_condominio = <?php echo $cuota['cuota_total']; ?>;
 	var total = 0;
+	var sueldo_ideal = <?php echo $condominio['sueldo_prom']; ?>;;
 
     function agregarform()
         {
@@ -807,11 +809,10 @@
 		seguro_incendio = monto * 0.00015;
 		cuota_total = cuota_ajustado_redondeado + seguro_incendio;
 
-		console.log(cuota_total);
 		// $("#diipb").html(cuota_total);
 
-
-		// $sueldo_ideal = round($cuota_total / 0.4, 2);
+		sueldo_ideal = Math.round(cuota_total / 0.4, 2);
+		// console.log(sueldo_ideal);
 
 		// $resultados['cuota'] = $monto_redondeado;
 		// $resultados['seguro'] = $seguro_incendio;
@@ -864,14 +865,14 @@
     	var monto_bmbp = $('#txt_dmbp').val();
     	var monto_numerico = parseFloat(monto_bmbp);
     	var monto_descontado = monto_numerico*0.4;
-    	// console.log(monto_descontado);
     	var ingresos_padre_beneficiario = monto_descontado;
     	var subtotal = ingresos_beneficiario + ingresos_conyugue + ingresos_padre_beneficiario + ingresos_madre_beneficiario + ingresos_padre_conyugue + ingresos_madre_conyugue;
-    	// console.log(subtotal);
-    	calcula_cuota(subtotal);
-    	// var demo = calcula_cuota(parseFloat(subtotal));
-    	// console.log(demo);
-    	// console.log(calcula_cuota(subtotal));
+    	if(subtotal > parseFloat(sueldo_ideal)){
+    		alert('si');
+    	}else{
+    		alert('no');
+    	}
+    	// console.log(sueldo_ideal);
     }
 
 </script>
