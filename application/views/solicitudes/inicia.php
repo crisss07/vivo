@@ -35,7 +35,7 @@
 									</tr>
 									<tr>
 										<th scope="row">Ingresos padre beneficiario</th>
-										<td align="right">0</td>
+										<td align="right" id="diipb">0</td>
 									</tr>
 									<tr>
 										<th scope="row">Ingresos madre beneficiario</th>
@@ -225,7 +225,6 @@
 
 										</div>
 									
-
 									<div class="m-portlet__foot m-portlet__foot--fit">
 										<center>
 											<div class="m-form__actions">
@@ -263,7 +262,7 @@
 											<div class="m-portlet__foot m-portlet__foot--fit">
 												<center>
 													<div class="m-form__actions">
-														<button type="submit" class="btn m-btn--pill btn-accent">Calcular</button>
+														<button type="submit" class="btn m-btn--pill btn-accent"  onclick="calcula_dependientes();">Calcular</button>
 														<button type="button" class="btn m-btn--pill btn-success" onclick="muestra2();">Pedir Ayuda</button>
 													</div>
 												</center>
@@ -392,7 +391,7 @@
 											<div class="m-portlet__foot m-portlet__foot--fit">
 												<center>
 													<div class="m-form__actions">
-														<button type="submit" class="btn m-btn--pill btn-accent">Calcular</button>
+														<button type="submit" class="btn m-btn--pill btn-accent" onclick="calcula_dependientes();">Calcular</button>
 														<button type="button" class="btn m-btn--pill btn-success" onclick="muestra2();">Pedir Ayuda</button>
 													</div>
 												</center>
@@ -706,12 +705,12 @@
 		// alert('entro');
 	}
 
-	function calcula_cuota()
+	function calcula_cuota(monto)
 	{
 		// $cuota_mensual = $monto_prestamo * (($porcentaje * Math.pow((1 + $porcentaje), $cuotas)) / (Math.pow((1 + $porcentaje), $cuotas) - 1));
-		monto = <?php echo $condominio['valor']; ?>;
+		// monto = <?php echo $condominio['valor']; ?>;
 		var cuota_mensual = 0;
-		cuota_mensual = 208800 * ((0.0045 * Math.pow((1 + 0.0045), 300)) / (Math.pow((1 + 0.0045), 300) - 1));
+		cuota_mensual = monto * ((0.0045 * Math.pow((1 + 0.0045), 300)) / (Math.pow((1 + 0.0045), 300) - 1));
 		cuota_redondeado = Math.round(parseFloat(cuota_mensual)*100) / 100;
 		porcentaje_ajuste = cuota_redondeado * 0.01;
 		monto_ajustado = cuota_mensual + porcentaje_ajuste;
@@ -723,7 +722,9 @@
 
 		seguro_incendio = monto * 0.00015;
 		cuota_total = cuota_ajustado_redondeado + seguro_incendio;
-		console.log(seguro_incendio);
+		$("#diipb").html(cuota_total);
+
+		// console.log(cuota_total);
 
 		// $sueldo_ideal = round($cuota_total / 0.4, 2);
 
@@ -758,11 +759,19 @@
 
     	porcentaje_monto = monto_impb*porcentaje;
     	monto_adicionable = porcentaje_monto - gasto_igpb; 
-    	$('#ayuda_pb').show('slow');
-    	// console.log(porcentaje_monto);
+    	// $('#ayuda_pb').show('slow');
+    	// console.log(monto_adicionable);
+
     	// console.log("monto "+monto_adicionable);
-    	$("#monto_pb").html(monto_adicionable);
+    	$("#diipb").html(monto_adicionable);
     }
+
+	function calcula_dependientes()
+	{
+		var monto_bmbp = $('#txt_dmbp').val();
+		calcula_cuota(monto_bmbp);
+		// console.log(monto_bmbp);
+	}
 </script>
 
 <script type="text/javascript">
