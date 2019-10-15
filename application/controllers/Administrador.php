@@ -17,7 +17,7 @@ class Administrador extends CI_Controller {
 	}
 	public function index()
 	{			
-		if($this->session->userdata("login"))
+		if($this->session->userdata())
 		{	
 			$this->load->view('crud/headerp');	
 			$data['datos'] = $this->Administrador_model->getData();	
@@ -26,8 +26,8 @@ class Administrador extends CI_Controller {
 			$this->load->view('crud/footer');			
 		}
 		else{
-			var_dump('paso por adm');
-			exit;
+			//var_dump('paso por adm');
+			//exit;
 			redirect(base_url() . 'Login');		
 		}
 
