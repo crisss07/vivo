@@ -64,10 +64,16 @@
 												</div>
 												<div class="form-group m-form__group row">
 													<div class="col-lg-4">
-														<label class="">N&uacute;mero de Carnet Identidad:</label>
+														<label class="">Carnet Identidad:</label>
 														<input type="text" class="form-control m-input m-input--air m-input--pill" name="ci" id="ci1" required>
 														<span class="m-form__help">Por favor ingrese su C.I.</span>
 													</div>
+													<!-- <div class="col-lg-3">
+														<label class="" >´</label>
+														<button type="button" onclick="buscar()"> gola</button>
+														<button type="button" onclick="buscar()" class="form-control m-input m-input--air m-input--pill btn-success" style="text-align: center;">Buscar</button>
+														<span class="m-form__help"></span>
+													</div> -->
 												</div>
 												<div class="form-group m-form__group row">
 													<div class="col-lg-4">
@@ -176,7 +182,7 @@
 												</div>
 												<div class="form-group m-form__group row">
 													<div class="col-lg-4">
-														<label class="">N&uacute;mero de Carnet Identidad:</label>
+														<label class="">Carnet Identidad:</label>
 														<input type="text" class="form-control m-input m-input--air m-input--pill" name="ci_c" id="ci2">
 														<span class="m-form__help">Por favor ingrese su C.I.</span>
 													</div>
@@ -253,9 +259,8 @@
 
 
 <script type="text/javascript">
-
     $("#ci1").focusout(function(){
-        var ci = $("#ci1").val();
+    	var ci = $("#ci1").val();
         var csrfName = '<?php echo $this->security->get_csrf_token_name(); ?>';
         var csrfHash = '<?php echo $this->security->get_csrf_hash(); ?>';
 
@@ -318,7 +323,6 @@
             }
         });
     });
-
    
 </script>
 
@@ -386,7 +390,6 @@
             }
         });
     });
-
    
 </script>
 
