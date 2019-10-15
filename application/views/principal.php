@@ -199,7 +199,7 @@
 												<div class="form-group m-form__group row">
 													<label for="example-text-input" class="col-4 col-form-label">Carnet Identidad:</label>
 													<div class="col-4">
-														<input type="text" class="form-control m-input m-input--air m-input--pill" name="ci_c" id="ci2" required>
+														<input type="text" class="form-control m-input m-input--air m-input--pill" name="ci_c" id="ci2">
 
 													</div>
 
