@@ -119,6 +119,15 @@
 
 									</tbody>
 								</table>
+
+								<div class="m-portlet__foot m-portlet__foot--fit">
+										<center>
+											<div class="m-form__actions">
+												<a href="<?php echo base_url(); ?>" type="button" class="btn m-btn--pill btn-success">Finalizar</a>
+											</div>
+										</center>
+									</div>
+
 							</div>
 						</div>
 
@@ -841,7 +850,7 @@
 		if(subtotal > parseFloat(sueldo_ideal)){
     		alerta_alcanzo();
     	}else{
-    		alert('no');
+    		falta();
     	}
     }
 
@@ -858,7 +867,7 @@
     	if(subtotal > parseFloat(sueldo_ideal)){
     		alerta_alcanzo();
     	}else{
-    		alert('no');
+    		falta();
     	}
     	// console.log(sueldo_ideal);
     }
@@ -876,9 +885,9 @@
 		$("#total_ingresos").html(subtotal);
 
 		if(subtotal > parseFloat(sueldo_ideal)){
-    		alert('si');
+    		alerta_alcanzo();
     	}else{
-    		alert('no');
+    		falta();
     	}
     }
 
@@ -893,9 +902,9 @@
     	$("#total_ingresos").html(subtotal);
 
     	if(subtotal > parseFloat(sueldo_ideal)){
-    		alert('si');
+    		alerta_alcanzo();
     	}else{
-    		alert('no');
+    		falta();
     	}
     	// console.log(sueldo_ideal);
     }
@@ -913,9 +922,9 @@
 		$("#total_ingresos").html(subtotal);
 
 		if(subtotal > parseFloat(sueldo_ideal)){
-    		alert('si');
+    		alerta_alcanzo();
     	}else{
-    		alert('no');
+    		falta();
     	}
     }
 
@@ -930,9 +939,9 @@
     	$("#total_ingresos").html(subtotal);
 
     	if(subtotal > parseFloat(sueldo_ideal)){
-    		alert('si');
+    		alerta_alcanzo();
     	}else{
-    		alert('no');
+    		falta();
     	}
     	// console.log(sueldo_ideal);
     }
@@ -950,9 +959,9 @@
 		$("#total_ingresos").html(subtotal);
 
 		if(subtotal > parseFloat(sueldo_ideal)){
-    		alert('si');
+    		alerta_alcanzo();
     	}else{
-    		alert('no');
+    		falta();
     	}
     }
 
@@ -967,9 +976,9 @@
     	$("#total_ingresos").html(subtotal);
 
     	if(subtotal > parseFloat(sueldo_ideal)){
-    		alert('si');
+    		alerta_alcanzo();
     	}else{
-    		alert('no');
+    		falta();
     	}
     	// console.log(sueldo_ideal);
     }
@@ -984,6 +993,14 @@
 	//location.reload();
 	}
 
+    function falta(){
+    	Swal.fire({
+    		type: 'error',
+    		title: 'Lo Siento',
+    		text: 'Aun te falta!'
+    	})
+	//location.reload();
+	}
 
 </script>
 
