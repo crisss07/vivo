@@ -70,13 +70,13 @@
 													<input type="text" hidden name="fec_nacimiento" id="fecha">
 												</div>
 												<div class="form-group m-form__group row">
-													<label for="example-text-input" class="col-4 col-form-label">Carnet Identidad:</label>
-													<div class="col-4">
+													<label for="example-text-input" class="col-3 col-form-label">Carnet Identidad:</label>
+													<div class="col-5">
 														<input type="text" class="form-control m-input m-input--air m-input--pill" name="ci" id="ci1" required>
 
 													</div>
 
-													<div class="col-3">								
+													<div class="col-2">								
 															<div class="m-section__content m-demo-dropdowns" >
 																<div class="m-dropdown m-dropdown--inline m-dropdown--large m-dropdown--arrow m-dropdown--align-left" m-dropdown-toggle="hover" >
 																	<button type="button" class="btn m-btn--pill btn-success" onclick="buscar();">Buscar</button>
@@ -204,13 +204,13 @@
 													<input type="text" hidden name="fec_nacimiento_c" id="fecha_c">
 												</div>
 												<div class="form-group m-form__group row">
-													<label for="example-text-input" class="col-4 col-form-label">Carnet Identidad:</label>
-													<div class="col-4">
+													<label for="example-text-input" class="col-3 col-form-label">Carnet Identidad:</label>
+													<div class="col-5">
 														<input type="text" class="form-control m-input m-input--air m-input--pill" name="ci_c" id="ci2">
 
 													</div>
 
-													<div class="col-3">								
+													<div class="col-2">								
 															<div class="m-section__content m-demo-dropdowns" >
 																<div class="m-dropdown m-dropdown--inline m-dropdown--large m-dropdown--arrow m-dropdown--align-left" m-dropdown-toggle="hover" >
 																	<button type="button" class="btn m-btn--pill btn-success" onclick="buscar2();">Buscar</button>
