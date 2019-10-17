@@ -34,18 +34,37 @@ class Administrador_Persona extends CI_Controller {
 
 	public function index()
 	{
-		$persona = $this->db->get('beneficiario')->result();
+		if($this->session->userdata('is_logged'))
+		{	
+			$persona = $this->db->get('beneficiario')->result();
 		$data['persona']=$persona;
 		$this->load->view('crud/headerp');	
 		$this->load->view('crud/adminitrar_personas',$data);		
 		$this->load->view('crud/footer');
+		}
+		else{
+			redirect(base_url() . 'Login');	
+		}
+
+
+
+		
 	}
 
 
 	public function delete($id=null)
 	{
-		$this->db->delete('familiar', array('beneficiario_id' => $id));
+			if($this->session->userdata('is_logged'))
+		{	
+			$this->db->delete('familiar', array('beneficiario_id' => $id));
 		$this->db->delete('beneficiario', array('id' => $id));
 		redirect(base_url() . 'Administrador_Persona');
+		}
+		else{
+			redirect(base_url() . 'Login');	
+		}
+
+
+		
 	}
 }
