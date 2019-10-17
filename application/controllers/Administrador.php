@@ -19,7 +19,7 @@ class Administrador extends CI_Controller {
 	{   $this->load->library('session'); 
 		//var_dump(CI_VERSION);
     	//	exit;
-		if($this->session->userdata())
+		if($this->session->userdata('is_logged'))
 		{	
 			$this->load->view('crud/headerp');	
 			$data['datos'] = $this->Administrador_model->getData();	
@@ -40,7 +40,7 @@ class Administrador extends CI_Controller {
 	public function create()
 	{
 
-		if($this->session->userdata())
+		if($this->session->userdata('is_logged'))
 		{	
 
 			$datos = $this->input->post();
@@ -78,7 +78,7 @@ class Administrador extends CI_Controller {
 	public function update()
 	{
 
-		if($this->session->userdata())
+		if($this->session->userdata('is_logged'))
 		{	
 			$datos = $this->input->post();		
 			$precio = $this->input->post('valor_e');
@@ -111,7 +111,7 @@ class Administrador extends CI_Controller {
 
 	public function delete($id=null)
 	{
-		if($this->session->userdata())
+		if($this->session->userdata('is_logged'))
 		{	
 			$this->db->delete('condominio', array('id' => $id));
 			redirect(base_url() . 'Administrador');

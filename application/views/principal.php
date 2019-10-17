@@ -12,9 +12,16 @@
 
 				<!-- END: Left Aside -->
 				<div class="m-grid__item m-grid__item--fluid m-wrapper">
-					<div class="m-portlet__foot m-portlet__foot--fit" style=" float: right; margin-right: 30px;">
-						<div class="m-form__actions">
-							<a href="<?= base_url('Administrador'); ?>" type="button" class="btn m-btn--pill btn-success">Administrar</a>
+					
+					<div class="d-flex align-items-center">
+						<div class="mr-auto">
+							<h3 class="m-subheader__title "></h3>
+						</div>
+						<div  style=" float: right; margin-right: 20px; ">
+							<span class="m-subheader__daterange" id="m_dashboard_daterangepicker">
+								<a href="<?= base_url('Administrador'); ?>" type="button" class="btn m-btn--pill btn-success">Administrar</a>
+								
+							</span>
 						</div>
 					</div>
 
@@ -63,13 +70,13 @@
 													<input type="text" hidden name="fec_nacimiento" id="fecha">
 												</div>
 												<div class="form-group m-form__group row">
-													<label for="example-text-input" class="col-4 col-form-label">Carnet Identidad:</label>
-													<div class="col-4">
+													<label for="example-text-input" class="col-3 col-form-label">Carnet Identidad:</label>
+													<div class="col-5">
 														<input type="text" class="form-control m-input m-input--air m-input--pill" name="ci" id="ci1" required>
 
 													</div>
 
-													<div class="col-3">								
+													<div class="col-2">								
 															<div class="m-section__content m-demo-dropdowns" >
 																<div class="m-dropdown m-dropdown--inline m-dropdown--large m-dropdown--arrow m-dropdown--align-left" m-dropdown-toggle="hover" >
 																	<button type="button" class="btn m-btn--pill btn-success" onclick="buscar();">Buscar</button>
@@ -197,13 +204,13 @@
 													<input type="text" hidden name="fec_nacimiento_c" id="fecha_c">
 												</div>
 												<div class="form-group m-form__group row">
-													<label for="example-text-input" class="col-4 col-form-label">Carnet Identidad:</label>
-													<div class="col-4">
+													<label for="example-text-input" class="col-3 col-form-label">Carnet Identidad:</label>
+													<div class="col-5">
 														<input type="text" class="form-control m-input m-input--air m-input--pill" name="ci_c" id="ci2">
 
 													</div>
 
-													<div class="col-3">								
+													<div class="col-2">								
 															<div class="m-section__content m-demo-dropdowns" >
 																<div class="m-dropdown m-dropdown--inline m-dropdown--large m-dropdown--arrow m-dropdown--align-left" m-dropdown-toggle="hover" >
 																	<button type="button" class="btn m-btn--pill btn-success" onclick="buscar2();">Buscar</button>
@@ -437,9 +444,14 @@ function buscar2()
 <script>
 function alerta_edad(){
 Swal.fire({
-  type: 'error',
+  // type: 'error',
   title: 'Oops...',
-  text: 'El beneficio es solo para personas que tengan la edad entre 18 años y 29 años!'
+  text: 'El beneficio es solo para personas que tengan la edad entre 18 años y 29 años!',
+  imageUrl: '<?php echo base_url(); ?>public/imagenes/mal.jpeg',
+  imageWidth: 200,
+  imageHeight: 250,
+  imageAlt: 'Custom image',
+  animation: false
 })
 //location.reload();
 }
@@ -447,20 +459,30 @@ Swal.fire({
 <script>
 function alerta(){
 Swal.fire({
-  type: 'error',
+  // type: 'error',
   title: 'Oops...',
-  text: 'Usted ya esta registrado!. '+'Solo puede registrarse una vez.'
+  text: 'Usted ya esta registrado!. '+'Solo puede registrarse una vez.',
+  imageUrl: '<?php echo base_url(); ?>public/imagenes/mal.jpeg',
+  imageWidth: 200,
+  imageHeight: 250,
+  imageAlt: 'Custom image',
+  animation: false
 })
-//location.reload();
 }
 </script>
 <script>
 function alerta_ci(){
 Swal.fire({
-  type: 'error',
+  // type: 'error',
   title: 'Oops...',
-  text: 'No es un Carnet Valido!'
+  text: 'No es un Carnet Valido!',
+  imageUrl: '<?php echo base_url(); ?>public/imagenes/mal.jpeg',
+  imageWidth: 200,
+  imageHeight: 250,
+  imageAlt: 'Custom image',
+  animation: false
 })
 //location.reload();
 }
 </script>
+
