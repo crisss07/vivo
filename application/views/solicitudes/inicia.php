@@ -24,6 +24,26 @@
 
 						<?php //campos ocultos para guardar en la base de datos ?>
 							<input type="hidden" name="beneficiario_id">
+							<input type="hidden" name="condominio_id">
+							<input type="hidden" name="conyuge_id">
+							<input type="hidden" name="papabeneficiario_id">
+							<input type="hidden" name="mamabeneficiario_id">
+							<input type="hidden" name="papaconyugue_id">
+							<input type="hidden" name="mamaconyugue_id">
+							<input type="hidden" name="ingreso_beneficiario">
+							<input type="hidden" name="ingreso_conyugue">
+							<input type="hidden" name="ipb">
+							<input type="hidden" name="imb">
+							<input type="hidden" name="ipc">
+							<input type="hidden" name="imc">
+							<input type="hidden" name="tpb">
+							<input type="hidden" name="tmb">
+							<input type="hidden" name="tpc">
+							<input type="hidden" name="tmc">
+							<input type="hidden" name="interes">
+							<input type="hidden" name="meses">
+							<input type="hidden" name="monto">
+							<input type="hidden" name="fecha">
 							
 						<?php //fin campos ocultos para guardar en la base de datos ?>
 
