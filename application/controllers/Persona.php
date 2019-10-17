@@ -137,9 +137,7 @@ class Persona extends CI_Controller {
 	public function insertar()
 	{
 			$datos = $this->input->post();
-			
 			// var_dump($fec_nacimiento);
-			
 			if(isset($datos))
 			{
 				$fec_naci = $datos['fec_nacimiento'];
@@ -175,8 +173,6 @@ class Persona extends CI_Controller {
 				$this->db->insert('beneficiario', $array);
 
 				$verifica = $this->db->get_where('beneficiario', array('ci' => $ci))->row();
-
-
 				// DATOS DEL CONYUGUE
 				$fec_naci_c = $datos['fec_nacimiento_c'];
 				$partes_c = explode("/", $fec_naci_c); 

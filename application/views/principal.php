@@ -447,9 +447,9 @@ Swal.fire({
   // type: 'error',
   title: 'Oops...',
   text: 'El beneficio es solo para personas que tengan la edad entre 18 años y 29 años!',
-  imageUrl: '<?php echo base_url(); ?>public/imagenes/mal.png',
-  imageWidth: 300,
-  imageHeight: 200,
+  imageUrl: '<?php echo base_url(); ?>public/imagenes/mal.jpeg',
+  imageWidth: 200,
+  imageHeight: 250,
   imageAlt: 'Custom image',
   animation: false
 })
@@ -462,9 +462,9 @@ Swal.fire({
   // type: 'error',
   title: 'Oops...',
   text: 'Usted ya esta registrado!. '+'Solo puede registrarse una vez.',
-  imageUrl: '<?php echo base_url(); ?>public/imagenes/mal.png',
-  imageWidth: 400,
-  imageHeight: 200,
+  imageUrl: '<?php echo base_url(); ?>public/imagenes/mal.jpeg',
+  imageWidth: 200,
+  imageHeight: 250,
   imageAlt: 'Custom image',
   animation: false
 })
@@ -476,9 +476,9 @@ Swal.fire({
   // type: 'error',
   title: 'Oops...',
   text: 'No es un Carnet Valido!',
-  imageUrl: '<?php echo base_url(); ?>public/imagenes/mal.png',
-  imageWidth: 400,
-  imageHeight: 200,
+  imageUrl: '<?php echo base_url(); ?>public/imagenes/mal.jpeg',
+  imageWidth: 200,
+  imageHeight: 250,
   imageAlt: 'Custom image',
   animation: false
 })

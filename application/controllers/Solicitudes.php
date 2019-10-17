@@ -77,8 +77,64 @@ class Solicitudes extends CI_Controller {
 		$this->load->view('solicitudes/header');
 		$this->load->view('solicitudes/inicia', $data);
 		$this->load->view('admin/footer');
+	}
+
+	
+	public function guarda()
+	{
+		$datos = $this->input->post();
+			var_dump($datos);
+			exit();
+			
+			$beneficiario_id = $datos[''];
+			$condominio_id = $datos[''];
+			$conyuge_id = $datos[''];
+			$papabeneficiario_id = $datos[''];
+			$mamabeneficiario_id = $datos[''];
+			$papaconyugue_id = $datos[''];
+			$mamaconyugue_id = $datos[''];
+			$ingreso_beneficiario = $datos[''];
+			$ingreso_conyugue = $datos[''];
+			$ipb = $datos[''];
+			$imb = $datos[''];
+			$ipc = $datos[''];
+			$imc = $datos[''];
+			$tpb = $datos[''];
+			$tmb = $datos[''];
+			$tpc = $datos[''];
+			$tmc = $datos[''];
+			$interes = $datos[''];
+			$meses = $datos[''];
+			$monto = $datos[''];
+			$fecha = $datos[''];
+
+			$array = array(
+				'beneficiario_id' => $beneficiario_id,
+				'condominio_id' => $condominio_id,
+				'conyuge_id' => $conyuge_id,
+				'papabeneficiario_id' => $papabeneficiario_id,
+				'mamabeneficiario_id' => $mamabeneficiario_id,
+				'papaconyugue_id' => $papaconyugue_id,
+				'mamaconyugue_id' => $mamaconyugue_id,
+				'ingreso_beneficiario' => $ingreso_beneficiario,
+				'ingreso_conyugue' => $ingreso_conyugue,
+				'ipb' => $ipb,
+				'imb' => $imb,
+				'ipc' => $ipc,
+				'imc' => $imc,
+				'tpb' => $tpb,
+				'tmb' => $tmb,
+				'tpc' => $tpc,
+				'tmc' => $tmc,
+				'interes' => $interes,
+				'meses' => $meses,
+				'monto' => $monto,
+				'fecha' => $fecha
+			);
+				$this->db->insert('Solicitudes', $array);
 
 
+		var_dump($datos);
 	}
 
 }
