@@ -24,6 +24,11 @@ class Solicitudes extends CI_Controller {
         parent::__construct();
         $this->load->helper('vayes_helper');
 	}
+
+	function verifica_codigo()
+	{
+		
+	}
 	
 	function calcula_cuota_mes($monto_prestamo = null, $porcentaje = null, $cuotas = null)
 	{

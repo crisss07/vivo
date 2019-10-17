@@ -22,6 +22,11 @@
 							</div>
 						</div>
 
+						<?php //campos ocultos para guardar en la base de datos ?>
+							<input type="hidden" name="beneficiario_id">
+							
+						<?php //fin campos ocultos para guardar en la base de datos ?>
+
 						<div class="m-portlet__body">
 							<table class="table table-striped m-table" >
 								<tbody>
@@ -147,7 +152,7 @@
 										<i class="la la-gear"></i>
 									</span>
 									<h3 class="m-portlet__head-text">
-										Registro Ingresos del papa del beneficiario
+										Registro Ingresos del pap&a del beneficiario
 									</h3>
 								</div>
 							</div>
