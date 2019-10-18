@@ -776,7 +776,7 @@
 	var ingresos_madre_conyugue = 0;
 	var couta_mes_condominio = <?php echo $cuota['cuota_total']; ?>;
 	var total = 0;
-	var sueldo_ideal = <?php echo $condominio['sueldo_prom']; ?>;;
+	var sueldo_ideal = <?php echo $condominio['sueldo_prom']; ?>;
 
     function agregarform()
         {
