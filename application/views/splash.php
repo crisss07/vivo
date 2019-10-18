@@ -55,7 +55,7 @@
 
 
 <script>
-	setTimeout(showDiv,60000);
+	setTimeout(showDiv,30000);
 
 	
 								function showDiv()
