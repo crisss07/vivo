@@ -1,5 +1,10 @@
 <!-- begin::Body -->
-
+<style>
+									#hidden_button {
+										display: none;
+									}
+									
+								</style>
 <iframe width="100%" height="90%" src="https://www.youtube.com/embed/pSO9sjenRHQ?autoplay=1" frameborder="0" allow="accelerometer; autoplay; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
 
 			<div class="m-grid__item m-grid__item--fluid m-grid m-grid--ver-desktop m-grid--desktop m-body" style="background-image: url(<?php echo base_url(); ?>/public/assets/imagenes/formulario1.jpg);
@@ -34,8 +39,8 @@
 					<!-- END: Subheader -->
 					<div class="m-content">
 						<div class="row">
-								<div class="col-md-12" align="center">									
-									<a href="<?php echo base_url(); ?>/Inicio" type="button" class="btn m-btn--pill btn-success">Empezar</a>								  
+								<div class="col-md-12" align="center" id="hidden_buttons">									
+									<a href="<?php echo base_url(); ?>Inicio" type="button" class="btn m-btn--pill btn-success">Empezar</a>								  
 								</div>					
 							
 						</div>
@@ -49,3 +54,11 @@
 			<!-- end:: Body -->
 
 
+<script>
+								function showDiv(divId, element)
+								{
+									document.getElementById(divId).style.display = element.value == 1 ? 'flex' : 'none';
+								}
+
+								
+							</script>
