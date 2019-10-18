@@ -92,7 +92,7 @@
 
         <p></p><br>
 
-        <table width="60%">
+        <table width="100%">
             <tr>
                 <td class="tit1" style="background-color: #ebf3f3;border-collapse: collapse;padding: 2px;">            
                    <p></p>
@@ -107,7 +107,7 @@
                 Nombre: 
             </td>                    
             <td class="tit1">
-                CRISTIAN RODRIGO CHAMBY SALINAS
+                <?php echo $datos_certificado->nombres.' '.$datos_certificado->paterno.' '.$datos_certificado->materno; ?>
 
             </td>
         </tr>
@@ -116,7 +116,7 @@
                 Carnet de Identidad:
             </td>
             <td class="tit1">
-                9112739
+                <?php echo $datos_certificado->ci; ?>
             </td>
         </tr>
         <tr >
@@ -124,7 +124,7 @@
                  Fecha de Nacimiento
             </td>
             <td class="tit1">
-                1992-10-20
+                <?php echo $datos_certificado->fec_nacimiento; ?>
             </td>
         </tr>
         <tr style="background-color: #ebf3f3;border-collapse: collapse;padding: 2px;">
@@ -132,7 +132,7 @@
                Numero de Celular:
             </td>
             <td class="tit1">
-                69824799
+                <?php echo $datos_certificado->telefono_celular; ?>
             </td>
         </tr>
         <tr>
@@ -140,7 +140,7 @@
                 Domicilio
             </td>
             <td class="tit1">
-                Av. McaI. Santa Cruz - Edif. La Primera - P.8 Bloque A
+                <?php echo $datos_certificado->direccion; ?>
             </td>
         </tr>
         <tr style="background-color: #ebf3f3;border-collapse: collapse;padding: 2px;">
@@ -148,7 +148,7 @@
                 Correo Electronico
             </td>
             <td class="tit1">
-                rodrigo@gmail.com
+                <?php echo $datos_certificado->email; ?>
             </td>
         </tr>
         <tr>
@@ -156,26 +156,12 @@
                 Departamento
             </td>
             <td class="tit1">
-                Cochabamba
+                <?php echo $datos_certificado->departamento; ?>
 
             </td>
         </tr>
-        <tr style="background-color: #ebf3f3;border-collapse: collapse;padding: 2px;">
-            <td class="tit1">
-                
-            </td>
-            <td class="tit1">
-
-            </td>
-        </tr>
-        <tr>
-            <td class="tit1">
-
-            </td>
-            <td class="tit1">
-
-            </td>
-        </tr>
+  
+      
 
 
     </table>
