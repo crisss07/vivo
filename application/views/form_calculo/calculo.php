@@ -71,7 +71,7 @@
 
 															<div class="form-group m-form__group row">
 																<label for="example-search-input" class="col-lg-8 col-form-label">2. ¿A cuanto asciende tus ingresos adicionales o de tu conyuge (si corresponde)? (Bs.)</label>
-																<div class="col-3">
+																<div class="col-lg-3">
 																	<input class="form-control m-input m-input--air m-input--pill" type="number" value="How do I shoot web" id="example-search-input" name="ingreso_conyugue" required="">
 																</div>
 																<div class="col-lg-1">								
