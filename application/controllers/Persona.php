@@ -141,11 +141,12 @@ class Persona extends CI_Controller {
 			if(isset($datos))
 			{
 				$fec_naci = $datos['fec_nacimiento'];
-				$partes = explode("/", $fec_naci); 
-				$dia = $partes[0];
-				$mes = $partes[1];
-				$ano = $partes[2];
+				
+				$dia = substr($fec_naci, 0, -8);  // devuelve "cde"
+				$mes = substr($fec_naci, 3, -5);  // devuelve "cde"
+				$ano = substr($fec_naci, 6);
 				$fec_nacimiento = $ano.'-'.$mes.'-'.$dia;
+				
 				// DATOS DEL BENEFICIARIO
 				$condominio_id = $datos['condominio_id'];
 				$ci = $datos['ci'];
@@ -175,10 +176,10 @@ class Persona extends CI_Controller {
 				$verifica = $this->db->get_where('beneficiario', array('ci' => $ci))->row();
 				// DATOS DEL CONYUGUE
 				$fec_naci_c = $datos['fec_nacimiento_c'];
-				$partes_c = explode("/", $fec_naci_c); 
-				$dia_c = $partes_c[0];
-				$mes_c = $partes_c[1];
-				$ano_c = $partes_c[2];
+				$dia = substr($fec_naci_c, 0, -8);  // devuelve "cde"
+				$mes = substr($fec_naci_c, 3, -5);  // devuelve "cde"
+				$ano = substr($fec_naci_c, 6);
+				// $fec_nacimiento = $ano.'-'.$mes.'-'.$dia;
 				$fec_nacimiento_c = $ano_c.'-'.$mes_c.'-'.$dia_c;
 
 
