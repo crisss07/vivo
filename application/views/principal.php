@@ -1,6 +1,5 @@
 <!-- begin::Body -->
-			<div class="m-grid__item m-grid__item--fluid m-grid m-grid--ver-desktop m-grid--desktop m-body" style="background-image: url(<?php echo base_url(); ?>/public/assets/imagenes/formulario1.jpg);
-		  overflow: hidden;">
+			<div class="m-grid__item m-grid__item--fluid m-grid m-grid--ver-desktop m-grid--desktop m-body" style="background-image: url(<?php echo base_url(); ?>/public/assets/imagenes/formulario1.jpg); background-position: center center; overflow: hidden; background-repeat: no-repeat; background-attachment: fixed; background-size: cover; background-color: #66999;">
 
 				<!-- BEGIN: Left Aside -->
 				
