@@ -39,7 +39,7 @@
 					<!-- END: Subheader -->
 					<div class="m-content">
 						<div class="row">
-								<div class="col-md-12" align="center" id="hidden_buttons">									
+								<div class="col-md-12" align="center" id="hidden_button">									
 									<a href="<?php echo base_url(); ?>Inicio" type="button" class="btn m-btn--pill btn-success">Empezar</a>								  
 								</div>					
 							
@@ -55,10 +55,13 @@
 
 
 <script>
-	setTimeout(showDiv,milisegundos);
+	setTimeout(showDiv,60000);
+
+	
 								function showDiv()
 								{
-									document.getElementById(hidden_button).style.display = element.value == 1 ? 'flex' : 'none';
+
+									document.getElementById("hidden_button").style.display ='block';
 								}
 
 								
