@@ -21,29 +21,38 @@
 								</div>
 							</div>
 						</div>
+						<?php //vdebug($datos_credito, false, false, true) ?>
 
 						<?php //campos ocultos para guardar en la base de datos ?>
-							<input type="hidden" name="beneficiario_id">
-							<input type="hidden" name="condominio_id">
-							<input type="hidden" name="conyuge_id">
-							<input type="hidden" name="papabeneficiario_id">
-							<input type="hidden" name="mamabeneficiario_id">
-							<input type="hidden" name="papaconyugue_id">
-							<input type="hidden" name="mamaconyugue_id">
-							<input type="hidden" name="ingreso_beneficiario">
-							<input type="hidden" name="ingreso_conyugue">
-							<input type="hidden" name="ipb">
-							<input type="hidden" name="imb">
-							<input type="hidden" name="ipc">
-							<input type="hidden" name="imc">
-							<input type="hidden" name="tpb">
-							<input type="hidden" name="tmb">
-							<input type="hidden" name="tpc">
-							<input type="hidden" name="tmc">
-							<input type="hidden" name="interes">
-							<input type="hidden" name="meses">
-							<input type="hidden" name="monto">
-							<input type="hidden" name="fecha">
+							<input type="hidden" name="beneficiario_id" id="beneficiario_id" value="<?php echo $datos_credito['beneficiario_id']; ?>">
+							<input type="hidden" name="condominio_id" id="condominio_id" value="<?php echo $datos_credito['condominio_id']; ?>">
+							<input type="hidden" name="padre_beneficiario_carnet" id="padre_beneficiario_carnet">
+							<input type="hidden" name="padre_beneficiario_nombre" id="padre_beneficiario_nombre">
+							<input type="hidden" name="madre_beneficiario_carnet" id="madre_beneficiario_carnet">
+							<input type="hidden" name="madre_beneficiario_nombre" id="madre_beneficiario_nombre">
+							<input type="hidden" name="padre_conyugue_carnet" id="padre_conyugue_carnet">
+							<input type="hidden" name="padre_conyugue_nombre" id="padre_conyugue_nombre">
+							<input type="hidden" name="madre_conyugue_carnet" id="madre_conyugue_carnet">
+							<input type="hidden" name="madre_conyugue_nombre" id="madre_conyugue_nombre">
+							<input type="hidden" name="conyuge_id" id="conyuge_id">
+							<input type="hidden" name="papabeneficiario_id" id="papabeneficiario_id">
+							<input type="hidden" name="mamabeneficiario_id" id="mamabeneficiario_id">
+							<input type="hidden" name="papaconyugue_id" id="papaconyugue_id">
+							<input type="hidden" name="mamaconyugue_id" id="mamaconyugue_id">
+							<input type="hidden" name="ingreso_beneficiario" id="ingreso_beneficiario">
+							<input type="hidden" name="ingreso_conyugue"  id="ingreso_conyugue">
+							<input type="hidden" name="ipb" id="ipb">
+							<input type="hidden" name="imb" id="imb">
+							<input type="hidden" name="ipc" id="ipc">
+							<input type="hidden" name="imc" id="imc">
+							<input type="hidden" name="tpb" id="tpb">
+							<input type="hidden" name="tmb" id="tmb">
+							<input type="hidden" name="tpc" id="tpc">
+							<input type="hidden" name="tmc" id="tmc">
+							<input type="hidden" name="interes" id="interes">
+							<input type="hidden" name="meses" id="meses">
+							<input type="hidden" name="monto" id="monto">
+							<input type="hidden" name="fecha" id="fecha">
 							
 						<?php //fin campos ocultos para guardar en la base de datos ?>
 
@@ -1033,6 +1042,7 @@
 	function carnet_2()
 	{
 	        var ci = $("#ci2").val();
+	        $("#padre_beneficiario_carnet").val(ci);
 	        var csrfName = '<?php echo $this->security->get_csrf_token_name(); ?>';
 	        var csrfHash = '<?php echo $this->security->get_csrf_hash(); ?>';
 
@@ -1048,7 +1058,7 @@
 	                // csrfName = data.csrfName;
 	                // csrfHash = data.csrfHash;
 	                // alert(data.message);
-		            
+
             		if (data.estado == 'segip') {
 	                        $("#msg_error_catastral").hide();
 	                    $("#msg_sucess_catastral").show();
@@ -1057,6 +1067,7 @@
 	                    $("#msg_sucess_catastral").html('Esta registrado en el SEGIP la persona con Cedula de Identidad Numero: '+data.ci);
 	                    var concatenados = data.nombres.concat(' ', data.paterno, ' ', data.materno);
 	                    $('#name_2').val(concatenados);
+	                    $("#padre_beneficiario_nombre").val(concatenados);
 	                    // $('#paterno').val(data.paterno);
 	                    // $('#materno').val(data.materno);
 	                    // $('#fecha').val(data.fec_nacimiento);
@@ -1088,6 +1099,7 @@
 	function carnet_3()
 	{
 	        var ci = $("#ci3").val();
+	        $("#madre_beneficiario_carnet").val(ci);
 	        var csrfName = '<?php echo $this->security->get_csrf_token_name(); ?>';
 	        var csrfHash = '<?php echo $this->security->get_csrf_hash(); ?>';
 
@@ -1112,6 +1124,7 @@
 	                    $("#msg_sucess_catastral").html('Esta registrado en el SEGIP la persona con Cedula de Identidad Numero: '+data.ci);
 	                    var concatenados = data.nombres.concat(' ', data.paterno, ' ', data.materno);
 	                    $('#name_3').val(concatenados);
+	                    $("#madre_beneficiario_nombre").val(concatenados);
 	                    // $('#paterno').val(data.paterno);
 	                    // $('#materno').val(data.materno);
 	                    // $('#fecha').val(data.fec_nacimiento);
