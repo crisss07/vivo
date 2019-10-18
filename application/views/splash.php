@@ -5,7 +5,11 @@
 									}
 									
 								</style>
-<iframe width="100%" height="90%" src="https://www.youtube.com/embed/pSO9sjenRHQ?autoplay=1" frameborder="0" allow="accelerometer; autoplay; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
+<!--<iframe width="100%" height="90%" src="https://www.youtube.com/embed/pSO9sjenRHQ?rel=0&modestbranding=1&autohide=1&showinfo=0&controls=1&autoplay=1" frameborder="0"  allow="autoplay" allowfullscreen></iframe>-->
+<iframe width="100%" height="90%" src="https://www.youtube.com/embed/pSO9sjenRHQ?rel=0&autoplay=1" frameborder="0"  allowfullscreen></iframe>
+
+
+
 
 			<div class="m-grid__item m-grid__item--fluid m-grid m-grid--ver-desktop m-grid--desktop m-body" style="background-image: url(<?php echo base_url(); ?>/public/assets/imagenes/formulario1.jpg);
 		  overflow: hidden;">
@@ -55,7 +59,7 @@
 
 
 <script>
-	setTimeout(showDiv,30000);
+	setTimeout(showDiv,15000);
 
 	
 								function showDiv()
