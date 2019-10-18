@@ -66,6 +66,14 @@
             
         }
 
+         .tit3{
+            font-size: 12px;
+            line-height:10px;
+            font-style: italic;            
+            color:#3D484C;
+            
+        }
+
 
     </style>
 
@@ -160,11 +168,26 @@
 
             </td>
         </tr>
+        <tr style="background-color: #ebf3f3;border-collapse: collapse;padding: 2px;">
+            <td class="tit1">
+                Fecha de Registro
+            </td>
+            <td class="tit1">
+                <?php echo $datos_certificado->fec_creacion; ?>
+
+            </td>
+        </tr>
   
       
 
 
     </table>
+    
+    <br><br><br><br><br><br><br><br><br><br><br><br><br><br><br>
+
+    <p class="tit3" align="right"> 
+        <?php echo $dia_l.' '.$dia.' de '.$mes_l.' de  '.$anio; ?>
+    </p> 
 
 
 

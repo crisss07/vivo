@@ -23,9 +23,9 @@ class Reports extends CI_Controller
         redirect(base_url() );        
     }
 
-    public function pdf()    
+    public function pdf($id=null)    
     {
-        $id=$this->input->get();        
+              
         date_default_timezone_set('America/La_Paz');
         // Define key-value array
         $days_dias = array(
@@ -61,7 +61,7 @@ class Reports extends CI_Controller
         $data['mes_l']= $mes;
         $data['anio']=date('Y');   
 
-        $data['datos_certificado']=$this->db->query("SELECT * from beneficiario WHERE id=1")->row();
+        $data['datos_certificado']=$this->db->query("SELECT * from beneficiario WHERE id=$id")->row();
 
 
 
