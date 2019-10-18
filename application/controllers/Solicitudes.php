@@ -91,27 +91,27 @@ class Solicitudes extends CI_Controller {
 			var_dump($datos);
 			exit();
 			
-			$beneficiario_id = $datos[''];
-			$condominio_id = $datos[''];
-			$conyuge_id = $datos[''];
-			$papabeneficiario_id = $datos[''];
-			$mamabeneficiario_id = $datos[''];
-			$papaconyugue_id = $datos[''];
-			$mamaconyugue_id = $datos[''];
-			$ingreso_beneficiario = $datos[''];
-			$ingreso_conyugue = $datos[''];
-			$ipb = $datos[''];
-			$imb = $datos[''];
-			$ipc = $datos[''];
-			$imc = $datos[''];
-			$tpb = $datos[''];
-			$tmb = $datos[''];
-			$tpc = $datos[''];
-			$tmc = $datos[''];
-			$interes = $datos[''];
-			$meses = $datos[''];
-			$monto = $datos[''];
-			$fecha = $datos[''];
+			$beneficiario_id = $datos['beneficiario_id'];
+			$condominio_id = $datos['condominio_id'];
+			$conyuge_id = $datos['conyuge_id'];
+			$papabeneficiario_id = $datos['papabeneficiario_id'];
+			$mamabeneficiario_id = $datos['mamabeneficiario_id'];
+			$papaconyugue_id = $datos['papaconyugue_id'];
+			$mamaconyugue_id = $datos['mamaconyugue_id'];
+			$ingreso_beneficiario = $datos['ingreso_beneficiario'];
+			$ingreso_conyugue = $datos['ingreso_conyugue'];
+			$ipb = $datos['ipb'];
+			$imb = $datos['imb'];
+			$ipc = $datos['ipc'];
+			$imc = $datos['imc'];
+			$tpb = $datos['tpb'];
+			$tmb = $datos['tmb'];
+			$tpc = $datos['tpc'];
+			$tmc = $datos['tmc'];
+			$interes = $datos['interes'];
+			$meses = $datos['meses'];
+			$monto = $datos['monto'];
+			$fecha = $datos['fecha'];
 
 			$array = array(
 				'beneficiario_id' => $beneficiario_id,
@@ -136,10 +136,10 @@ class Solicitudes extends CI_Controller {
 				'monto' => $monto,
 				'fecha' => $fecha
 			);
-				$this->db->insert('Solicitudes', $array);
 
+		$this->db->insert('Solicitudes', $array);
+		redirect(base_url() . 'Inicio');		
 
-		var_dump($datos);
 	}
 
 }

@@ -1020,19 +1020,29 @@
 
     function alerta_alcanzo(){
     	Swal.fire({
-    		type: 'success',
-    		title: 'Lo Lograste',
-    		text: 'Te alcanza para tu vivienda!'
-    	})
+		  title: 'Lo Lograste',
+    	  text: 'Te alcanza para tu vivienda!'
+		  imageUrl: '<?php echo base_url(); ?>public/imagenes/aprobado.jpeg',
+		  imageWidth: 200,
+		  imageHeight: 250,
+		  imageAlt: 'Custom image',
+		  animation: false
+		})
 	//location.reload();
 	}
 
     function falta(){
     	Swal.fire({
-    		type: 'error',
-    		title: 'Lo Siento',
-    		text: 'Aun te falta!'
-    	})
+		  // type: 'error',
+		  title: 'Lo Siento',
+		  text: 'Aun te falta!',
+		  imageUrl: '<?php echo base_url(); ?>public/imagenes/mal.jpeg',
+		  imageWidth: 200,
+		  imageHeight: 250,
+		  imageAlt: 'Custom image',
+		  animation: false
+		})
+
 	//location.reload();
 	}
 
