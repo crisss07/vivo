@@ -142,8 +142,7 @@
 													<i class="fa fa-check"></i>
 												</a>
 												<?php else: ?>
-												<a href="#" class="btn btn-danger m-btn m-btn--icon btn-sm m-btn--icon-only"
-													onclick="muestra_papab(<?php echo $condominio['id'] ?>, '<?php echo $condominio['descripcion'] ?>')">
+												<a href="#" class="btn btn-danger m-btn m-btn--icon btn-sm m-btn--icon-only" onclick="muestra_papab()">
 													<i class="fa fa-ban"></i>
 												</a>
 												<?php endif; ?>
@@ -783,11 +782,11 @@
               $('.item').hide('slow');
               $("#bloque_1").show('slow');
         }
-	function muestra_papab(idCondominio, nombre) 
+	function muestra_papab() 
 	{
 		// console.log(idCondominio);
 		$("#bloque_1").show('slow');
-		$('#titulo_vivienda').html("<h4>CONDOMINIO: "+nombre+"</<h4>");
+		// $('#titulo_vivienda').html("<h4>CONDOMINIO: "+nombre+"</<h4>");
 	}
 
 	function muestra2()
@@ -1021,7 +1020,7 @@
     function alerta_alcanzo(){
     	Swal.fire({
 		  title: 'Lo Lograste',
-    	  text: 'Te alcanza para tu vivienda!'
+    	  text: 'Te alcanza para tu vivienda!',
 		  imageUrl: '<?php echo base_url(); ?>public/imagenes/aprobado.jpeg',
 		  imageWidth: 200,
 		  imageHeight: 250,
