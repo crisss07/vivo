@@ -55,9 +55,10 @@
 
 
 <script>
-								function showDiv(divId, element)
+	setTimeout(showDiv,milisegundos);
+								function showDiv()
 								{
-									document.getElementById(divId).style.display = element.value == 1 ? 'flex' : 'none';
+									document.getElementById(hidden_button).style.display = element.value == 1 ? 'flex' : 'none';
 								}
 
 								
