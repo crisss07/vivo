@@ -6,7 +6,7 @@
 									
 								</style>
 <!--<iframe width="100%" height="90%" src="https://www.youtube.com/embed/pSO9sjenRHQ?rel=0&modestbranding=1&autohide=1&showinfo=0&controls=1&autoplay=1" frameborder="0"  allow="autoplay" allowfullscreen></iframe>-->
-<iframe width="100%" height="90%" src="https://www.youtube.com/embed/pSO9sjenRHQ?rel=0&autoplay=1" frameborder="0"  allowfullscreen></iframe>
+<iframe width="100%" height="90%" src="https://www.youtube.com/embed/pSO9sjenRHQ?rel=0&autoplay=1" frameborder="0" allow="autoplay"  allowfullscreen></iframe>
 
 
 
