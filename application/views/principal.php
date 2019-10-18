@@ -17,12 +17,12 @@
 						<div class="mr-auto">
 							<h3 class="m-subheader__title "></h3>
 						</div>
-						<div  style=" float: right; margin-right: 20px; ">
+						<!-- <div  style=" float: right; margin-right: 20px; ">
 							<span class="m-subheader__daterange" id="m_dashboard_daterangepicker">
-								<a href="<?= base_url('Administrador'); ?>" type="button" class="btn m-btn--pill btn-success">Administrar</a>
+								<a href="<?php //base_url('Administrador'); ?>" type="button" class="btn m-btn--pill btn-success">Administrar</a>
 								
 							</span>
-						</div>
+						</div> -->
 					</div>
 
 					<!-- BEGIN: Subheader -->
