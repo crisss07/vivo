@@ -17,7 +17,7 @@ License: You must have a valid license purchased only from themeforest(the above
 	<!-- begin::Head -->
 	<head>
 		<meta charset="utf-8" />
-		<title>AEV | Registro</title>
+		<title>Acceso</title>
 		<meta name="description" content="Latest updates and statistic charts">
 		<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, shrink-to-fit=no">
 		<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/limonte-sweetalert2/6.11.0/sweetalert2.css"/>
