@@ -37,14 +37,14 @@
 					
 
 					<!-- END: Subheader -->
-					<div class="m-content">
+					<!-- <div class="m-content">
 						<div class="row">
 								<div class="col-md-12" align="center" id="hidden_button">									
-									<a href="<?php echo base_url(); ?>Inicio" type="button" class="btn m-btn--pill btn-success">Empezar</a>								  
+									<a href="<?php //echo base_url(); ?>Inicio" type="button" class="btn m-btn--pill btn-success">Empezar</a>								  
 								</div>					
 							
 						</div>
-					</div>
+					</div> -->
 
 				
 				</div>
