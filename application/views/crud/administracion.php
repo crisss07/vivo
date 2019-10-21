@@ -25,7 +25,7 @@
 									<!-- END: Subheader -->
 									<div class="m-content">
 										<div class="row">
-											<div class="col-md-12">
+											<div class="col-md-10">
 
 
 
@@ -62,6 +62,7 @@
 																	<th>Precio</th>
 																	<th>Dep. Disponibles</th>
 																	<th>Superficie</th>
+																	<th>Privado</th>
 																	<th>cuota mensual</th>
 																	<th>sueldo ideal</th>
 																	<th>Acciones</th>											
@@ -81,6 +82,7 @@
 																		<td><?php echo $row->valor; ?></td>
 																		<td><?php echo $row->disponible; ?></td>
 																		<td><?php echo $row->superficie; ?></td>
+																		<td><?php echo $row->privado; ?></td>
 																		<td><?php echo $row->cuota_mensual; ?></td>
 																		<td><?php echo $row->sueldo_prom; ?></td>
 
