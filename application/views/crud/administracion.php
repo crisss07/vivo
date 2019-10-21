@@ -25,7 +25,7 @@
 									<!-- END: Subheader -->
 									<div class="m-content">
 										<div class="row">
-											<div class="col-md-10">
+											<div class="col-md-12">
 
 
 
@@ -57,6 +57,7 @@
 																<tr>
 																	<th>Nro</th>
 																	<th>Descripcion</th>
+																	<th>Direccion</th>
 																	<th>Ciudad</th>
 																	<th>Precio</th>
 																	<th>Dep. Disponibles</th>
@@ -71,10 +72,11 @@
 																<?php foreach ($datos as $row) { $data = $row->id."||".
 																$row->descripcion."||".$row->ciudad."||".
 																$row->disponible."||".$row->superficie."||".
-																	$row->valor;  ?>
+																	$row->valor."||".$row->direccion;  ?>
 																	<tr>
 																		<td><?php echo $i++; ?></td>
-																		<td><?php echo $row->descripcion; ?></td>    
+																		<td><?php echo $row->descripcion; ?></td>
+																		<td><?php echo $row->direccion; ?></td>
 																		<td><?php echo $row->ciudad; ?></td>  
 																		<td><?php echo $row->valor; ?></td>
 																		<td><?php echo $row->disponible; ?></td>
@@ -148,20 +150,21 @@
 														<label for="example-text-input" >Descripcion</label>
 														<input class="form-control m-input m-input--air m-input--pill" type="text" value="" id="example-text-input" name="descripcion" required="">
 													</div>
-
-
-
+													
 													<div class="form-group m-form__group">
-														<label for="exampleSelect1">Ciudad</label>
-														
+														<label for="exampleSelect1">Ciudad</label>														
 														<select name="ciudad" class="form-control m-input m-input--air m-input--pill"  required="">
 															<option value=""></option>
 															<option value="LA PAZ">LA PAZ</option>
 															<option value="COCHABAMBA">COCHABAMBA</option>
 															<option value="SANTA CRUZ">SANTA CRUZ</option>
 														</select>
-														
+													</div>
+													<div class="form-group m-form__group">
+														<label for="example-text-input">Direccion  </label>
 
+														<input class="form-control m-input m-input--air m-input--pill" type="text" value="" id="example-text-input" name="direccion" >
+														
 													</div>
 													<div class="form-group m-form__group">
 														<label for="example-text-input">Precio de venta en <span><code>Bs.</code> (usar ","coma para decimales)</span> </label>
@@ -169,6 +172,7 @@
 														<input class="form-control m-input m-input--air m-input--pill" type="number" value="" id="example-text-input" name="valor" step="0.01" required="">
 														
 													</div>
+													
 													<div class="form-group m-form__group">
 														<label for="example-text-input">Dep. Disponibles</label>
 
@@ -222,46 +226,35 @@
 												<input class="form-control m-input m-input--air m-input--pill" type="hidden" id="id_e" name="id_e" >
 
 												<div class="m-portlet__body">
-													
-
 													<div class="form-group m-form__group">
 														<label for="example-text-input" >Descripcion</label>
 														<input class="form-control m-input m-input--air m-input--pill" type="text"  id="descripcion_e" name="descripcion_e" required="">
 													</div>
-
-
-
 													<div class="form-group m-form__group">
-														<label for="exampleSelect1">Ciudad</label>
-														
-														<select name="ciudad_e" id="ciudad_e"class="form-control m-input m-input--air m-input--pill"  required="">
-															
+														<label for="exampleSelect1">Ciudad</label>														
+														<select name="ciudad_e" id="ciudad_e"class="form-control m-input m-input--air m-input--pill"  required="">															
 															<option value="LA PAZ">LA PAZ</option>
 															<option value="COCHABAMBA">COCHABAMBA</option>
 															<option value="SANTA CRUZ">SANTA CRUZ</option>
 														</select>
-														
-
 													</div>
 													<div class="form-group m-form__group">
-														<label for="example-text-input">Precio de venta en <span><code>Bs.</code> (usar ","coma para decimales)</span> </label>
+														<label for="example-text-input">Direccion  </label>
+														<input class="form-control m-input m-input--air m-input--pill" type="text" value="" id="direccion_e" name="direccion_e" >														
+													</div>
 
+													<div class="form-group m-form__group">
+														<label for="example-text-input">Precio de venta en <span><code>Bs.</code> (usar ","coma para decimales)</span> </label>
 														<input class="form-control m-input m-input--air m-input--pill" type="number" value="" id="valor_e" name="valor_e" required="" step="0.01">
-														
 													</div>
 													<div class="form-group m-form__group">
 														<label for="example-text-input">Dep. Disponibles</label>
-
 														<input class="form-control m-input m-input--air m-input--pill" type="number" value="" id="disponible_e" name="disponible_e" required="">
-														
 													</div>
 													<div class="form-group m-form__group">
 														<label for="example-text-input">Superficie <span><code>m²</code> (usar ","coma para decimales)</span></label>
-
 														<input class="form-control m-input m-input--air m-input--pill" type="number" value="" id="superficie_e" name="superficie_e" required="" step="0.01">
-														
 													</div>
-
 												</div>
 												<div class="m-portlet__foot m-portlet__foot--fit">
 													<div class="m-form__actions">

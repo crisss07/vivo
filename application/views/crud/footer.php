@@ -74,14 +74,7 @@
             "sUrl": "https://cdn.datatables.net/plug-ins/1.10.16/i18n/Spanish.json"
         },
     });
-
-
     </script>
-
-
-
-
-
 <script>
 	function agregarform(data)
 	{
@@ -93,6 +86,7 @@
 		$('#disponible_e').val(d[3]);
 		$('#superficie_e').val(d[4]);
 		$('#valor_e').val(d[5]);
+        $('#direccion_e').val(d[6]);
 	}
 </script>
 

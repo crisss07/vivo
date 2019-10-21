@@ -44,6 +44,7 @@ class Administrador extends CI_Controller {
 		{	
 
 			$datos = $this->input->post();
+
 			$precio = $this->input->post('valor');
 
 			$montos_cuota = $this->calcula_cuota_mes($precio, 0.0045, 300);
@@ -57,6 +58,7 @@ class Administrador extends CI_Controller {
 
 			$data = array(            
             'descripcion' => $this->input->post('descripcion'), //input
+            'direccion' => $this->input->post('direccion'), //input
             'ciudad' => $this->input->post('ciudad'), //crear
             'valor' => $this->input->post('valor'),
             'disponible' => $this->input->post('disponible'),
@@ -77,7 +79,6 @@ class Administrador extends CI_Controller {
 	}
 	public function update()
 	{
-
 		if($this->session->userdata('is_logged'))
 		{	
 			$datos = $this->input->post();		
@@ -90,23 +91,21 @@ class Administrador extends CI_Controller {
 			$id = $this->input->post('id_e'); //input
 			$data = array(            
             'descripcion' => $this->input->post('descripcion_e'), //input
-            'ciudad' => $this->input->post('ciudad_e'), //crear
+            'ciudad' => $this->input->post('ciudad_e'), //crear            
             'valor' => $this->input->post('valor_e'),
             'disponible' => $this->input->post('disponible_e'),
             'superficie' => $this->input->post('superficie_e'),
-            'cuota_mensual' =>$a ,
+            'direccion' => $this->input->post('direccion_e'),
+            'cuota_mensual' =>$a,
             'sueldo_prom' => $b,
         );
-
 			$this->db->where('id', $id);
 			$this->db->update('condominio', $data);
-			redirect(base_url() . 'Administrador');
+		redirect(base_url() . 'Administrador');
 		}
-		else{
-			redirect(base_url() . 'Login');	
+		else{			
+		redirect(base_url() . 'Login');	
 		}
-
-
 	}
 
 	public function delete($id=null)
