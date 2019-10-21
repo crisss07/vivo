@@ -57,13 +57,60 @@
 											<div class="m-portlet__body">
 												<div class="form-group m-form__group">
 													<label for="exampleSelect1">¿A cu&aacute;l proyecto desea postular?</label>
-													<select class="form-control m-input m-input--air m-input--pill" id="exampleSelect1" name="condominio_id">
+													<select class="form-control m-input m-input--air m-input--pill" id="condominio" name="condominio_id">
 														<option value="">ELIJA UNA OPCION</option>
 														<?php foreach ($condominios as $con) {	?>
 														<option value="<?php echo $con->id ?>"><?php echo $con->descripcion ?> - <?php echo $con->ciudad ?></option>
 														<?php } ?>
+														<option value="otro">OTROS</option>
 													</select>
 												</div>
+
+			
+												<!-- DATOS DE OTROS CONDOMINIOS PRIVADOS -->
+												<div class="item" id="otro" style="display: none;">
+					                                <!-- MUEBLES Y ENSERES DE OFICINA -->
+					                                <div class="form-group m-form__group row">
+														<div class="col-lg-7">
+															<label class="">Descripci&oacute;n:</label>
+															<div class="m-input-icon m-input-icon--right">
+																<input type="text" class="form-control m-input m-input--air m-input--pill" name="descripcion">
+																<span class="m-input-icon__icon m-input-icon__icon--right"></span>
+															</div>
+															<span class="m-form__help">Descripci&oacute;n del Inmueble</span>
+														</div>
+														<div class="col-lg-5">
+															<label class="">Valor:</label>
+															<div class="m-input-icon m-input-icon--right">
+																<input type="integer" class="form-control m-input m-input--air m-input--pill" name="valor" >
+																<span class="m-input-icon__icon m-input-icon__icon--right"></span>
+															</div>
+															<span class="m-form__help">Valor del Inmueble</span>
+														</div>
+													</div>
+													<div class="form-group m-form__group row">
+														<div class="col-lg-7">
+															<label class="">Direccio&oacute;n:</label>
+															<div class="m-input-icon m-input-icon--right">
+																<input type="text" class="form-control m-input m-input--air m-input--pill" name="direccion">
+																<span class="m-input-icon__icon m-input-icon__icon--right"></span>
+															</div>
+															<span class="m-form__help">Direccio&oacute;n del Inmueble</span>
+														</div>
+														<div class="col-lg-5">
+															<label class="">Ciudad:</label>
+															<div class="m-input-icon m-input-icon--right">
+																<input type="text" class="form-control m-input m-input--air m-input--pill" name="ciudad" >
+																<span class="m-input-icon__icon m-input-icon__icon--right"></span>
+															</div>
+															<span class="m-form__help">Ciudad del Inmueble</span>
+														</div>
+													</div>
+					                            </div>
+
+					                            <!-- HASTA AQUI -->
+
+
 
 												<div>
 													<input type="text" hidden name="fec_nacimiento" id="fecha">
@@ -434,12 +481,13 @@ function buscar2()
 </script>
 
 <script type="text/javascript">
-    function agregarform()
-        {
-              $('.item').hide('slow');
-              $("#bloque_1").show('slow');
-        }
+	 $('#condominio').on('change', function(e){
+	 	var condominio = e.target.value;
+        $('.item').hide('slow');
+        $('#'+condominio).show('slow');
+     });
 </script>
+
 <script>
 function alerta_edad(){
 Swal.fire({
