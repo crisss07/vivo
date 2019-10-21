@@ -20,7 +20,8 @@ class Inicio extends CI_Controller {
 	 */
 	public function index()
 	{
-		$condominios = $this->db->get('condominio')->result();
+		$condominios = $this->db->get_where('condominio', array('privado' => 'No'))->result();
+		// $condominios = $this->db->get('condominio')->->result();
 		$data['condominios']=$condominios;
 		$this->load->view('admin/header');
 		$this->load->view('principal', $data);

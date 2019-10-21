@@ -71,7 +71,7 @@
 												<div class="item" id="otro" style="display: none;">
 					                                <!-- MUEBLES Y ENSERES DE OFICINA -->
 					                                <div class="form-group m-form__group row">
-														<div class="col-lg-7">
+														<div class="col-lg-9">
 															<label class="">Descripci&oacute;n:</label>
 															<div class="m-input-icon m-input-icon--right">
 																<input type="text" class="form-control m-input m-input--air m-input--pill" name="descripcion">
@@ -79,31 +79,23 @@
 															</div>
 															<span class="m-form__help">Descripci&oacute;n del Inmueble</span>
 														</div>
-														<div class="col-lg-5">
-															<label class="">Valor:</label>
+														<div class="col-lg-3">
+															<label class="">Valor </label><span> (Bs.)</span>
 															<div class="m-input-icon m-input-icon--right">
-																<input type="integer" class="form-control m-input m-input--air m-input--pill" name="valor" >
+																<input type="integer" class="form-control m-input m-input--air m-input--pill" name="valor">
 																<span class="m-input-icon__icon m-input-icon__icon--right"></span>
 															</div>
 															<span class="m-form__help">Valor del Inmueble</span>
 														</div>
 													</div>
 													<div class="form-group m-form__group row">
-														<div class="col-lg-7">
-															<label class="">Direccio&oacute;n:</label>
+														<div class="col-lg-12">
+															<label class="">Direcci&oacute;n:</label>
 															<div class="m-input-icon m-input-icon--right">
-																<input type="text" class="form-control m-input m-input--air m-input--pill" name="direccion">
+																<input type="text" class="form-control m-input m-input--air m-input--pill" name="direccion_c">
 																<span class="m-input-icon__icon m-input-icon__icon--right"></span>
 															</div>
-															<span class="m-form__help">Direccio&oacute;n del Inmueble</span>
-														</div>
-														<div class="col-lg-5">
-															<label class="">Ciudad:</label>
-															<div class="m-input-icon m-input-icon--right">
-																<input type="text" class="form-control m-input m-input--air m-input--pill" name="ciudad" >
-																<span class="m-input-icon__icon m-input-icon__icon--right"></span>
-															</div>
-															<span class="m-form__help">Ciudad del Inmueble</span>
+															<span class="m-form__help">Direcci&oacute;n del Inmueble</span>
 														</div>
 													</div>
 					                            </div>

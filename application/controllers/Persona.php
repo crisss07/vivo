@@ -138,8 +138,45 @@ class Persona extends CI_Controller {
 	{
 			$datos = $this->input->post();
 			// var_dump($fec_nacimiento);
+			$departamento = $datos['departamento'];
+			$condominio_id = $datos['condominio_id'];
+
+			if ($condominio_id == 'otro') {
+				// INSERTAR EL condominio
+				$precio = $this->input->post('valor');
+				$montos_cuota = $this->calcula_cuota_mes($precio, 0.0045, 300);
+				$a=$montos_cuota['cuota_total'];
+				$b=$montos_cuota['sueldo_ideal'];				
+				$data = array(            
+	            'descripcion' => $this->input->post('descripcion'), //input
+		    	'direccion' => $this->input->post('direccion_c'),
+		   		'privado' => 'Si',			
+	            'ciudad' => $departamento, //crear
+	            'valor' => $this->input->post('valor'),
+	            'disponible' => 1,
+	            'superficie' => $this->input->post('superficie'),
+	            'cuota_mensual' =>$a ,
+	            'sueldo_prom' => $b,
+	      		  );
+				$this->db->insert('condominio', $data);
+
+				$id = $this->db->query("SELECT MAX(id) as max
+									FROM condominio")->row();
+				$con_id = $id->max;
+				// HASTA AQUI
+			}
+
 			if(isset($datos))
 			{
+
+				if ($condominio_id == 'otro') {
+					$id_condominio = $con_id;
+				}
+				else
+				{
+					$id_condominio = $datos['condominio_id'];
+				}
+
 				$fec_naci = $datos['fec_nacimiento'];
 				
 				$dia = substr($fec_naci, 0, -8);  // devuelve "cde"
@@ -148,18 +185,17 @@ class Persona extends CI_Controller {
 				$fec_nacimiento = $ano.'-'.$mes.'-'.$dia;
 				
 				// DATOS DEL BENEFICIARIO
-				$condominio_id = $datos['condominio_id'];
 				$ci = $datos['ci'];
 				$nombres = $datos['nombres'];
 				$paterno = $datos['paterno'];
 				$materno = $datos['materno'];
 				$direccion = $datos['direccion'];
-				$departamento = $datos['departamento'];
+				// $departamento = $datos['departamento'];
 				$telefono_celular = $datos['telefono_celular'];
 				$email = $datos['email'];
 
 				$array = array(
-					'condominio_id' =>$condominio_id,
+					'condominio_id' =>$id_condominio,
 					'fec_nacimiento' =>$fec_nacimiento,
 					'ci' => $ci,
 					'nombres' =>$nombres,
@@ -212,5 +248,30 @@ class Persona extends CI_Controller {
 			}
 
 	}
+
+
+	function calcula_cuota_mes($monto_prestamo = null, $porcentaje = null, $cuotas = null)
+	{
+		// $montos_cuota = $this->calcula_cuota_mes(208800, 0.0045, 300);
+		// $valor = 208800*((0,0045*(1+0,0045)^300)/((1+0,0045)^300-1))
+		$cuota_mensual = $monto_prestamo * (($porcentaje * pow((1 + $porcentaje), $cuotas)) / (pow((1 + $porcentaje), $cuotas) - 1));
+		$porcentaje_ajuste = $cuota_mensual*0.01;
+		$monto_ajustado = $cuota_mensual + $porcentaje_ajuste;
+		$monto_redondeado = round($monto_ajustado, 2);
+
+		$seguro_incendio = $monto_prestamo*0.00015;
+		$cuota_total = round(($monto_redondeado + $seguro_incendio), 2);
+
+		$sueldo_ideal = round($cuota_total/0.4, 2);
+
+		$resultados['cuota'] = $monto_redondeado;
+		$resultados['seguro'] = $seguro_incendio;
+		$resultados['cuota_total'] = $cuota_total;
+		$resultados['sueldo_ideal'] = $sueldo_ideal;
+		// vdebug($sueldo_ideal, true, false, true);
+		return $resultados;
+	}
+
+
 }
 
