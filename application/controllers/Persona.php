@@ -61,6 +61,14 @@ class Persona extends CI_Controller {
 				$ano_c = $partes_c[2];
 				$fec_nacimiento_c = $ano_c.'-'.$mes_c.'-'.$dia_c;
 
+				// $fecha = $datos_persona['FechaNacimiento'];
+				// $dia_c = substr($fec_naci_c, 0, -8);  // devuelve "cde"
+				// $mes_c = substr($fec_naci_c, 3, -5);  // devuelve "cde"
+				// $ano_c = substr($fec_naci_c, 6);
+				// // $fec_nacimiento = $ano.'-'.$mes.'-'.$dia;
+				// $fec_nacimiento_c = $ano_c.'-'.$mes_c.'-'.$dia_c;
+
+
 				$fec = $this->db->query("SELECT tmp.*
 										FROM (SELECT TIMESTAMPDIFF(YEAR,'$fec_nacimiento_c',CURDATE()) AS edad)tmp
 										WHERE tmp.edad BETWEEN '$minimo' AND '$maximo'")->row();
@@ -118,6 +126,14 @@ class Persona extends CI_Controller {
 		$mes_c = $partes_c[1];
 		$ano_c = $partes_c[2];
 		$fec_nacimiento_c = $ano_c.'-'.$mes_c.'-'.$dia_c;
+
+
+		// $fecha = $datos_persona['FechaNacimiento'];
+		// $dia_c = substr($fec_naci_c, 0, -8);  // devuelve "cde"
+		// $mes_c = substr($fec_naci_c, 3, -5);  // devuelve "cde"
+		// $ano_c = substr($fec_naci_c, 6);
+		// // $fec_nacimiento = $ano.'-'.$mes.'-'.$dia;
+		// $fec_nacimiento_c = $ano_c.'-'.$mes_c.'-'.$dia_c;
 
 		if ($fecha) {
 			$respuesta = array('ci'=>$ci, 'nombres' =>$datos_persona['Nombres'], 'paterno' =>$datos_persona['PrimerApellido'], 'materno' =>$datos_persona['SegundoApellido'], 'fec_nacimiento'=>$datos_persona['FechaNacimiento'], 'estado'=>'segip');
@@ -212,13 +228,11 @@ class Persona extends CI_Controller {
 				$verifica = $this->db->get_where('beneficiario', array('ci' => $ci))->row();
 				// DATOS DEL CONYUGUE
 				$fec_naci_c = $datos['fec_nacimiento_c'];
-				$dia = substr($fec_naci_c, 0, -8);  // devuelve "cde"
-				$mes = substr($fec_naci_c, 3, -5);  // devuelve "cde"
-				$ano = substr($fec_naci_c, 6);
+				$dia_c = substr($fec_naci_c, 0, -8);  // devuelve "cde"
+				$mes_c = substr($fec_naci_c, 3, -5);  // devuelve "cde"
+				$ano_c = substr($fec_naci_c, 6);
 				// $fec_nacimiento = $ano.'-'.$mes.'-'.$dia;
 				$fec_nacimiento_c = $ano_c.'-'.$mes_c.'-'.$dia_c;
-
-
 				$beneficiario_id = $verifica->id;
 				$relacion = 'conyugue';
 				$ci_c = $datos['ci_c'];

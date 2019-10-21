@@ -349,11 +349,6 @@ function buscar()
             data: {csrfName: csrfHash, param1: ci},
             // data: {param1: cod_catastral},
             success:function(data, textStatus, jqXHR) {
-            	//alert(data);
-                //alert("Se envio bien");
-                // csrfName = data.csrfName;
-                // csrfHash = data.csrfHash;
-                // alert(data.message);
 	            if (data.estado == 'registrado') {
 	            	alerta();
 	            	$("#verificar").prop('type', 'button');
@@ -419,11 +414,6 @@ function buscar2()
             data: {csrfName: csrfHash, param1: ci},
             // data: {param1: cod_catastral},
             success:function(data, textStatus, jqXHR) {
-                //alert("Se envio bien");
-                // csrfName = data.csrfName;
-                // csrfHash = data.csrfHash;
-                // alert(data.message);
-
                 if (data.estado == 'registrado') {
 	            	alerta();
 	            	$("#verificar").prop('type', 'button');
