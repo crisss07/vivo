@@ -89,10 +89,26 @@
 														</div>
 													</div>
 													<div class="form-group m-form__group row">
-														<div class="col-lg-12">
-															<label class="">Direcci&oacute;n:</label>
+														<div class="col-lg-5">
+															<label class="">Avenida:</label>
 															<div class="m-input-icon m-input-icon--right">
-																<input type="text" class="form-control m-input m-input--air m-input--pill" name="direccion_c">
+																<input type="text" class="form-control m-input m-input--air m-input--pill" name="avenida">
+																<span class="m-input-icon__icon m-input-icon__icon--right"></span>
+															</div>
+															<span class="m-form__help">Ubicaci&oacute;n del Inmueble</span>
+														</div>
+														<div class="col-lg-5">
+															<label class="">Calle:</label>
+															<div class="m-input-icon m-input-icon--right">
+																<input type="text" class="form-control m-input m-input--air m-input--pill" name="calle">
+																<span class="m-input-icon__icon m-input-icon__icon--right"></span>
+															</div>
+															<span class="m-form__help">Ubicaci&oacute;n del Inmueble</span>
+														</div>
+														<div class="col-lg-2">
+															<label class="">N° Puerta</label>
+															<div class="m-input-icon m-input-icon--right">
+																<input type="text" class="form-control m-input m-input--air m-input--pill" name="puerta">
 																<span class="m-input-icon__icon m-input-icon__icon--right"></span>
 															</div>
 															<span class="m-form__help">Direcci&oacute;n del Inmueble</span>
