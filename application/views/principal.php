@@ -82,17 +82,33 @@
 														<div class="col-lg-3">
 															<label class="">Valor </label><span> (Bs.)</span>
 															<div class="m-input-icon m-input-icon--right">
-																<input type="integer" class="form-control m-input m-input--air m-input--pill" name="valor">
+																<input type="integer" class="form-control m-input m-input--air m-input--pill" id="valorr" name="valor">
 																<span class="m-input-icon__icon m-input-icon__icon--right"></span>
 															</div>
 															<span class="m-form__help">Valor del Inmueble</span>
 														</div>
 													</div>
 													<div class="form-group m-form__group row">
-														<div class="col-lg-12">
-															<label class="">Direcci&oacute;n:</label>
+														<div class="col-lg-5">
+															<label class="">Avenida:</label>
 															<div class="m-input-icon m-input-icon--right">
-																<input type="text" class="form-control m-input m-input--air m-input--pill" name="direccion_c">
+																<input type="text" class="form-control m-input m-input--air m-input--pill" name="avenida">
+																<span class="m-input-icon__icon m-input-icon__icon--right"></span>
+															</div>
+															<span class="m-form__help">Ubicaci&oacute;n del Inmueble</span>
+														</div>
+														<div class="col-lg-5">
+															<label class="">Calle:</label>
+															<div class="m-input-icon m-input-icon--right">
+																<input type="text" class="form-control m-input m-input--air m-input--pill" name="calle">
+																<span class="m-input-icon__icon m-input-icon__icon--right"></span>
+															</div>
+															<span class="m-form__help">Ubicaci&oacute;n del Inmueble</span>
+														</div>
+														<div class="col-lg-2">
+															<label class="">N° Puerta</label>
+															<div class="m-input-icon m-input-icon--right">
+																<input type="text" class="form-control m-input m-input--air m-input--pill" name="puerta">
 																<span class="m-input-icon__icon m-input-icon__icon--right"></span>
 															</div>
 															<span class="m-form__help">Direcci&oacute;n del Inmueble</span>
@@ -467,6 +483,25 @@ function buscar2()
 	 	var condominio = e.target.value;
         $('.item').hide('slow');
         $('#'+condominio).show('slow');
+     });
+</script>
+
+<script type="text/javascript">
+	 $('#valorr').on('change', function(e){
+	 	var valor = e.target.value;
+	 	if (valor > 348000) {
+			Swal.fire({
+			  // type: 'error',
+			  title: 'Oops...',
+			  text: 'El valor del inmueble no debe exceder de los 348000 Bs. (50000 $us).',
+			  imageUrl: '<?php echo base_url(); ?>public/imagenes/mal.jpeg',
+			  imageWidth: 200,
+			  imageHeight: 250,
+			  imageAlt: 'Custom image',
+			  animation: false
+			})
+	 	}
+       
      });
 </script>
 

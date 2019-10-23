@@ -13,12 +13,20 @@ class Persona extends CI_Controller {
 
 	public function ajax_verifica(){
 		$ci = $this->input->get("param1");
-		// $verifica = $this->db->get_where('beneficiario', array('ci' => $ci))->row();
-		$verifica = $this->db->query("SELECT be.*, fa.*
-										FROM beneficiario be, familiar fa
-										WHERE be.ci = '$ci' 
-										OR fa.ci = '$ci'")->row();
-
+		// $verifica = $this->db->query("SELECT be.*, fa.*
+		// 								FROM beneficiario be, familiar fa
+		// 								WHERE be.ci = '$ci' 
+		// 								OR fa.ci = '$ci'")->row();
+		$verifica = NULL;
+		$be = $this->db->get_where('beneficiario', array('ci' => $ci))->row();
+		if ($be) {
+			$verifica = 'si el ci ya esta registrado';
+		}
+		$fa = $this->db->get_where('familiar', array('ci' => $ci))->row();
+		if ($fa) {
+			$verifica = 'si el ci ya esta registrado';
+		}
+		
 		if ($verifica) {
 			$respuesta = array('ci'=>$ci, 'mensaje'=>'Usted ya esta registrado', 'estado'=>'registrado');
 			echo json_encode($respuesta);
@@ -162,10 +170,15 @@ class Persona extends CI_Controller {
 				$precio = $this->input->post('valor');
 				$montos_cuota = $this->calcula_cuota_mes($precio, 0.0045, 300);
 				$a=$montos_cuota['cuota_total'];
-				$b=$montos_cuota['sueldo_ideal'];				
+				$b=$montos_cuota['sueldo_ideal'];		
+				$ave = $this->input->post('avenida');
+				$calle = $this->input->post('calle');
+				$puerta = $this->input->post('puerta');
+				$direccion_c = 'Avenida '.$ave.', Calle '.$calle.', N° '.$puerta;		
+
 				$data = array(            
 	            'descripcion' => $this->input->post('descripcion'), //input
-		    	'direccion' => $this->input->post('direccion_c'),
+		    	'direccion' => $direccion_c,
 		   		'privado' => 'Si',			
 	            'ciudad' => $departamento, //crear
 	            'valor' => $this->input->post('valor'),
