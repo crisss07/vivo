@@ -26,14 +26,47 @@
 						<?php //campos ocultos para guardar en la base de datos ?>
 							<input type="hidden" name="beneficiario_id" id="beneficiario_id" value="<?php echo $datos_credito['beneficiario_id']; ?>">
 							<input type="hidden" name="condominio_id" id="condominio_id" value="<?php echo $datos_credito['condominio_id']; ?>">
-							<input type="hidden" name="padre_beneficiario_carnet" id="padre_beneficiario_carnet">
-							<input type="hidden" name="padre_beneficiario_nombre" id="padre_beneficiario_nombre">
-							<input type="hidden" name="madre_beneficiario_carnet" id="madre_beneficiario_carnet">
-							<input type="hidden" name="madre_beneficiario_nombre" id="madre_beneficiario_nombre">
-							<input type="hidden" name="padre_conyugue_carnet" id="padre_conyugue_carnet">
-							<input type="hidden" name="padre_conyugue_nombre" id="padre_conyugue_nombre">
-							<input type="hidden" name="madre_conyugue_carnet" id="madre_conyugue_carnet">
-							<input type="hidden" name="madre_conyugue_nombre" id="madre_conyugue_nombre">
+
+							<!-- padre 1 -->
+							<input type="hidden" name="padre_beneficiario_nombre_1" id="padre_beneficiario_nombre_1">
+							<input type="hidden" name="padre_beneficiario_carnet_1" id="padre_beneficiario_carnet_1">
+							<input type="hidden" name="tipo_1" id="tipo_1">
+							<input type="hidden" name="combo_1" id="combo_1">
+							<input type="hidden" name="ingreso_bruto_1" id="ingreso_bruto_1">
+							<input type="hidden" name="gastos_1" id="gastos_1">
+							<input type="hidden" name="monto_depedientes_1" id="monto_depedientes_1">
+							<!-- fin padre 1 -->
+
+							<!-- madre 2 -->
+							<input type="hidden" name="madre_beneficiario_nombre_2" id="madre_beneficiario_nombre_2">
+							<input type="hidden" name="madre_beneficiario_carnet_2" id="madre_beneficiario_carnet_2">
+							<input type="hidden" name="tipo_2" id="tipo_2">
+							<input type="hidden" name="combo_2" id="combo_2">
+							<input type="hidden" name="ingreso_bruto_2" id="ingreso_bruto_2">
+							<input type="hidden" name="gastos_2" id="gastos_2">
+							<input type="hidden" name="monto_depedientes_2" id="monto_depedientes_2">
+							<!-- fin madre 2 -->
+
+							<!-- padre 3 -->
+							<input type="hidden" name="padre_beneficiario_nombre_3" id="padre_beneficiario_nombre_3">
+							<input type="hidden" name="padre_beneficiario_carnet_3" id="padre_beneficiario_carnet_3">
+							<input type="hidden" name="tipo_3" id="tipo_3">
+							<input type="hidden" name="combo_3" id="combo_3">
+							<input type="hidden" name="ingreso_bruto_3" id="ingreso_bruto_3">
+							<input type="hidden" name="gastos_3" id="gastos_3">
+							<input type="hidden" name="monto_depedientes_3" id="monto_depedientes_3">
+							<!-- fin padre 3 -->
+
+							<!-- madre 4 -->
+							<input type="hidden" name="madre_beneficiario_nombre_4" id="madre_beneficiario_nombre_4">
+							<input type="hidden" name="madre_beneficiario_carnet_4" id="madre_beneficiario_carnet_4">
+							<input type="hidden" name="tipo_4" id="tipo_4">
+							<input type="hidden" name="combo_4" id="combo_4">
+							<input type="hidden" name="ingreso_bruto_4" id="ingreso_bruto_4">
+							<input type="hidden" name="gastos_4" id="gastos_4">
+							<input type="hidden" name="monto_depedientes_4" id="monto_depedientes_4">
+							<!-- fin madre 4 -->
+
 							<input type="hidden" name="conyuge_id" id="conyuge_id">
 							<input type="hidden" name="papabeneficiario_id" id="papabeneficiario_id">
 							<input type="hidden" name="mamabeneficiario_id" id="mamabeneficiario_id">
@@ -41,14 +74,6 @@
 							<input type="hidden" name="mamaconyugue_id" id="mamaconyugue_id">
 							<input type="hidden" name="ingreso_beneficiario" id="ingreso_beneficiario">
 							<input type="hidden" name="ingreso_conyugue"  id="ingreso_conyugue">
-							<input type="hidden" name="ipb" id="ipb">
-							<input type="hidden" name="imb" id="imb">
-							<input type="hidden" name="ipc" id="ipc">
-							<input type="hidden" name="imc" id="imc">
-							<input type="hidden" name="tpb" id="tpb">
-							<input type="hidden" name="tmb" id="tmb">
-							<input type="hidden" name="tpc" id="tpc">
-							<input type="hidden" name="tmc" id="tmc">
 							<input type="hidden" name="interes" id="interes">
 							<input type="hidden" name="meses" id="meses">
 							<input type="hidden" name="monto" id="monto">
@@ -61,7 +86,7 @@
 								<tbody>
 									<tr>
 										<th scope="row">Ingresos liquidos mensuales</th>
-										<td align="right"><?php echo $datos_credito['ingreso_mensual']; ?></td>
+										<td align="right"><?php echo $datos_credito['ingreso_mensual']; ?></td>	
 									</tr>
 									<tr>
 										<th scope="row">Ingresos liquidos mensuales conyugue</th>
@@ -874,7 +899,10 @@
     	var monto_impb = $('#txt_impb').val();
     	var gasto_igpb = $('#txt_igpb').val();
     	monto = calcula_independientes(tipo_ipb, monto_impb, gasto_igpb);
-    	// console.log(monto);
+		$('#combo_1').val(tipo_ipb);
+		$('#ingreso_bruto_1').val(monto_impb);
+		$('#gastos_1').val(gasto_igpb);
+
     	ingresos_padre_beneficiario = monto;
     	var subtotal = ingresos_beneficiario + ingresos_conyugue + ingresos_padre_beneficiario + ingresos_madre_beneficiario + ingresos_padre_conyugue + ingresos_madre_conyugue;
 		$("#diipb").html(monto);
@@ -896,6 +924,7 @@
     	var subtotal = ingresos_beneficiario + ingresos_conyugue + ingresos_padre_beneficiario + ingresos_madre_beneficiario + ingresos_padre_conyugue + ingresos_madre_conyugue;
     	$("#diipb").html(monto_bmbp);
     	$("#total_ingresos").html(subtotal);
+    	$("#monto_depedientes_1").val(monto_bmbp);
 
     	if(subtotal > parseFloat(sueldo_ideal)){
     		alerta_alcanzo();
@@ -911,7 +940,11 @@
     	var monto_impb2 = $('#txt_ib2').val();
     	var gasto_igpb2 = $('#txt_gb2').val();
     	monto2 = calcula_independientes(tipo_ipb2, monto_impb2, gasto_igpb2);
-    	console.log(monto2);
+		$('#combo_2').val(tipo_ipb2);
+		$('#ingreso_bruto_2').val(monto_impb2);
+		$('#gastos_2').val(gasto_igpb2);
+
+    	// console.log(monto2);
     	ingresos_madre_beneficiario = monto2;
     	var subtotal = ingresos_beneficiario + ingresos_conyugue + ingresos_padre_beneficiario + ingresos_madre_beneficiario + ingresos_padre_conyugue + ingresos_madre_conyugue;
 		$("#diimb").html(monto2);
@@ -933,6 +966,7 @@
     	var subtotal = ingresos_beneficiario + ingresos_conyugue + ingresos_padre_beneficiario + ingresos_madre_beneficiario + ingresos_padre_conyugue + ingresos_madre_conyugue;
     	$("#diimb").html(monto_bmbp);
     	$("#total_ingresos").html(subtotal);
+		$("#monto_depedientes_2").val(monto_bmbp);
 
     	if(subtotal > parseFloat(sueldo_ideal)){
     		alerta_alcanzo();
@@ -948,6 +982,10 @@
     	var monto_impb3 = $('#txt_ib3').val();
     	var gasto_igpb3 = $('#txt_igb3').val();
     	monto3 = calcula_independientes(tipo_ipb3, monto_impb3, gasto_igpb3);
+		$('#combo_3').val(tipo_ipb3);
+		$('#ingreso_bruto_3').val(monto_impb3);
+		$('#gastos_3').val(gasto_igpb3);
+
     	// console.log(monto3);
     	ingresos_padre_conyugue = monto3;
     	var subtotal = ingresos_beneficiario + ingresos_conyugue + ingresos_padre_beneficiario + ingresos_madre_beneficiario + ingresos_padre_conyugue + ingresos_madre_conyugue;
@@ -970,6 +1008,7 @@
     	var subtotal = ingresos_beneficiario + ingresos_conyugue + ingresos_padre_beneficiario + ingresos_madre_beneficiario + ingresos_padre_conyugue + ingresos_madre_conyugue;
     	$("#diipb2").html(monto_bmbp);
     	$("#total_ingresos").html(subtotal);
+		$("#monto_depedientes_3").val(monto_bmbp);
 
     	if(subtotal > parseFloat(sueldo_ideal)){
     		alerta_alcanzo();
@@ -985,6 +1024,10 @@
     	var monto_impb3 = $('#txt_impb4').val();
     	var gasto_igpb3 = $('#txt_igpb4').val();
     	monto4 = calcula_independientes(tipo_ipb3, monto_impb3, gasto_igpb3);
+		$('#combo_4').val(tipo_ipb3);
+		$('#ingreso_bruto_4').val(monto_impb3);
+		$('#gastos_4').val(gasto_igpb3);
+
     	// console.log(monto3);
     	ingresos_madre_conyugue = monto4;
     	var subtotal = ingresos_beneficiario + ingresos_conyugue + ingresos_padre_beneficiario + ingresos_madre_beneficiario + ingresos_padre_conyugue + ingresos_madre_conyugue;
@@ -1007,6 +1050,7 @@
     	var subtotal = ingresos_beneficiario + ingresos_conyugue + ingresos_padre_beneficiario + ingresos_madre_beneficiario + ingresos_padre_conyugue + ingresos_madre_conyugue;
     	$("#diipb3").html(monto_bmbp);
     	$("#total_ingresos").html(subtotal);
+		$("#monto_depedientes_4").val(monto_bmbp);
 
     	if(subtotal > parseFloat(sueldo_ideal)){
     		alerta_alcanzo();
@@ -1051,7 +1095,7 @@
 	function carnet_2()
 	{
 	        var ci = $("#ci2").val();
-	        $("#padre_beneficiario_carnet").val(ci);
+	        $("#padre_beneficiario_carnet_1").val(ci);
 	        var csrfName = '<?php echo $this->security->get_csrf_token_name(); ?>';
 	        var csrfHash = '<?php echo $this->security->get_csrf_hash(); ?>';
 
@@ -1076,7 +1120,7 @@
 	                    $("#msg_sucess_catastral").html('Esta registrado en el SEGIP la persona con Cedula de Identidad Numero: '+data.ci);
 	                    var concatenados = data.nombres.concat(' ', data.paterno, ' ', data.materno);
 	                    $('#name_2').val(concatenados);
-	                    $("#padre_beneficiario_nombre").val(concatenados);
+	                    $("#padre_beneficiario_nombre_1").val(concatenados);
 	                    // $('#paterno').val(data.paterno);
 	                    // $('#materno').val(data.materno);
 	                    // $('#fecha').val(data.fec_nacimiento);
@@ -1108,7 +1152,7 @@
 	function carnet_3()
 	{
 	        var ci = $("#ci3").val();
-	        $("#madre_beneficiario_carnet").val(ci);
+			$("#madre_beneficiario_carnet_2").val(ci);
 	        var csrfName = '<?php echo $this->security->get_csrf_token_name(); ?>';
 	        var csrfHash = '<?php echo $this->security->get_csrf_hash(); ?>';
 
@@ -1126,14 +1170,14 @@
 	                // alert(data.message);
 		            
             		if (data.estado == 'segip') {
-	                        $("#msg_error_catastral").hide();
+						$("#msg_error_catastral").hide();
 	                    $("#msg_sucess_catastral").show();
 	                    $("#msg_alerta_catastral").show();
-	                        $("#ci").val(data.ci);
+						$("#ci").val(data.ci);
 	                    $("#msg_sucess_catastral").html('Esta registrado en el SEGIP la persona con Cedula de Identidad Numero: '+data.ci);
 	                    var concatenados = data.nombres.concat(' ', data.paterno, ' ', data.materno);
 	                    $('#name_3').val(concatenados);
-	                    $("#madre_beneficiario_nombre").val(concatenados);
+						$("#madre_beneficiario_nombre_2").val(concatenados);
 	                    // $('#paterno').val(data.paterno);
 	                    // $('#materno').val(data.materno);
 	                    // $('#fecha').val(data.fec_nacimiento);
@@ -1165,6 +1209,7 @@
 	function carnet_4()
 	{
 	        var ci = $("#ci4").val();
+			$("#padre_beneficiario_carnet_3").val(ci);
 	        var csrfName = '<?php echo $this->security->get_csrf_token_name(); ?>';
 	        var csrfHash = '<?php echo $this->security->get_csrf_hash(); ?>';
 
@@ -1189,6 +1234,7 @@
 	                    $("#msg_sucess_catastral").html('Esta registrado en el SEGIP la persona con Cedula de Identidad Numero: '+data.ci);
 	                    var concatenados = data.nombres.concat(' ', data.paterno, ' ', data.materno);
 	                    $('#name_4').val(concatenados);
+						$("#padre_beneficiario_nombre_3").val(concatenados);
 	                    // $('#paterno').val(data.paterno);
 	                    // $('#materno').val(data.materno);
 	                    // $('#fecha').val(data.fec_nacimiento);
@@ -1220,6 +1266,7 @@
 	function carnet_5()
 	{
 	        var ci = $("#ci5").val();
+			$("#madre_beneficiario_carnet_4").val(ci);
 	        var csrfName = '<?php echo $this->security->get_csrf_token_name(); ?>';
 	        var csrfHash = '<?php echo $this->security->get_csrf_hash(); ?>';
 
@@ -1244,6 +1291,7 @@
 	                    $("#msg_sucess_catastral").html('Esta registrado en el SEGIP la persona con Cedula de Identidad Numero: '+data.ci);
 	                    var concatenados = data.nombres.concat(' ', data.paterno, ' ', data.materno);
 	                    $('#name_5').val(concatenados);
+						$("#madre_beneficiario_nombre_4").val(concatenados);
 	                    // $('#paterno').val(data.paterno);
 	                    // $('#materno').val(data.materno);
 	                    // $('#fecha').val(data.fec_nacimiento);
