@@ -6,7 +6,7 @@
 		<div class="m-content">
 			<div class="row">
 				<div class="col-md-4">
-
+					<?php echo form_open('Solicitudes/guarda', array('method'=>'POST', 'class' => 'm-form m-form--fit m-form--label-align-right')); ?>
 					<!--begin::Portlet-->
 					<div class="m-portlet m-portlet--brand m-portlet--head-solid-bg m-portlet--bordered">
 						<div class="m-portlet__head">
@@ -22,7 +22,6 @@
 							</div>
 						</div>
 						<?php //vdebug($datos_credito, false, false, true) ?>
-
 						<?php //campos ocultos para guardar en la base de datos ?>
 							<input type="hidden" name="beneficiario_id" id="beneficiario_id" value="<?php echo $datos_credito['beneficiario_id']; ?>">
 							<input type="hidden" name="condominio_id" id="condominio_id" value="<?php echo $datos_credito['condominio_id']; ?>">
@@ -181,7 +180,8 @@
 								<div class="m-portlet__foot m-portlet__foot--fit">
 										<center>
 											<div class="m-form__actions">
-												<a href="<?php echo base_url(); ?>" type="button" class="btn m-btn--pill btn-success">Finalizar</a>
+												<!-- <a href="<?php echo base_url(); ?>" type="button" class="btn m-btn--pill btn-success">Finalizar</a> -->
+												<input type="submit" name="" class="btn m-btn--pill btn-success" value="GUARDAR">
 											</div>
 										</center>
 									</div>
@@ -193,6 +193,7 @@
 					</div>
 
 					<!--end::Portlet-->
+				</form>
 				</div>
 
 				<div class="col-md-4 item">
