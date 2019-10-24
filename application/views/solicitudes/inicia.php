@@ -789,6 +789,62 @@
 </div>
 <?php //vdebug($condominio, true, false, true); ?>
 			<!-- end:: Body -->
+<!-- mensajes solicitud -->
+	<div class="modal fade" id="modal_msg" tabindex="-1" role="dialog" aria-labelledby="exampleModalCenterTitle" aria-hidden="true">
+							<div class="modal-dialog modal-dialog-centered" role="document">
+								<div class="modal-content">
+									<div class="modal-header" align="center">
+										<h2 class="m--font-info" >Registro exitoso</h2>
+										
+									</div>
+									<div class="modal-body"> 
+
+										<div align="center">
+											<img src="<?php echo base_url() ?>public/assets/img/happy.jpeg" alt="" width="50%">	
+										</div>
+										<br>
+										<div class="alert alert-primary" role="alert">
+											Tu solicitud ha sido registrada exitosamente, se te ha enviado informacion importante al correo <?php echo $email; ?>											
+										</div>
+										<p align="center">											
+													<img src="<?php echo base_url() ?>public/assets/img/check.png" alt="" width="15%">													
+														Tu Numero de Tramite es: <b> <?php echo str_pad($nro_tramite, 5, "0", STR_PAD_LEFT); ?>  </b> 
+										</p>
+									</div>
+									<div class="modal-footer">
+										<a href="<?php echo base_url(); ?>" type="button" class="btn btn-success">Terminar</a>
+									</div>
+								</div>
+							</div>
+				</div>
+
+					<div class="modal fade" id="modal_error" tabindex="-1" role="dialog" aria-labelledby="exampleModalCenterTitle" aria-hidden="true">
+							<div class="modal-dialog modal-dialog-centered" role="document">
+								<div class="modal-content">
+									<div class="modal-header" align="center">
+										<h2 class="m--font-danger" >Registro fallido</h2>
+										
+									</div>
+									<div class="modal-body"> 
+
+										<div align="center">
+											<img src="<?php echo base_url() ?>public/assets/img/sad.jpeg" alt="" width="50%">	
+										</div>
+										<br>
+										<div class="alert alert-danger" role="alert">
+											Tus ingresos totales no son suficientes para acceder al credito
+										</div>
+										<p align="center"><b> sin embargo podrias solicitar ayuda de tus padres </b></p>
+									   
+										
+									</div>
+									<div class="modal-footer">
+										<button type="button" class="btn btn-warning" data-dismiss="modal">Intentar</button>																		
+									</div>
+								</div>
+							</div>
+				</div>
+<!-- fin mensajes solicitud -->
 
 <script type="text/javascript">
 
@@ -1327,5 +1383,17 @@ Swal.fire({
   text: 'No es un Carnet Valido!'
 })
 //location.reload();
+}
+</script>
+
+<script>
+function myFunction() {
+ if( <?php echo $condominio['sueldo_prom']; ?> <= <?php echo $ingreso_total_solicitante; ?> ){
+ 	$("#modal_msg").modal({backdrop: "static"});	
+ }
+ else{
+ 	$("#modal_error").modal({backdrop: "static"});
+ }
+  
 }
 </script>

@@ -79,6 +79,14 @@ class Solicitudes extends CI_Controller {
 		$data['cuota']=$montos_cuota;
 		// $condominios = $this->db->get('condominio')->result();
 		// $data['condominios']=$condominios;
+
+		//alerta correo de usuario y nro de tramite
+		$this->db->select("email");
+		$email=$this->db->get_where('beneficiario', array('id'=>$datos_credito['beneficiario_id']))->row();
+		$data['email']=$email->email;
+		$data['nro_tramite']=$datos_credito['nro_tramite'];
+		//fin alertas 
+		
 		$this->load->view('solicitudes/header');
 		$this->load->view('solicitudes/inicia', $data);
 		$this->load->view('admin/footer');
