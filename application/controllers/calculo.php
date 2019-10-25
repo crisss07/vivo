@@ -41,7 +41,7 @@ class Calculo extends CI_Controller {
 
 		
 		
-		if($res->num_rows() > 0)
+		if($res->num_rows() > 0)//en caso de que ya se haya registrado
 		{
 			$this->db->select('id');
 			$credito_id=$this->db->get_where('credito', array('beneficiario_id' => $id));
@@ -49,11 +49,15 @@ class Calculo extends CI_Controller {
 			$credito_id=$credito_id->id;			
 			redirect(base_url() . 'Solicitudes/inicia/'.$credito_id);
 		}
-		else {
+		else {//en caso de que no haya un regsitro con el id del benficiciario
 			$this->db->select('condominio_id');
 			$condominio_id=$this->db->get_where('beneficiario', array('id' => $id));
 			$condominio_id=$condominio_id->row();
 			$condominio_id=$condominio_id->condominio_id;
+			$this->db->select('Count(id) as total');
+			$nro_tramite=$this->db->get('credito');
+			$nro_tramite=$nro_tramite->total;
+			$nro_tramite=$nro_tramite+1;
 			$data = array(            
             'beneficiario_id' => $this->input->post('beneficiario_id'), //input
             'ingreso_mensual' => $this->input->post('ingreso_mensual'), //crear
@@ -67,6 +71,7 @@ class Calculo extends CI_Controller {
             'aporte_beneficiario' => $this->input->post('aporte_beneficiario'),
             'casado' => $this->input->post('casado'),
             'condominio_id' => $condominio_id,
+            'nro_tramite'=>$nro_tramite,
             'prestamo' => 0,
             'cuota_mensual' => 0,
             //'activo' => '1',
