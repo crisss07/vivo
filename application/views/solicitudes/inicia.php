@@ -147,7 +147,6 @@
 											<th>Valor Inmueble</th>
 											<th>Cuota Mensual</th>
 											<th>Sueldo ideal</th>
-											<th></th>
 										</tr>
 									</thead>
 									<tbody>
@@ -160,17 +159,6 @@
 											<td><?php echo $condominio['valor'] ?></td>
 											<td><?php echo $condominio['cuota_mensual'] ?></td>
 											<td><?php echo $condominio['sueldo_prom'] ?></td>
-											<td>
-												<?php if ($condominio['sueldo_prom'] <= $ingreso_total_solicitante): ?>
-												<a href="#" class="btn btn-success m-btn m-btn--icon btn-sm m-btn--icon-only">
-													<i class="fa fa-check"></i>
-												</a>
-												<?php else: ?>
-												<a href="#" class="btn btn-danger m-btn m-btn--icon btn-sm m-btn--icon-only" onclick="muestra_papab()">
-													<i class="fa fa-ban"></i>
-												</a>
-												<?php endif; ?>
-											</td>
 										</tr>
 										<?php //endforeach; ?>
 
@@ -198,7 +186,7 @@
 
 				<div class="col-md-4 item">
 					<!--begin::Portlet-->
-					<div class="m-portlet m-portlet--tab" id="bloque_1" style="display: none;">
+					<div class="m-portlet m-portlet--tab" id="bloque_1">
 						<div class="m-portlet__head">
 							<div class="m-portlet__head-caption">
 								<div class="m-portlet__head-title">
@@ -206,7 +194,7 @@
 										<i class="la la-gear"></i>
 									</span>
 									<h3 class="m-portlet__head-text">
-										Registro Ingresos del pap&a del beneficiario
+										Registro ingresos padre o madre beneficiario
 									</h3>
 								</div>
 							</div>
@@ -217,7 +205,7 @@
 							<div class="form-group m-form__group row">
 								<label for="example-text-input" class="col-3 col-form-label">Carnet Identidad</label>
 								<div class="col-4">
-									<input type="text" class="form-control m-input m-input--air m-input--pill" name="ci_c" id="ci2" required>
+									<input type="text" class="form-control m-input m-input--air m-input--pill valcrt" name="ci_c" id="ci2" required>
 
 								</div>
 
@@ -266,7 +254,7 @@
 											<div class="col-lg-4">
 												<label class="">Ingreso Bruto:</label>
 												<div class="m-input-icon m-input-icon--right">
-													<input type="text" class="form-control m-input m-input--air m-input--pill" name="paterno_c" id="txt_impb">
+													<input type="text" class="form-control m-input m-input--air m-input--pill valcrt" name="paterno_c" id="txt_impb">
 													<span class="m-input-icon__icon m-input-icon__icon--right"></span>
 												</div>
 											</div>
@@ -274,7 +262,7 @@
 											<div class="col-lg-4">
 												<label class="">Gastos:</label>
 												<div class="m-input-icon m-input-icon--right">
-													<input type="text" class="form-control m-input m-input--air m-input--pill" name="paterno_c" id="txt_igpb">
+													<input type="text" class="form-control m-input m-input--air m-input--pill valcrt" name="paterno_c" id="txt_igpb">
 													<span class="m-input-icon__icon m-input-icon__icon--right"></span>
 												</div>
 											</div>
@@ -823,25 +811,26 @@
 							<div class="modal-dialog modal-dialog-centered" role="document">
 								<div class="modal-content">
 									<div class="modal-header" align="center">
-										<h2 class="m--font-danger" >Registro fallido</h2>
-										
+										<!-- <h2 class="m--font-danger">Puedes solicitar ayuda</h2> -->
+										<h3 class="modal-title m--font-info" id="exampleModalLabel">Informacion</h3>
+										<button type="button" class="close" data-dismiss="modal" aria-label="Close">
+											<span aria-hidden="true">×</span>
+										</button>
 									</div>
 									<div class="modal-body"> 
 
 										<div align="center">
-											<img src="<?php echo base_url() ?>public/assets/img/sad.jpeg" alt="" width="50%">	
+											<img src="<?php echo base_url() ?>public/assets/img/think.jpeg" alt="" width="50%">	
 										</div>
 										<br>
-										<div class="alert alert-danger" role="alert">
+										<div class="alert alert-info" role="alert">
 											Tus ingresos totales no son suficientes para acceder al credito
 										</div>
-										<p align="center"><b> sin embargo podrias solicitar ayuda de tus padres </b></p>
-									   
-										
+										Sin embargo podrias solicitar ayuda, llenando los formularios de ingresos de tus papas.
 									</div>
-									<div class="modal-footer">
-										<button type="button" class="btn btn-warning" data-dismiss="modal">Intentar</button>																		
-									</div>
+									<!-- <div class="modal-footer">
+										<button type="button" class="btn btn-danger" data-dismiss="modal">Cerrar</button>																		
+									</div> -->
 								</div>
 							</div>
 				</div>
@@ -858,6 +847,14 @@
 	var couta_mes_condominio = <?php echo $cuota['cuota_total']; ?>;
 	var total = 0;
 	var sueldo_ideal = <?php echo $condominio['sueldo_prom']; ?>;
+
+	$(".valcrt").on("keypress keyup blur", function (event) {
+	 	//this.value = this.value.replace(/[^0-9\.]/g,'');
+		$(this).val($(this).val().replace(/[^0-9\.]/g, ''));
+		if ((event.which != 46 || $(this).val().indexOf('.') != -1) && (event.which < 48 || event.which > 57)) {
+			event.preventDefault();
+		}
+	});
 
     function agregarform()
         {
