@@ -81,7 +81,7 @@
 																			<td>No corresponde</td>
 																			<?php } ?>
 																			<td><?php echo $con->descripcion; ?> - <?php echo $con->ciudad; ?></td> 
-																			<td><?php echo $con->beneficio; ?></td> 
+																			<td><?php echo $con->descripcion; ?></td> 
 																			<td>
 																				<button type="button" class="btn btn-info" data-toggle="modal" data-target="#Modal_insert">
 																					<span class="fas fa-info-circle" aria-hidden="true">

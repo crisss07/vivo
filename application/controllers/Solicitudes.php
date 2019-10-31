@@ -96,8 +96,7 @@ class Solicitudes extends CI_Controller {
 	public function guarda()
 	{
 		$datos = $this->input->post();
-		var_dump($datos);
-		exit();
+		
 		$beneficiario_id = $datos['beneficiario_id'];
 		$condominio_id = $datos['condominio_id'];
 
@@ -236,7 +235,8 @@ class Solicitudes extends CI_Controller {
 				$tmc = 'Dependientes';
 				$gmc = $datos['gastos_4'];
 			}
-			
+			$monto_total = $datos['monto_total'];
+			$aprobado = $datos['aprobado'];
 			$interes = '5,5';
 			$meses = '300';
 			$montoss = $this->db->get_where('condominio', array('id' => $condominio_id))->row();
@@ -268,6 +268,8 @@ class Solicitudes extends CI_Controller {
 				'interes' => $interes,
 				'meses' => $meses,
 				'monto' => $monto,
+				'monto_total' => $monto_total,
+				'aprobado' => $aprobado,
 				'fecha' => $fecha
 			);
 

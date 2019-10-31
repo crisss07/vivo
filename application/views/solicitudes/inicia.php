@@ -6,7 +6,7 @@
 		<div class="m-content">
 			<div class="row">
 				<div class="col-md-4">
-					<?php echo form_open('Solicitudes/guarda', array('method'=>'POST', 'class' => 'm-form m-form--fit m-form--label-align-right')); ?>
+					<?php echo form_open('Solicitudes/guarda', array('method'=>'POST', 'class' => 'm-form m-form--fit m-form--label-align-right', 'id' => 'form-1')); ?>
 					<!--begin::Portlet-->
 					<div class="m-portlet m-portlet--brand m-portlet--head-solid-bg m-portlet--bordered">
 						<div class="m-portlet__head">
@@ -71,13 +71,14 @@
 							<input type="hidden" name="mamabeneficiario_id" id="mamabeneficiario_id">
 							<input type="hidden" name="papaconyugue_id" id="papaconyugue_id">
 							<input type="hidden" name="mamaconyugue_id" id="mamaconyugue_id">
-							<input type="hidden" name="ingreso_beneficiario" id="ingreso_beneficiario">
-							<input type="hidden" name="ingreso_conyugue"  id="ingreso_conyugue">
+							<input type="hidden" name="ingreso_beneficiario" id="ingreso_beneficiario" value="<?php echo number_format($datos_credito['ingreso_mensual'], 2); ?>">
+							<input type="hidden" name="ingreso_conyugue"  id="ingreso_conyugue" value="<?php echo $datos_credito['ingreso_conyugue']; ?>">
 							<input type="hidden" name="interes" id="interes">
 							<input type="hidden" name="meses" id="meses">
 							<input type="hidden" name="monto" id="monto">
+							<input type="hidden" name="monto_total" id="monto_total">
+							<input type="hidden" name="aprobado" id="aprobado" value="No">
 							<input type="hidden" name="fecha" id="fecha">
-							<input type="hidden" name="total_ingresos" id="total_ingresos">
 							
 						<?php //fin campos ocultos para guardar en la base de datos ?>
 
@@ -86,7 +87,7 @@
 								<tbody>
 									<tr>
 										<th scope="row">Ingresos liquidos mensuales</th>
-										<td align="right"><?php echo $datos_credito['ingreso_mensual']; ?></td>	
+										<td align="right"><?php echo number_format($datos_credito['ingreso_mensual'], 2); ?></td>	
 									</tr>
 									<tr>
 										<th scope="row">Ingresos liquidos mensuales conyugue</th>
@@ -114,7 +115,7 @@
 									</tr>
 									<tr>
 										<th scope="row">Total</th>
-										<td align="right" id="total_ingresos"><?php echo $total; ?></td>
+										<td align="right" id="total_ingresos"><?php echo number_format($total, 2); ?></td>
 									</tr>
 									<tr>
 										<th scope="row">Tasa de interes</th>
@@ -148,7 +149,6 @@
 											<th>Valor Inmueble</th>
 											<th>Cuota Mensual</th>
 											<th>Sueldo ideal</th>
-											<th></th>
 										</tr>
 									</thead>
 									<tbody>
@@ -158,20 +158,9 @@
 											<th scope="row"><?php echo $condominio['id'] ?></th>
 											<td><?php echo $condominio['descripcion'] ?></td>
 											<td><?php echo $condominio['ciudad'] ?></td>
-											<td><?php echo $condominio['valor'] ?></td>
-											<td><?php echo $condominio['cuota_mensual'] ?></td>
-											<td><?php echo $condominio['sueldo_prom'] ?></td>
-											<td>
-												<?php if ($condominio['sueldo_prom'] <= $ingreso_total_solicitante): ?>
-												<a href="#" class="btn btn-success m-btn m-btn--icon btn-sm m-btn--icon-only">
-													<i class="fa fa-check"></i>
-												</a>
-												<?php else: ?>
-												<a href="#" class="btn btn-danger m-btn m-btn--icon btn-sm m-btn--icon-only" onclick="muestra_papab()">
-													<i class="fa fa-ban"></i>
-												</a>
-												<?php endif; ?>
-											</td>
+											<td><?php echo number_format($condominio['valor'], 2); ?></td>
+											<td><?php echo number_format($condominio['cuota_mensual'], 2); ?></td>
+											<td><?php echo number_format($condominio['sueldo_prom'], 2); ?></td>
 										</tr>
 										<?php //endforeach; ?>
 
@@ -199,7 +188,7 @@
 
 				<div class="col-md-4 item">
 					<!--begin::Portlet-->
-					<div class="m-portlet m-portlet--tab" id="bloque_1" style="display: none;">
+					<div class="m-portlet m-portlet--tab" id="bloque_1">
 						<div class="m-portlet__head">
 							<div class="m-portlet__head-caption">
 								<div class="m-portlet__head-title">
@@ -207,7 +196,7 @@
 										<i class="la la-gear"></i>
 									</span>
 									<h3 class="m-portlet__head-text">
-										Registro Ingresos del pap&a del beneficiario
+										Registro ingresos padre o madre beneficiario
 									</h3>
 								</div>
 							</div>
@@ -218,7 +207,7 @@
 							<div class="form-group m-form__group row">
 								<label for="example-text-input" class="col-3 col-form-label">Carnet Identidad</label>
 								<div class="col-4">
-									<input type="text" class="form-control m-input m-input--air m-input--pill" name="ci_c" id="ci2" required>
+									<input type="text" class="form-control m-input m-input--air m-input--pill valcrt" name="ci_c" id="ci2" required>
 
 								</div>
 
@@ -257,7 +246,7 @@
 										
 										<div class="form-group m-form__group row">
 											<div class="col-lg-4">
-												<label class="">Tipo:</label>
+												<label class="">Categoria</label>
 												<select class="form-control m-input" id="cb_ipb">
 													<option value="Comercio">Comercio</option>
 													<option value="Servicio">Servicio</option>
@@ -265,28 +254,29 @@
 												</select>
 											</div>
 											<div class="col-lg-4">
-												<label class="">Ingreso Bruto:</label>
+												<label class="form-control-label">Ingreso mensual</label>
 												<div class="m-input-icon m-input-icon--right">
-													<input type="text" class="form-control m-input m-input--air m-input--pill" name="paterno_c" id="txt_impb">
+													<input type="text" class="form-control m-input m-input--air m-input--pill valcrt" name="paterno_c" id="txt_impb" value="0">
 													<span class="m-input-icon__icon m-input-icon__icon--right"></span>
+													<!-- <div class="form-control-feedback">Introduce un valor</div> -->
 												</div>
 											</div>
 
 											<div class="col-lg-4">
-												<label class="">Gastos:</label>
+												<label class="">Gastos mensuales</label>
 												<div class="m-input-icon m-input-icon--right">
-													<input type="text" class="form-control m-input m-input--air m-input--pill" name="paterno_c" id="txt_igpb">
-													<span class="m-input-icon__icon m-input-icon__icon--right"></span>
+													<input type="text" class="form-control m-input m-input--air m-input--pill valcrt" name="paterno_c" id="txt_igpb" value="0">
+													<!-- <span class="m-input-icon__icon m-input-icon__icon--right"></span> -->
 												</div>
 											</div>
 
 										</div>
 									
-									<div class="m-portlet__foot m-portlet__foot--fit">
+									<div class="m-portlet__foot--fit">
 										<center>
 											<div class="m-form__actions">
 												<button type="submit" class="btn m-btn--pill btn-accent" onclick=padre_beneficiario_independiente();>Calcular</button>
-												<button type="button" class="btn m-btn--pill btn-success" onclick="muestra2();">Pedir Ayuda</button>
+												<button type="button" class="btn m-btn--pill btn-success btna_1" onclick="muestra2();" style="display: none;">Adicionar Colaborador</button>
 											</div>
 										</center>
 									</div>
@@ -309,18 +299,18 @@
 											<div class="form-group m-form__group row">
 
 												<div class="col-lg-12">
-													<label class="">Monto:</label>
+													<label class="">Ingreso mensual</label>
 													<div class="m-input-icon m-input-icon--right">
-														<input type="text" class="form-control m-input m-input--air m-input--pill" name="paterno_c" id="txt_dmbp">
+														<input type="text" class="form-control m-input m-input--air m-input--pill" name="paterno_c" id="txt_dmbp"  value="0">
 														<span class="m-input-icon__icon m-input-icon__icon--right"></span>
 													</div>
 												</div>
 											</div>
-											<div class="m-portlet__foot m-portlet__foot--fit">
+											<div class="m-portlet__foot--fit">
 												<center>
 													<div class="m-form__actions">
 														<button type="submit" class="btn m-btn--pill btn-accent"  onclick="padre_beneficiario_dependiente();">Calcular</button>
-														<button type="button" class="btn m-btn--pill btn-success" onclick="muestra2();">Pedir Ayuda</button>
+														<button type="button" class="btn m-btn--pill btn-success btna_1" onclick="muestra2();" style="display: none;">Adicionar Colaborador</button>
 													</div>
 												</center>
 											</div>
@@ -349,7 +339,7 @@
 										<i class="la la-gear"></i>
 									</span>
 									<h3 class="m-portlet__head-text">
-										Registro Ingresos del mama
+										Registro ingresos padre o madre beneficiario
 									</h3>
 								</div>
 							</div>
@@ -402,7 +392,7 @@
 								<div class="m-accordion__item m-accordion__item--danger">
 									<div class="m-accordion__item-head collapsed" srole="tab" id="m_accordion_5_item_1_head" data-toggle="collapse" href="#m_accordion_5_item_1_body_2" aria-expanded="false">
 										<span class="m-accordion__item-icon"><i class="fa flaticon-user-ok"></i></span>
-										<span class="m-accordion__item-title"> Formulario Independientes</span>
+										<span class="m-accordion__item-title">Formulario Independientes</span>
 										<span class="m-accordion__item-mode"></span>
 									</div>
 									<div class="m-accordion__item-body collapse" id="m_accordion_5_item_1_body_2" role="tabpanel" aria-labelledby="m_accordion_5_item_1_head" data-parent="#m_accordion_6" style="">
@@ -411,7 +401,7 @@
 										
 										<div class="form-group m-form__group row">
 											<div class="col-lg-4">
-												<label class="">Tipo:</label>
+												<label class="">Categoria</label>
 												<select class="form-control m-input" id="cb_i2">
 													<option value="Comercio">Comercio</option>
 													<option value="Servicio">Servicio</option>
@@ -419,28 +409,28 @@
 												</select>
 											</div>
 											<div class="col-lg-4">
-												<label class="">Ingreso Bruto:</label>
+												<label class="">Ingreso mensual</label>
 												<div class="m-input-icon m-input-icon--right">
-													<input type="text" class="form-control m-input m-input--air m-input--pill" name="paterno_c" id="txt_ib2">
+													<input type="text" class="form-control m-input m-input--air m-input--pill" name="paterno_c" id="txt_ib2" value="0">
 													<span class="m-input-icon__icon m-input-icon__icon--right"></span>
 												</div>
 											</div>
 
 											<div class="col-lg-4">
-												<label class="">Gastos:</label>
+												<label class="">Gastos mensuales</label>
 												<div class="m-input-icon m-input-icon--right">
-													<input type="text" class="form-control m-input m-input--air m-input--pill" name="paterno_c" id="txt_gb2">
+													<input type="text" class="form-control m-input m-input--air m-input--pill" name="paterno_c" id="txt_gb2" value="0">
 													<span class="m-input-icon__icon m-input-icon__icon--right"></span>
 												</div>
 											</div>
 
 										</div>
 
-									<div class="m-portlet__foot m-portlet__foot--fit">
+									<div class="m-portlet__foot--fit">
 										<center>
 											<div class="m-form__actions">
 												<button type="submit" class="btn m-btn--pill btn-accent" onclick=padre_beneficiario_independiente2();>Calcular</button>
-												<button type="button" class="btn m-btn--pill btn-success" onclick="muestra3()">Pedir Ayuda</button>
+												<button type="button" class="btn m-btn--pill btn-success btna_2" onclick="muestra3()" style="display: none;">Adicionar Colaborador</button>
 											</div>
 										</center>
 									</div>
@@ -465,16 +455,16 @@
 												<div class="col-lg-12">
 													<label class="">Monto:</label>
 													<div class="m-input-icon m-input-icon--right">
-														<input type="text" class="form-control m-input m-input--air m-input--pill" name="paterno_c" id="txt_md2">
+														<input type="text" class="form-control m-input m-input--air m-input--pill" name="paterno_c" id="txt_md2" value="0">
 														<span class="m-input-icon__icon m-input-icon__icon--right"></span>
 													</div>
 												</div>
 											</div>
-											<div class="m-portlet__foot m-portlet__foot--fit">
+											<div class="m-portlet__foot--fit">
 												<center>
 													<div class="m-form__actions">
 														<button type="submit" class="btn m-btn--pill btn-accent" onclick="padre_beneficiario_dependiente2();">Calcular</button>
-														<button type="button" class="btn m-btn--pill btn-success" onclick="muestra3();">Pedir Ayuda</button>
+														<button type="button" class="btn m-btn--pill btn-success btna_2" onclick="muestra3();" style="display: none;">Adicionar Colaborador</button>
 													</div>
 												</center>
 											</div>
@@ -509,7 +499,7 @@
 										<i class="la la-gear"></i>
 									</span>
 									<h3 class="m-portlet__head-text">
-										Registro Ingresos del papa
+										Registro ingresos padre o madre beneficiario
 									</h3>
 								</div>
 							</div>
@@ -559,7 +549,7 @@
 										
 										<div class="form-group m-form__group row">
 											<div class="col-lg-4">
-												<label class="">Tipo:</label>
+												<label class="">Categoria</label>
 												<select class="form-control m-input" id="cb_ipb3">
 													<option value="Comercio">Comercio</option>
 													<option value="Servicio">Servicio</option>
@@ -567,28 +557,28 @@
 												</select>
 											</div>
 											<div class="col-lg-4">
-												<label class="">Ingreso Bruto:</label>
+												<label class="">Ingreso mensual</label>
 												<div class="m-input-icon m-input-icon--right">
-													<input type="text" class="form-control m-input m-input--air m-input--pill" name="paterno_c" id="txt_ib3">
+													<input type="text" class="form-control m-input m-input--air m-input--pill" name="paterno_c" id="txt_ib3" value="0">
 													<span class="m-input-icon__icon m-input-icon__icon--right"></span>
 												</div>
 											</div>
 
 											<div class="col-lg-4">
-												<label class="">Gastos:</label>
+												<label class="">Gastos mensuales</label>
 												<div class="m-input-icon m-input-icon--right">
-													<input type="text" class="form-control m-input m-input--air m-input--pill" name="paterno_c" id="txt_igb3">
+													<input type="text" class="form-control m-input m-input--air m-input--pill" name="paterno_c" id="txt_igb3" value="0">
 													<span class="m-input-icon__icon m-input-icon__icon--right"></span>
 												</div>
 											</div>
 
 										</div>
 
-									<div class="m-portlet__foot m-portlet__foot--fit">
+									<div class="m-portlet__foot--fit">
 										<center>
 											<div class="m-form__actions">
 												<button type="submit" class="btn m-btn--pill btn-accent" onclick=padre_beneficiario_independiente3();>Calcular</button>
-												<button type="button" class="btn m-btn--pill btn-success" onclick="muestra4();">Pedir Ayuda</button>
+												<button type="button" class="btn m-btn--pill btn-success btna_3" onclick="muestra4();" style="display: none;">Adicionar Colaborador</button>
 											</div>
 										</center>
 									</div>
@@ -613,16 +603,16 @@
 												<div class="col-lg-12">
 													<label class="">Monto:</label>
 													<div class="m-input-icon m-input-icon--right">
-														<input type="text" class="form-control m-input m-input--air m-input--pill" name="paterno_c" id="txt_dmbp3">
+														<input type="text" class="form-control m-input m-input--air m-input--pill" name="paterno_c" id="txt_dmbp3" value="0">
 														<span class="m-input-icon__icon m-input-icon__icon--right"></span>
 													</div>
 												</div>
 											</div>
-											<div class="m-portlet__foot m-portlet__foot--fit">
+											<div class="m-portlet__foot--fit">
 												<center>
 													<div class="m-form__actions">
 														<button type="submit" class="btn m-btn--pill btn-accent" onclick="padre_beneficiario_dependiente3();">Calcular</button>
-														<button type="button" class="btn m-btn--pill btn-success" onclick="muestra4();">Pedir Ayuda</button>
+														<button type="button" class="btn m-btn--pill btn-success btna_3" onclick="muestra4();" style="display: none;">Adicionar colaborador</button>
 													</div>
 												</center>
 											</div>
@@ -700,7 +690,7 @@
 										
 										<div class="form-group m-form__group row">
 											<div class="col-lg-4">
-												<label class="">Tipo:</label>
+												<label class="">Categoria</label>
 												<select class="form-control m-input" id="cb_ipb4">
 													<option value="Comercio">Comercio</option>
 													<option value="Servicio">Servicio</option>
@@ -708,28 +698,28 @@
 												</select>
 											</div>
 											<div class="col-lg-4">
-												<label class="">Ingreso Bruto:</label>
+												<label class="">Ingreso mensual</label>
 												<div class="m-input-icon m-input-icon--right">
-													<input type="text" class="form-control m-input m-input--air m-input--pill" name="paterno_c" id="txt_impb4">
+													<input type="text" class="form-control m-input m-input--air m-input--pill" name="paterno_c" id="txt_impb4" value="0">
 													<span class="m-input-icon__icon m-input-icon__icon--right"></span>
 												</div>
 											</div>
 
 											<div class="col-lg-4">
-												<label class="">Gastos:</label>
+												<label class="">Gastos mensuales</label>
 												<div class="m-input-icon m-input-icon--right">
-													<input type="text" class="form-control m-input m-input--air m-input--pill" name="paterno_c" id="txt_igpb4">
+													<input type="text" class="form-control m-input m-input--air m-input--pill" name="paterno_c" id="txt_igpb4" value="0">
 													<span class="m-input-icon__icon m-input-icon__icon--right"></span>
 												</div>
 											</div>
 
 										</div>
 
-									<div class="m-portlet__foot m-portlet__foot--fit">
+									<div class="m-portlet__foot--fit">
 										<center>
 											<div class="m-form__actions">
-												<button type="submit" class="btn m-btn--pill btn-accent" onclick=padre_beneficiario_independiente4();>Calcular</button>
-												<button type="button" class="btn m-btn--pill btn-success">Pedir Ayuda</button>
+												<button type="submit" class="btn m-btn--pill btn-accent" onclick="padre_beneficiario_independiente4();">Calcular</button>
+												<!-- <button type="button" class="btn m-btn--pill btn-success btna_4" style="display: none;">Adicionar Colaborador</button> -->
 											</div>
 										</center>
 									</div>
@@ -754,16 +744,16 @@
 												<div class="col-lg-12">
 													<label class="">Monto:</label>
 													<div class="m-input-icon m-input-icon--right">
-														<input type="text" class="form-control m-input m-input--air m-input--pill" name="paterno_c" id="txt_dmbp4">
+														<input type="text" class="form-control m-input m-input--air m-input--pill" name="paterno_c" id="txt_dmbp4" value="0">
 														<span class="m-input-icon__icon m-input-icon__icon--right"></span>
 													</div>
 												</div>
 											</div>
-											<div class="m-portlet__foot m-portlet__foot--fit">
+											<div class="m-portlet__foot--fit">
 												<center>
 													<div class="m-form__actions">
 														<button type="submit" class="btn m-btn--pill btn-accent" onclick="padre_beneficiario_dependiente4();">Calcular</button>
-														<button type="button" class="btn m-btn--pill btn-success">Pedir Ayuda</button>
+														<!-- <button type="button" class="btn m-btn--pill btn-success btna_4" style="display: none;">Adicionar colaborador</button> -->
 													</div>
 												</center>
 											</div>
@@ -792,60 +782,64 @@
 <?php //vdebug($condominio, true, false, true); ?>
 			<!-- end:: Body -->
 <!-- mensajes solicitud -->
-	<div class="modal fade" id="modal_msg" tabindex="-1" role="dialog" aria-labelledby="exampleModalCenterTitle" aria-hidden="true">
-							<div class="modal-dialog modal-dialog-centered" role="document">
-								<div class="modal-content">
-									<div class="modal-header" align="center">
-										<h2 class="m--font-info" >Registro exitoso</h2>
-										
-									</div>
-									<div class="modal-body"> 
+<div class="modal fade" id="modal_msg" tabindex="-1" role="dialog" aria-labelledby="exampleModalCenterTitle" aria-hidden="true">
+	<div class="modal-dialog modal-dialog-centered" role="document">
+		<div class="modal-content">
+			<div class="modal-header" align="center">
+				<h2 class="m--font-info">Registro exitoso</h2>
 
-										<div align="center">
-											<img src="<?php echo base_url() ?>public/assets/img/happy.jpeg" alt="" width="50%">	
-										</div>
-										<br>
-										<div class="alert alert-primary" role="alert">
-											Tu solicitud ha sido registrada exitosamente, se te ha enviado informacion importante al correo <?php echo $email; ?>											
-										</div>
-										<p align="center">											
-													<img src="<?php echo base_url() ?>public/assets/img/check.png" alt="" width="15%">													
-														Tu Numero de Tramite es: <b> <?php echo str_pad($nro_tramite, 5, "0", STR_PAD_LEFT); ?>  </b> 
-										</p>
-									</div>
-									<div class="modal-footer">
-										<a href="<?php echo base_url(); ?>" type="button" class="btn btn-success">Terminar</a>
-									</div>
-								</div>
-							</div>
+			</div>
+			<div class="modal-body">
+
+				<div align="center">
+					<img src="<?php echo base_url() ?>public/assets/img/happy.jpeg" alt="" width="50%">
 				</div>
-
-					<div class="modal fade" id="modal_error" tabindex="-1" role="dialog" aria-labelledby="exampleModalCenterTitle" aria-hidden="true">
-							<div class="modal-dialog modal-dialog-centered" role="document">
-								<div class="modal-content">
-									<div class="modal-header" align="center">
-										<h2 class="m--font-danger" >Registro fallido</h2>
-										
-									</div>
-									<div class="modal-body"> 
-
-										<div align="center">
-											<img src="<?php echo base_url() ?>public/assets/img/sad.jpeg" alt="" width="50%">	
-										</div>
-										<br>
-										<div class="alert alert-danger" role="alert">
-											Tus ingresos totales no son suficientes para acceder al credito
-										</div>
-										<p align="center"><b> sin embargo podrias solicitar ayuda de tus padres </b></p>
-									   
-										
-									</div>
-									<div class="modal-footer">
-										<button type="button" class="btn btn-warning" data-dismiss="modal">Intentar</button>																		
-									</div>
-								</div>
-							</div>
+				<br>
+				<div class="alert alert-primary" role="alert">
+					Tu solicitud ha sido registrada exitosamente, se te ha enviado informacion importante al correo
+					<?php echo $email; ?>
 				</div>
+				<p align="center">
+					<img src="<?php echo base_url() ?>public/assets/img/check.png" alt="" width="15%">
+					<span style="font-size: 16px;">Tu Numero de Tramite es</span><br />
+					<span style="font-size: 38px; font-weight: 800;"> <?php echo str_pad($nro_tramite, 5, "0", STR_PAD_LEFT); ?> </span>
+				</p>
+			</div>
+			<div class="modal-footer">
+				<input type="submit" value="Guardar" onclick="envia_formulario()" class="btn btn-success">
+				<!-- <a href="<?php //echo base_url(); ?>" type="button" class="btn btn-success" onclick="document.getElementById('form-1').submit();">Terminar</a> -->
+			</div>
+		</div>
+	</div>
+</div>
+
+<div class="modal fade" id="modal_error" tabindex="-1" role="dialog" aria-labelledby="exampleModalCenterTitle" aria-hidden="true">
+	<div class="modal-dialog modal-dialog-centered" role="document">
+		<div class="modal-content">
+			<div class="modal-header" align="center">
+				<!-- <h2 class="m--font-danger">Puedes solicitar ayuda</h2> -->
+				<h3 class="modal-title m--font-info" id="exampleModalLabel">Informacion</h3>
+				<button type="button" class="close" data-dismiss="modal" aria-label="Close">
+					<span aria-hidden="true">×</span>
+				</button>
+			</div>
+			<div class="modal-body">
+
+				<div align="center">
+					<img src="<?php echo base_url() ?>public/assets/img/think.jpeg" alt="" width="50%">
+				</div>
+				<br>
+				<div class="alert alert-info" role="alert">
+					Tus ingresos totales no son suficientes para acceder al credito
+				</div>
+				Sin embargo podrias solicitar ayuda, llenando los formularios de ingresos de tus papas.
+			</div>
+			<!-- <div class="modal-footer">
+					<button type="button" class="btn btn-danger" data-dismiss="modal">Cerrar</button>																		
+				</div> -->
+		</div>
+	</div>
+</div>
 <!-- fin mensajes solicitud -->
 
 <script type="text/javascript">
@@ -860,11 +854,18 @@
 	var total = 0;
 	var sueldo_ideal = <?php echo $condominio['sueldo_prom']; ?>;
 
-    function agregarform()
-        {
-              $('.item').hide('slow');
-              $("#bloque_1").show('slow');
-        }
+	$(".valcrt").on("keypress keyup blur", function (event) {
+	 	//this.value = this.value.replace(/[^0-9\.]/g,'');
+		$(this).val($(this).val().replace(/[^0-9\.]/g, ''));
+		if ((event.which != 46 || $(this).val().indexOf('.') != -1) && (event.which < 48 || event.which > 57)) {
+			event.preventDefault();
+		}
+	});
+
+    function agregarform() {
+		$('.item').hide('slow');
+		$("#bloque_1").show('slow');
+    }
 	function muestra_papab() 
 	{
 		// console.log(idCondominio);
@@ -889,6 +890,7 @@
 		$("#bloque_4").show('slow');
 		// alert('entro');
 	}
+
 
 	
 
@@ -932,24 +934,46 @@
     			porcentaje = 0.25;
     			break;
 
-			case 'Servicio':
+    		case 'Servicio':
     			porcentaje = 0.75;
     			break;
 
-			case 'Productivo':
+    		case 'Productivo':
     			porcentaje = 0.45;
     			break;
     	}
 
     	porcentaje_monto = monto_impb*porcentaje;
-    	monto_adicionable = porcentaje_monto - gasto_igpb; 
-    	return monto_adicionable;
+    	monto_adicionable = porcentaje_monto - gasto_igpb;
+		if (monto_adicionable < 0) {
+			monto_validado = 0;
+		} else {
+			monto_validado = monto_adicionable;
+		}
+    	return monto_validado;
     	// $('#ayuda_pb').show('slow');
     	// console.log(monto_adicionable);
 
     	// console.log("monto "+monto_adicionable);
     	// $("#diipb").html(monto_adicionable);
     }
+
+    $(document).ready(function() {
+	  
+	   ingresos_beneficiario = <?php echo $datos_credito['ingreso_mensual']; ?>;
+	   ingreso_conyugue = <?php echo $datos_credito['ingreso_conyugue']; ?>;
+    	
+    	var subtotal = ingresos_beneficiario + ingreso_conyugue;
+		$("#monto_total").val(subtotal);
+
+		if(subtotal > parseFloat(sueldo_ideal)){
+    		// alerta_alcanzo();
+			// $("#modal_msg").show();
+			$("#modal_msg").modal({backdrop: "static"});	
+			$("#aprobado").val('Si');
+    	}
+	});
+   
 
     function padre_beneficiario_independiente()
     {
@@ -963,13 +987,19 @@
 
     	ingresos_padre_beneficiario = monto;
     	var subtotal = ingresos_beneficiario + ingresos_conyugue + ingresos_padre_beneficiario + ingresos_madre_beneficiario + ingresos_padre_conyugue + ingresos_madre_conyugue;
-		$("#diipb").html(monto);
-		$("#total_ingresos").html(subtotal);
+		$("#diipb").html(formatoNumeros(monto));
+		$("#monto_total").val(subtotal);
+		$("#total_ingresos").html(formatoNumeros(subtotal));
 
 		if(subtotal > parseFloat(sueldo_ideal)){
-    		alerta_alcanzo();
+    		// alerta_alcanzo();
+			// $("#modal_msg").show();
+			$("#modal_msg").modal({backdrop: "static"});	
+			$("#aprobado").val('Si');
     	}else{
     		falta();
+			$(".btna_1").show('slow');
+			$("#aprobado").val('No');
     	}
     }
 
@@ -980,14 +1010,18 @@
     	var monto_descontado = monto_numerico*0.4;
     	var ingresos_padre_beneficiario = monto_descontado;
     	var subtotal = ingresos_beneficiario + ingresos_conyugue + ingresos_padre_beneficiario + ingresos_madre_beneficiario + ingresos_padre_conyugue + ingresos_madre_conyugue;
+		$("#monto_total").val(subtotal);
     	$("#diipb").html(monto_bmbp);
-    	$("#total_ingresos").html(subtotal);
+    	$("#total_ingresos").html(formatoNumeros(subtotal));
     	$("#monto_depedientes_1").val(monto_bmbp);
 
     	if(subtotal > parseFloat(sueldo_ideal)){
-    		alerta_alcanzo();
+    		// alerta_alcanzo();
+			$("#modal_msg").modal({backdrop: "static"});
+			$("#aprobado").val('Si');	
     	}else{
     		falta();
+			$(".btna_1").show('slow');
     	}
     	// console.log(sueldo_ideal);
     }
@@ -1009,9 +1043,12 @@
 		$("#total_ingresos").html(subtotal);
 
 		if(subtotal > parseFloat(sueldo_ideal)){
-    		alerta_alcanzo();
+    		$("#modal_msg").modal({backdrop: "static"});
+    		$("#aprobado").val('Si');
     	}else{
     		falta();
+			$(".btna_2").show('slow');
+			// alert('Si');
     	}
     }
 
@@ -1022,14 +1059,17 @@
     	var monto_descontado = monto_numerico*0.4;
     	var ingresos_padre_beneficiario = monto_descontado;
     	var subtotal = ingresos_beneficiario + ingresos_conyugue + ingresos_padre_beneficiario + ingresos_madre_beneficiario + ingresos_padre_conyugue + ingresos_madre_conyugue;
+    	$("#monto_total").val(subtotal);
     	$("#diimb").html(monto_bmbp);
     	$("#total_ingresos").html(subtotal);
 		$("#monto_depedientes_2").val(monto_bmbp);
 
     	if(subtotal > parseFloat(sueldo_ideal)){
-    		alerta_alcanzo();
+    		$("#modal_msg").modal({backdrop: "static"});
+    		$("#aprobado").val('Si');
     	}else{
     		falta();
+			$(".btna_2").show('slow');
     	}
     	// console.log(sueldo_ideal);
     }
@@ -1047,13 +1087,16 @@
     	// console.log(monto3);
     	ingresos_padre_conyugue = monto3;
     	var subtotal = ingresos_beneficiario + ingresos_conyugue + ingresos_padre_beneficiario + ingresos_madre_beneficiario + ingresos_padre_conyugue + ingresos_madre_conyugue;
+    	$("#monto_total").val(subtotal);
 		$("#diipb2").html(monto3);
 		$("#total_ingresos").html(subtotal);
 
 		if(subtotal > parseFloat(sueldo_ideal)){
-    		alerta_alcanzo();
+    		$("#modal_msg").modal({backdrop: "static"});
+    		$("#aprobado").val('Si');
     	}else{
     		falta();
+			$(".btna_3").show('slow');
     	}
     }
 
@@ -1064,14 +1107,17 @@
     	var monto_descontado = monto_numerico*0.4;
     	var ingresos_padre_conyugue = monto_descontado;
     	var subtotal = ingresos_beneficiario + ingresos_conyugue + ingresos_padre_beneficiario + ingresos_madre_beneficiario + ingresos_padre_conyugue + ingresos_madre_conyugue;
+    	$("#monto_total").val(subtotal);
     	$("#diipb2").html(monto_bmbp);
     	$("#total_ingresos").html(subtotal);
 		$("#monto_depedientes_3").val(monto_bmbp);
 
     	if(subtotal > parseFloat(sueldo_ideal)){
-    		alerta_alcanzo();
+    		$("#modal_msg").modal({backdrop: "static"});
+    		$("#aprobado").val('Si');
     	}else{
     		falta();
+			$(".btna_3").show('slow');
     	}
     	// console.log(sueldo_ideal);
     }
@@ -1089,13 +1135,16 @@
     	// console.log(monto3);
     	ingresos_madre_conyugue = monto4;
     	var subtotal = ingresos_beneficiario + ingresos_conyugue + ingresos_padre_beneficiario + ingresos_madre_beneficiario + ingresos_padre_conyugue + ingresos_madre_conyugue;
+    	$("#monto_total").val(subtotal);
 		$("#diipb3").html(monto4);
 		$("#total_ingresos").html(subtotal);
 
 		if(subtotal > parseFloat(sueldo_ideal)){
-    		alerta_alcanzo();
+    		$("#modal_msg").modal({backdrop: "static"});
+    		$("#aprobado").val('Si');
     	}else{
-    		falta();
+    		falta_final();
+			// $(".btna_4").show('slow');
     	}
     }
 
@@ -1106,14 +1155,17 @@
     	var monto_descontado = monto_numerico*0.4;
     	var ingresos_madre_conyugue = monto_descontado;
     	var subtotal = ingresos_beneficiario + ingresos_conyugue + ingresos_padre_beneficiario + ingresos_madre_beneficiario + ingresos_padre_conyugue + ingresos_madre_conyugue;
+    	$("#monto_total").val(subtotal);
     	$("#diipb3").html(monto_bmbp);
     	$("#total_ingresos").html(subtotal);
 		$("#monto_depedientes_4").val(monto_bmbp);
 
     	if(subtotal > parseFloat(sueldo_ideal)){
-    		alerta_alcanzo();
+    		$("#modal_msg").modal({backdrop: "static"});
+    		$("#aprobado").val('Si');
     	}else{
-    		falta();
+    		falta_final();
+			// $(".btna_4").show('slow');
     	}
     	// console.log(sueldo_ideal);
     }
@@ -1146,6 +1198,33 @@
 
 	//location.reload();
 	}
+
+	function falta_final() {
+		Swal.fire({
+			// type: 'error',
+			title: 'Lo Siento',
+			text: 'Se acabaron tus recursos puedes intentar en otra oportunidad!',
+			imageUrl: '<?php echo base_url(); ?>public/imagenes/mal.jpeg',
+			imageWidth: 200,
+			imageHeight: 250,
+			imageAlt: 'Custom image',
+			animation: false
+		})
+
+		//location.reload();
+	}
+
+	function envia_formulario(){
+		// alert('aqui');
+		$("#form-1").submit();
+	}
+
+
+	function formatoNumeros(num) {
+		return (num).toFixed(2).replace(/\d(?=(\d{3})+\.)/g, '$&,');
+	}
+
+	console.log(formatoNumeros(123456789)) // output 1.234.567,89 €
 
 </script>
 
