@@ -96,32 +96,154 @@ class Solicitudes extends CI_Controller {
 	public function guarda()
 	{
 		$datos = $this->input->post();
-			var_dump($datos);
-			exit();
-			
-			$beneficiario_id = $datos['beneficiario_id'];
-			$condominio_id = $datos['condominio_id'];
-			$conyuge_id = $datos['conyuge_id'];
-			$papabeneficiario_id = $datos['papabeneficiario_id'];
-			$mamabeneficiario_id = $datos['mamabeneficiario_id'];
-			$papaconyugue_id = $datos['papaconyugue_id'];
-			$mamaconyugue_id = $datos['mamaconyugue_id'];
-			$ingreso_beneficiario = $datos['ingreso_beneficiario'];
-			$ingreso_conyugue = $datos['ingreso_conyugue'];
-			$ipb = $datos['ipb'];
-			$imb = $datos['imb'];
-			$ipc = $datos['ipc'];
-			$imc = $datos['imc'];
-			$tpb = $datos['tpb'];
-			$tmb = $datos['tmb'];
-			$tpc = $datos['tpc'];
-			$tmc = $datos['tmc'];
-			$interes = $datos['interes'];
-			$meses = $datos['meses'];
-			$monto = $datos['monto'];
-			$fecha = $datos['fecha'];
+		var_dump($datos);
+		exit();
+		$beneficiario_id = $datos['beneficiario_id'];
+		$condominio_id = $datos['condominio_id'];
 
-			$array = array(
+		// Sacar el id del Conyugue si es que lo tiene
+		$conyu = $this->db->get_where('familiar', array('beneficiario_id' => $beneficiario_id, 'relacion' => 'conyugue'))->row();
+		if ($conyu) {
+			$conyuge_id = $conyu->id;
+		}
+		else{
+			$conyuge_id = $datos['conyuge_id'];	
+		}
+		
+		// Guardar los datos del padre 1 en la tabla Familiar
+		$ci_padre_1 = $datos['padre_beneficiario_carnet_1'];
+		if ($ci_padre_1) {
+			$nombre_padre_1 = $datos['padre_beneficiario_nombre_1'];
+			$ci_padre_1 = $datos['padre_beneficiario_carnet_1'];
+			$array_padre1 = array(
+				'beneficiario_id' => $beneficiario_id,
+				'relacion' => 'padres beneficiario',
+				'nombres' => $nombre_padre_1,
+				'ci' => $ci_padre_1,
+				'fec_nacimiento' => '1980-01-01'
+			);
+			$this->db->insert('familiar', $array_padre1);
+			$id_padre_1 = $this->db->get_where('familiar', array('ci' => $ci_padre_1))->row();
+			$papabeneficiario_id = $id_padre_1->id;
+		}
+		else{
+			$papabeneficiario_id = $datos['papabeneficiario_id'];
+		}
+
+		// Guardar los datos del padre 2 en la tabla Familiar
+		$ci_madre_2 = $datos['madre_beneficiario_carnet_2'];
+		if ($ci_madre_2) {
+			$nombre_madre_2 = $datos['madre_beneficiario_nombre_2'];
+			$ci_madre_2 = $datos['madre_beneficiario_carnet_2'];
+			$array_padre2 = array(
+				'beneficiario_id' => $beneficiario_id,
+				'relacion' => 'padres beneficiario',
+				'nombres' => $nombre_madre_2,
+				'ci' => $ci_madre_2,
+				'fec_nacimiento' => '1980-01-01'
+			);
+			$this->db->insert('familiar', $array_padre2);
+			$id_madre_2 = $this->db->get_where('familiar', array('ci' => $ci_madre_2))->row();
+			$mamabeneficiario_id = $id_madre_2->id;
+		}
+		else{
+			$mamabeneficiario_id = $datos['mamabeneficiario_id'];
+		}
+
+		// Guardar los datos del padre 3 en la tabla Familiar
+		$ci_padre_3 = $datos['padre_beneficiario_carnet_3'];
+		if ($ci_padre_3) {
+			$nombre_padre_3 = $datos['padre_beneficiario_nombre_3'];
+			$ci_padre_3 = $datos['padre_beneficiario_carnet_3'];
+			$array_padre_3 = array(
+				'beneficiario_id' => $beneficiario_id,
+				'relacion' => 'padres conyugue',
+				'nombres' => $nombre_padre_3,
+				'ci' => $ci_padre_3,
+				'fec_nacimiento' => '1980-01-01'
+			);
+			$this->db->insert('familiar', $array_padre_3);
+			$id_padre_3 = $this->db->get_where('familiar', array('ci' => $ci_padre_3))->row();
+			$papaconyugue_id = $id_padre_3->id;
+		}
+		else{
+			$papaconyugue_id = $datos['papaconyugue_id'];
+		}
+
+		// Guardar los datos del padre 3 en la tabla Familiar
+		$ci_madre_4 = $datos['madre_beneficiario_carnet_4'];
+		if ($ci_madre_4) {
+			$nombre_madre_4 = $datos['madre_beneficiario_nombre_4'];
+			$ci_madre_4 = $datos['madre_beneficiario_carnet_4'];
+			$array_madre_4 = array(
+				'beneficiario_id' => $beneficiario_id,
+				'relacion' => 'padres conyugue',
+				'nombres' => $nombre_madre_4,
+				'ci' => $ci_madre_4,
+				'fec_nacimiento' => '1980-01-01'
+			);
+			$this->db->insert('familiar', $array_madre_4);
+			$id_madre_4 = $this->db->get_where('familiar', array('ci' => $ci_madre_4))->row();
+			$mamaconyugue_id = $id_madre_4->id;
+		}
+		else{
+			$mamaconyugue_id = $datos['mamaconyugue_id'];
+		}
+			$cred = $this->db->get_where('credito', array('beneficiario_id' => $beneficiario_id))->row();
+			$ingreso_beneficiario = $cred->ingreso_mensual;
+			$ingreso_conyugue = $cred->ingreso_conyugue;
+
+			if ($datos['combo_1']) {
+				$ipb = $datos['ingreso_bruto_1'];
+				$tpb = $datos['combo_1'];
+				$gpb = $datos['gastos_1'];
+			}
+			else{
+				$ipb = $datos['monto_depedientes_1'];
+				$tpb = 'Dependientes';
+				$gpb = $datos['gastos_1'];
+			}
+
+			if ($datos['combo_2']) {
+				$imb = $datos['ingreso_bruto_2'];
+				$tmb = $datos['combo_2'];
+				$gmb = $datos['gastos_2'];
+			}
+			else{
+				$imb = $datos['monto_depedientes_2'];
+				$tmb = 'Dependientes';
+				$gmb = $datos['gastos_2'];
+			}
+
+			if ($datos['combo_3']) {
+				$ipc = $datos['ingreso_bruto_3'];
+				$tpc = $datos['combo_3'];
+				$gpc = $datos['gastos_3'];
+			}
+			else{
+				$ipc = $datos['monto_depedientes_3'];
+				$tpc = 'Dependientes';
+				$gpc = $datos['gastos_3'];
+			}
+
+			if ($datos['combo_4']) {
+				$imc = $datos['ingreso_bruto_4'];
+				$tmc = $datos['combo_4'];
+				$gmc = $datos['gastos_4'];
+			}
+			else{
+				$imc = $datos['monto_depedientes_4'];
+				$tmc = 'Dependientes';
+				$gmc = $datos['gastos_4'];
+			}
+			
+			$interes = '5,5';
+			$meses = '300';
+			$montoss = $this->db->get_where('condominio', array('id' => $condominio_id))->row();
+			$monto = $montoss->sueldo_prom;
+			$fecha = date("Y-m-d");
+
+			$array_total = array(
 				'beneficiario_id' => $beneficiario_id,
 				'condominio_id' => $condominio_id,
 				'conyuge_id' => $conyuge_id,
@@ -139,13 +261,17 @@ class Solicitudes extends CI_Controller {
 				'tmb' => $tmb,
 				'tpc' => $tpc,
 				'tmc' => $tmc,
+				'gpb' => $gpb,
+				'gmb' => $gmb,
+				'gpc' => $gpc,
+				'gmc' => $gmc,
 				'interes' => $interes,
 				'meses' => $meses,
 				'monto' => $monto,
 				'fecha' => $fecha
 			);
 
-		$this->db->insert('Solicitudes', $array);
+		$this->db->insert('Solicitudes', $array_total);
 		redirect(base_url() . 'Inicio');		
 
 	}

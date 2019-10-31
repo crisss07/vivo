@@ -77,6 +77,7 @@
 							<input type="hidden" name="meses" id="meses">
 							<input type="hidden" name="monto" id="monto">
 							<input type="hidden" name="fecha" id="fecha">
+							<input type="hidden" name="total_ingresos" id="total_ingresos">
 							
 						<?php //fin campos ocultos para guardar en la base de datos ?>
 

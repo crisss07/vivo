@@ -252,6 +252,7 @@ class Persona extends CI_Controller {
 				$nombres_c = $datos['nombres_c'];
 				$paterno_c = $datos['paterno_c'];
 				$materno_c = $datos['materno_c'];
+				$nom_completo = $nombres_c.' '.$paterno_c.' '.$materno_c;
 				$telefono_celular_c = $datos['telefono_celular_c'];
 				$email_c = $datos['email_c'];
 
@@ -260,9 +261,7 @@ class Persona extends CI_Controller {
 					'relacion' =>$relacion,
 					'fec_nacimiento' =>$fec_nacimiento_c,
 					'ci' => $ci_c,
-					'nombres' =>$nombres_c,
-					'paterno' =>$paterno_c,
-					'materno' =>$materno_c,
+					'nombres' =>$nom_completo,
 					'telefono_celular' =>$telefono_celular_c,
 					'email' =>$email_c
 					

@@ -3,7 +3,7 @@
 					<div class="m-login__container">
 						<div class="m-login__logo">
 							<a href="#">
-								<img src="<?php echo base_url(); ?>public/assets/logos/logo.png" width="50%">
+								<img src="<?php echo base_url(); ?>public/imagenes/logo.png" width="50%">
 							</a>
 						</div>
 						<div class="m-login__signin">

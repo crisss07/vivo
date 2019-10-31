@@ -30,4 +30,12 @@ class Inicio extends CI_Controller {
 		$this->load->view('admin/footer');
        
 	}
+
+	public function prueba()
+	{
+		$conyu = date("Y-m-d");
+		// $conyugue_id = $conyu->id;
+		var_dump($conyu);
+       
+	}
 }
