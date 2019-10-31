@@ -76,6 +76,8 @@
 							<input type="hidden" name="interes" id="interes">
 							<input type="hidden" name="meses" id="meses">
 							<input type="hidden" name="monto" id="monto">
+							<input type="hidden" name="monto_total" id="monto_total">
+							<input type="hidden" name="aprobado" id="aprobado" value="No">
 							<input type="hidden" name="fecha" id="fecha">
 							
 						<?php //fin campos ocultos para guardar en la base de datos ?>
@@ -968,15 +970,18 @@
     	ingresos_padre_beneficiario = monto;
     	var subtotal = ingresos_beneficiario + ingresos_conyugue + ingresos_padre_beneficiario + ingresos_madre_beneficiario + ingresos_padre_conyugue + ingresos_madre_conyugue;
 		$("#diipb").html(formatoNumeros(monto));
+		$("#monto_total").val(subtotal);
 		$("#total_ingresos").html(formatoNumeros(subtotal));
 
 		if(subtotal > parseFloat(sueldo_ideal)){
     		// alerta_alcanzo();
 			// $("#modal_msg").show();
 			$("#modal_msg").modal({backdrop: "static"});	
+			$("#aprobado").val('Si');
     	}else{
     		falta();
 			$(".btna_1").show('slow');
+			$("#aprobado").val('No');
     	}
     }
 
@@ -987,13 +992,15 @@
     	var monto_descontado = monto_numerico*0.4;
     	var ingresos_padre_beneficiario = monto_descontado;
     	var subtotal = ingresos_beneficiario + ingresos_conyugue + ingresos_padre_beneficiario + ingresos_madre_beneficiario + ingresos_padre_conyugue + ingresos_madre_conyugue;
+		$("#monto_total").val(subtotal);
     	$("#diipb").html(monto_bmbp);
     	$("#total_ingresos").html(formatoNumeros(subtotal));
     	$("#monto_depedientes_1").val(monto_bmbp);
 
     	if(subtotal > parseFloat(sueldo_ideal)){
     		// alerta_alcanzo();
-		$("#modal_msg").modal({backdrop: "static"});	
+			$("#modal_msg").modal({backdrop: "static"});
+			$("#aprobado").val('Si');	
     	}else{
     		falta();
 			$(".btna_1").show('slow');
@@ -1019,6 +1026,7 @@
 
 		if(subtotal > parseFloat(sueldo_ideal)){
     		$("#modal_msg").modal({backdrop: "static"});
+    		$("#aprobado").val('Si');
     	}else{
     		falta();
 			$(".btna_2").show('slow');
@@ -1033,12 +1041,14 @@
     	var monto_descontado = monto_numerico*0.4;
     	var ingresos_padre_beneficiario = monto_descontado;
     	var subtotal = ingresos_beneficiario + ingresos_conyugue + ingresos_padre_beneficiario + ingresos_madre_beneficiario + ingresos_padre_conyugue + ingresos_madre_conyugue;
+    	$("#monto_total").val(subtotal);
     	$("#diimb").html(monto_bmbp);
     	$("#total_ingresos").html(subtotal);
 		$("#monto_depedientes_2").val(monto_bmbp);
 
     	if(subtotal > parseFloat(sueldo_ideal)){
     		$("#modal_msg").modal({backdrop: "static"});
+    		$("#aprobado").val('Si');
     	}else{
     		falta();
 			$(".btna_2").show('slow');
@@ -1059,11 +1069,13 @@
     	// console.log(monto3);
     	ingresos_padre_conyugue = monto3;
     	var subtotal = ingresos_beneficiario + ingresos_conyugue + ingresos_padre_beneficiario + ingresos_madre_beneficiario + ingresos_padre_conyugue + ingresos_madre_conyugue;
+    	$("#monto_total").val(subtotal);
 		$("#diipb2").html(monto3);
 		$("#total_ingresos").html(subtotal);
 
 		if(subtotal > parseFloat(sueldo_ideal)){
     		$("#modal_msg").modal({backdrop: "static"});
+    		$("#aprobado").val('Si');
     	}else{
     		falta();
 			$(".btna_3").show('slow');
@@ -1077,12 +1089,14 @@
     	var monto_descontado = monto_numerico*0.4;
     	var ingresos_padre_conyugue = monto_descontado;
     	var subtotal = ingresos_beneficiario + ingresos_conyugue + ingresos_padre_beneficiario + ingresos_madre_beneficiario + ingresos_padre_conyugue + ingresos_madre_conyugue;
+    	$("#monto_total").val(subtotal);
     	$("#diipb2").html(monto_bmbp);
     	$("#total_ingresos").html(subtotal);
 		$("#monto_depedientes_3").val(monto_bmbp);
 
     	if(subtotal > parseFloat(sueldo_ideal)){
-    		alerta_alcanzo();
+    		$("#modal_msg").modal({backdrop: "static"});
+    		$("#aprobado").val('Si');
     	}else{
     		falta();
 			$(".btna_3").show('slow');
@@ -1103,11 +1117,13 @@
     	// console.log(monto3);
     	ingresos_madre_conyugue = monto4;
     	var subtotal = ingresos_beneficiario + ingresos_conyugue + ingresos_padre_beneficiario + ingresos_madre_beneficiario + ingresos_padre_conyugue + ingresos_madre_conyugue;
+    	$("#monto_total").val(subtotal);
 		$("#diipb3").html(monto4);
 		$("#total_ingresos").html(subtotal);
 
 		if(subtotal > parseFloat(sueldo_ideal)){
-    		alerta_alcanzo();
+    		$("#modal_msg").modal({backdrop: "static"});
+    		$("#aprobado").val('Si');
     	}else{
     		falta_final();
 			// $(".btna_4").show('slow');
@@ -1121,12 +1137,14 @@
     	var monto_descontado = monto_numerico*0.4;
     	var ingresos_madre_conyugue = monto_descontado;
     	var subtotal = ingresos_beneficiario + ingresos_conyugue + ingresos_padre_beneficiario + ingresos_madre_beneficiario + ingresos_padre_conyugue + ingresos_madre_conyugue;
+    	$("#monto_total").val(subtotal);
     	$("#diipb3").html(monto_bmbp);
     	$("#total_ingresos").html(subtotal);
 		$("#monto_depedientes_4").val(monto_bmbp);
 
     	if(subtotal > parseFloat(sueldo_ideal)){
-    		alerta_alcanzo();
+    		$("#modal_msg").modal({backdrop: "static"});
+    		$("#aprobado").val('Si');
     	}else{
     		falta_final();
 			// $(".btna_4").show('slow');
