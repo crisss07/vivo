@@ -62,13 +62,16 @@
 																<tbody>
 																	<?php $i=1;?>
 																	<?php foreach ($persona as $row) { 
-
+																		
 																		$fa = $this->db->query("SELECT *
 																								FROM familiar
 																								WHERE beneficiario_id = '$row->id' ")->row();
 																		$con = $this->db->query("SELECT *
 																								FROM condominio
 																								WHERE id = '$row->condominio_id' ")->row();
+																		$sol = $this->db->query("SELECT *
+																								FROM solicitudes
+																								WHERE beneficiario_id = '$row->id' ")->row();
 
 
 																		?>
@@ -81,9 +84,10 @@
 																			<td>No corresponde</td>
 																			<?php } ?>
 																			<td><?php echo $con->descripcion; ?> - <?php echo $con->ciudad; ?></td> 
-																			<td><?php echo $con->descripcion; ?></td> 
+																			<td><?php echo $sol->aprobado; ?></td> 
 																			<td>
-																				<button type="button" class="btn btn-info" data-toggle="modal" data-target="#Modal_insert">
+																			<!-- <input type="hidden" name="padre_beneficiario_nombre_1" id="valor" value="<?php echo $row->id; ?>"> -->
+																				<button type="button" class="btn btn-info" data-toggle="modal" data-target="#Modal_insert" onclick="buscar('<?php echo $row->id; ?>');">
 																					<span class="fas fa-info-circle" aria-hidden="true">
 																					</span>
 																				</button>    
@@ -127,43 +131,8 @@
 												
 												<div class="m-portlet__body">
 													<table class="table table-striped m-table">
-														<tbody>
-															<tr>
-																<th scope="row">Ingresos liquidos mensuales</th>
-																<td align="right">1000.00</td>	
-															</tr>
-															<tr>
-																<th scope="row">Ingresos liquidos mensuales conyugue</th>
-																<td align="right">500.00</td>
-																									</tr>
-															<tr>
-																<th scope="row">Ingresos padre beneficiario</th>
-																<td id="diipb" align="right">0</td>
-															</tr>
-															<tr>
-																<th scope="row">Ingresos madre beneficiario</th>
-																<td id="diimb" align="right">0</td>
-															</tr>
-															<tr>
-																<th scope="row">Ingresos padre conyugue</th>
-																<td id="diipb2" align="right">0</td>
-															</tr>
-															<tr>
-																<th scope="row">Ingresos madre conyugue</th>
-																<td id="diipb3" align="right">0</td>
-															</tr>
-															<tr>
-																<th scope="row">Total</th>
-																<td id="total_ingresos" align="right">1500</td>
-															</tr>
-															<tr>
-																<th scope="row">Tasa de interes</th>
-																<td align="right">5.5%</td>
-															</tr>
-															<tr>
-																<th scope="row">Plazo</th>
-																<td align="right">25 ańos</td>
-															</tr>
+														<tbody id="tabla_1">
+															
 														</tbody>
 													</table>
 
@@ -189,16 +158,8 @@
 																	<th>Sueldo ideal</th>
 																</tr>
 															</thead>
-															<tbody>
-																<tr>
-																	<th scope="row">1</th>
-																	<td>WIPHALA</td>
-																	<td>LA PAZ</td>
-																	<td>188579.00</td>
-																	<td>1186.56</td>
-																	<td>2966.40</td>
-																</tr>
-																
+															<tbody id="tabla_2">
+
 															</tbody>
 														</table>
 													</div>
@@ -215,26 +176,93 @@
 
 								
 							</div>
+<script>
+      
+
+
+  	function buscar(id)
+	{
+    	var ci = id;
+        
+        $.ajax({
+            url: '<?php echo base_url(); ?>Administrador_Persona/consulta/',
+            type: 'GET',
+            dataType: 'json',
+            data: {param1: ci},
+            // data: {param1: cod_catastral},
+            success:function(data, textStatus, jqXHR) {
+
+            	var valor = '<tr>' +
+            				'<th scope="row">' + 'Ingresos liquidos mensuales' + '</th>' +
+		                	'<td align="right">' + data.ingreso_beneficiario + '</td>' +
+					        '</tr>'+
+					        '<tr>' +
+            				'<th scope="row">' + 'Ingresos liquidos mensuales conyugue' + '</th>' +
+		                	'<td align="right">' + data.ingreso_conyugue + '</td>' +
+					        '</tr>'+
+					        '<tr>' +
+            				'<th scope="row">' + 'Ingresos padre beneficiario' + '</th>' +
+		                	'<td align="right">' + data.ipb + '</td>' +
+					        '</tr>'+
+					        '<tr>' +
+            				'<th scope="row">' + 'Ingresos madre beneficiario' + '</th>' +
+		                	'<td align="right">' + data.imb + '</td>' +
+					        '</tr>'+
+					        '<tr>' +
+            				'<th scope="row">' + 'Ingresos padre conyugue' + '</th>' +
+		                	'<td align="right">' + data.ipc + '</td>' +
+					        '</tr>'+
+					        '<tr>' +
+            				'<th scope="row">' + 'Ingresos madre conyugue' + '</th>' +
+		                	'<td align="right">' + data.imc + '</td>' +
+					        '</tr>'+
+					        '<tr>' +
+            				'<th scope="row">' + 'Total' + '</th>' +
+		                	'<td align="right">' + data.monto_total + '</td>' +
+					        '</tr>' +
+					        '<tr>' +
+							'<th scope="row">' + 'Tasa de interes' + '</th>' +
+							'<td align="right">' + '5.5%' + '</td>' +
+							'</tr>' +
+							'<tr>' +
+							'<th scope="row">' + 'Plazo' + '</th>' +
+							'<td align="right">' + '25 ańos' + '</td>' +
+							'</tr>';
+					      $("#tabla_1").html(valor);
+
+                var valor1 = '<tr>' +
+		                	'<td>' + 1 + '</td>' +
+					        '<td>' + data.descripcion + '</td>' +
+					        '<td>' + data.ciudad + '</td>' +
+					        '<td>' + data.valor + '</td>' +
+					        '<td>' + data.cuota_mensual + '</td>' +
+					        '<td>' + data.sueldo_prom + '</td>' +
+					        '</tr>';
+					      $("#tabla_2").html(valor1);
+
+            },
+            error:function(jqXHR, textStatus, errorThrown) {
+                alert('no nada');
+            }
+        });
+ 	}
+
+</script>
+
+
 
 <script type="text/javascript">
 
-    // $('#m_table_1').DataTable( {
-    //     "language": {
-    //         "lengthMenu": "_MENU_ registros por página",
-    //         "zeroRecords": "Nada encontrado - lo siento",
-    //         "search": "Buscar",
-    //         "info": "Mostrando la página  _PAGE_ de _PAGES_",
-    //         "infoEmpty": "No hay registros disponibles.",
-    //         "infoFiltered": "(filtrado de _MAX_ registros totales)"
-    //     }
-    // } );
-     $('#m_table_1').DataTable( {
-     
-        "oLanguage": {
-            "sUrl": "https://cdn.datatables.net/plug-ins/1.10.16/i18n/Spanish.json"
-        },
-    });
-
+    $('#m_table_1').DataTable( {
+        "language": {
+            "lengthMenu": "_MENU_ registros por página",
+            "zeroRecords": "Nada encontrado - lo siento",
+            "search": "Buscar",
+            "info": "Mostrando la página  _PAGE_ de _PAGES_",
+            "infoEmpty": "No hay registros disponibles.",
+            "infoFiltered": "(filtrado de _MAX_ registros totales)"
+        }
+    } );
 	 
 </script>
 

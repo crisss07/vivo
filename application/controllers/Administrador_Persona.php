@@ -36,7 +36,7 @@ class Administrador_Persona extends CI_Controller {
 	{
 		if($this->session->userdata('is_logged'))
 		{	
-			$persona = $this->db->get('beneficiario')->result();
+		$persona = $this->db->get('beneficiario')->result();
 		$data['persona']=$persona;
 		$this->load->view('crud/headerp');	
 		$this->load->view('crud/adminitrar_personas',$data);		
@@ -63,7 +63,17 @@ class Administrador_Persona extends CI_Controller {
 		else{
 			redirect(base_url() . 'Login');	
 		}
+		
+	}
 
+	public function consulta()
+	{
+			$ci = $this->input->get("param1");
+			$be = $this->db->get_where('solicitudes', array('beneficiario_id' => $ci))->row();
+			$con = $this->db->get_where('condominio', array('id' => $be->condominio_id))->row();
+
+			$respuesta = array('ci'=>$ci, 'ingreso_beneficiario'=>$be->ingreso_beneficiario, 'ingreso_conyugue'=>$be->ingreso_conyugue, 'ipb'=>$be->ipb, 'imb'=>$be->imb, 'ipc'=>$be->ipc, 'imc'=>$be->imc, 'monto_total'=>$be->monto_total, 'descripcion'=>$con->descripcion, 'ciudad'=>$con->ciudad, 'valor'=>$con->valor, 'cuota_mensual'=>$con->cuota_mensual, 'sueldo_prom'=>$con->sueldo_prom);
+			echo json_encode($respuesta);
 
 		
 	}
