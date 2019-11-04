@@ -65,7 +65,8 @@
 																		
 																		$fa = $this->db->query("SELECT *
 																								FROM familiar
-																								WHERE beneficiario_id = '$row->id' ")->row();
+																								WHERE beneficiario_id = '$row->id' 
+																								AND relacion = 'conyugue'")->row();
 																		$con = $this->db->query("SELECT *
 																								FROM condominio
 																								WHERE id = '$row->condominio_id' ")->row();
